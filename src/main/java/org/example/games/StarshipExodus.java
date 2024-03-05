@@ -5,6 +5,8 @@
  */
 package org.example.games;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import org.example.GameDescription;
 import org.example.parser.ParserOutput;
 import org.example.type.*;
@@ -13,9 +15,12 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 /**
  * ATTENZIONE: La descrizione del gioco è fatta in modo che qualsiasi gioco
@@ -36,7 +41,8 @@ public class StarshipExodus extends GameDescription {
     @Override
     public void init() throws Exception {
         //Commands
-        loadCommandsFromFile("./resources/commands.txt");
+        List<Command> commands = loadCommandsFromFile("./resources/commands.json");
+        getCommands().addAll(commands);
         //Rooms
         Room hall = new Room(0, "Corridoio",
                 "Sei appena tornato a casa e non sai cosa fare.\nTi ricordi che non hai ancora aperto quel fantastico regalo di tua zia Lina.\n"
@@ -262,33 +268,16 @@ public class StarshipExodus extends GameDescription {
         System.exit(0);
     }
 
-    private void loadCommandsFromFile(String filePath) throws IOException {
-        List<Command> commands = new ArrayList<>();
+    private static List<Command> loadCommandsFromFile(String filePath) throws IOException {
+        Gson gson = new Gson();
+        Type commandListType = new TypeToken<List<Command>>() {}.getType();
 
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] parts = line.split(",");
-                if (parts.length >= 2) {
-                    CommandType type = CommandType.valueOf(parts[0].trim());
-                    String commandName = parts[1].trim();
+            // Leggi tutto il JSON come un array di comandi
+            Command[] commandArray = gson.fromJson(br, Command[].class);
 
-                    Command command = new Command(type, commandName);
-
-                    // Aggiungi gli alias se presenti nel file
-                    if (parts.length > 2) {
-                        String[] aliases = parts[2].split(",");
-                        for (String alias : aliases) {
-                            command.addAlias(alias.trim());
-                        }
-                    }
-
-                    commands.add(command);
-                }
-            }
+            // Converti l'array in una lista di comandi
+            return List.of(commandArray);
         }
-
-        // Aggiungi i comandi alla lista di comandi del gioco
-        getCommands().addAll(commands);
     }
 }
