@@ -26,7 +26,7 @@ import java.util.Iterator;
  *
  * @author pierpaolo
  */
-public class FireHouseGame extends GameDescription {
+public class StarshipExodus extends GameDescription {
 
     @Override
     public void init() throws Exception {
