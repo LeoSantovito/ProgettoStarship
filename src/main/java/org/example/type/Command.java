@@ -78,4 +78,10 @@ public class Command {
         return true;
     }
 
+    public void addAlias(String trim) {
+        if (alias == null) {
+            setAlias(new HashSet<>());
+        }
+        alias.add(trim);
+    }
 }
