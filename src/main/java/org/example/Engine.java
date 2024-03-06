@@ -9,7 +9,7 @@ import org.example.games.StarshipExodus;
 import org.example.parser.Parser;
 import org.example.parser.ParserOutput;
 import org.example.type.CommandType;
-//import org.example.database.Database;
+import org.example.database.Database;
 
 import java.io.File;
 import java.io.IOException;
@@ -28,13 +28,13 @@ public class Engine {
     private GameDescription game;
     //private final GameDescription game;
     private Parser parser;
-    //private Database database;
+    private Database database;
 
     public Engine() {
         try {
             Set<String> stopwords = Utils.loadFileListInSet(new File("./resources/stopwords"));
             parser = new Parser(stopwords);
-            //database = new Database();
+            database = new Database();
         } catch (IOException ex) {
             System.err.println(ex);
         }
@@ -74,12 +74,21 @@ public class Engine {
 
     /* Inizializa una nuova partita */
     private void newGame() {
-        System.out.println("Creazione di una Nuova Partita...");
+
+        /*Richiede il nome del giocatore da usare per il salvataggio. */
+        System.out.print("Inserisci il tuo nome: ");
+        Scanner scanner = new Scanner(System.in);
+        String playerName = scanner.nextLine();
+
+        /* Crea una nuova partita e la salva nel database. */
         game = new StarshipExodus();
+
         try {
+            System.out.println("Creazione di una Nuova Partita...");
+
             game.init();
-            //inserire nuovo record nel database
-            //database.insertNewGame(game);
+            database.insertGame(game, game.getCurrentRoom(), playerName);
+
             System.out.println("Nuova Partita creata con successo!");
         } catch (Exception ex) {
             System.err.println(ex);

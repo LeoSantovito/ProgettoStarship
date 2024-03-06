@@ -27,7 +27,6 @@ public class Database {
     per poter salvare oggetti serializzati. */
     private static final String CREATE_TABLE = "CREATE TABLE IF NOT EXISTS games ("
             + "id INT AUTO_INCREMENT PRIMARY KEY,"
-            + "name VARCHAR(255) NOT NULL,"
             + "gamedescription BLOB NOT NULL,"
             + "currentroom INT NOT NULL,"
             + "creationdate TIMESTAMP NOT NULL,"
@@ -35,7 +34,7 @@ public class Database {
             + ")";
 
     /* Query per inserire un record di un nuovo salvataggio nella tabella games. */
-    private static final String INSERT_GAME = "INSERT INTO games (name, gamedescription, currentroom, creationdate, playername) VALUES (?, ?, ?, ?, ?, ?)";
+    private static final String INSERT_GAME = "INSERT INTO games (gamedescription, currentroom, creationdate, playername) VALUES (?, ?, ?, ?)";
 
     /* Query per selezionare un record dalla tabella games a partire da un id specifico. */
     private static final String SELECT_GAME = "SELECT * FROM games WHERE id = ?";
@@ -72,14 +71,13 @@ public class Database {
         }
     }
 
-    public void insertGame(String name, GameDescription game, Room currentRoom, String playerName) {
+    public void insertGame(GameDescription game, Room currentRoom, String playerName) {
         try {
             PreparedStatement pstmt = conn.prepareStatement(INSERT_GAME);
-            pstmt.setString(1, name);
-            pstmt.setObject(2, game);
-            pstmt.setInt(3, currentRoom.getId());
-            pstmt.setTimestamp(4, new Timestamp(System.currentTimeMillis()));
-            pstmt.setString(5, playerName);
+            pstmt.setObject(1, game);
+            pstmt.setInt(2, currentRoom.getId());
+            pstmt.setTimestamp(3, new Timestamp(System.currentTimeMillis()));
+            pstmt.setString(4, playerName);
             pstmt.execute();
         } catch (SQLException ex) {
             System.err.println(ex);
@@ -108,7 +106,6 @@ public class Database {
             while (rs.next()) {
                 GameRecord gr = new GameRecord();
                 gr.setId(rs.getInt("id"));
-                gr.setName(rs.getString("name"));
                 gr.setGameDescription((GameDescription) rs.getObject("gamedescription"));
                 gr.setCurrentRoom(rs.getInt("currentroom"));
                 gr.setCreationDate(rs.getTimestamp("creationdate"));
