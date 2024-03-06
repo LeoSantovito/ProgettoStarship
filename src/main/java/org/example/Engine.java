@@ -9,6 +9,7 @@ import org.example.games.StarshipExodus;
 import org.example.parser.Parser;
 import org.example.parser.ParserOutput;
 import org.example.type.CommandType;
+//import org.example.database.Database;
 
 import java.io.File;
 import java.io.IOException;
@@ -24,33 +25,70 @@ import java.util.Set;
  */
 public class Engine {
 
-    private final GameDescription game;
-
+    private GameDescription game;
+    //private GameDescription game;
     private Parser parser;
+    //private Database database;
 
-    public Engine(GameDescription game) {
-        this.game = game;
-        try {
-            this.game.init();
-        } catch (Exception ex) {
-            System.err.println(ex);
-        }
+    public Engine() {
         try {
             Set<String> stopwords = Utils.loadFileListInSet(new File("./resources/stopwords"));
             parser = new Parser(stopwords);
+            //database = new Database();
         } catch (IOException ex) {
             System.err.println(ex);
         }
     }
 
-    public void execute() {
-        System.out.println("================================");
-        System.out.println("* Adventure v. 0.3 - 2021-2022 *");
-        System.out.println("================================");
+    public void startMenu() {
+        System.out.println("========== Starship Exodus ==========");
+        System.out.println("1. Nuova Partita");
+        System.out.println("2. Carica Partita");
+        System.out.println("3. Esci");
+        System.out.print("Scelta: ");
+
+        Scanner scanner = new Scanner(System.in);
+        int choice = scanner.nextInt();
+        scanner.nextLine();
+
+        switch(choice) {
+            case 1:
+                newGame();
+                break;
+            case 2:
+                System.out.println("Carica partita non ancora implementato!");
+                //loadGame();
+                break;
+            case 3:
+                System.out.println("Addio!");
+                System.exit(0);
+                break;
+            default:
+                System.out.println("Scelta non valida. Riprova.");
+                startMenu();
+        }
+    }
+
+    private void newGame() {
+        System.out.println("Creazione di una Nuova Partita...");
+        game = new StarshipExodus();
+        try {
+            game.init();
+            //inserire nuovo record nel database
+            System.out.println("Nuova Partita creata con successo!");
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
+        playGame();
+    }
+
+    private void playGame() {
+        System.out.println("Inizio del Gioco...");
         System.out.println(game.getCurrentRoom().getName());
         System.out.println();
         System.out.println(game.getCurrentRoom().getDescription());
         System.out.println();
+
         Scanner scanner = new Scanner(System.in);
         while (scanner.hasNextLine()) {
             String command = scanner.nextLine();
@@ -71,8 +109,7 @@ public class Engine {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Engine engine = new Engine(new StarshipExodus());
-        engine.execute();
+        Engine engine = new Engine();
+        engine.startMenu();
     }
-
 }
