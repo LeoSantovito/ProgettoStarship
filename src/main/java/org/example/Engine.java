@@ -59,8 +59,9 @@ public class Engine {
                 newGame();
                 break;
             case 2:
-                System.out.println("Carica partita non ancora implementato!");
-                //loadGame();
+                database.printAllGames();
+
+
                 break;
             case 3:
                 System.out.println("Addio!");
@@ -99,6 +100,9 @@ public class Engine {
     /* Gestisce l'esecuzione del gioco */
     private void playGame() {
         System.out.println("Inizio del Gioco...");
+
+        database.printAllGames();
+
         System.out.println(game.getCurrentRoom().getName());
         System.out.println();
         System.out.println(game.getCurrentRoom().getDescription());

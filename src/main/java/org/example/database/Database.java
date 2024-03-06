@@ -106,7 +106,6 @@ public class Database {
             while (rs.next()) {
                 GameRecord gr = new GameRecord();
                 gr.setId(rs.getInt("id"));
-                gr.setGameDescription((GameDescription) rs.getObject("gamedescription"));
                 gr.setCurrentRoom(rs.getInt("currentroom"));
                 gr.setCreationDate(rs.getTimestamp("creationdate"));
                 gr.setPlayerName(rs.getString("playername"));
@@ -116,6 +115,22 @@ public class Database {
             System.err.println(ex);
         }
         return games;
+    }
+
+    public void printAllGames() {
+        List<GameRecord> games = selectAllGames();
+        if (games.isEmpty()) {
+            System.out.println("Nessun salvataggio trovato.");
+        } else {
+            System.out.println("Lista dei Salvataggi:");
+            for (GameRecord gr : games) {
+                System.out.println("ID: " + gr.getId());
+                System.out.println("Stanza Corrente: " + gr.getCurrentRoom());
+                System.out.println("Data di Creazione: " + gr.getCreationDate());
+                System.out.println("Nome del Giocatore: " + gr.getPlayerName());
+                System.out.println("-----------------------");
+            }
+        }
     }
 
     public void deleteGame(Integer id) {
