@@ -1,11 +1,12 @@
 package org.example.database;
 
 /* In questo file vengono definiti i metodi per la gestione del database utilizzato per salvare le partite
-    * per poterle caricare in un secondo momento. Si utilizza H2 come database in-memory.
+    * per poterle caricare in un secondo momento. Si utilizza H2 come database in-memory a fini di debug
+    * (andrà cambiato con uno persistente successivamente).
 */
 
 /* Classe che crea un record nel database quando viene creata una partita. Genera una chiave univoca, chiede il nome
-al giocatore, e salva key, GameDescription, CurrentRoom, Data e ora di creazione, e il nome del giocatore.
+al giocatore, e salva id, GameDescription, CurrentRoom, Data e ora di creazione, e il nome del giocatore.
  */
 
 
