@@ -21,12 +21,12 @@ import java.util.Set;
  * classe che implementa GameDescription e si occupa di gestire I/O sul
  * terminale.
  *
- * @author pierpaolo
+ * @author francesco
  */
 public class Engine {
 
     private GameDescription game;
-    //private GameDescription game;
+    //private final GameDescription game;
     private Parser parser;
     //private Database database;
 
@@ -40,6 +40,9 @@ public class Engine {
         }
     }
 
+    /**
+     * Mostra il menu iniziale e gestisce la scelta dell'utente. Verrà sostituito da un'interfaccia grafica SWING.
+     */
     public void startMenu() {
         System.out.println("========== Starship Exodus ==========");
         System.out.println("1. Nuova Partita");
@@ -69,12 +72,14 @@ public class Engine {
         }
     }
 
+    /* Inizializa una nuova partita */
     private void newGame() {
         System.out.println("Creazione di una Nuova Partita...");
         game = new StarshipExodus();
         try {
             game.init();
             //inserire nuovo record nel database
+            //database.insertNewGame(game);
             System.out.println("Nuova Partita creata con successo!");
         } catch (Exception ex) {
             System.err.println(ex);
@@ -82,6 +87,7 @@ public class Engine {
         playGame();
     }
 
+    /* Gestisce l'esecuzione del gioco */
     private void playGame() {
         System.out.println("Inizio del Gioco...");
         System.out.println(game.getCurrentRoom().getName());

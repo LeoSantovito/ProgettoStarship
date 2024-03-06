@@ -104,6 +104,10 @@ public class Room {
         return objects;
     }
 
+    public int getId() {
+        return id;
+    }
+
     @Override
     public int hashCode() {
         int hash = 3;
