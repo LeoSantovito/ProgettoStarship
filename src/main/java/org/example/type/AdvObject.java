@@ -8,12 +8,13 @@ package org.example.type;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
+import java.io.Serializable;
 
 /**
  *
  * @author pierpaolo
  */
-public class AdvObject {
+public class AdvObject implements Serializable {
 
     private final int id;
 
