@@ -65,6 +65,7 @@ public class Engine {
 
     public void processCommand(String command) {
         ParserOutput p = parser.parse(command, game.getCommands(), game.getCurrentRoom().getObjects(), game.getInventory());
+        frame.processOutput(">>> " + command + "\n");
         if (p == null || p.getCommand() == null) {
             frame.processOutput("Non capisco quello che mi vuoi dire.");
         } else if (p.getCommand().getType() == CommandType.END) {
@@ -76,6 +77,7 @@ public class Engine {
             String output = outputStream.toString();
             frame.processOutput(output);
         }
+
     }
 
 

@@ -16,8 +16,9 @@ public class StarshipJswing extends JFrame {
 
     public StarshipJswing() {
         super("Starship Exodus");
+
         // Creazione dello sfondo
-        ImageIcon backgroundImage = new ImageIcon("./src/main/java/org/example/resources/bg.jpg");
+        ImageIcon backgroundImage = new ImageIcon(".resources/bg.jpg");
         JLabel backgroundLabel = new JLabel(backgroundImage);
         backgroundLabel.setSize(backgroundImage.getIconWidth(), backgroundImage.getIconHeight()); // Imposta le dimensioni dell'etichetta sulle dimensioni dell'immagine
         setContentPane(backgroundLabel);
