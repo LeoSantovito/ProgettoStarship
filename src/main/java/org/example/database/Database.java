@@ -17,8 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Database {
-
-
     private static final String DB_URL = "jdbc:h2:./resources/savedgames";
     private static final String DB_USER = "user";
     private static final String DB_PASS = "password";
@@ -84,7 +82,6 @@ public class Database {
         }
     }
 
-    //metodo selectGame2 che esegue la query SELECT_GAME e restituisce un oggetto GameRecord
     public GameRecord selectGame(Integer id) {
         try {
             PreparedStatement pstmt = conn.prepareStatement(SELECT_GAME);

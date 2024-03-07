@@ -10,6 +10,7 @@ import org.example.parser.Parser;
 import org.example.parser.ParserOutput;
 import org.example.type.CommandType;
 import org.example.database.Database;
+import org.example.database.GameRecord;
 
 import java.io.File;
 import java.io.IOException;
@@ -104,16 +105,25 @@ public class Engine {
         scanner.nextLine();
         System.out.println("Caricamento di una Partita Salvata...");
 
-        /* Esegue la query sul DB e salva il result in un oggetto GameRecord da cui ne estrae il campo gameDescription. */
-        game = database.selectGame(id).getGameDescription();
+        try {
+            /* Esegue la query sul DB e salva il result in un oggetto GameRecord. */
+            GameRecord gameRecord = database.selectGame(id);
 
-        if (game == null) {
-            System.out.println("Salvataggio non trovato.");
-            startMenu();
-        } else {
-            System.out.println("Partita caricata con successo!");
-            System.out.println();
-            playGame();
+            /* Se il salvataggio esiste, inizializza il gioco con i dati del salvataggio. */
+            if (gameRecord != null) {
+
+                //operazioni di caricamento della partita
+
+                System.out.println("Partita caricata con successo!");
+                System.out.println();
+                playGame();
+            } else {
+                System.out.println("Salvataggio non trovato. Torno al menu principale.");
+                System.out.println();
+                startMenu();
+            }
+        } catch (Exception ex) {
+            System.err.println(ex);
         }
     }
 
