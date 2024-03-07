@@ -10,6 +10,7 @@ import com.google.gson.reflect.TypeToken;
 import org.example.GameDescription;
 import org.example.parser.ParserOutput;
 import org.example.type.*;
+import org.example.database.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -250,6 +251,14 @@ public class StarshipExodus extends GameDescription {
                 } else {
                     out.println("Non ci sono oggetti che puoi premere qui.");
                 }
+        } else if (p.getCommand().getType() == CommandType.SAVE) {
+
+                out.println("Funzione salvataggio ancora da implementare!");
+                //out.println("Salvataggio...");
+                //cerca se esiste un salvataggio con lo stesso id, se non esiste lo crea. altrimenti, sovrascrive il record.
+
+
+
             }
             if (noroom) {
                 out.println(

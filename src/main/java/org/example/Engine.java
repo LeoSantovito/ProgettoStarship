@@ -18,12 +18,12 @@ import java.util.Scanner;
 import java.util.Set;
 
 /**
- * ATTENZIONE: l'Engine è molto spartano, in realtà demanda la logica alla
- * classe che implementa GameDescription e si occupa di gestire I/O sul
- * terminale.
+ *
+ * L'Engine si occupa di inizializzare il gioco, gestire il menu iniziale, caricare, salvare le partite ed eseguirle.
  *
  * @author francesco
  */
+
 public class Engine {
 
     private GameDescription game;
@@ -159,6 +159,11 @@ public class Engine {
      */
     public static void main(String[] args) {
         Engine engine = new Engine();
-        engine.startMenu();
+        try {
+            engine.startMenu();
+        } finally {
+            /* Chiude la connessione al database alla fine dell'esecuzione */
+            engine.database.closeDatabase();
+        }
     }
 }
