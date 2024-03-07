@@ -6,12 +6,16 @@
 package org.example;
 
 import org.example.games.StarshipExodus;
+import org.example.swing.StarshipJswing;
 import org.example.parser.Parser;
 import org.example.parser.ParserOutput;
 import org.example.type.CommandType;
 
+import javax.swing.*;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -25,18 +29,24 @@ import java.util.Set;
 public class Engine {
 
     private final GameDescription game;
+    private final StarshipJswing frame;
+    public StarshipJswing getFrame() {
+        return frame;
+    }
+
 
     private Parser parser;
 
-    public Engine(GameDescription game) {
+    public Engine(GameDescription game, StarshipJswing frame) {
         this.game = game;
+        this.frame = frame;
         try {
             this.game.init();
         } catch (Exception ex) {
             System.err.println(ex);
         }
         try {
-            Set<String> stopwords = Utils.loadFileListInSet(new File("./resources/stopwords"));
+            Set<String> stopwords = Utils.loadFileListInSet(new File("./src/main/java/org/example/resources/stopwords"));
             parser = new Parser(stopwords);
         } catch (IOException ex) {
             System.err.println(ex);
@@ -44,35 +54,44 @@ public class Engine {
     }
 
     public void execute() {
-        System.out.println("================================");
-        System.out.println("* Adventure v. 0.3 - 2021-2022 *");
-        System.out.println("================================");
-        System.out.println(game.getCurrentRoom().getName());
-        System.out.println();
-        System.out.println(game.getCurrentRoom().getDescription());
-        System.out.println();
-        Scanner scanner = new Scanner(System.in);
-        while (scanner.hasNextLine()) {
-            String command = scanner.nextLine();
-            ParserOutput p = parser.parse(command, game.getCommands(), game.getCurrentRoom().getObjects(), game.getInventory());
-            if (p == null || p.getCommand() == null) {
-                System.out.println("Non capisco quello che mi vuoi dire.");
-            } else if (p.getCommand() != null && p.getCommand().getType() == CommandType.END) {
-                System.out.println("Addio!");
-                break;
-            } else {
-                game.nextMove(p, System.out);
-                System.out.println();
-            }
+        frame.processOutput("================================");
+        frame.processOutput("* Starship Exodus *");
+        frame.processOutput("================================");
+        frame.processOutput(game.getCurrentRoom().getName());
+        frame.processOutput("");
+        frame.processOutput(game.getCurrentRoom().getDescription());
+        frame.processOutput("");
+    }
+
+    public void processCommand(String command) {
+        ParserOutput p = parser.parse(command, game.getCommands(), game.getCurrentRoom().getObjects(), game.getInventory());
+        if (p == null || p.getCommand() == null) {
+            frame.processOutput("Non capisco quello che mi vuoi dire.");
+        } else if (p.getCommand().getType() == CommandType.END) {
+            frame.processOutput("Addio!");
+        } else {
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            PrintStream printStream = new PrintStream(outputStream);
+            game.nextMove(p, printStream);
+            String output = outputStream.toString();
+            frame.processOutput(output);
         }
     }
 
-    /**
-     * @param args the command line arguments
-     */
+
     public static void main(String[] args) {
-        Engine engine = new Engine(new StarshipExodus());
-        engine.execute();
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                StarshipJswing starshipJswing = new StarshipJswing();
+                StarshipExodus starshipExodus = new StarshipExodus(starshipJswing);
+                Engine engine = new Engine(starshipExodus, starshipJswing);
+                engine.execute();
+                starshipJswing.setVisible(true);
+            }
+        });
     }
+
+
 
 }

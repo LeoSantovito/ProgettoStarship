@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import org.example.GameDescription;
 import org.example.parser.ParserOutput;
+import org.example.swing.StarshipJswing;
 import org.example.type.*;
 
 import java.io.BufferedReader;
@@ -37,11 +38,19 @@ import java.util.Set;
  * @author pierpaolo
  */
 public class StarshipExodus extends GameDescription {
+    private StarshipJswing frame;
+    public StarshipExodus(StarshipJswing frame) {
+        this.frame = frame;
+    }
+
+    public void setFrame(StarshipJswing frame) {
+        this.frame = frame;
+    }
 
     @Override
     public void init() throws Exception {
         //Commands
-        List<Command> commands = loadCommandsFromFile("./resources/commands.json");
+        List<Command> commands = loadCommandsFromFile("./src/main/java/org/example/resources/commands.json");
         getCommands().addAll(commands);
         //Rooms
         Room hall = new Room(0, "Corridoio",
@@ -111,7 +120,7 @@ public class StarshipExodus extends GameDescription {
     @Override
     public void nextMove(ParserOutput p, PrintStream out) {
         if (p.getCommand() == null) {
-            out.println(
+          frame.processOutput(
                     "Non ho capito cosa devo fare! Prova con un altro comando.");
         } else {
             //move
@@ -146,28 +155,28 @@ public class StarshipExodus extends GameDescription {
                     noroom = true;
                 }
             } else if (p.getCommand().getType() == CommandType.INVENTORY) {
-                out.println("Nel tuo inventario ci sono:");
+                frame.processOutput("Nel tuo inventario ci sono:");
                 for (AdvObject o : getInventory()) {
-                    out.println(o.getName() + ": " + o.getDescription());
+                    frame.processOutput(o.getName() + ": " + o.getDescription());
                 }
             } else if (p.getCommand().getType() == CommandType.LOOK_AT) {
                 if (getCurrentRoom().getLook() != null) {
-                    out.println(getCurrentRoom().getLook());
+                    frame.processOutput(getCurrentRoom().getLook());
                 } else {
-                    out.println("Non c'è niente di interessante qui.");
+                    frame.processOutput("Non c'è niente di interessante qui.");
                 }
             } else if (p.getCommand().getType() == CommandType.PICK_UP) {
                 if (p.getObject() != null) {
                     if (p.getObject().isPickupable()) {
                         getInventory().add(p.getObject());
                         getCurrentRoom().getObjects().remove(p.getObject());
-                        out.println("Hai raccolto: " +
+                        frame.processOutput("Hai raccolto: " +
                                 p.getObject().getDescription());
                     } else {
-                        out.println("Non puoi raccogliere questo oggetto.");
+                        frame.processOutput("Non puoi raccogliere questo oggetto.");
                     }
                 } else {
-                    out.println("Non c'è niente da raccogliere qui.");
+                    frame.processOutput("Non c'è niente da raccogliere qui.");
                 }
             } else if (p.getCommand().getType() == CommandType.OPEN) {
                 /*ATTENZIONE: quando un oggetto contenitore viene aperto, tutti gli oggetti contenuti
@@ -175,35 +184,35 @@ public class StarshipExodus extends GameDescription {
                  * Potrebbe non esssere la soluzione ottimale.
                  */
                 if (p.getObject() == null && p.getInvObject() == null) {
-                    out.println("Non c'è niente da aprire qui.");
+                    frame.processOutput("Non c'è niente da aprire qui.");
                 } else {
                     if (p.getObject() != null) {
                         if (p.getObject().isOpenable() &&
                                 p.getObject().isOpen() == false) {
                             if (p.getObject() instanceof AdvObjectContainer) {
-                                out.println("Hai aperto: " +
+                                frame.processOutput("Hai aperto: " +
                                         p.getObject().getName());
                                 AdvObjectContainer c =
                                         (AdvObjectContainer) p.getObject();
                                 if (!c.getList().isEmpty()) {
-                                    out.print(c.getName() + " contiene:");
+                                    frame.processOutput(c.getName() + " contiene:");
                                     Iterator<AdvObject> it =
                                             c.getList().iterator();
                                     while (it.hasNext()) {
                                         AdvObject next = it.next();
                                         getCurrentRoom().getObjects().add(next);
-                                        out.print(" " + next.getName());
+                                        frame.processOutput(" " + next.getName());
                                         it.remove();
                                     }
-                                    out.println();
+                                    frame.processOutput("");
                                 }
                             } else {
-                                out.println("Hai aperto: " +
+                                frame.processOutput("Hai aperto: " +
                                         p.getObject().getName());
                                 p.getObject().setOpen(true);
                             }
                         } else {
-                            out.println("Non puoi aprire questo oggetto.");
+                            frame.processOutput("Non puoi aprire questo oggetto.");
                         }
                     }
                     if (p.getInvObject() != null) {
@@ -213,51 +222,51 @@ public class StarshipExodus extends GameDescription {
                                 AdvObjectContainer c =
                                         (AdvObjectContainer) p.getInvObject();
                                 if (!c.getList().isEmpty()) {
-                                    out.print(c.getName() + " contiene:");
+                                    frame.processOutput(c.getName() + " contiene:");
                                     Iterator<AdvObject> it =
                                             c.getList().iterator();
                                     while (it.hasNext()) {
                                         AdvObject next = it.next();
                                         getInventory().add(next);
-                                        out.print(" " + next.getName());
+                                        frame.processOutput(" " + next.getName());
                                         it.remove();
                                     }
-                                    out.println();
+                                    frame.processOutput("");
                                 }
                             } else {
                                 p.getInvObject().setOpen(true);
                             }
-                            out.println("Hai aperto nel tuo inventario: " +
+                            frame.processOutput("Hai aperto nel tuo inventario: " +
                                     p.getInvObject().getName());
                         } else {
-                            out.println("Non puoi aprire questo oggetto.");
+                            frame.processOutput("Non puoi aprire questo oggetto.");
                         }
                     }
                 }
             } else if (p.getCommand().getType() == CommandType.PUSH) {
                 //ricerca oggetti pushabili
                 if (p.getObject() != null && p.getObject().isPushable()) {
-                    out.println("Hai premuto: " + p.getObject().getName());
+                    frame.processOutput("Hai premuto: " + p.getObject().getName());
                     if (p.getObject().getId() == 3) {
                         end(out);
                     }
                 } else if (p.getInvObject() != null &&
                         p.getInvObject().isPushable()) {
-                    out.println("Hai premuto: " + p.getInvObject().getName());
+                    frame.processOutput("Hai premuto: " + p.getInvObject().getName());
                     if (p.getInvObject().getId() == 3) {
                         end(out);
                     }
                 } else {
-                    out.println("Non ci sono oggetti che puoi premere qui.");
+                    frame.processOutput("Non ci sono oggetti che puoi premere qui.");
                 }
             }
             if (noroom) {
-                out.println(
+                frame.processOutput(
                         "Da quella parte non si può andare c'è un muro!\nNon hai ancora acquisito i poteri per oltrepassare i muri...");
             } else if (move) {
-                out.println(getCurrentRoom().getName());
-                out.println("================================================");
-                out.println(getCurrentRoom().getDescription());
+                frame.processOutput(getCurrentRoom().getName());
+                frame.processOutput("================================================");
+                frame.processOutput(getCurrentRoom().getDescription());
             }
         }
     }
