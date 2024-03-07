@@ -113,6 +113,7 @@ public class Engine {
             if (gameRecord != null) {
 
                 //operazioni di caricamento della partita
+                //game = loadGame(gameRecord.getId());
 
                 System.out.println("Partita caricata con successo!");
                 System.out.println();
@@ -162,7 +163,7 @@ public class Engine {
         try {
             engine.startMenu();
         } finally {
-            /* Chiude la connessione al database alla fine dell'esecuzione */
+            /* Pulisce i record vuoti (da implementare quando metteremo il timer, con timer = 0) e chiude la connessione al database alla fine dell'esecuzione. */
             engine.database.closeDatabase();
         }
     }
