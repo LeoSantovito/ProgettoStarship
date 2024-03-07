@@ -1,9 +1,8 @@
 package org.example.database;
 
 /* In questo file vengono definiti i metodi per la gestione del database utilizzato per salvare le partite
-    * per poterle caricare in un secondo momento. Si utilizza H2 come database in-memory a fini di debug
-    * (andrà cambiato con uno persistente successivamente).
-*/
+ * per poterle caricare in un secondo momento.
+ */
 
 /* Classe che crea un record nel database quando viene creata una partita. Genera una chiave univoca, chiede il nome
 al giocatore, e salva id, GameDescription, CurrentRoom, Data e ora di creazione, e il nome del giocatore.
@@ -19,7 +18,8 @@ import java.util.List;
 
 public class Database {
 
-    private static final String DB_URL = "jdbc:h2:mem:starshipexodus";
+
+    private static final String DB_URL = "jdbc:h2:./resources/savedgames";
     private static final String DB_USER = "user";
     private static final String DB_PASS = "password";
 
@@ -84,13 +84,20 @@ public class Database {
         }
     }
 
-    public GameDescription selectGame(Integer id) {
+    //metodo selectGame2 che esegue la query SELECT_GAME e restituisce un oggetto GameRecord
+    public GameRecord selectGame(Integer id) {
         try {
             PreparedStatement pstmt = conn.prepareStatement(SELECT_GAME);
             pstmt.setInt(1, id);
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
-                return (GameDescription) rs.getObject("gamedescription");
+                GameRecord gr = new GameRecord();
+                gr.setGameDescription((GameDescription) rs.getObject("gamedescription"));
+                gr.setId(rs.getInt("id"));
+                gr.setCurrentRoom(rs.getInt("currentroom"));
+                gr.setCreationDate(rs.getTimestamp("creationdate"));
+                gr.setPlayerName(rs.getString("playername"));
+                return gr;
             }
         } catch (SQLException ex) {
             System.err.println(ex);
@@ -122,7 +129,10 @@ public class Database {
         if (games.isEmpty()) {
             System.out.println("Nessun salvataggio trovato.");
         } else {
+            System.out.println();
             System.out.println("Lista dei Salvataggi:");
+            System.out.println("-----------------------");
+
             for (GameRecord gr : games) {
                 System.out.println("ID: " + gr.getId());
                 System.out.println("Stanza Corrente: " + gr.getCurrentRoom());

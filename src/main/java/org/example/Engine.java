@@ -26,7 +26,6 @@ import java.util.Set;
 public class Engine {
 
     private GameDescription game;
-    //private final GameDescription game;
     private Parser parser;
     private Database database;
 
@@ -60,8 +59,7 @@ public class Engine {
                 break;
             case 2:
                 database.printAllGames();
-
-
+                loadGame();
                 break;
             case 3:
                 System.out.println("Addio!");
@@ -91,17 +89,39 @@ public class Engine {
             database.insertGame(game, game.getCurrentRoom(), playerName);
 
             System.out.println("Nuova Partita creata con successo!");
+            System.out.println();
         } catch (Exception ex) {
             System.err.println(ex);
         }
         playGame();
     }
 
+    /* Carica i dati di una partita salvata (DA SISTEMARE PER IL CAST DI GAMEDESCRIPTION IN SELECTGAME, RIVEDERE LOGICA DEL METODO. */
+    private void loadGame() {
+        System.out.print("Inserisci l'id del salvataggio da caricare: ");
+        Scanner scanner = new Scanner(System.in);
+        int id = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Caricamento di una Partita Salvata...");
+
+        /* Esegue la query sul DB e salva il result in un oggetto GameRecord da cui ne estrae il campo gameDescription. */
+        game = database.selectGame(id).getGameDescription();
+
+        if (game == null) {
+            System.out.println("Salvataggio non trovato.");
+            startMenu();
+        } else {
+            System.out.println("Partita caricata con successo!");
+            System.out.println();
+            playGame();
+        }
+    }
+
+
     /* Gestisce l'esecuzione del gioco */
     private void playGame() {
         System.out.println("Inizio del Gioco...");
-
-        database.printAllGames();
+        System.out.println();
 
         System.out.println(game.getCurrentRoom().getName());
         System.out.println();

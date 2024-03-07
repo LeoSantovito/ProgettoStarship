@@ -7,7 +7,6 @@ import java.sql.Timestamp;
 public class GameRecord {
 
     private int id;
-    private String name;
     private GameDescription gameDescription;
     private int currentRoom;
     private Timestamp creationDate;
@@ -25,14 +24,6 @@ public class GameRecord {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public GameDescription getGameDescription() {
