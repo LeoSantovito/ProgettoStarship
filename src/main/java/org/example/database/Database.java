@@ -196,6 +196,28 @@ public class Database {
         }
     }
 
+    public void cleanEmptyGames() {
+        //cicla su tutti i record il quale valore gameId in GameDescription è -1 e li elimina
+
+        try {
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(SELECT_ALL_GAMES);
+            while (rs.next()) {
+                try {
+                    byte[] serializedGame = rs.getBytes(2);
+                    GameDescription loadedGame = (GameDescription) Utils.deserializeObject(serializedGame);
+                    if (loadedGame.getGameId() == -1) {
+                        deleteGame(rs.getInt(1));
+                    }
+                } catch (Exception ex) {
+                    System.err.println(ex);
+                }
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+    }
+
     public void deleteGame(Integer id) {
         try {
             PreparedStatement pstmt = conn.prepareStatement(DELETE_GAME);

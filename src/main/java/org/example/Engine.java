@@ -174,8 +174,8 @@ public class Engine {
         try {
             engine.startMenu();
         } finally {
-            /* Si può implementare la pulizia dei record vuoti (quando metteremo il timer, con timer = 0)
-            e chiude la connessione al database alla fine dell'esecuzione. */
+            /* Pulisce le partite non salvate (con id della gameDescription a -1) e chiude la connessione al database. */
+            engine.database.cleanEmptyGames();
             engine.database.closeDatabase();
         }
     }
