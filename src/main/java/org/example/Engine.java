@@ -94,7 +94,7 @@ public class Engine {
         } catch (Exception ex) {
             System.err.println(ex);
         }
-        playGame();
+        playGame(game);
     }
 
     /* Carica i dati di una partita salvata (DA SISTEMARE PER IL CAST DI GAMEDESCRIPTION IN SELECTGAME, RIVEDERE LOGICA DEL METODO. */
@@ -109,7 +109,9 @@ public class Engine {
             if (database.selectGame(id) != null) {
                 GameDescription game = null;
                 game = database.loadGame(id);
-                playGame();
+                System.out.println("Partita Caricata con successo!");
+                System.out.println();
+                playGame(game);
             } else {
                 System.out.println("Salvataggio non trovato. Torno al menu principale.");
                 System.out.println();
@@ -122,7 +124,7 @@ public class Engine {
 
 
     /* Gestisce l'esecuzione del gioco */
-    private void playGame() {
+    private void playGame(GameDescription game) {
         System.out.println("Inizio del Gioco...");
         System.out.println();
 
