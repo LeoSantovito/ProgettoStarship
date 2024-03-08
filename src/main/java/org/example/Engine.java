@@ -85,13 +85,16 @@ public class Engine {
         game.setGameId(-1);
 
         try {
+            System.out.println();
             System.out.println("Creazione di una Nuova Partita...");
 
             /* Inizializza il gioco e lo salva nel database. Viene anche aggiornata la gameDescription con il nuovo id. */
             game.init();
             database.insertGame(game, game.getCurrentRoom(), playerName);
 
-            System.out.println("Nuova Partita creata con successo! ID della partita: " + game.getGameId());
+            System.out.println("Nuova Partita creata con successo!");
+            System.out.println();
+            System.out.println("ID della partita: " + game.getGameId());
             System.out.println();
             System.out.println("Inizio del Gioco...");
             System.out.println();
@@ -107,6 +110,7 @@ public class Engine {
         Scanner scanner = new Scanner(System.in);
         int id = scanner.nextInt();
         scanner.nextLine();
+        System.out.println();
         System.out.println("Caricamento di una Partita Salvata...");
 
         try {
@@ -114,6 +118,8 @@ public class Engine {
                 GameDescription game = null;
                 game = database.loadGame(id);
                 System.out.println("Partita Caricata con successo!");
+                System.out.println();
+                System.out.println("ID della partita: " + game.getGameId());
                 System.out.println();
                 playGame(game);
             } else {
@@ -128,9 +134,6 @@ public class Engine {
 
     /* Gestisce l'esecuzione del gioco */
     private void playGame(GameDescription game) {
-        System.out.println("ID della partita: " + game.getGameId());
-        System.out.println();
-
         System.out.println("Sei nella stanza: " + game.getCurrentRoom().getName() + ".");
         System.out.println();
         System.out.println(game.getCurrentRoom().getDescription());
