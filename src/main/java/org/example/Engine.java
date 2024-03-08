@@ -97,6 +97,10 @@ public class Engine {
         playGame(game);
     }
 
+    public static void saveGame() {
+        System.out.println("Test Test Test");
+    }
+
     /* Carica i dati di una partita salvata (DA SISTEMARE PER IL CAST DI GAMEDESCRIPTION IN SELECTGAME, RIVEDERE LOGICA DEL METODO. */
     private void loadSavedGame() {
         System.out.print("Inserisci l'id del salvataggio da caricare: ");

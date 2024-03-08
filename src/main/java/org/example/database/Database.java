@@ -191,7 +191,7 @@ public class Database {
         }
     }
 
-    public void saveGame(Integer id, GameDescription game, Room currentRoom) {
+    public void updateGame(Integer id, GameDescription game, Room currentRoom) {
         try {
             PreparedStatement pstmt = conn.prepareStatement(SAVE_GAME);
 

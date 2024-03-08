@@ -7,6 +7,7 @@ package org.example.games;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import org.example.Engine;
 import org.example.GameDescription;
 import org.example.parser.ParserOutput;
 import org.example.type.*;
@@ -253,11 +254,9 @@ public class StarshipExodus extends GameDescription {
                 }
         } else if (p.getCommand().getType() == CommandType.SAVE) {
 
-                out.println("Funzione salvataggio ancora da implementare!");
-                //out.println("Salvataggio...");
-                //cerca se esiste un salvataggio con lo stesso id, se non esiste lo crea. altrimenti, sovrascrive il record.
-
-
+                out.println("Salvataggio...");
+                Engine.saveGame();
+                out.println("Salvataggio completato con successo!");
 
             }
             if (noroom) {
