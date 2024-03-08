@@ -42,6 +42,8 @@ public class StarshipExodus extends GameDescription {
 
     @Override
     public void init() throws Exception {
+        //Id impostato a -1, viene aggiornato dal database in base alla primary key.
+        setGameId(-1);
         //Commands
         List<Command> commands = loadCommandsFromFile("./resources/commands.json");
         getCommands().addAll(commands);

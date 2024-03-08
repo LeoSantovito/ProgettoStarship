@@ -22,6 +22,8 @@ import java.util.List;
 
 public abstract class GameDescription implements Serializable {
 
+    private int gameId;
+
     private final List<Room> rooms = new ArrayList<>();
 
     private final List<Command> commands = new ArrayList<>();
@@ -29,6 +31,14 @@ public abstract class GameDescription implements Serializable {
     private final List<AdvObject> inventory = new ArrayList<>();
 
     private Room currentRoom;
+
+    public int getGameId() {
+        return gameId;
+    }
+
+    public void setGameId(int gameId) {
+        this.gameId = gameId;
+    }
 
     public List<Room> getRooms() {
         return rooms;

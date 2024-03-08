@@ -89,11 +89,12 @@ public class Engine {
             game.init();
             database.insertGame(game, game.getCurrentRoom(), playerName);
 
-            System.out.println("Nuova Partita creata con successo!");
+            System.out.println("Nuova Partita creata con successo! ID del gioco: " + game.getGameId());
             System.out.println();
         } catch (Exception ex) {
             System.err.println(ex);
         }
+        System.out.println("Test. ID = " + game.getGameId());
         playGame(game);
     }
 
@@ -125,7 +126,6 @@ public class Engine {
             System.err.println(ex);
         }
     }
-
 
     /* Gestisce l'esecuzione del gioco */
     private void playGame(GameDescription game) {

@@ -87,7 +87,23 @@ public class Database {
             pstmt.setString(4, playerName);
 
             pstmt.executeUpdate();
+
+            updateGameId(game);
+
             pstmt.close();
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+    }
+
+    /* Recupera l'ID generato dal database e imposta gameId nell'oggetto GameDescription. */
+    private void updateGameId(GameDescription game){
+        try {
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery("CALL IDENTITY()");
+            if (rs.next()) {
+                game.setGameId(rs.getInt(1));
+            }
         } catch (SQLException ex) {
             System.err.println(ex);
         }
