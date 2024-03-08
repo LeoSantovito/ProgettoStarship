@@ -13,81 +13,77 @@ public class StarshipJswing extends JFrame {
     private JTextField textField;
     Engine engine = new Engine(new StarshipExodus(this), this);
 
-
     public StarshipJswing() {
         super("Starship Exodus");
 
-        // Creazione dello sfondo
-        ImageIcon backgroundImage = new ImageIcon(".resources/bg.jpg");
-        JLabel backgroundLabel = new JLabel(backgroundImage);
-        backgroundLabel.setSize(backgroundImage.getIconWidth(), backgroundImage.getIconHeight()); // Imposta le dimensioni dell'etichetta sulle dimensioni dell'immagine
-        setContentPane(backgroundLabel);
-
-        // Impostazione delle dimensioni della finestra
-        setSize(600, 400);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JFrame frame = this;
+        frame.setResizable(false);
+        frame.setSize(700, 500);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(new BorderLayout());
 
 
-        // Impostazione del layout del pannello principale
-        backgroundLabel.setLayout(new BorderLayout());
+        // Creazione dello sfondo (il pannello principale che ha lo sfondo)
+        Background sfondo = new Background("./src/main/java/org/example/resources/bgS.jpeg");
+        frame.add(sfondo);
 
-        // Creazione dell'area di testo per visualizzare il testo del gioco
-        textArea = new JTextArea();
+
+        // Creazione della JTextArea per visualizzare il testo del gioco e aggiungila a uno JScrollPane
+        textArea = new JTextArea(20,60);
+        textArea.setFont(new Font("Arial", Font.BOLD, 12));
+        textArea.setBackground(sfondo.getBackground().darker());
+        sfondo.add(textArea);
         textArea.setEditable(false);
+
         JScrollPane scrollPane = new JScrollPane(textArea);
-        backgroundLabel.add(scrollPane, BorderLayout.CENTER);
+        sfondo.add(scrollPane, BorderLayout.CENTER);
 
-        // Creazione del pannello per l'input del comando
+        // Creazione del JPanel per l'input dei comandi
         JPanel inputPanel = new JPanel();
-        inputPanel.setLayout(new BorderLayout());
 
-        // Creazione del campo di testo per l'input del comando
-        textField = new JTextField();
+        // Creazione del JTextField per l'immissione dei comandi
+        textField = new JTextField(20);
+        // Aggiungi il JTextField al pannello di input
+        inputPanel.add(textField, BorderLayout.EAST);
+        JButton sendButton = new JButton("Invia");
+
+        // Creazione del JButton per inviare i comandi
         textField.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Esecuzione del comando inserito
                 String command = textField.getText();
-                engine.processCommand(command); // Passa il comando all'Engine
-                // Clear the input field
+                engine.processCommand(command);
                 textField.setText("");
             }
         });
-        inputPanel.add(textField, BorderLayout.CENTER);
-
-        // Creazione del pulsante per inviare il comando
-        JButton sendButton = new JButton("Invia");
-        sendButton.addActionListener(e -> {
-            // Esecuzione del comando inserito
-            String command = textField.getText();
-
-            engine.processCommand(command); // Passa il comando all'Engine
-            // Clear the input field
-            textField.setText("");
+        // ActionListener per il JButton
+        sendButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String command = textField.getText();
+                engine.processCommand(command);
+                textField.setText("");
+            }
         });
-        inputPanel.add(sendButton, BorderLayout.EAST);
+        inputPanel.add(textField);
+        inputPanel.add(sendButton);
 
-        backgroundLabel.add(inputPanel, BorderLayout.SOUTH);
+        // Aggiungi il pannello di input al pannello principale
+        frame.add(inputPanel, BorderLayout.SOUTH);
+
 
     }
 
-    // Metodo per visualizzare il testo nella text area
+    // Metodo per visualizzare il testo nella JTextArea
     public void displayText(String text) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                textArea.append(text + "\n");
-                textArea.setCaretPosition(textArea.getDocument().getLength());
-            }
+        SwingUtilities.invokeLater(() -> {
+            textArea.append(text + "\n");
+            textArea.setCaretPosition(textArea.getDocument().getLength());
+
         });
     }
 
     public void processOutput(String output) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                displayText(output);
-            }
-        });
+        SwingUtilities.invokeLater(() -> displayText(output));
     }
 }
