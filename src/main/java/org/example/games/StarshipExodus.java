@@ -257,7 +257,7 @@ public class StarshipExodus extends GameDescription {
         } else if (p.getCommand().getType() == CommandType.SAVE) {
 
                 out.println("Salvataggio...");
-                Engine.saveGame();
+                //Engine.saveGame(this);
                 out.println("Salvataggio completato con successo!");
 
             }

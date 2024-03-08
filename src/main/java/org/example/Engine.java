@@ -94,15 +94,17 @@ public class Engine {
         } catch (Exception ex) {
             System.err.println(ex);
         }
-        System.out.println("Test. ID = " + game.getGameId());
         playGame(game);
     }
 
-    public static void saveGame() {
-        System.out.println("Test Test Test");
+    public void saveGame(GameDescription game) {
+        System.out.println("Salvataggio in corso della partita con ID: " + game.getGameId() + "...");
+        int gameId = game.getGameId();
+        database.updateGame(gameId, game, game.getCurrentRoom());
+        System.out.println("Salvataggio completato!");
     }
 
-    /* Carica i dati di una partita salvata (DA SISTEMARE PER IL CAST DI GAMEDESCRIPTION IN SELECTGAME, RIVEDERE LOGICA DEL METODO. */
+    /* Carica i dati di una partita salvata. */
     private void loadSavedGame() {
         System.out.print("Inserisci l'id del salvataggio da caricare: ");
         Scanner scanner = new Scanner(System.in);
