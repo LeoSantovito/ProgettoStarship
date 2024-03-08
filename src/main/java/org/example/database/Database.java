@@ -11,6 +11,7 @@ al giocatore, e salva id, GameDescription, CurrentRoom, Data e ora di creazione,
 
 import org.example.GameDescription;
 import org.example.type.Room;
+import org.example.Utils;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -72,29 +73,38 @@ public class Database {
     public void insertGame(GameDescription game, Room currentRoom, String playerName) {
         try {
             PreparedStatement pstmt = conn.prepareStatement(INSERT_GAME);
-            pstmt.setObject(1, game);
+
+            /* Serializza l'oggetto GameDescription in un array di byte per poterlo salvare nel database. */
+            try {
+                byte[] bytesGame = Utils.serializeObject(game);
+                pstmt.setBytes(1, bytesGame);
+            } catch (Exception ex) {
+                System.err.println(ex);
+            }
+
             pstmt.setInt(2, currentRoom.getId());
             pstmt.setTimestamp(3, new Timestamp(System.currentTimeMillis()));
             pstmt.setString(4, playerName);
-            pstmt.execute();
+
+            pstmt.executeUpdate();
+            pstmt.close();
         } catch (SQLException ex) {
             System.err.println(ex);
         }
     }
 
-    public GameRecord selectGame(Integer id) {
+    public GameDescription loadGame(Integer id){
+        GameDescription game = null;
         try {
             PreparedStatement pstmt = conn.prepareStatement(SELECT_GAME);
             pstmt.setInt(1, id);
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
-                GameRecord gr = new GameRecord();
-                gr.setGameDescription((GameDescription) rs.getObject("gamedescription"));
-                gr.setId(rs.getInt("id"));
-                gr.setCurrentRoom(rs.getInt("currentroom"));
-                gr.setCreationDate(rs.getTimestamp("creationdate"));
-                gr.setPlayerName(rs.getString("playername"));
-                return gr;
+                try {
+                    return (GameDescription) Utils.deserializeObject(rs.getBytes("gamedescription"));
+                } catch (Exception ex) {
+                    System.err.println(ex);
+                }
             }
         } catch (SQLException ex) {
             System.err.println(ex);
@@ -121,6 +131,26 @@ public class Database {
         return games;
     }
 
+    public GameRecord selectGame(Integer id) {
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(SELECT_GAME);
+            pstmt.setInt(1, id);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                GameRecord gr = new GameRecord();
+                gr.setGameDescription((GameDescription) rs.getObject("gamedescription"));
+                gr.setId(rs.getInt("id"));
+                gr.setCurrentRoom(rs.getInt("currentroom"));
+                gr.setCreationDate(rs.getTimestamp("creationdate"));
+                gr.setPlayerName(rs.getString("playername"));
+                return gr;
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+        return null;
+    }
+
     public void printAllGames() {
         List<GameRecord> games = selectAllGames();
         if (games.isEmpty()) {
@@ -144,7 +174,8 @@ public class Database {
         try {
             PreparedStatement pstmt = conn.prepareStatement(DELETE_GAME);
             pstmt.setInt(1, id);
-            pstmt.execute();
+            pstmt.executeUpdate();
+            pstmt.close();
         } catch (SQLException ex) {
             System.err.println(ex);
         }
@@ -153,10 +184,18 @@ public class Database {
     public void saveGame(Integer id, GameDescription game, Room currentRoom) {
         try {
             PreparedStatement pstmt = conn.prepareStatement(SAVE_GAME);
-            pstmt.setObject(1, game);
+
+            try {
+                byte[] bytesGame = Utils.serializeObject(game);
+                pstmt.setBytes(1, bytesGame);
+            } catch (Exception ex) {
+                System.err.println(ex);
+            }
             pstmt.setInt(2, currentRoom.getId());
             pstmt.setInt(3, id);
-            pstmt.execute();
+
+            pstmt.executeUpdate();
+            pstmt.close();
         } catch (SQLException ex) {
             System.err.println(ex);
         }

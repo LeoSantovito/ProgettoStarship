@@ -60,7 +60,7 @@ public class Engine {
                 break;
             case 2:
                 database.printAllGames();
-                loadGame();
+                loadSavedGame();
                 break;
             case 3:
                 System.out.println("Addio!");
@@ -98,7 +98,7 @@ public class Engine {
     }
 
     /* Carica i dati di una partita salvata (DA SISTEMARE PER IL CAST DI GAMEDESCRIPTION IN SELECTGAME, RIVEDERE LOGICA DEL METODO. */
-    private void loadGame() {
+    private void loadSavedGame() {
         System.out.print("Inserisci l'id del salvataggio da caricare: ");
         Scanner scanner = new Scanner(System.in);
         int id = scanner.nextInt();
@@ -106,17 +106,9 @@ public class Engine {
         System.out.println("Caricamento di una Partita Salvata...");
 
         try {
-            /* Esegue la query sul DB e salva il result in un oggetto GameRecord. */
-            GameRecord gameRecord = database.selectGame(id);
-
-            /* Se il salvataggio esiste, inizializza il gioco con i dati del salvataggio. */
-            if (gameRecord != null) {
-
-                //operazioni di caricamento della partita
-                //game = loadGame(gameRecord.getId());
-
-                System.out.println("Partita caricata con successo!");
-                System.out.println();
+            if (database.selectGame(id) != null) {
+                GameDescription game = null;
+                game = database.loadGame(id);
                 playGame();
             } else {
                 System.out.println("Salvataggio non trovato. Torno al menu principale.");

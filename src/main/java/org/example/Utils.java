@@ -46,7 +46,7 @@ public class Utils {
     }
 
     // Metodo per serializzare un oggetto
-    private byte[] serializeObject(Object obj) throws Exception {
+    public static byte[] serializeObject(Object obj) throws Exception {
         try (ByteArrayOutputStream bos = new ByteArrayOutputStream();
              ObjectOutputStream oos = new ObjectOutputStream(bos)) {
             oos.writeObject(obj);
@@ -55,7 +55,7 @@ public class Utils {
     }
 
     // Metodo per deserializzare un oggetto
-    private Object deserializeObject(byte[] data) throws Exception {
+    public static Object deserializeObject(byte[] data) throws Exception {
         try (ByteArrayInputStream bis = new ByteArrayInputStream(data);
              ObjectInputStream ois = new ObjectInputStream(bis)) {
             return ois.readObject();
