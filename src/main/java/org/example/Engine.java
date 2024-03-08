@@ -80,28 +80,25 @@ public class Engine {
         Scanner scanner = new Scanner(System.in);
         String playerName = scanner.nextLine();
 
-        /* Crea una nuova partita e la salva nel database. */
+        /* Crea una nuova partita e imposta l'id a -1. */
         game = new StarshipExodus();
+        game.setGameId(-1);
 
         try {
             System.out.println("Creazione di una Nuova Partita...");
 
+            /* Inizializza il gioco e lo salva nel database. Viene anche aggiornata la gameDescription con il nuovo id. */
             game.init();
             database.insertGame(game, game.getCurrentRoom(), playerName);
 
-            System.out.println("Nuova Partita creata con successo! ID del gioco: " + game.getGameId());
+            System.out.println("Nuova Partita creata con successo! ID della partita: " + game.getGameId());
+            System.out.println();
+            System.out.println("Inizio del Gioco...");
             System.out.println();
         } catch (Exception ex) {
             System.err.println(ex);
         }
         playGame(game);
-    }
-
-    public void saveGame(GameDescription game) {
-        System.out.println("Salvataggio in corso della partita con ID: " + game.getGameId() + "...");
-        int gameId = game.getGameId();
-        database.updateGame(gameId, game, game.getCurrentRoom());
-        System.out.println("Salvataggio completato!");
     }
 
     /* Carica i dati di una partita salvata. */
@@ -131,10 +128,10 @@ public class Engine {
 
     /* Gestisce l'esecuzione del gioco */
     private void playGame(GameDescription game) {
-        System.out.println("Inizio del Gioco...");
+        System.out.println("ID della partita: " + game.getGameId());
         System.out.println();
 
-        System.out.println(game.getCurrentRoom().getName());
+        System.out.println("Sei nella stanza: " + game.getCurrentRoom().getName() + ".");
         System.out.println();
         System.out.println(game.getCurrentRoom().getDescription());
         System.out.println();
@@ -145,7 +142,10 @@ public class Engine {
             ParserOutput p = parser.parse(command, game.getCommands(), game.getCurrentRoom().getObjects(), game.getInventory());
             if (p == null || p.getCommand() == null) {
                 System.out.println("Non capisco quello che mi vuoi dire.");
-            } else if (p.getCommand() != null && p.getCommand().getType() == CommandType.END) {
+            } else if (p.getCommand() != null && p.getCommand().getType() == CommandType.SAVE){
+                saveGame(game);
+            }
+            else if (p.getCommand() != null && p.getCommand().getType() == CommandType.END) {
                 System.out.println("Addio!");
                 break;
             } else {
@@ -153,6 +153,14 @@ public class Engine {
                 System.out.println();
             }
         }
+    }
+
+    /* Salva i dati di una partita, aggiornando il record corrispondente nel database. */
+    private void saveGame(GameDescription game) {
+        System.out.println("Salvataggio in corso della partita con ID: " + game.getGameId() + "...");
+        int gameId = game.getGameId();
+        database.updateGame(gameId, game, game.getCurrentRoom());
+        System.out.println("Salvataggio completato!");
     }
 
     /**
@@ -163,7 +171,8 @@ public class Engine {
         try {
             engine.startMenu();
         } finally {
-            /* Pulisce i record vuoti (da implementare quando metteremo il timer, con timer = 0) e chiude la connessione al database alla fine dell'esecuzione. */
+            /* Si può implementare la pulizia dei record vuoti (quando metteremo il timer, con timer = 0)
+            e chiude la connessione al database alla fine dell'esecuzione. */
             engine.database.closeDatabase();
         }
     }

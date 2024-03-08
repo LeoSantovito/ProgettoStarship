@@ -42,8 +42,6 @@ public class StarshipExodus extends GameDescription {
 
     @Override
     public void init() throws Exception {
-        //Id impostato a -1, viene aggiornato dal database in base alla primary key.
-        setGameId(-1);
         //Commands
         List<Command> commands = loadCommandsFromFile("./resources/commands.json");
         getCommands().addAll(commands);
@@ -254,13 +252,7 @@ public class StarshipExodus extends GameDescription {
                 } else {
                     out.println("Non ci sono oggetti che puoi premere qui.");
                 }
-        } else if (p.getCommand().getType() == CommandType.SAVE) {
-
-                out.println("Salvataggio...");
-                //Engine.saveGame(this);
-                out.println("Salvataggio completato con successo!");
-
-            }
+        }
             if (noroom) {
                 out.println(
                         "Da quella parte non si può andare c'è un muro!\nNon hai ancora acquisito i poteri per oltrepassare i muri...");
