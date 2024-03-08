@@ -27,7 +27,7 @@ public class Database {
     private static final String CREATE_TABLE = "CREATE TABLE IF NOT EXISTS games ("
             + "id INT AUTO_INCREMENT PRIMARY KEY,"
             + "gamedescription BLOB NOT NULL,"
-            + "currentroom INT NOT NULL,"
+            + "currentroom VARCHAR(255) NOT NULL,"
             + "creationdate TIMESTAMP NOT NULL,"
             + "playername VARCHAR(255) NOT NULL"
             + ")";
@@ -82,7 +82,7 @@ public class Database {
                 System.err.println(ex);
             }
 
-            pstmt.setInt(2, currentRoom.getId());
+            pstmt.setString(2, currentRoom.getName());
             pstmt.setTimestamp(3, new Timestamp(System.currentTimeMillis()));
             pstmt.setString(4, playerName);
 
@@ -94,14 +94,17 @@ public class Database {
     }
 
     public GameDescription loadGame(Integer id){
-        GameDescription game = null;
+        byte[] serializedGame = null;
+        GameDescription loadedGame = null;
         try {
             PreparedStatement pstmt = conn.prepareStatement(SELECT_GAME);
             pstmt.setInt(1, id);
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
                 try {
-                    return (GameDescription) Utils.deserializeObject(rs.getBytes("gamedescription"));
+                    serializedGame = rs.getBytes(2);
+                    loadedGame = (GameDescription) Utils.deserializeObject(serializedGame);
+                    return loadedGame;
                 } catch (Exception ex) {
                     System.err.println(ex);
                 }
@@ -120,7 +123,7 @@ public class Database {
             while (rs.next()) {
                 GameRecord gr = new GameRecord();
                 gr.setId(rs.getInt("id"));
-                gr.setCurrentRoom(rs.getInt("currentroom"));
+                gr.setCurrentRoom(rs.getString("currentroom"));
                 gr.setCreationDate(rs.getTimestamp("creationdate"));
                 gr.setPlayerName(rs.getString("playername"));
                 games.add(gr);
@@ -138,9 +141,16 @@ public class Database {
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
                 GameRecord gr = new GameRecord();
-                gr.setGameDescription((GameDescription) rs.getObject("gamedescription"));
+
+                try {
+                    byte[] loadedGame = rs.getBytes(2);
+                    gr.setGameDescription((GameDescription) Utils.deserializeObject(loadedGame));
+                } catch (Exception ex) {
+                    System.err.println(ex);
+                }
+
                 gr.setId(rs.getInt("id"));
-                gr.setCurrentRoom(rs.getInt("currentroom"));
+                gr.setCurrentRoom(rs.getString("currentroom"));
                 gr.setCreationDate(rs.getTimestamp("creationdate"));
                 gr.setPlayerName(rs.getString("playername"));
                 return gr;
@@ -191,7 +201,7 @@ public class Database {
             } catch (Exception ex) {
                 System.err.println(ex);
             }
-            pstmt.setInt(2, currentRoom.getId());
+            pstmt.setString(2, currentRoom.getName());
             pstmt.setInt(3, id);
 
             pstmt.executeUpdate();

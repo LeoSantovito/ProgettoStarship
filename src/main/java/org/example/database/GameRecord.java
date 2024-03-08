@@ -8,7 +8,7 @@ public class GameRecord {
 
     private int id;
     private GameDescription gameDescription;
-    private int currentRoom;
+    private String currentRoom;
     private Timestamp creationDate;
     private String playerName;
 
@@ -34,11 +34,11 @@ public class GameRecord {
         this.gameDescription = gameDescription;
     }
 
-    public int getCurrentRoom() {
+    public String getCurrentRoom() {
         return currentRoom;
     }
 
-    public void setCurrentRoom(int currentRoom) {
+    public void setCurrentRoom(String currentRoom) {
         this.currentRoom = currentRoom;
     }
 
