@@ -70,6 +70,7 @@ public class Database {
         }
     }
 
+    /* Inserisce un nuovo record corrispondente a una partita nella tabella games. */
     public void insertGame(GameDescription game, Room currentRoom, String playerName) {
         try {
             PreparedStatement pstmt = conn.prepareStatement(INSERT_GAME);
@@ -96,7 +97,7 @@ public class Database {
         }
     }
 
-    /* Recupera l'ID generato dal database e imposta gameId nell'oggetto GameDescription. */
+    /* Recupera l'ID generato da SQL per il record del gioco e imposta gameId nell'oggetto GameDescription. */
     private void updateGameId(GameDescription game){
         try {
             Statement stmt = conn.createStatement();
@@ -109,6 +110,7 @@ public class Database {
         }
     }
 
+    /* Carica una GameDescription dalla tabella games a partire da un id specifico. */
     public GameDescription loadGame(Integer id){
         byte[] serializedGame = null;
         GameDescription loadedGame = null;
@@ -131,6 +133,7 @@ public class Database {
         return null;
     }
 
+    /* Seleziona tutti i record dalla tabella games. */
     public List<GameRecord> selectAllGames() {
         List<GameRecord> games = new ArrayList<>();
         try {
@@ -150,6 +153,7 @@ public class Database {
         return games;
     }
 
+    /* Seleziona un record dalla tabella games a partire da un id specifico. */
     public GameRecord selectGame(Integer id) {
         try {
             PreparedStatement pstmt = conn.prepareStatement(SELECT_GAME);
@@ -177,6 +181,7 @@ public class Database {
         return null;
     }
 
+    /* Stampa tutti i salvataggi presenti nella tabella games (esclusa la GameDescription). */
     public void printAllGames() {
         List<GameRecord> games = selectAllGames();
         if (games.isEmpty()) {
@@ -196,9 +201,10 @@ public class Database {
         }
     }
 
+    /* Pulisce le partitite vuote dalla tabella games nel DB. */
     public void cleanEmptyGames() {
-        //cicla su tutti i record il quale valore gameId in GameDescription è -1 e li elimina
 
+        /* Cicla su tutti i record il quale valore gameId in GameDescription è -1 e li elimina. */
         try {
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(SELECT_ALL_GAMES);
@@ -218,6 +224,7 @@ public class Database {
         }
     }
 
+    /* Elimina un record dalla tabella games a partire da un id specifico. */
     public void deleteGame(Integer id) {
         try {
             PreparedStatement pstmt = conn.prepareStatement(DELETE_GAME);

@@ -17,11 +17,8 @@ public class GameRecord {
     private Timestamp creationDate;
     private String playerName;
 
-    // Costruttore vuoto
     public GameRecord() {
     }
-
-    // Metodi getter e setter per i campi della classe
 
     public int getId() {
         return id;

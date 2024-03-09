@@ -45,7 +45,7 @@ public class Utils {
         return tokens;
     }
 
-    // Metodo per serializzare un oggetto
+    /* Metodo per serializzare un oggetto. */
     public static byte[] serializeObject(Object obj) throws Exception {
         try (ByteArrayOutputStream bos = new ByteArrayOutputStream();
              ObjectOutputStream oos = new ObjectOutputStream(bos)) {
@@ -54,7 +54,7 @@ public class Utils {
         }
     }
 
-    // Metodo per deserializzare un oggetto
+    /* Metodo per deserializzare un oggetto. */
     public static Object deserializeObject(byte[] data) throws Exception {
         try (ByteArrayInputStream bis = new ByteArrayInputStream(data);
              ObjectInputStream ois = new ObjectInputStream(bis)) {

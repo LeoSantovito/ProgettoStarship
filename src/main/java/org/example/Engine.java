@@ -10,7 +10,6 @@ import org.example.parser.Parser;
 import org.example.parser.ParserOutput;
 import org.example.type.CommandType;
 import org.example.database.Database;
-import org.example.database.GameRecord;
 
 import java.io.File;
 import java.io.IOException;
@@ -72,10 +71,10 @@ public class Engine {
         }
     }
 
-    /* Inizializa una nuova partita */
+    /* Inizializa una nuova partita. */
     private void newGame() {
 
-        /*Richiede il nome del giocatore da usare per il salvataggio. */
+        /* Richiede il nome del giocatore da usare per il salvataggio. */
         System.out.print("Inserisci il tuo nome: ");
         Scanner scanner = new Scanner(System.in);
         String playerName = scanner.nextLine();
@@ -132,7 +131,7 @@ public class Engine {
         }
     }
 
-    /* Gestisce l'esecuzione del gioco */
+    /* Gestisce l'esecuzione del gioco. */
     private void playGame(GameDescription game) {
         System.out.println("Sei nella stanza: " + game.getCurrentRoom().getName() + ".");
         System.out.println();
