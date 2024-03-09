@@ -50,7 +50,7 @@ public class StarshipExodus extends GameDescription {
     @Override
     public void init() throws Exception {
         //Commands
-        List<Command> commands = loadCommandsFromFile("./src/main/java/org/example/resources/commands.json");
+        List<Command> commands = loadCommandsFromFile("./resources/commands.json");
         getCommands().addAll(commands);
         //Rooms
         Room hall = new Room(0, "Corridoio",

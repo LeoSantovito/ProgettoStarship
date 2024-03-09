@@ -25,7 +25,7 @@ public class StarshipJswing extends JFrame {
 
 
         // Creazione dello sfondo (il pannello principale che ha lo sfondo)
-        Background sfondo = new Background("./src/main/java/org/example/resources/bgS.jpeg");
+        Background sfondo = new Background("./resources/bgs.jpeg");
         frame.add(sfondo);
 
 
@@ -49,13 +49,13 @@ public class StarshipJswing extends JFrame {
         // Aggiungi il JTextField al pannello di input
         inputPanel.add(textField, BorderLayout.EAST);
 
-        ImageIcon sendIcon = new ImageIcon("./src/main/java/org/example/resources/send.png");
+        ImageIcon sendIcon = new ImageIcon("./resources/send.png");
         Image sendImage = sendIcon.getImage().getScaledInstance(25, 25, Image.SCALE_SMOOTH);
         ImageIcon sendResizedIcon = new ImageIcon(sendImage);
         JButton sendButton = new JButton("Invia", sendResizedIcon);
 
         // Carica l'immagine icona
-        ImageIcon InvIcon = new ImageIcon("./src/main/java/org/example/resources/ufo.png");
+        ImageIcon InvIcon = new ImageIcon("./resources/ufo.png");
         Image image = InvIcon.getImage().getScaledInstance(25, 25, Image.SCALE_SMOOTH);//
         ImageIcon InvResizedIcon = new ImageIcon(image);
         JButton inventario = new JButton("Inventario", InvResizedIcon);
