@@ -11,6 +11,7 @@ import org.example.type.Command;
 import org.example.type.Room;
 
 import java.io.PrintStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +19,10 @@ import java.util.List;
  *
  * @author pierpaolo
  */
-public abstract class GameDescription {
+
+public abstract class GameDescription implements Serializable {
+
+    private int gameId;
 
     private final List<Room> rooms = new ArrayList<>();
 
@@ -27,6 +31,14 @@ public abstract class GameDescription {
     private final List<AdvObject> inventory = new ArrayList<>();
 
     private Room currentRoom;
+
+    public int getGameId() {
+        return gameId;
+    }
+
+    public void setGameId(int gameId) {
+        this.gameId = gameId;
+    }
 
     public List<Room> getRooms() {
         return rooms;
@@ -51,5 +63,5 @@ public abstract class GameDescription {
     public abstract void init() throws Exception;
 
     public abstract void nextMove(ParserOutput p, PrintStream out);
-
 }
+

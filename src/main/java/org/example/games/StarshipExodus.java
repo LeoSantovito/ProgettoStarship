@@ -7,9 +7,11 @@ package org.example.games;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import org.example.Engine;
 import org.example.GameDescription;
 import org.example.parser.ParserOutput;
 import org.example.type.*;
+import org.example.database.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -250,7 +252,7 @@ public class StarshipExodus extends GameDescription {
                 } else {
                     out.println("Non ci sono oggetti che puoi premere qui.");
                 }
-            }
+        }
             if (noroom) {
                 out.println(
                         "Da quella parte non si può andare c'è un muro!\nNon hai ancora acquisito i poteri per oltrepassare i muri...");

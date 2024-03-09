@@ -1,12 +1,14 @@
 [
-  {"type": "NORTH", "name": "nord", "alias": ["n", "N", "Nord", "NORD"]} ,
+  {"type": "NORTH", "name": "nord", "alias": ["n"]},
+  {"type": "SOUTH", "name": "sud", "alias": ["s"]},
+  {"type": "EAST", "name": "est", "alias": ["e"]},
+  {"type": "WEST", "name": "ovest", "alias": ["w"]},
   {"type": "INVENTORY", "name": "inventario", "alias": ["inv"]},
-  {"type": "SOUTH", "name": "sud", "alias": ["s", "S", "Sud", "SUD"]},
-  {"type": "EAST", "name": "est", "alias": ["e", "E", "Est", "EST"]},
-  {"type": "WEST", "name": "ovest", "alias": ["o", "O", "Ovest", "OVEST"]},
-  {"type": "END", "name": "end", "alias": ["end", "fine", "esci", "muori", "ammazzati", "ucciditi", "suicidati","exit"]},
   {"type": "LOOK_AT", "name": "osserva", "alias": ["guarda", "vedi", "trova", "cerca", "descrivi"]},
   {"type": "PICK_UP", "name": "raccogli", "alias": ["prendi"]},
   {"type": "OPEN", "name": "apri", "alias": []},
-  {"type": "PUSH", "name": "premi", "alias": ["spingi","attiva"]}
+  {"type": "PUSH", "name": "premi", "alias": ["spingi", "attiva"]},
+  {"type": "SAVE", "name": "salva", "alias": ["save"]},
+  {"type": "END", "name": "esci", "alias": ["end", "fine", "muori", "ammazzati", "ucciditi", "suicidati", "exit"]},
+  {"type": "HELP", "name": "aiuto", "alias": ["help", "aiutami", "aiutino"]}
 ]

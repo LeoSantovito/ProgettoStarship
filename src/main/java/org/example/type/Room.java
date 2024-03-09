@@ -7,12 +7,13 @@ package org.example.type;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.io.Serializable;
 
 /**
  *
  * @author pierpaolo
  */
-public class Room {
+public class Room implements Serializable {
 
     private final int id;
 
@@ -102,6 +103,10 @@ public class Room {
 
     public List<AdvObject> getObjects() {
         return objects;
+    }
+
+    public int getId() {
+        return id;
     }
 
     @Override
