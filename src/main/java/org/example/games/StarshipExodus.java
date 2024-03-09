@@ -126,6 +126,7 @@ public class StarshipExodus extends GameDescription {
             //move
             boolean noroom = false;
             boolean move = false;
+
             if (p.getCommand().getType() == CommandType.NORTH) {
                 if (getCurrentRoom().getNorth() != null) {
                     setCurrentRoom(getCurrentRoom().getNorth());
@@ -166,12 +167,14 @@ public class StarshipExodus extends GameDescription {
                     frame.processOutput("Non c'è niente di interessante qui.");
                 }
             } else if (p.getCommand().getType() == CommandType.PICK_UP) {
+
                 if (p.getObject() != null) {
                     if (p.getObject().isPickupable()) {
                         getInventory().add(p.getObject());
                         getCurrentRoom().getObjects().remove(p.getObject());
                         frame.processOutput("Hai raccolto: " +
                                 p.getObject().getDescription());
+
                     } else {
                         frame.processOutput("Non puoi raccogliere questo oggetto.");
                     }
