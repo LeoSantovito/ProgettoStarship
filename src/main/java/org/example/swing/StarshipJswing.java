@@ -12,10 +12,13 @@ public class StarshipJswing extends JFrame {
 
     private JTextArea textArea;
     private JTextField textField;
+
     Engine engine = new Engine(new StarshipExodus(this), this);
 
     public StarshipJswing() {
         super("Starship Exodus");
+
+
 
         JFrame frame = this;
         frame.setResizable(false);
@@ -59,7 +62,39 @@ public class StarshipJswing extends JFrame {
         Image image = InvIcon.getImage().getScaledInstance(25, 25, Image.SCALE_SMOOTH);//
         ImageIcon InvResizedIcon = new ImageIcon(image);
         JButton inventario = new JButton("Inventario", InvResizedIcon);
-        
+
+        JSlider volumeSl = new JSlider(JSlider.HORIZONTAL, 0, 100, 100);
+
+        volumeSl.setMajorTickSpacing(5);
+        volumeSl.setMinorTickSpacing(1);
+        volumeSl.setPaintTicks(true);
+        volumeSl.setPaintLabels(false);
+
+        try {
+            MusicPlayer musica = new MusicPlayer("./resources/StarshipMusic.wav");
+            musica.playMusic();
+            musica.loopMusic();
+
+            volumeSl.addChangeListener(e -> {
+                JSlider source = (JSlider) e.getSource();
+
+                if (!source.getValueIsAdjusting()) {
+                    float volume = source.getValue() / 100f;
+
+                    musica.setVolume(volume);
+                }
+            });
+
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+
+
+        // Add the volumeSlider to the inputPanel
+        sfondo.add(volumeSl, BorderLayout.PAGE_END);
+        volumeSl.setOpaque(false);
+
+
 
         // Creazione del JButton per inviare i comandi
         textField.addActionListener(new ActionListener() {
