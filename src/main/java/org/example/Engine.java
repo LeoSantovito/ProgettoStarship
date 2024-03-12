@@ -8,6 +8,7 @@ package org.example;
 import org.example.games.StarshipExodus;
 import org.example.parser.Parser;
 import org.example.parser.ParserOutput;
+import org.example.swing.MenuSwing;
 import org.example.type.CommandType;
 import org.example.database.Database;
 
@@ -43,7 +44,7 @@ public class Engine {
      * Mostra il menu iniziale e gestisce la scelta dell'utente. Verrà sostituito da un'interfaccia grafica SWING.
      */
     public void startMenu() {
-        System.out.println("========== Starship Exodus ==========");
+    /*    System.out.println("========== Starship Exodus ==========");
         System.out.println("1. Nuova Partita");
         System.out.println("2. Carica Partita");
         System.out.println("3. Esci");
@@ -68,11 +69,13 @@ public class Engine {
             default:
                 System.out.println("Scelta non valida. Riprova.");
                 startMenu();
-        }
+        }*/
+
+
     }
 
     /* Inizializa una nuova partita. */
-    private void newGame() {
+    public void newGame() {
 
         /* Richiede il nome del giocatore da usare per il salvataggio. */
         System.out.print("Inserisci il tuo nome: ");
@@ -104,7 +107,7 @@ public class Engine {
     }
 
     /* Carica i dati di una partita salvata. */
-    private void loadSavedGame() {
+    public void loadSavedGame() {
         System.out.print("Inserisci l'id del salvataggio da caricare: ");
         Scanner scanner = new Scanner(System.in);
         int id = scanner.nextInt();
@@ -124,7 +127,7 @@ public class Engine {
             } else {
                 System.out.println("Salvataggio non trovato. Torno al menu principale.");
                 System.out.println();
-                startMenu();
+               // startMenu();
             }
         } catch (Exception ex) {
             System.err.println(ex);
@@ -170,8 +173,10 @@ public class Engine {
      */
     public static void main(String[] args) {
         Engine engine = new Engine();
+
         try {
-            engine.startMenu();
+           MenuSwing menuSwing = new MenuSwing();
+            menuSwing.startMenu();
         } finally {
             /* Pulisce le partite non salvate (con id della gameDescription a -1) e chiude la connessione al database. */
             engine.database.cleanEmptyGames();
