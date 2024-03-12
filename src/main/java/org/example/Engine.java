@@ -155,16 +155,21 @@ public class Engine {
             int minutes = (totalSeconds % 3600) / 60;
             int seconds = totalSeconds % 60;
 
-            System.out.println("Abbiamo sentito la tua mancanza," + database.getPlayerName(id) + "!");
+            System.out.println("Abbiamo sentito la tua mancanza, " + database.getPlayerName(id) + "!");
+
+            String printHours = hours == 1 ? "ora" : "ore";
+            String printMinutes = minutes == 1 ? "minuto" : "minuti";
+            String printSeconds = seconds == 1 ? "secondo" : "secondi";
 
             if(hours == 0 && minutes == 0){
-                System.out.println("Hai giocato per " + seconds + " secondi e non hai ancora finito il gioco! Che fallimento!");
+                System.out.println("Hai giocato per " + seconds + " " + printSeconds + " e non hai ancora finito il gioco! Che fallimento!");
             }
             else if(hours == 0){
-                System.out.println("Hai giocato per " + minutes + " minuti e " + seconds + " secondi e non hai ancora finito il gioco! Che fallimento!");
+                System.out.println("Hai giocato per " + minutes + " " + printMinutes + " e " + seconds + " " + printSeconds + " e non hai ancora finito il gioco! Che fallimento!");
             }
-            else
-            System.out.println("Hai giocato per " + hours + " ore, " + minutes + " minuti e " + seconds + " secondi e non hai ancora finito il gioco! Che fallimento!");
+            else {
+                System.out.println("Hai giocato per " + hours + " " + printHours + ", " + minutes + " " + printMinutes + " e " + seconds + " " + printSeconds + " e non hai ancora finito il gioco! Che fallimento!");
+            }
         }else {
             System.out.println("Benvenuto a bordo, " + database.getPlayerName(id) + "!");
         }
@@ -199,16 +204,9 @@ public class Engine {
     private void saveGame(GameDescription game) {
         System.out.println("Salvataggio in corso della partita con ID: " + game.getGameId() + "...");
 
-        int secondsElapsed = -1;
-        System.out.println("DEBUG: secondsElapsed = " + secondsElapsed + " seconds.");
-        System.out.println("DEBUG: time in GD = " + game.getTimeElapsed() + " seconds.");
-
         /* Recupera i secondsElapsed dal timer e li somma a quelli nella gameDescription. */
-        secondsElapsed = timer.getSecondsElapsed();
+        int secondsElapsed = timer.getSecondsElapsed();
         game.setTimeElapsed(secondsElapsed);
-
-        System.out.println("DEBUG: secondsElapsed = " + secondsElapsed + " seconds.");
-
 
         /* Aggiorna la partita nel database. */
         int gameId = game.getGameId();
@@ -227,12 +225,14 @@ public class Engine {
         try {
             engine.startMenu();
         } finally {
-
             /* Pulisce le partite non salvate (con id della gameDescription a -1) e chiude la connessione al database. */
             engine.database.cleanEmptyGames();
             engine.database.closeDatabase();
 
+            /* Interrompe il thread del timer. */
+            engine.timer.stopTimer();
 
+            System.out.println("Partita terminata.");
         }
     }
 }
