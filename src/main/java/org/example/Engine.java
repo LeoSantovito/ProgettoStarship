@@ -28,12 +28,14 @@ public class Engine {
     private GameDescription game;
     private Parser parser;
     private Database database;
+    private GameTimer timer;
 
     public Engine() {
         try {
             Set<String> stopwords = Utils.loadFileListInSet(new File("./resources/stopwords"));
             parser = new Parser(stopwords);
             database = new Database();
+            timer = new GameTimer(0);
         } catch (IOException ex) {
             System.err.println(ex);
         }
@@ -88,12 +90,9 @@ public class Engine {
             System.out.println();
             System.out.println("Creazione di una Nuova Partita...");
 
-            /* Inizializza il thread del timer. */
-            GameTimer timer = new GameTimer(0);
-
             /* Inizializza il gioco e lo salva nel database. Viene anche aggiornata la gameDescription con il nuovo id. */
             game.init();
-            database.insertGame(game, game.getCurrentRoom(), playerName, game.getTimeElapsed());
+            database.insertGame(game, game.getCurrentRoom(), playerName);
 
             System.out.println("Nuova Partita creata con successo!");
             System.out.println();
@@ -102,7 +101,7 @@ public class Engine {
             System.out.println("Inizio del Gioco...");
             System.out.println();
 
-            playGame(game, timer);
+            playGame(game);
         } catch (Exception ex) {
             System.err.println(ex);
         }
@@ -130,7 +129,7 @@ public class Engine {
                 System.out.println();
                 System.out.println("ID della partita: " + game.getGameId());
                 System.out.println();
-                playGame(game, timer);
+                playGame(game);
             } else {
                 System.out.println("Salvataggio non trovato. Torno al menu principale.");
                 System.out.println();
@@ -142,7 +141,34 @@ public class Engine {
     }
 
     /* Gestisce l'esecuzione del gioco. */
-    private void playGame(GameDescription game, GameTimer timer) {
+    private void playGame(GameDescription game) {
+        /* Inizializza il timer prendendo il valore iniziale dalla gameDescription del DB. */
+        timer.setTime(game.getTimeElapsed());
+        timer.start();
+
+        /* Inizio della partita. */
+        int totalSeconds = game.getTimeElapsed();
+        int id = game.getGameId();
+
+        if(totalSeconds != 0){
+            int hours = totalSeconds / 3600;
+            int minutes = (totalSeconds % 3600) / 60;
+            int seconds = totalSeconds % 60;
+
+            System.out.println("Abbiamo sentito la tua mancanza," + database.getPlayerName(id) + "!");
+
+            if(hours == 0 && minutes == 0){
+                System.out.println("Hai giocato per " + seconds + " secondi e non hai ancora finito il gioco! Che fallimento!");
+            }
+            else if(hours == 0){
+                System.out.println("Hai giocato per " + minutes + " minuti e " + seconds + " secondi e non hai ancora finito il gioco! Che fallimento!");
+            }
+            else
+            System.out.println("Hai giocato per " + hours + " ore, " + minutes + " minuti e " + seconds + " secondi e non hai ancora finito il gioco! Che fallimento!");
+        }else {
+            System.out.println("Benvenuto a bordo, " + database.getPlayerName(id) + "!");
+        }
+
         System.out.println("Sei nella stanza: " + game.getCurrentRoom().getName() + ".");
         System.out.println();
         System.out.println(game.getCurrentRoom().getDescription());
@@ -155,9 +181,11 @@ public class Engine {
             if (p == null || p.getCommand() == null) {
                 System.out.println("Non capisco quello che mi vuoi dire.");
             } else if (p.getCommand() != null && p.getCommand().getType() == CommandType.SAVE){
-                saveGame(game, timer);
+                saveGame(game);
             }
             else if (p.getCommand() != null && p.getCommand().getType() == CommandType.END) {
+                /* Interrompe il thread del timer. */
+                timer.stopTimer();
                 System.out.println("Addio!");
                 break;
             } else {
@@ -168,15 +196,25 @@ public class Engine {
     }
 
     /* Salva i dati di una partita, aggiornando il record corrispondente nel database. */
-    private void saveGame(GameDescription game, GameTimer timer) {
+    private void saveGame(GameDescription game) {
         System.out.println("Salvataggio in corso della partita con ID: " + game.getGameId() + "...");
 
+        int secondsElapsed = -1;
+        System.out.println("DEBUG: secondsElapsed = " + secondsElapsed + " seconds.");
+        System.out.println("DEBUG: time in GD = " + game.getTimeElapsed() + " seconds.");
+
         /* Recupera i secondsElapsed dal timer e li somma a quelli nella gameDescription. */
-        int secondsElapsed = game.getTimeElapsed() + timer.getSecondsElapsed();
+        secondsElapsed = timer.getSecondsElapsed();
         game.setTimeElapsed(secondsElapsed);
+
+        System.out.println("DEBUG: secondsElapsed = " + secondsElapsed + " seconds.");
+
 
         /* Aggiorna la partita nel database. */
         int gameId = game.getGameId();
+
+        System.out.println("DEBUG: gameId = " + gameId + ".");
+
         database.updateGame(gameId, game, game.getCurrentRoom());
         System.out.println("Salvataggio completato!");
     }
@@ -189,11 +227,12 @@ public class Engine {
         try {
             engine.startMenu();
         } finally {
+
             /* Pulisce le partite non salvate (con id della gameDescription a -1) e chiude la connessione al database. */
             engine.database.cleanEmptyGames();
             engine.database.closeDatabase();
 
-            /* Interrompe il thread del timer. DA INSERIRE. */
+
         }
     }
 }

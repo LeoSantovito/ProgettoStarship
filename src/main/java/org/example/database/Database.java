@@ -30,11 +30,10 @@ public class Database {
             + "currentroom VARCHAR(255) NOT NULL,"
             + "creationdate TIMESTAMP NOT NULL,"
             + "playername VARCHAR(255) NOT NULL"
-            + "timeelapsed INT NOT NULL"
             + ")";
 
     /* Query per inserire un record di un nuovo salvataggio nella tabella games. */
-    private static final String INSERT_GAME = "INSERT INTO games (gamedescription, currentroom, creationdate, playername, timeelapsed) VALUES (?, ?, ?, ?, ?)";
+    private static final String INSERT_GAME = "INSERT INTO games (gamedescription, currentroom, creationdate, playername) VALUES (?, ?, ?, ?)";
 
     /* Query per selezionare un record dalla tabella games a partire da un id specifico. */
     private static final String SELECT_GAME = "SELECT * FROM games WHERE id = ?";
@@ -46,7 +45,7 @@ public class Database {
     private static final String DELETE_GAME = "DELETE FROM games WHERE id = ?";
 
     /* Query che aggiorna gamedescription e currentroom in un record per salvare lo stato del gioco. */
-    private static final String SAVE_GAME = "UPDATE games SET gamedescription = ?, currentroom = ?, timeelapsed = ? WHERE id = ?";
+    private static final String SAVE_GAME = "UPDATE games SET gamedescription = ?, currentroom = ? WHERE id = ?";
 
     /* Query per eliminare la tabella games con tutti i salvataggi. */
     private static final String DROP_TABLE = "DROP TABLE games";
@@ -72,7 +71,7 @@ public class Database {
     }
 
     /* Inserisce un nuovo record corrispondente a una partita nella tabella games. */
-    public void insertGame(GameDescription game, Room currentRoom, String playerName, int timeElapsed) {
+    public void insertGame(GameDescription game, Room currentRoom, String playerName) {
         try {
             PreparedStatement pstmt = conn.prepareStatement(INSERT_GAME);
 
@@ -87,7 +86,6 @@ public class Database {
             pstmt.setString(2, currentRoom.getName());
             pstmt.setTimestamp(3, new Timestamp(System.currentTimeMillis()));
             pstmt.setString(4, playerName);
-            pstmt.setInt(5, game.getTimeElapsed());
 
             pstmt.executeUpdate();
 
@@ -147,7 +145,15 @@ public class Database {
                 gr.setCurrentRoom(rs.getString("currentroom"));
                 gr.setCreationDate(rs.getTimestamp("creationdate"));
                 gr.setPlayerName(rs.getString("playername"));
-                gr.setTimeElapsed(rs.getInt("timeelapsed"));
+
+                try {
+                    byte[] loadedGame = rs.getBytes(2);
+                    gr.setGameDescription((GameDescription) Utils.deserializeObject(loadedGame));
+                    gr.setTimeElapsed(gr.getGameDescription().getTimeElapsed());
+                } catch (Exception ex) {
+                    System.err.println(ex);
+                }
+
                 games.add(gr);
             }
         } catch (SQLException ex) {
@@ -168,6 +174,7 @@ public class Database {
                 try {
                     byte[] loadedGame = rs.getBytes(2);
                     gr.setGameDescription((GameDescription) Utils.deserializeObject(loadedGame));
+                    gr.setTimeElapsed(gr.getGameDescription().getTimeElapsed());
                 } catch (Exception ex) {
                     System.err.println(ex);
                 }
@@ -176,7 +183,6 @@ public class Database {
                 gr.setCurrentRoom(rs.getString("currentroom"));
                 gr.setCreationDate(rs.getTimestamp("creationdate"));
                 gr.setPlayerName(rs.getString("playername"));
-                gr.setTimeElapsed(rs.getInt("timeelapsed"));
                 return gr;
             }
         } catch (SQLException ex) {
@@ -209,6 +215,20 @@ public class Database {
                 System.out.println("-----------------------");
             }
         }
+    }
+
+    public String getPlayerName(int id){
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(SELECT_GAME);
+            pstmt.setInt(1, id);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return rs.getString("playername");
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+        return null;
     }
 
     /* Pulisce le partitite vuote dalla tabella games nel DB. */

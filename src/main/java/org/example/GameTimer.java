@@ -2,7 +2,7 @@ package org.example;
 
 /* Classe che gestisce il thread della partita. Si occupa di gestire la variabile del tempo di gioco. */
 public class GameTimer extends Thread{
-    private int secondsElapsed;
+    private volatile int secondsElapsed;
     private boolean running;
 
     public GameTimer(int secondsElapsed){
