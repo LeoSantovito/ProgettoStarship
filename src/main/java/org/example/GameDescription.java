@@ -24,6 +24,8 @@ public abstract class GameDescription implements Serializable {
 
     private int gameId;
 
+    private int timeElapsed;
+
     private final List<Room> rooms = new ArrayList<>();
 
     private final List<Command> commands = new ArrayList<>();
@@ -38,6 +40,14 @@ public abstract class GameDescription implements Serializable {
 
     public void setGameId(int gameId) {
         this.gameId = gameId;
+    }
+
+    public int getTimeElapsed() {
+        return timeElapsed;
+    }
+
+    public void setTimeElapsed(int timeElapsed) {
+        this.timeElapsed = timeElapsed;
     }
 
     public List<Room> getRooms() {

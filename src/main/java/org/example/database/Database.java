@@ -30,10 +30,11 @@ public class Database {
             + "currentroom VARCHAR(255) NOT NULL,"
             + "creationdate TIMESTAMP NOT NULL,"
             + "playername VARCHAR(255) NOT NULL"
+            + "timeelapsed INT NOT NULL"
             + ")";
 
     /* Query per inserire un record di un nuovo salvataggio nella tabella games. */
-    private static final String INSERT_GAME = "INSERT INTO games (gamedescription, currentroom, creationdate, playername) VALUES (?, ?, ?, ?)";
+    private static final String INSERT_GAME = "INSERT INTO games (gamedescription, currentroom, creationdate, playername, timeelapsed) VALUES (?, ?, ?, ?, ?)";
 
     /* Query per selezionare un record dalla tabella games a partire da un id specifico. */
     private static final String SELECT_GAME = "SELECT * FROM games WHERE id = ?";
@@ -45,7 +46,7 @@ public class Database {
     private static final String DELETE_GAME = "DELETE FROM games WHERE id = ?";
 
     /* Query che aggiorna gamedescription e currentroom in un record per salvare lo stato del gioco. */
-    private static final String SAVE_GAME = "UPDATE games SET gamedescription = ?, currentroom = ? WHERE id = ?";
+    private static final String SAVE_GAME = "UPDATE games SET gamedescription = ?, currentroom = ?, timeelapsed = ? WHERE id = ?";
 
     /* Query per eliminare la tabella games con tutti i salvataggi. */
     private static final String DROP_TABLE = "DROP TABLE games";
@@ -71,7 +72,7 @@ public class Database {
     }
 
     /* Inserisce un nuovo record corrispondente a una partita nella tabella games. */
-    public void insertGame(GameDescription game, Room currentRoom, String playerName) {
+    public void insertGame(GameDescription game, Room currentRoom, String playerName, int timeElapsed) {
         try {
             PreparedStatement pstmt = conn.prepareStatement(INSERT_GAME);
 
@@ -86,6 +87,7 @@ public class Database {
             pstmt.setString(2, currentRoom.getName());
             pstmt.setTimestamp(3, new Timestamp(System.currentTimeMillis()));
             pstmt.setString(4, playerName);
+            pstmt.setInt(5, game.getTimeElapsed());
 
             pstmt.executeUpdate();
 
@@ -111,7 +113,7 @@ public class Database {
     }
 
     /* Carica una GameDescription dalla tabella games a partire da un id specifico. */
-    public GameDescription loadGame(Integer id){
+    public GameDescription loadGame(int id){
         byte[] serializedGame = null;
         GameDescription loadedGame = null;
         try {
@@ -145,6 +147,7 @@ public class Database {
                 gr.setCurrentRoom(rs.getString("currentroom"));
                 gr.setCreationDate(rs.getTimestamp("creationdate"));
                 gr.setPlayerName(rs.getString("playername"));
+                gr.setTimeElapsed(rs.getInt("timeelapsed"));
                 games.add(gr);
             }
         } catch (SQLException ex) {
@@ -154,7 +157,7 @@ public class Database {
     }
 
     /* Seleziona un record dalla tabella games a partire da un id specifico. */
-    public GameRecord selectGame(Integer id) {
+    public GameRecord selectGame(int id) {
         try {
             PreparedStatement pstmt = conn.prepareStatement(SELECT_GAME);
             pstmt.setInt(1, id);
@@ -173,6 +176,7 @@ public class Database {
                 gr.setCurrentRoom(rs.getString("currentroom"));
                 gr.setCreationDate(rs.getTimestamp("creationdate"));
                 gr.setPlayerName(rs.getString("playername"));
+                gr.setTimeElapsed(rs.getInt("timeelapsed"));
                 return gr;
             }
         } catch (SQLException ex) {
@@ -196,6 +200,12 @@ public class Database {
                 System.out.println("Stanza Corrente: " + gr.getCurrentRoom());
                 System.out.println("Data di Creazione: " + gr.getCreationDate());
                 System.out.println("Nome del Giocatore: " + gr.getPlayerName());
+                /* Ottiene e stampa il tempo trascorso in ore, minuti e secondi. */
+                int totalSeconds = gr.getTimeElapsed();
+                int hours = totalSeconds / 3600;
+                int minutes = (totalSeconds % 3600) / 60;
+                int seconds = totalSeconds % 60;
+                System.out.println("Tempo Trascorso: " + hours + "h " + minutes + "m " + seconds + "s");
                 System.out.println("-----------------------");
             }
         }
@@ -225,7 +235,7 @@ public class Database {
     }
 
     /* Elimina un record dalla tabella games a partire da un id specifico. */
-    public void deleteGame(Integer id) {
+    public void deleteGame(int id) {
         try {
             PreparedStatement pstmt = conn.prepareStatement(DELETE_GAME);
             pstmt.setInt(1, id);
@@ -236,7 +246,7 @@ public class Database {
         }
     }
 
-    public void updateGame(Integer id, GameDescription game, Room currentRoom) {
+    public void updateGame(int id, GameDescription game, Room currentRoom) {
         try {
             PreparedStatement pstmt = conn.prepareStatement(SAVE_GAME);
 

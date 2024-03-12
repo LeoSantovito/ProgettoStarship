@@ -79,17 +79,21 @@ public class Engine {
         Scanner scanner = new Scanner(System.in);
         String playerName = scanner.nextLine();
 
-        /* Crea una nuova partita e imposta l'id a -1. */
+        /* Crea una nuova partita, imposta l'id a -1 e il timer a 0. */
         game = new StarshipExodus();
         game.setGameId(-1);
+        game.setTimeElapsed(0);
 
         try {
             System.out.println();
             System.out.println("Creazione di una Nuova Partita...");
 
+            /* Inizializza il thread del timer. */
+            GameTimer timer = new GameTimer(0);
+
             /* Inizializza il gioco e lo salva nel database. Viene anche aggiornata la gameDescription con il nuovo id. */
             game.init();
-            database.insertGame(game, game.getCurrentRoom(), playerName);
+            database.insertGame(game, game.getCurrentRoom(), playerName, game.getTimeElapsed());
 
             System.out.println("Nuova Partita creata con successo!");
             System.out.println();
@@ -97,10 +101,11 @@ public class Engine {
             System.out.println();
             System.out.println("Inizio del Gioco...");
             System.out.println();
+
+            playGame(game, timer);
         } catch (Exception ex) {
             System.err.println(ex);
         }
-        playGame(game);
     }
 
     /* Carica i dati di una partita salvata. */
@@ -116,11 +121,16 @@ public class Engine {
             if (database.selectGame(id) != null) {
                 GameDescription game = null;
                 game = database.loadGame(id);
+
+                /* Inizializza il timer prendendo il valore iniziale dalla gameDescription del DB. */
+                GameTimer timer = new GameTimer(game.getTimeElapsed());
+                timer.start();
+
                 System.out.println("Partita Caricata con successo!");
                 System.out.println();
                 System.out.println("ID della partita: " + game.getGameId());
                 System.out.println();
-                playGame(game);
+                playGame(game, timer);
             } else {
                 System.out.println("Salvataggio non trovato. Torno al menu principale.");
                 System.out.println();
@@ -132,7 +142,7 @@ public class Engine {
     }
 
     /* Gestisce l'esecuzione del gioco. */
-    private void playGame(GameDescription game) {
+    private void playGame(GameDescription game, GameTimer timer) {
         System.out.println("Sei nella stanza: " + game.getCurrentRoom().getName() + ".");
         System.out.println();
         System.out.println(game.getCurrentRoom().getDescription());
@@ -145,7 +155,7 @@ public class Engine {
             if (p == null || p.getCommand() == null) {
                 System.out.println("Non capisco quello che mi vuoi dire.");
             } else if (p.getCommand() != null && p.getCommand().getType() == CommandType.SAVE){
-                saveGame(game);
+                saveGame(game, timer);
             }
             else if (p.getCommand() != null && p.getCommand().getType() == CommandType.END) {
                 System.out.println("Addio!");
@@ -158,8 +168,14 @@ public class Engine {
     }
 
     /* Salva i dati di una partita, aggiornando il record corrispondente nel database. */
-    private void saveGame(GameDescription game) {
+    private void saveGame(GameDescription game, GameTimer timer) {
         System.out.println("Salvataggio in corso della partita con ID: " + game.getGameId() + "...");
+
+        /* Recupera i secondsElapsed dal timer e li somma a quelli nella gameDescription. */
+        int secondsElapsed = game.getTimeElapsed() + timer.getSecondsElapsed();
+        game.setTimeElapsed(secondsElapsed);
+
+        /* Aggiorna la partita nel database. */
         int gameId = game.getGameId();
         database.updateGame(gameId, game, game.getCurrentRoom());
         System.out.println("Salvataggio completato!");
@@ -176,6 +192,8 @@ public class Engine {
             /* Pulisce le partite non salvate (con id della gameDescription a -1) e chiude la connessione al database. */
             engine.database.cleanEmptyGames();
             engine.database.closeDatabase();
+
+            /* Interrompe il thread del timer. DA INSERIRE. */
         }
     }
 }
