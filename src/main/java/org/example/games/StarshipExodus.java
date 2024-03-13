@@ -71,6 +71,13 @@ public class StarshipExodus extends GameDescription {
                 currentRoom.setWest(west);
             }
         }
+        for (Room room : rooms) {
+            for (AdvObject obj : room.getObjects()) {
+                if (obj.isContainer()){
+                    System.out.println("Container: " + obj.getName());
+                }
+            }
+        }
         getRooms().addAll(rooms);
         setCurrentRoom(findRoomById(rooms, 0));
         //Rooms
@@ -210,15 +217,14 @@ public class StarshipExodus extends GameDescription {
                     if (p.getObject() != null) {
                         if (p.getObject().isOpenable() &&
                                 p.getObject().isOpen() == false) {
-                            if (p.getObject() instanceof AdvObjectContainer) {
+                            if (p.getObject().isContainer()) {
                                 out.println("Hai aperto: " +
                                         p.getObject().getName());
-                                AdvObjectContainer c =
-                                        (AdvObjectContainer) p.getObject();
-                                if (!c.getList().isEmpty()) {
+                                AdvObject c = p.getObject();
+                                if (!c.getObjectsList().isEmpty()) {
                                     out.print(c.getName() + " contiene:");
                                     Iterator<AdvObject> it =
-                                            c.getList().iterator();
+                                            c.getObjectsList().iterator();
                                     while (it.hasNext()) {
                                         AdvObject next = it.next();
                                         getCurrentRoom().getObjects().add(next);
@@ -239,13 +245,12 @@ public class StarshipExodus extends GameDescription {
                     if (p.getInvObject() != null) {
                         if (p.getInvObject().isOpenable() &&
                                 p.getInvObject().isOpen() == false) {
-                            if (p.getInvObject() instanceof AdvObjectContainer) {
-                                AdvObjectContainer c =
-                                        (AdvObjectContainer) p.getInvObject();
-                                if (!c.getList().isEmpty()) {
+                            if (p.getInvObject().isContainer()) {
+                                AdvObject c = p.getInvObject();
+                                if (!c.getObjectsList().isEmpty()) {
                                     out.print(c.getName() + " contiene:");
                                     Iterator<AdvObject> it =
-                                            c.getList().iterator();
+                                            c.getObjectsList().iterator();
                                     while (it.hasNext()) {
                                         AdvObject next = it.next();
                                         getInventory().add(next);

@@ -5,8 +5,10 @@
  */
 package org.example.type;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.io.Serializable;
 
@@ -15,6 +17,7 @@ import java.io.Serializable;
  * @author pierpaolo
  */
 public class AdvObject implements Serializable {
+    private boolean container = false;
 
     private final int id;
 
@@ -33,6 +36,7 @@ public class AdvObject implements Serializable {
     private boolean open = false;
 
     private boolean push = false;
+    private List<AdvObject> objectsList = new ArrayList<>();
 
     public AdvObject(int id) {
         this.id = id;
@@ -151,5 +155,21 @@ public class AdvObject implements Serializable {
             return false;
         }
         return true;
+    }
+
+    public boolean isContainer() {
+        return container;
+    }
+
+    public void setContainer(boolean container) {
+        this.container = container;
+    }
+
+    public List<AdvObject> getObjectsList() {
+        return objectsList;
+    }
+
+    public void setObjectsList(List<AdvObject> objectsList) {
+        this.objectsList = objectsList;
     }
 }

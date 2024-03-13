@@ -32,13 +32,15 @@
     "eastId": 1,
     "objects": [
       {
+        "container": false,
         "id": 4,
         "name": "chiave",
         "description": "Usa semplice chiave come tante altre.",
         "alias": ["key"],
         "pickupable": true,
         "openable": false,
-        "open": false
+        "open": false,
+        "objectsList": []
       }
     ]
   },
@@ -53,13 +55,16 @@
     "eastId": -1,
     "objects": [
       {
+        "container": false,
         "id": 5,
         "name": "batteria",
         "description": "Un pacco di batterie, chissà se sono cariche.",
         "alias": ["batterie", "pile", "pila"],
         "pickupable": true,
         "openable": false,
-        "open": false
+        "open": false,
+        "objectsIdList": [],
+        "objectsList": []
       }
     ]
   },
@@ -74,6 +79,7 @@
     "eastId": 0,
     "objects": [
       {
+        "container": true,
         "id": 2,
         "name": "armadio",
         "description": "Un semplice armadio.",
@@ -81,15 +87,17 @@
         "openable": true,
         "pickupable": false,
         "open": false,
-        "list": [
+        "objectsList": [
           {
+            "container": false,
             "id": 3,
-            "name": "giocattolo",
-            "description": "Un vecchio giocattolo...",
-            "alias": ["pupazzo", "pupazzetto"],
+            "name": "gioco",
+            "description": "Un gioco di società.",
+            "alias": ["scatola", "giochi", "giocattolo"],
             "pickupable": true,
             "openable": false,
-            "open": false
+            "open": false,
+            "objectsList": []
           }
         ]
       }
