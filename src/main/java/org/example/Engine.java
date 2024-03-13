@@ -150,27 +150,26 @@ public class Engine {
         int totalSeconds = game.getTimeElapsed();
         int id = game.getGameId();
 
+        /* Stampa il tempo trascorso e messaggi di benvenuto. */
         if(totalSeconds != 0){
+            System.out.println("Abbiamo sentito la tua mancanza, " + database.getPlayerName(id) + "!");
+
             int hours = totalSeconds / 3600;
             int minutes = (totalSeconds % 3600) / 60;
             int seconds = totalSeconds % 60;
-
-            System.out.println("Abbiamo sentito la tua mancanza, " + database.getPlayerName(id) + "!");
-
             String printHours = hours == 1 ? "ora" : "ore";
             String printMinutes = minutes == 1 ? "minuto" : "minuti";
             String printSeconds = seconds == 1 ? "secondo" : "secondi";
 
             if(hours == 0 && minutes == 0){
                 System.out.println("Hai giocato per " + seconds + " " + printSeconds + " e non hai ancora finito il gioco! Che fallimento!");
-            }
-            else if(hours == 0){
+            } else if(hours == 0){
                 System.out.println("Hai giocato per " + minutes + " " + printMinutes + " e " + seconds + " " + printSeconds + " e non hai ancora finito il gioco! Che fallimento!");
-            }
-            else {
+            } else {
                 System.out.println("Hai giocato per " + hours + " " + printHours + ", " + minutes + " " + printMinutes + " e " + seconds + " " + printSeconds + " e non hai ancora finito il gioco! Che fallimento!");
             }
-        }else {
+        }
+        else {
             System.out.println("Benvenuto a bordo, " + database.getPlayerName(id) + "!");
         }
 
@@ -185,15 +184,17 @@ public class Engine {
             ParserOutput p = parser.parse(command, game.getCommands(), game.getCurrentRoom().getObjects(), game.getInventory());
             if (p == null || p.getCommand() == null) {
                 System.out.println("Non capisco quello che mi vuoi dire.");
-            } else if (p.getCommand() != null && p.getCommand().getType() == CommandType.SAVE){
+            }
+            else if (p.getCommand() != null && p.getCommand().getType() == CommandType.SAVE){
                 saveGame(game);
             }
             else if (p.getCommand() != null && p.getCommand().getType() == CommandType.END) {
                 /* Interrompe il thread del timer. */
-                timer.stopTimer();
+                timer.interrupt();
                 System.out.println("Addio!");
                 break;
-            } else {
+            }
+            else {
                 game.nextMove(p, System.out);
                 System.out.println();
             }
@@ -211,10 +212,9 @@ public class Engine {
         /* Aggiorna la partita nel database. */
         int gameId = game.getGameId();
 
-        System.out.println("DEBUG: gameId = " + gameId + ".");
-
         database.updateGame(gameId, game, game.getCurrentRoom());
         System.out.println("Salvataggio completato!");
+        System.out.println();
     }
 
     /**
@@ -229,10 +229,8 @@ public class Engine {
             engine.database.cleanEmptyGames();
             engine.database.closeDatabase();
 
-            /* Interrompe il thread del timer. */
-            engine.timer.stopTimer();
-
             System.out.println("Partita terminata.");
+            System.exit(0);
         }
     }
 }
