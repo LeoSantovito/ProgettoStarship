@@ -92,7 +92,7 @@ public class Engine {
 
             /* Inizializza il gioco e lo salva nel database. Viene anche aggiornata la gameDescription con il nuovo id. */
             game.init();
-            database.insertGame(game, game.getCurrentRoom(), playerName);
+            database.insertGame(game, playerName);
 
             System.out.println("Nuova Partita creata con successo!");
             System.out.println();
@@ -216,7 +216,7 @@ public class Engine {
         /* Aggiorna la partita nel database. */
         int gameId = game.getGameId();
 
-        database.updateGame(gameId, game, game.getCurrentRoom());
+        database.updateGame(gameId, game);
         System.out.println("Salvataggio completato!");
         System.out.println();
     }
