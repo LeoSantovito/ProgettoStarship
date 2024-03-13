@@ -1,6 +1,7 @@
 package org.example.swing;
 
 import org.example.Engine;
+import org.example.database.Database;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,7 +13,7 @@ public class MenuSwing {
     private JButton newGameButton;
     private JButton loadGameButton;
     private JButton exitButton;
-
+    Database database = new Database();
     Engine engine = new Engine();
 
     public MenuSwing() {
@@ -97,6 +98,7 @@ public class MenuSwing {
             public void actionPerformed(ActionEvent e) {
                 JFrame topLevelFrame = (JFrame) SwingUtilities.getWindowAncestor(loadGameButton); // Ottieni la finestra principale
                 topLevelFrame.dispose(); // Chiude la finestra principale
+                database.printAllGames();
                 engine.loadSavedGame();
 
             }

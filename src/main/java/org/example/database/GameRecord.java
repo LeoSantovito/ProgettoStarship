@@ -16,6 +16,7 @@ public class GameRecord {
     private String currentRoom;
     private Timestamp creationDate;
     private String playerName;
+    private int timeElapsed;
 
     public GameRecord() {
     }
@@ -59,4 +60,13 @@ public class GameRecord {
     public void setPlayerName(String playerName) {
         this.playerName = playerName;
     }
+
+    public int getTimeElapsed() {
+        return timeElapsed;
+    }
+
+    public void setTimeElapsed(int timeElapsed) {
+        this.timeElapsed = timeElapsed;
+    }
+
 }
