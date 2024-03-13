@@ -1,0 +1,98 @@
+[
+  {
+    "id": 0,
+    "name": "Corridoio",
+    "description": "Sei appena tornato a casa e non sai cosa fare.\nTi ricordi che non hai ancora aperto quel fantastico regalo di tua zia Lina.Sarà il caso di cercarlo e di giocarci!",
+    "look": "Sei nel corridoio, a nord vedi il bagno, a sud il soggiorno e ad ovest la tua cameretta, forse il gioco sarà lì?\n",
+    "southId": 1,
+    "westId": 4,
+    "northId": 3,
+    "eastId": -1,
+    "objects": []
+  },
+  {
+    "id": 1,
+    "name": "Soggiorno",
+    "description": "Ti trovi nel soggiorno...",
+    "look": "Non c'è nulla di interessante qui...",
+    "southId": -1,
+    "westId": 2,
+    "northId": 0,
+    "eastId": -1,
+    "objects": []
+  },
+  {
+    "id": 2,
+    "name": "Cucina",
+    "description": "Ti trovi nella solita cucina...",
+    "look": "La solita cucina...",
+    "southId": -1,
+    "westId": -1,
+    "northId": -1,
+    "eastId": 1,
+    "objects": [
+      {
+        "id": 4,
+        "name": "chiave",
+        "description": "Usa semplice chiave come tante altre.",
+        "alias": ["key"],
+        "pickupable": true,
+        "openable": false,
+        "open": false
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Bagno",
+    "description": "Sei nel bagno...",
+    "look": "Vedo delle batterie sul mobile...",
+    "southId": 0,
+    "westId": -1,
+    "northId": -1,
+    "eastId": -1,
+    "objects": [
+      {
+        "id": 5,
+        "name": "batteria",
+        "description": "Un pacco di batterie, chissà se sono cariche.",
+        "alias": ["batterie", "pile", "pila"],
+        "pickupable": true,
+        "openable": false,
+        "open": false
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "La tua cameratta",
+    "description": "Finalmente la tua cameretta...",
+    "lookId": "C'è un armadio bianco...",
+    "southId": -1,
+    "westId": -1,
+    "northId": -1,
+    "eastId": 0,
+    "objects": [
+      {
+        "id": 2,
+        "name": "armadio",
+        "description": "Un semplice armadio.",
+        "alias": ["guardaroba", "vestiario"],
+        "openable": true,
+        "pickupable": false,
+        "open": false,
+        "list": [
+          {
+            "id": 3,
+            "name": "giocattolo",
+            "description": "Un vecchio giocattolo...",
+            "alias": ["pupazzo", "pupazzetto"],
+            "pickupable": true,
+            "openable": false,
+            "open": false
+          }
+        ]
+      }
+    ]
+  }
+]

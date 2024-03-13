@@ -17,12 +17,15 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.lang.reflect.Array;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+
+import static org.example.type.Room.findRoomById;
 
 /**
  * ATTENZIONE: La descrizione del gioco è fatta in modo che qualsiasi gioco
@@ -43,10 +46,35 @@ public class StarshipExodus extends GameDescription {
     @Override
     public void init() throws Exception {
         //Commands
-        List<Command> commands = loadCommandsFromFile("./resources/commands.json");
+        List<Command> commands = loadObjectsFromFile("./resources/commands.json", Command.class);
         getCommands().addAll(commands);
+        List<Room> rooms = loadObjectsFromFile("./resources/rooms.json", Room.class);
+        for (Room currentRoom : rooms){
+            int northId = currentRoom.getNorthId();
+            if(northId != -1) {
+                Room north = findRoomById(rooms, northId);
+                currentRoom.setNorth(north);
+            }
+            int southId = currentRoom.getSouthId();
+            if(southId != -1) {
+                Room south = findRoomById(rooms, southId);
+                currentRoom.setSouth(south);
+            }
+            int eastId = currentRoom.getEastId();
+            if(eastId != -1) {
+                Room east = findRoomById(rooms, eastId);
+                currentRoom.setEast(east);
+            }
+            int westId = currentRoom.getWestId();
+            if(westId != -1) {
+                Room west = findRoomById(rooms, westId);
+                currentRoom.setWest(west);
+            }
+        }
+        getRooms().addAll(rooms);
+        setCurrentRoom(findRoomById(rooms, 0));
         //Rooms
-        Room hall = new Room(0, "Corridoio",
+       /* Room hall = new Room(0, "Corridoio",
                 "Sei appena tornato a casa e non sai cosa fare.\nTi ricordi che non hai ancora aperto quel fantastico regalo di tua zia Lina.\n"
                         + " Sarà il caso di cercarlo e di giocarci!");
         hall.setLook(
@@ -107,7 +135,7 @@ public class StarshipExodus extends GameDescription {
         toy.setPush(false);
         kitchen.getObjects().add(kkey);
         //set starting room
-        setCurrentRoom(hall);
+        setCurrentRoom(hall); */
     }
 
     @Override
@@ -270,16 +298,13 @@ public class StarshipExodus extends GameDescription {
         System.exit(0);
     }
 
-    private static List<Command> loadCommandsFromFile(String filePath) throws IOException {
+    private static <T> List<T> loadObjectsFromFile(String filePath, Class<T> objectType) throws IOException {
         Gson gson = new Gson();
-        Type commandListType = new TypeToken<List<Command>>() {}.getType();
+        Type objectTypeList = TypeToken.getParameterized(List.class, objectType).getType();
 
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-            // Leggi tutto il JSON come un array di comandi
-            Command[] commandArray = gson.fromJson(br, Command[].class);
-
-            // Converti l'array in una lista di comandi
-            return List.of(commandArray);
+            T[] objectArray = gson.fromJson(br, (Type) Array.newInstance(objectType, 0).getClass());
+            return List.of(objectArray);
         }
     }
 }

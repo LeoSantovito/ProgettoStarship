@@ -24,6 +24,10 @@ public class Room implements Serializable {
     private String look;
 
     private boolean visible = true;
+    private int southId;
+    private int northId;
+    private int eastId;
+    private int westId;
 
     private Room south = null;
 
@@ -142,4 +146,43 @@ public class Room implements Serializable {
         this.look = look;
     }
 
+    public int getSouthId() {
+        return southId;
+    }
+
+    public void setSouthId(int southId) {
+        this.southId = southId;
+    }
+
+    public int getNorthId() {
+        return northId;
+    }
+
+    public void setNorthId(int northId) {
+        this.northId = northId;
+    }
+
+    public int getEastId() {
+        return eastId;
+    }
+
+    public void setEastId(int eastId) {
+        this.eastId = eastId;
+    }
+
+    public int getWestId() {
+        return westId;
+    }
+
+    public void setWestId(int westId) {
+        this.westId = westId;
+    }
+    public static Room findRoomById(List<Room> rooms, int roomId) {
+        for (Room room : rooms) {
+            if (room.getId() == roomId) {
+                return room;
+            }
+        }
+        return null; // Se la stanza con l'ID specificato non viene trovata
+    }
 }

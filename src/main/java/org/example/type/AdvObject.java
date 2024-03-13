@@ -152,5 +152,4 @@ public class AdvObject implements Serializable {
         }
         return true;
     }
-
 }
