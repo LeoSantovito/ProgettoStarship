@@ -214,9 +214,7 @@ public class Engine {
         game.setTimeElapsed(secondsElapsed);
 
         /* Aggiorna la partita nel database. */
-        int gameId = game.getGameId();
-
-        database.updateGame(gameId, game);
+        database.updateGame(game);
         System.out.println("Salvataggio completato!");
         System.out.println();
     }

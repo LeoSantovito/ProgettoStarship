@@ -267,7 +267,7 @@ public class Database {
         }
     }
 
-    public void updateGame(int id, GameDescription game) {
+    public void updateGame(GameDescription game) {
         try {
             PreparedStatement pstmt = conn.prepareStatement(SAVE_GAME);
 
@@ -277,7 +277,7 @@ public class Database {
             } catch (Exception ex) {
                 System.err.println(ex);
             }
-            pstmt.setInt(2, id);
+            pstmt.setInt(2, game.getGameId());
             pstmt.executeUpdate();
             pstmt.close();
         } catch (SQLException ex) {
