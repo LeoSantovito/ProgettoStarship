@@ -112,11 +112,19 @@ public class Engine {
         System.out.print("Inserisci l'id del salvataggio da caricare: ");
         Scanner scanner = new Scanner(System.in);
 
+        /* Verifica che l'id sia un intero. */
+        while (!scanner.hasNextInt()) {
+            System.out.println("Quello non è un numero intero!");
+            System.out.println();
+            System.out.print("Inserisci l'id del salvataggio da caricare: ");
+            scanner.next();
+        }
         int id = scanner.nextInt();
         scanner.nextLine();
         System.out.println();
         System.out.println("Caricamento di una Partita Salvata...");
 
+        /* Fa una query sulla tabella games nel DB a partire dall'id. */
         try {
             if (database.selectGame(id) != null) {
                 GameDescription game = null;
@@ -147,11 +155,9 @@ public class Engine {
         timer.setTime(game.getTimeElapsed());
         timer.start();
 
-        /* Inizio della partita. */
+        /* Stampa messaggi di benvenuto. */
         int totalSeconds = game.getTimeElapsed();
         int id = game.getGameId();
-
-        /* Stampa il tempo trascorso e messaggi di benvenuto. */
         if(totalSeconds != 0){
             System.out.println("Abbiamo sentito la tua mancanza, " + database.getPlayerName(id) + "!");
             printGameTime(totalSeconds);
@@ -160,6 +166,7 @@ public class Engine {
             System.out.println("Benvenuto a bordo, " + database.getPlayerName(id) + "!");
         }
 
+        /* Stampa la stanza iniziale. */
         System.out.println("Sei nella stanza: " + game.getCurrentRoom().getName() + ".");
         System.out.println();
         System.out.println(game.getCurrentRoom().getDescription());
@@ -214,6 +221,7 @@ public class Engine {
         System.out.println();
     }
 
+    /* Stampa il tempo di gioco. */
     private void printGameTime(int totalSeconds){
         int hours = totalSeconds / 3600;
         int minutes = (totalSeconds % 3600) / 60;

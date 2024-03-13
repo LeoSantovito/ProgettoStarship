@@ -211,7 +211,7 @@ public class Database {
                 int hours = totalSeconds / 3600;
                 int minutes = (totalSeconds % 3600) / 60;
                 int seconds = totalSeconds % 60;
-                System.out.println("Tempo Trascorso: " + hours + "h " + minutes + "m " + seconds + "s");
+                System.out.println("Tempo di Gioco: " + hours + "h " + minutes + "m " + seconds + "s");
                 System.out.println("-----------------------");
             }
         }
