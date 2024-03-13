@@ -9,6 +9,7 @@
   {"type": "OPEN", "name": "apri", "alias": []},
   {"type": "PUSH", "name": "premi", "alias": ["spingi", "attiva"]},
   {"type": "SAVE", "name": "salva", "alias": ["save"]},
+  {"type": "TIME", "name": "tempo", "alias": ["timer", "cronometro", "orologio"]},
   {"type": "END", "name": "esci", "alias": ["end", "fine", "muori", "ammazzati", "ucciditi", "suicidati", "exit"]},
   {"type": "HELP", "name": "aiuto", "alias": ["help", "aiutami", "aiutino"]}
 ]

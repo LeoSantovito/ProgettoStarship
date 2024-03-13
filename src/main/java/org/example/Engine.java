@@ -111,6 +111,7 @@ public class Engine {
     private void loadSavedGame() {
         System.out.print("Inserisci l'id del salvataggio da caricare: ");
         Scanner scanner = new Scanner(System.in);
+
         int id = scanner.nextInt();
         scanner.nextLine();
         System.out.println();
@@ -153,21 +154,7 @@ public class Engine {
         /* Stampa il tempo trascorso e messaggi di benvenuto. */
         if(totalSeconds != 0){
             System.out.println("Abbiamo sentito la tua mancanza, " + database.getPlayerName(id) + "!");
-
-            int hours = totalSeconds / 3600;
-            int minutes = (totalSeconds % 3600) / 60;
-            int seconds = totalSeconds % 60;
-            String printHours = hours == 1 ? "ora" : "ore";
-            String printMinutes = minutes == 1 ? "minuto" : "minuti";
-            String printSeconds = seconds == 1 ? "secondo" : "secondi";
-
-            if(hours == 0 && minutes == 0){
-                System.out.println("Hai giocato per " + seconds + " " + printSeconds + " e non hai ancora finito il gioco! Che fallimento!");
-            } else if(hours == 0){
-                System.out.println("Hai giocato per " + minutes + " " + printMinutes + " e " + seconds + " " + printSeconds + " e non hai ancora finito il gioco! Che fallimento!");
-            } else {
-                System.out.println("Hai giocato per " + hours + " " + printHours + ", " + minutes + " " + printMinutes + " e " + seconds + " " + printSeconds + " e non hai ancora finito il gioco! Che fallimento!");
-            }
+            printGameTime(totalSeconds);
         }
         else {
             System.out.println("Benvenuto a bordo, " + database.getPlayerName(id) + "!");
@@ -178,25 +165,35 @@ public class Engine {
         System.out.println(game.getCurrentRoom().getDescription());
         System.out.println();
 
+        /* Gestione dei comandi. */
         Scanner scanner = new Scanner(System.in);
         while (scanner.hasNextLine()) {
             String command = scanner.nextLine();
             ParserOutput p = parser.parse(command, game.getCommands(), game.getCurrentRoom().getObjects(), game.getInventory());
+
             if (p == null || p.getCommand() == null) {
                 System.out.println("Non capisco quello che mi vuoi dire.");
-            }
-            else if (p.getCommand() != null && p.getCommand().getType() == CommandType.SAVE){
-                saveGame(game);
-            }
-            else if (p.getCommand() != null && p.getCommand().getType() == CommandType.END) {
-                /* Interrompe il thread del timer. */
-                timer.interrupt();
-                System.out.println("Addio!");
-                break;
-            }
-            else {
-                game.nextMove(p, System.out);
-                System.out.println();
+            } else {
+                switch (p.getCommand().getType()) {
+                    case SAVE:
+                        saveGame(game);
+                        break;
+                    case TIME:
+                        /* Stampa il tempo di gioco. */
+                        totalSeconds = timer.getSecondsElapsed();
+                        printGameTime(totalSeconds);
+                        System.out.println();
+                        break;
+                    case END:
+                        /* Interrompe il thread del timer. */
+                        timer.interrupt();
+                        System.out.println("Addio!");
+                        return;
+                    default:
+                        game.nextMove(p, System.out);
+                        System.out.println();
+                        break;
+                }
             }
         }
     }
@@ -215,6 +212,23 @@ public class Engine {
         database.updateGame(gameId, game, game.getCurrentRoom());
         System.out.println("Salvataggio completato!");
         System.out.println();
+    }
+
+    private void printGameTime(int totalSeconds){
+        int hours = totalSeconds / 3600;
+        int minutes = (totalSeconds % 3600) / 60;
+        int seconds = totalSeconds % 60;
+        String printHours = hours == 1 ? "ora" : "ore";
+        String printMinutes = minutes == 1 ? "minuto" : "minuti";
+        String printSeconds = seconds == 1 ? "secondo" : "secondi";
+
+        if(hours == 0 && minutes == 0){
+            System.out.println("Hai giocato per " + seconds + " " + printSeconds + " e non hai ancora finito il gioco! Che fallimento!");
+        } else if(hours == 0){
+            System.out.println("Hai giocato per " + minutes + " " + printMinutes + " e " + seconds + " " + printSeconds + " e non hai ancora finito il gioco! Che fallimento!");
+        } else {
+            System.out.println("Hai giocato per " + hours + " " + printHours + ", " + minutes + " " + printMinutes + " e " + seconds + " " + printSeconds + " e non hai ancora finito il gioco! Che fallimento!");
+        }
     }
 
     /**
