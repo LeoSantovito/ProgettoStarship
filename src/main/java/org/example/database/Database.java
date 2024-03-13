@@ -27,13 +27,12 @@ public class Database {
     private static final String CREATE_TABLE = "CREATE TABLE IF NOT EXISTS games ("
             + "id INT AUTO_INCREMENT PRIMARY KEY,"
             + "gamedescription BLOB NOT NULL,"
-            + "currentroom VARCHAR(255) NOT NULL,"
             + "creationdate TIMESTAMP NOT NULL,"
             + "playername VARCHAR(255) NOT NULL"
             + ")";
 
     /* Query per inserire un record di un nuovo salvataggio nella tabella games. */
-    private static final String INSERT_GAME = "INSERT INTO games (gamedescription, currentroom, creationdate, playername) VALUES (?, ?, ?, ?)";
+    private static final String INSERT_GAME = "INSERT INTO games (gamedescription, creationdate, playername) VALUES (?, ?, ?)";
 
     /* Query per selezionare un record dalla tabella games a partire da un id specifico. */
     private static final String SELECT_GAME = "SELECT * FROM games WHERE id = ?";
@@ -45,7 +44,7 @@ public class Database {
     private static final String DELETE_GAME = "DELETE FROM games WHERE id = ?";
 
     /* Query che aggiorna gamedescription e currentroom in un record per salvare lo stato del gioco. */
-    private static final String SAVE_GAME = "UPDATE games SET gamedescription = ?, currentroom = ? WHERE id = ?";
+    private static final String SAVE_GAME = "UPDATE games SET gamedescription = ? WHERE id = ?";
 
     /* Query per eliminare la tabella games con tutti i salvataggi. */
     private static final String DROP_TABLE = "DROP TABLE games";
@@ -71,7 +70,7 @@ public class Database {
     }
 
     /* Inserisce un nuovo record corrispondente a una partita nella tabella games. */
-    public void insertGame(GameDescription game, Room currentRoom, String playerName) {
+    public void insertGame(GameDescription game, String playerName) {
         try {
             PreparedStatement pstmt = conn.prepareStatement(INSERT_GAME);
 
@@ -83,12 +82,14 @@ public class Database {
                 System.err.println(ex);
             }
 
-            pstmt.setString(2, currentRoom.getName());
-            pstmt.setTimestamp(3, new Timestamp(System.currentTimeMillis()));
-            pstmt.setString(4, playerName);
+            pstmt.setTimestamp(2, new Timestamp(System.currentTimeMillis()));
+            pstmt.setString(3, playerName);
 
             pstmt.executeUpdate();
 
+            /* Si aggiorna dopo aver salvato il GameDescription nella tabella games.
+             * Le partite non salvate rimarranno pertanto con gameId = -1.
+             */
             updateGameId(game);
 
             pstmt.close();
@@ -111,7 +112,7 @@ public class Database {
     }
 
     /* Carica una GameDescription dalla tabella games a partire da un id specifico. */
-    public GameDescription loadGame(Integer id){
+    public GameDescription loadGame(int id){
         byte[] serializedGame = null;
         GameDescription loadedGame = null;
         try {
@@ -142,9 +143,18 @@ public class Database {
             while (rs.next()) {
                 GameRecord gr = new GameRecord();
                 gr.setId(rs.getInt("id"));
-                gr.setCurrentRoom(rs.getString("currentroom"));
                 gr.setCreationDate(rs.getTimestamp("creationdate"));
                 gr.setPlayerName(rs.getString("playername"));
+
+                try {
+                    byte[] loadedGame = rs.getBytes(2);
+                    gr.setGameDescription((GameDescription) Utils.deserializeObject(loadedGame));
+                    gr.setCurrentRoom(gr.getGameDescription().getCurrentRoom().getName());
+                    gr.setTimeElapsed(gr.getGameDescription().getTimeElapsed());
+                } catch (Exception ex) {
+                    System.err.println(ex);
+                }
+
                 games.add(gr);
             }
         } catch (SQLException ex) {
@@ -154,7 +164,7 @@ public class Database {
     }
 
     /* Seleziona un record dalla tabella games a partire da un id specifico. */
-    public GameRecord selectGame(Integer id) {
+    public GameRecord selectGame(int id) {
         try {
             PreparedStatement pstmt = conn.prepareStatement(SELECT_GAME);
             pstmt.setInt(1, id);
@@ -165,12 +175,13 @@ public class Database {
                 try {
                     byte[] loadedGame = rs.getBytes(2);
                     gr.setGameDescription((GameDescription) Utils.deserializeObject(loadedGame));
+                    gr.setCurrentRoom(gr.getGameDescription().getCurrentRoom().getName());
+                    gr.setTimeElapsed(gr.getGameDescription().getTimeElapsed());
                 } catch (Exception ex) {
                     System.err.println(ex);
                 }
 
                 gr.setId(rs.getInt("id"));
-                gr.setCurrentRoom(rs.getString("currentroom"));
                 gr.setCreationDate(rs.getTimestamp("creationdate"));
                 gr.setPlayerName(rs.getString("playername"));
                 return gr;
@@ -196,9 +207,29 @@ public class Database {
                 System.out.println("Stanza Corrente: " + gr.getCurrentRoom());
                 System.out.println("Data di Creazione: " + gr.getCreationDate());
                 System.out.println("Nome del Giocatore: " + gr.getPlayerName());
+                /* Ottiene e stampa il tempo trascorso in ore, minuti e secondi. */
+                int totalSeconds = gr.getTimeElapsed();
+                int hours = totalSeconds / 3600;
+                int minutes = (totalSeconds % 3600) / 60;
+                int seconds = totalSeconds % 60;
+                System.out.println("Tempo di Gioco: " + hours + "h " + minutes + "m " + seconds + "s");
                 System.out.println("-----------------------");
             }
         }
+    }
+
+    public String getPlayerName(int id){
+        try {
+            PreparedStatement pstmt = conn.prepareStatement(SELECT_GAME);
+            pstmt.setInt(1, id);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return rs.getString("playername");
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+        return null;
     }
 
     /* Pulisce le partitite vuote dalla tabella games nel DB. */
@@ -225,7 +256,7 @@ public class Database {
     }
 
     /* Elimina un record dalla tabella games a partire da un id specifico. */
-    public void deleteGame(Integer id) {
+    public void deleteGame(int id) {
         try {
             PreparedStatement pstmt = conn.prepareStatement(DELETE_GAME);
             pstmt.setInt(1, id);
@@ -236,7 +267,7 @@ public class Database {
         }
     }
 
-    public void updateGame(Integer id, GameDescription game, Room currentRoom) {
+    public void updateGame(int id, GameDescription game) {
         try {
             PreparedStatement pstmt = conn.prepareStatement(SAVE_GAME);
 
@@ -246,9 +277,7 @@ public class Database {
             } catch (Exception ex) {
                 System.err.println(ex);
             }
-            pstmt.setString(2, currentRoom.getName());
-            pstmt.setInt(3, id);
-
+            pstmt.setInt(2, id);
             pstmt.executeUpdate();
             pstmt.close();
         } catch (SQLException ex) {
