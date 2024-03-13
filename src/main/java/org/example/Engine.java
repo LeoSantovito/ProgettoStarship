@@ -8,6 +8,7 @@ package org.example;
 import org.example.games.StarshipExodus;
 import org.example.parser.Parser;
 import org.example.parser.ParserOutput;
+import org.example.swing.MenuSwing;
 import org.example.type.CommandType;
 import org.example.database.Database;
 
@@ -30,6 +31,7 @@ public class Engine {
     private Database database;
     private GameTimer timer;
 
+
     public Engine() {
         try {
             Set<String> stopwords = Utils.loadFileListInSet(new File("./resources/stopwords"));
@@ -41,40 +43,8 @@ public class Engine {
         }
     }
 
-    /**
-     * Mostra il menu iniziale e gestisce la scelta dell'utente. Verrà sostituito da un'interfaccia grafica SWING.
-     */
-    public void startMenu() {
-        System.out.println("========== Starship Exodus ==========");
-        System.out.println("1. Nuova Partita");
-        System.out.println("2. Carica Partita");
-        System.out.println("3. Esci");
-        System.out.print("Scelta: ");
-
-        Scanner scanner = new Scanner(System.in);
-        int choice = scanner.nextInt();
-        scanner.nextLine();
-
-        switch(choice) {
-            case 1:
-                newGame();
-                break;
-            case 2:
-                database.printAllGames();
-                loadSavedGame();
-                break;
-            case 3:
-                System.out.println("Addio!");
-                System.exit(0);
-                break;
-            default:
-                System.out.println("Scelta non valida. Riprova.");
-                startMenu();
-        }
-    }
-
     /* Inizializa una nuova partita. */
-    private void newGame() {
+    public void newGame() {
 
         /* Richiede il nome del giocatore da usare per il salvataggio. */
         System.out.print("Inserisci il tuo nome: ");
@@ -108,7 +78,7 @@ public class Engine {
     }
 
     /* Carica i dati di una partita salvata. */
-    private void loadSavedGame() {
+    public void loadSavedGame() {
         System.out.print("Inserisci l'id del salvataggio da caricare: ");
         Scanner scanner = new Scanner(System.in);
 
@@ -142,7 +112,9 @@ public class Engine {
             } else {
                 System.out.println("Salvataggio non trovato. Torno al menu principale.");
                 System.out.println();
-                startMenu();
+
+                MenuSwing menuSwing = new MenuSwing();
+                menuSwing.startMenu();
             }
         } catch (Exception ex) {
             System.err.println(ex);
@@ -150,7 +122,7 @@ public class Engine {
     }
 
     /* Gestisce l'esecuzione del gioco. */
-    private void playGame(GameDescription game) {
+    public void playGame(GameDescription game) {
         /* Inizializza il timer prendendo il valore iniziale dalla gameDescription del DB. */
         timer.setTime(game.getTimeElapsed());
         timer.start();
@@ -242,15 +214,17 @@ public class Engine {
      */
     public static void main(String[] args) {
         Engine engine = new Engine();
+
         try {
-            engine.startMenu();
+           MenuSwing menuSwing = new MenuSwing();
+            menuSwing.startMenu();
         } finally {
             /* Pulisce le partite non salvate (con id della gameDescription a -1) e chiude la connessione al database. */
             engine.database.cleanEmptyGames();
             engine.database.closeDatabase();
 
             System.out.println("Partita terminata.");
-            System.exit(0);
+            //System.exit(0);
         }
     }
 }
