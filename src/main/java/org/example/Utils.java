@@ -5,10 +5,15 @@
  */
 package org.example;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -59,6 +64,15 @@ public class Utils {
         try (ByteArrayInputStream bis = new ByteArrayInputStream(data);
              ObjectInputStream ois = new ObjectInputStream(bis)) {
             return ois.readObject();
+        }
+    }
+
+    public static <T> List<T> loadObjectsFromFile(String filePath, Class<T> objectType) throws IOException {
+        Gson gson = new Gson();
+        Type objectTypeList = TypeToken.getParameterized(List.class, objectType).getType();
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            T[] objectArray = gson.fromJson(br, (Type) Array.newInstance(objectType, 0).getClass());
+            return List.of(objectArray);
         }
     }
 

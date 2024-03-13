@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import org.example.Engine;
 import org.example.GameDescription;
+import org.example.Utils;
 import org.example.parser.ParserOutput;
 import org.example.type.*;
 import org.example.database.*;
@@ -46,9 +47,9 @@ public class StarshipExodus extends GameDescription {
     @Override
     public void init() throws Exception {
         //Commands
-        List<Command> commands = loadObjectsFromFile("./resources/commands.json", Command.class);
+        List<Command> commands = Utils.loadObjectsFromFile("./resources/commands.json", Command.class);
         getCommands().addAll(commands);
-        List<Room> rooms = loadObjectsFromFile("./resources/rooms.json", Room.class);
+        List<Room> rooms = Utils.loadObjectsFromFile("./resources/rooms.json", Room.class);
         for (Room currentRoom : rooms){
             int northId = currentRoom.getNorthId();
             if(northId != -1) {
@@ -301,15 +302,5 @@ public class StarshipExodus extends GameDescription {
         out.println(
                 "Premi il pulsante del giocattolo e in seguito ad una forte esplosione la tua casa prende fuoco...\ntu e tuoi famigliari cercate invano di salvarvi e venite avvolti dalle fiamme...\nè stata una morte CALOROSA...addio!");
         System.exit(0);
-    }
-
-    private static <T> List<T> loadObjectsFromFile(String filePath, Class<T> objectType) throws IOException {
-        Gson gson = new Gson();
-        Type objectTypeList = TypeToken.getParameterized(List.class, objectType).getType();
-
-        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-            T[] objectArray = gson.fromJson(br, (Type) Array.newInstance(objectType, 0).getClass());
-            return List.of(objectArray);
-        }
     }
 }
