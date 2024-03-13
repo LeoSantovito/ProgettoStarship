@@ -87,6 +87,9 @@ public class Database {
 
             pstmt.executeUpdate();
 
+            /* Si aggiorna dopo aver salvato il GameDescription nella tabella games.
+             * Le partite non salvate rimarranno pertanto con gameId = -1.
+             */
             updateGameId(game);
 
             pstmt.close();
