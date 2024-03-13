@@ -40,40 +40,6 @@ public class Engine {
         }
     }
 
-    /**
-     * Mostra il menu iniziale e gestisce la scelta dell'utente. Verrà sostituito da un'interfaccia grafica SWING.
-     */
-    public void startMenu() {
-    /*    System.out.println("========== Starship Exodus ==========");
-        System.out.println("1. Nuova Partita");
-        System.out.println("2. Carica Partita");
-        System.out.println("3. Esci");
-        System.out.print("Scelta: ");
-
-        Scanner scanner = new Scanner(System.in);
-        int choice = scanner.nextInt();
-        scanner.nextLine();
-
-        switch(choice) {
-            case 1:
-                newGame();
-                break;
-            case 2:
-                database.printAllGames();
-                loadSavedGame();
-                break;
-            case 3:
-                System.out.println("Addio!");
-                System.exit(0);
-                break;
-            default:
-                System.out.println("Scelta non valida. Riprova.");
-                startMenu();
-        }*/
-
-
-    }
-
     /* Inizializa una nuova partita. */
     public void newGame() {
 
