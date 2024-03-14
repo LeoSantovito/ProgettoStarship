@@ -107,8 +107,6 @@ public class StarshipExodus extends GameDescription {
                 //gesione degli oggetti da prendere presenti nella stanza
                 if (p.getObject() != null && p.getObject().getContainerId() == -1) {
                     if (p.getObject().isPickupable()) {
-                        System.out.println("shit");
-                        System.out.println(p.getObject().getContainerId());
                         getInventory().add(p.getObject());
                         getCurrentRoom().getObjects().remove(p.getObject());
                         out.println("Hai raccolto: " +
@@ -118,7 +116,6 @@ public class StarshipExodus extends GameDescription {
                     }
                     // gestione degli oggetti da prendere presenti nei container
                 } else if (p.getObject() != null && p.getObject().getContainerId() != -1) {
-                    System.out.println("shiiiiiiit");
                     if (p.getObject().isPickupable()) {
 
                         Iterator<AdvObject> roomObjectIterator = getCurrentRoom().getObjects().iterator();
@@ -147,7 +144,7 @@ public class StarshipExodus extends GameDescription {
                         out.println("Non puoi raccogliere questo oggetto.");
                     }
                 } else if (p.getObject() == null){
-                    out.println("Non c'è niente da raccogliere qui. Ollare");
+                    out.println("Non c'è niente da raccogliere qui.");
                 }
             } else if (p.getCommand().getType() == CommandType.OPEN) {
                 // se un container viene aperto, gli oggetti contenuti rimangono al suo interno finchè non vengono presi
