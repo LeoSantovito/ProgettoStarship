@@ -50,100 +50,9 @@ public class StarshipExodus extends GameDescription {
         List<Command> commands = Utils.loadObjectsFromFile("./resources/commands.json", Command.class);
         getCommands().addAll(commands);
         List<Room> rooms = Utils.loadObjectsFromFile("./resources/rooms.json", Room.class);
-        for (Room currentRoom : rooms){
-            int northId = currentRoom.getNorthId();
-            if(northId != -1) {
-                Room north = findRoomById(rooms, northId);
-                currentRoom.setNorth(north);
-            }
-            int southId = currentRoom.getSouthId();
-            if(southId != -1) {
-                Room south = findRoomById(rooms, southId);
-                currentRoom.setSouth(south);
-            }
-            int eastId = currentRoom.getEastId();
-            if(eastId != -1) {
-                Room east = findRoomById(rooms, eastId);
-                currentRoom.setEast(east);
-            }
-            int westId = currentRoom.getWestId();
-            if(westId != -1) {
-                Room west = findRoomById(rooms, westId);
-                currentRoom.setWest(west);
-            }
-        }
-        for (Room room : rooms) {
-            for (AdvObject obj : room.getObjects()) {
-                if (obj.isContainer()){
-                    System.out.println("Container: " + obj.getName());
-                }
-            }
-        }
+        setMap(rooms);
         getRooms().addAll(rooms);
-        setCurrentRoom(findRoomById(rooms, 0));
-        //Rooms
-       /* Room hall = new Room(0, "Corridoio",
-                "Sei appena tornato a casa e non sai cosa fare.\nTi ricordi che non hai ancora aperto quel fantastico regalo di tua zia Lina.\n"
-                        + " Sarà il caso di cercarlo e di giocarci!");
-        hall.setLook(
-                "Sei nel corridoio, a nord vedi il bagno, a sud il soggiorno e ad ovest la tua cameretta, forse il gioco sarà lì?");
-        Room livingRoom = new Room(1, "Soggiorno",
-                "Ti trovi nel soggiorno.\nCi sono quei mobili marrone scuro che hai sempre odiato e delle orribili sedie.");
-        livingRoom.setLook("Non c'è nulla di interessante qui.");
-        Room kitchen = new Room(2, "Cucina",
-                "Ti trovi nella solita cucina.\nMobili bianchi, maniglie azzurre, quello strano lampadario che adoravi tanto quando eri piccolo.\n"
-                        +
-                        "C'è un tavolo con un bel portafrutta e una finestra.");
-        kitchen.setLook(
-                "La solita cucina, ma noti una chiave vicino al portafrutta.");
-        Room bathroom = new Room(3, "Bagno",
-                "Sei nel bagno.\nQuanto tempo passato qui dentro...meglio non pensarci...");
-        bathroom.setLook(
-                "Vedo delle batterie sul mobile alla destra del lavandino.");
-        Room yourRoom = new Room(4, "La tua cameratta",
-                "Finalmente la tua cameretta!\nQuesto luogo ti è così famigliare...ma non ricordi dove hai messo il nuovo regalo di zia Lina.");
-        yourRoom.setLook(
-                "C'è un armadio bianco, di solito ci conservi i tuoi giochi.");
-        //maps
-        kitchen.setEast(livingRoom);
-        livingRoom.setNorth(hall);
-        livingRoom.setWest(kitchen);
-        hall.setSouth(livingRoom);
-        hall.setWest(yourRoom);
-        hall.setNorth(bathroom);
-        bathroom.setSouth(hall);
-        yourRoom.setEast(hall);
-        getRooms().add(kitchen);
-        getRooms().add(livingRoom);
-        getRooms().add(hall);
-        getRooms().add(bathroom);
-        getRooms().add(yourRoom);
-        //obejcts
-        AdvObject battery = new AdvObject(1, "batteria",
-                "Un pacco di batterie, chissà se sono cariche.");
-        battery.setAlias(new String[] {"batterie", "pile", "pila"});
-        bathroom.getObjects().add(battery);
-        AdvObjectContainer wardrobe =
-                new AdvObjectContainer(2, "armadio", "Un semplice armadio.");
-        wardrobe.setAlias(new String[] {"guardaroba", "vestiario"});
-        wardrobe.setOpenable(true);
-        wardrobe.setPickupable(false);
-        wardrobe.setOpen(false);
-        yourRoom.getObjects().add(wardrobe);
-        AdvObject toy = new AdvObject(3, "giocattolo",
-                "Il gioco che ti ha regalato zia Lina.");
-        toy.setAlias(new String[] {"gioco", "robot"});
-        toy.setPushable(true);
-        toy.setPush(false);
-        wardrobe.add(toy);
-        AdvObject kkey = new AdvObject(4, "chiave",
-                "Usa semplice chiave come tante altre.");
-        toy.setAlias(new String[] {"key"});
-        toy.setPushable(false);
-        toy.setPush(false);
-        kitchen.getObjects().add(kkey);
-        //set starting room
-        setCurrentRoom(hall); */
+        setCurrentRoom(findRoomById(rooms, 2));
     }
 
     @Override
@@ -228,9 +137,7 @@ public class StarshipExodus extends GameDescription {
                                             c.getObjectsList().iterator();
                                     while (it.hasNext()) {
                                         AdvObject next = it.next();
-                                        getCurrentRoom().getObjects().add(next);
                                         out.print(" " + next.getName());
-                                        it.remove();
                                     }
                                     out.println();
                                 }
@@ -302,5 +209,29 @@ public class StarshipExodus extends GameDescription {
         out.println(
                 "Premi il pulsante del giocattolo e in seguito ad una forte esplosione la tua casa prende fuoco...\ntu e tuoi famigliari cercate invano di salvarvi e venite avvolti dalle fiamme...\nè stata una morte CALOROSA...addio!");
         System.exit(0);
+    }
+    private void setMap(List<Room> rooms) {
+        for (Room currentRoom : rooms){
+            int northId = currentRoom.getNorthId();
+            if(northId != -1) {
+                Room north = findRoomById(rooms, northId);
+                currentRoom.setNorth(north);
+            }
+            int southId = currentRoom.getSouthId();
+            if(southId != -1) {
+                Room south = findRoomById(rooms, southId);
+                currentRoom.setSouth(south);
+            }
+            int eastId = currentRoom.getEastId();
+            if(eastId != -1) {
+                Room east = findRoomById(rooms, eastId);
+                currentRoom.setEast(east);
+            }
+            int westId = currentRoom.getWestId();
+            if(westId != -1) {
+                Room west = findRoomById(rooms, westId);
+                currentRoom.setWest(west);
+            }
+        }
     }
 }
