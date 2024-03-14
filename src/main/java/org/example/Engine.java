@@ -223,7 +223,6 @@ public class Engine {
             /* Pulisce le partite non salvate (con id della gameDescription a -1) e chiude la connessione al database. */
             engine.database.cleanEmptyGames();
             engine.database.closeDatabase();
-
             //System.out.println("Partita terminata.");
             //System.exit(0);
         }

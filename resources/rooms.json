@@ -102,7 +102,31 @@
             "openable": false,
             "open": false,
             "objectsList": []
-          }
+          },
+          {
+            "containerId": 2,
+            "container": false,
+            "id": 6,
+            "name": "libro",
+            "description": "Un libro di favole.",
+            "alias": ["libri", "racconti", "storie"],
+            "pickupable": true,
+            "openable": false,
+            "open": false,
+            "objectsList": []
+          },
+            {
+                "containerId": 2,
+                "container": false,
+                "id": 7,
+                "name": "puzzle",
+                "description": "Un puzzle di 1000 pezzi.",
+                "alias": ["puzzle", "rompicapo", "enigma"],
+                "pickupable": true,
+                "openable": false,
+                "open": false,
+                "objectsList": []
+            }
         ]
       }
     ]

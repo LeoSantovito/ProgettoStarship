@@ -104,6 +104,7 @@ public class StarshipExodus extends GameDescription {
                     out.println("Non c'è niente di interessante qui.");
                 }
             } else if (p.getCommand().getType() == CommandType.PICK_UP) {
+                //gesione degli oggetti da prendere presenti nella stanza
                 if (p.getObject() != null && p.getObject().getContainerId() == -1) {
                     if (p.getObject().isPickupable()) {
                         System.out.println("shit");
@@ -115,18 +116,33 @@ public class StarshipExodus extends GameDescription {
                     } else {
                         out.println("Non puoi raccogliere questo oggetto.");
                     }
+                    // gestione degli oggetti da prendere presenti nei container
                 } else if (p.getObject() != null && p.getObject().getContainerId() != -1) {
                     System.out.println("shiiiiiiit");
                     if (p.getObject().isPickupable()) {
-                        getInventory().add(p.getObject());
-                        for (AdvObject o : getCurrentRoom().getObjects()) {
+
+                        Iterator<AdvObject> roomObjectIterator = getCurrentRoom().getObjects().iterator();
+                        while (roomObjectIterator.hasNext()) {
+                            AdvObject o = roomObjectIterator.next();
+                            // controllo che l'id dell'oggetto contenitore sia uguale all'id del contenitore dell'oggetto da raccogliere
                             if (o.getId() == p.getObject().getContainerId()) {
-                                p.getObject().setContainerId(-1);
-                                o.getObjectsList().remove(p.getObject());
+                                if (o.isOpen()) {
+                                    Iterator<AdvObject> containedObjectIterator = o.getObjectsList().iterator();
+                                    while (containedObjectIterator.hasNext()) {
+                                        AdvObject obj = containedObjectIterator.next();
+                                        if (p.getObject().getId() == obj.getId()) {
+                                            p.getObject().setContainerId(-1);
+                                            getInventory().add(p.getObject());
+                                            containedObjectIterator.remove();
+                                            out.println("Hai raccolto: " + p.getObject().getDescription());
+                                        }
+                                    }
+                                } else {
+                                    System.out.println("Non c'è niente da raccogliere qui");
+                                }
                             }
                         }
-                        out.println("Hai raccolto: " +
-                                p.getObject().getDescription());
+
                     } else {
                         out.println("Non puoi raccogliere questo oggetto.");
                     }
@@ -134,34 +150,42 @@ public class StarshipExodus extends GameDescription {
                     out.println("Non c'è niente da raccogliere qui. Ollare");
                 }
             } else if (p.getCommand().getType() == CommandType.OPEN) {
-                /*ATTENZIONE: quando un oggetto contenitore viene aperto, tutti gli oggetti contenuti
-                 * vengongo inseriti nella stanza o nell'inventario a seconda di dove si trova l'oggetto contenitore.
-                 * Potrebbe non esssere la soluzione ottimale.
-                 */
+                // se un container viene aperto, gli oggetti contenuti rimangono al suo interno finchè non vengono presi
                 if (p.getObject() == null && p.getInvObject() == null) {
                     out.println("Non c'è niente da aprire qui.");
                 } else {
                     if (p.getObject() != null) {
-                        if (p.getObject().isOpenable() &&
-                                p.getObject().isOpen() == false) {
+                        if (p.getObject().isOpenable()) {
                             if (p.getObject().isContainer()) {
-                                out.println("Hai aperto: " +
-                                        p.getObject().getName());
-                                AdvObject c = p.getObject();
-                                if (!c.getObjectsList().isEmpty()) {
-                                    out.print(c.getName() + " contiene:");
-                                    Iterator<AdvObject> it =
-                                            c.getObjectsList().iterator();
-                                    while (it.hasNext()) {
-                                        AdvObject next = it.next();
-                                        out.print(" " + next.getName());
+                                if (!p.getObject().isOpen()) {
+                                    out.println("Hai aperto: " +
+                                            p.getObject().getName());
+                                    p.getObject().setOpen(true);
+                                    AdvObject c = p.getObject();
+                                    if (!c.getObjectsList().isEmpty()) {
+                                        out.print(c.getName() + " contiene:");
+                                        Iterator<AdvObject> it =
+                                                c.getObjectsList().iterator();
+                                        while (it.hasNext()) {
+                                            AdvObject next = it.next();
+                                            out.print(" " + next.getName());
+                                        }
+                                        out.println();
                                     }
-                                    out.println();
+                                } else {
+                                    out.println("Hai già aperto questo oggetto.");
+                                    AdvObject c = p.getObject();
+                                    if (!c.getObjectsList().isEmpty()) {
+                                        out.print(c.getName() + " contiene:");
+                                        Iterator<AdvObject> it =
+                                                c.getObjectsList().iterator();
+                                        while (it.hasNext()) {
+                                            AdvObject next = it.next();
+                                            out.print(" " + next.getName());
+                                        }
+                                        out.println();
+                                    }
                                 }
-                            } else {
-                                out.println("Hai aperto: " +
-                                        p.getObject().getName());
-                                p.getObject().setOpen(true);
                             }
                         } else {
                             out.println("Non puoi aprire questo oggetto.");
