@@ -104,35 +104,38 @@ public class Engine {
 
         /* Fa una query sulla tabella games nel DB a partire dall'id. */
         try {
-            if (database.selectGame(id) != null) {
-                GameDescription game = null;
-                game = database.loadGame(id);
-
-                /* Inizializza il timer prendendo il valore iniziale dalla gameDescription del DB. */
-                GameTimer timer = new GameTimer(game.getTimeElapsed());
-                timer.start();
-
-                System.out.println("Partita Caricata con successo!");
-                System.out.println();
-                System.out.println("ID della partita: " + game.getGameId());
-                System.out.println();
-                playGame(game);
-            } else {
+            if (database.selectGame(id) == null) {
                 System.out.println("Salvataggio non trovato. Torno al menu principale.");
                 System.out.println();
 
                 MenuSwing menuSwing = new MenuSwing(this);
                 menuSwing.startMenu();
+
+            } else {
+                try {
+                    GameDescription game = null;
+                    game = database.loadGame(id);
+
+                    /* Inizializza il timer prendendo il valore iniziale dalla gameDescription del DB. */
+                    GameTimer timer = new GameTimer(game.getTimeElapsed());
+                    timer.start();
+
+                    System.out.println("Partita Caricata con successo!");
+                    System.out.println();
+                    System.out.println("ID della partita: " + game.getGameId());
+                    System.out.println();
+                    playGame(game);
+                } finally {
+                    /* Pulisce le nuove partite non salvate, chiude database, fa interrupt del timer e chiude il programma. */
+                    database.cleanEmptyGames();
+                    database.closeDatabase();
+                    timer.interrupt();
+                    System.out.println("Partita terminata.");
+                    System.exit(0);
+                }
             }
         } catch (Exception ex) {
             System.err.println(ex);
-        } finally {
-            /* Pulisce le nuove partite non salvate, chiude database, fa interrupt del timer e chiude il programma. */
-            database.cleanEmptyGames();
-            database.closeDatabase();
-            timer.interrupt();
-            System.out.println("Partita terminata.");
-            System.exit(0);
         }
     }
 
