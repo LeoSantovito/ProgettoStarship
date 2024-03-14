@@ -64,174 +64,183 @@ public class StarshipExodus extends GameDescription {
             //move
             boolean noroom = false;
             boolean move = false;
-            if (p.getCommand().getType() == CommandType.NORTH) {
-                if (getCurrentRoom().getNorth() != null) {
-                    setCurrentRoom(getCurrentRoom().getNorth());
-                    move = true;
-                } else {
-                    noroom = true;
-                }
-            } else if (p.getCommand().getType() == CommandType.SOUTH) {
-                if (getCurrentRoom().getSouth() != null) {
-                    setCurrentRoom(getCurrentRoom().getSouth());
-                    move = true;
-                } else {
-                    noroom = true;
-                }
-            } else if (p.getCommand().getType() == CommandType.EAST) {
-                if (getCurrentRoom().getEast() != null) {
-                    setCurrentRoom(getCurrentRoom().getEast());
-                    move = true;
-                } else {
-                    noroom = true;
-                }
-            } else if (p.getCommand().getType() == CommandType.WEST) {
-                if (getCurrentRoom().getWest() != null) {
-                    setCurrentRoom(getCurrentRoom().getWest());
-                    move = true;
-                } else {
-                    noroom = true;
-                }
-            } else if (p.getCommand().getType() == CommandType.INVENTORY) {
-                out.println("Nel tuo inventario ci sono:");
-                for (AdvObject o : getInventory()) {
-                    out.println(o.getName() + ": " + o.getDescription());
-                }
-            } else if (p.getCommand().getType() == CommandType.LOOK_AT) {
-                if (getCurrentRoom().getLook() != null) {
-                    out.println(getCurrentRoom().getLook());
-                } else {
-                    out.println("Non c'è niente di interessante qui.");
-                }
-            } else if (p.getCommand().getType() == CommandType.PICK_UP) {
-                //gesione degli oggetti da prendere presenti nella stanza
-                if (p.getObject() != null && p.getObject().getContainerId() == -1) {
-                    if (p.getObject().isPickupable()) {
-                        getInventory().add(p.getObject());
-                        getCurrentRoom().getObjects().remove(p.getObject());
-                        out.println("Hai raccolto: " +
-                                p.getObject().getDescription());
+            switch (p.getCommand().getType()) {
+                case NORTH:
+                    if (getCurrentRoom().getNorth() != null) {
+                        setCurrentRoom(getCurrentRoom().getNorth());
+                        move = true;
                     } else {
-                        out.println("Non puoi raccogliere questo oggetto.");
+                        noroom = true;
                     }
-                    // gestione degli oggetti da prendere presenti nei container
-                } else if (p.getObject() != null && p.getObject().getContainerId() != -1) {
-                    if (p.getObject().isPickupable()) {
-
-                        Iterator<AdvObject> roomObjectIterator = getCurrentRoom().getObjects().iterator();
-                        while (roomObjectIterator.hasNext()) {
-                            AdvObject o = roomObjectIterator.next();
-                            // controllo che l'id dell'oggetto contenitore sia uguale all'id del contenitore dell'oggetto da raccogliere
-                            if (o.getId() == p.getObject().getContainerId()) {
-                                if (o.isOpen()) {
-                                    Iterator<AdvObject> containedObjectIterator = o.getObjectsList().iterator();
-                                    while (containedObjectIterator.hasNext()) {
-                                        AdvObject obj = containedObjectIterator.next();
-                                        if (p.getObject().getId() == obj.getId()) {
-                                            p.getObject().setContainerId(-1);
-                                            getInventory().add(p.getObject());
-                                            containedObjectIterator.remove();
-                                            out.println("Hai raccolto: " + p.getObject().getDescription());
-                                        }
-                                    }
-                                } else {
-                                    System.out.println("Non c'è niente da raccogliere qui");
-                                }
-                            }
-                        }
-
+                    break;
+                case SOUTH:
+                    if (getCurrentRoom().getSouth() != null) {
+                        setCurrentRoom(getCurrentRoom().getSouth());
+                        move = true;
                     } else {
-                        out.println("Non puoi raccogliere questo oggetto.");
+                        noroom = true;
                     }
-                } else if (p.getObject() == null){
-                    out.println("Non c'è niente da raccogliere qui.");
-                }
-            } else if (p.getCommand().getType() == CommandType.OPEN) {
-                // se un container viene aperto, gli oggetti contenuti rimangono al suo interno finchè non vengono presi
-                if (p.getObject() == null && p.getInvObject() == null) {
-                    out.println("Non c'è niente da aprire qui.");
-                } else {
-                    if (p.getObject() != null) {
-                        if (p.getObject().isOpenable()) {
-                            if (p.getObject().isContainer()) {
-                                if (!p.getObject().isOpen()) {
-                                    out.println("Hai aperto: " +
-                                            p.getObject().getName());
-                                    p.getObject().setOpen(true);
-                                    AdvObject c = p.getObject();
-                                    if (!c.getObjectsList().isEmpty()) {
-                                        out.print(c.getName() + " contiene:");
-                                        Iterator<AdvObject> it =
-                                                c.getObjectsList().iterator();
-                                        while (it.hasNext()) {
-                                            AdvObject next = it.next();
-                                            out.print(" " + next.getName());
-                                        }
-                                        out.println();
-                                    }
-                                } else {
-                                    out.println("Hai già aperto questo oggetto.");
-                                    AdvObject c = p.getObject();
-                                    if (!c.getObjectsList().isEmpty()) {
-                                        out.print(c.getName() + " contiene:");
-                                        Iterator<AdvObject> it =
-                                                c.getObjectsList().iterator();
-                                        while (it.hasNext()) {
-                                            AdvObject next = it.next();
-                                            out.print(" " + next.getName());
-                                        }
-                                        out.println();
-                                    }
-                                }
-                            }
+                    break;
+                case EAST:
+                    if (getCurrentRoom().getEast() != null) {
+                        setCurrentRoom(getCurrentRoom().getEast());
+                        move = true;
+                    } else {
+                        noroom = true;
+                    }
+                    break;
+                case WEST:
+                    if (getCurrentRoom().getWest() != null) {
+                        setCurrentRoom(getCurrentRoom().getWest());
+                        move = true;
+                    } else {
+                        noroom = true;
+                    }
+                    break;
+                case INVENTORY:
+                    out.println("Nel tuo inventario ci sono:");
+                    for (AdvObject o : getInventory()) {
+                        out.println(o.getName() + ": " + o.getDescription());
+                    }
+                    break;
+                case LOOK_AT:
+                    if (getCurrentRoom().getLook() != null) {
+                        out.println(getCurrentRoom().getLook());
+                    } else {
+                        out.println("Non c'è niente di interessante qui.");
+                    }
+                    break;
+                case PICK_UP:
+                    // gesione degli oggetti da prendere presenti nella stanza
+                    if (p.getObject() != null && p.getObject().getContainerId() == -1) {
+                        if (p.getObject().isPickupable()) {
+                            getInventory().add(p.getObject());
+                            getCurrentRoom().getObjects().remove(p.getObject());
+                            out.println("Hai raccolto: " +
+                                    p.getObject().getDescription());
                         } else {
-                            out.println("Non puoi aprire questo oggetto.");
+                            out.println("Non puoi raccogliere questo oggetto.");
                         }
-                    }
-                    if (p.getInvObject() != null) {
-                        if (p.getInvObject().isOpenable() &&
-                                p.getInvObject().isOpen() == false) {
-                            if (p.getInvObject().isContainer()) {
-                                AdvObject c = p.getInvObject();
-                                if (!c.getObjectsList().isEmpty()) {
-                                    out.print(c.getName() + " contiene:");
-                                    Iterator<AdvObject> it =
-                                            c.getObjectsList().iterator();
-                                    while (it.hasNext()) {
-                                        AdvObject next = it.next();
-                                        getInventory().add(next);
-                                        out.print(" " + next.getName());
-                                        it.remove();
+                        // gestione degli oggetti da prendere presenti nei container
+                    } else if (p.getObject() != null && p.getObject().getContainerId() != -1) {
+                        if (p.getObject().isPickupable()) {
+
+                            Iterator<AdvObject> roomObjectIterator = getCurrentRoom().getObjects().iterator();
+                            while (roomObjectIterator.hasNext()) {
+                                AdvObject o = roomObjectIterator.next();
+                                // controllo che l'id dell'oggetto contenitore sia uguale all'id del contenitore dell'oggetto da raccogliere
+                                if (o.getId() == p.getObject().getContainerId()) {
+                                    if (o.isOpen()) {
+                                        Iterator<AdvObject> containedObjectIterator = o.getObjectsList().iterator();
+                                        while (containedObjectIterator.hasNext()) {
+                                            AdvObject obj = containedObjectIterator.next();
+                                            if (p.getObject().getId() == obj.getId()) {
+                                                p.getObject().setContainerId(-1);
+                                                getInventory().add(p.getObject());
+                                                containedObjectIterator.remove();
+                                                out.println("Hai raccolto: " + p.getObject().getDescription());
+                                            }
+                                        }
+                                    } else {
+                                        System.out.println("Non c'è niente da raccogliere qui");
                                     }
-                                    out.println();
+                                }
+                            }
+
+                        } else {
+                            out.println("Non puoi raccogliere questo oggetto.");
+                        }
+                    } else if (p.getObject() == null){
+                        out.println("Non c'è niente da raccogliere qui.");
+                    }
+                    break;
+                case OPEN:
+                    // se un container viene aperto, gli oggetti contenuti rimangono al suo interno finchè non vengono presi
+                    if (p.getObject() == null && p.getInvObject() == null) {
+                        out.println("Non c'è niente da aprire qui.");
+                    } else {
+                        if (p.getObject() != null) {
+                            if (p.getObject().isOpenable()) {
+                                if (p.getObject().isContainer()) {
+                                    if (!p.getObject().isOpen()) {
+                                        out.println("Hai aperto: " +
+                                                p.getObject().getName());
+                                        p.getObject().setOpen(true);
+                                        AdvObject c = p.getObject();
+                                        if (!c.getObjectsList().isEmpty()) {
+                                            out.print(c.getName() + " contiene:");
+                                            Iterator<AdvObject> it =
+                                                    c.getObjectsList().iterator();
+                                            while (it.hasNext()) {
+                                                AdvObject next = it.next();
+                                                out.print(" " + next.getName());
+                                            }
+                                            out.println();
+                                        }
+                                    } else {
+                                        out.println("Hai già aperto questo oggetto.");
+                                        AdvObject c = p.getObject();
+                                        if (!c.getObjectsList().isEmpty()) {
+                                            out.print(c.getName() + " contiene:");
+                                            Iterator<AdvObject> it =
+                                                    c.getObjectsList().iterator();
+                                            while (it.hasNext()) {
+                                                AdvObject next = it.next();
+                                                out.print(" " + next.getName());
+                                            }
+                                            out.println();
+                                        }
+                                    }
                                 }
                             } else {
-                                p.getInvObject().setOpen(true);
+                                out.println("Non puoi aprire questo oggetto.");
                             }
-                            out.println("Hai aperto nel tuo inventario: " +
-                                    p.getInvObject().getName());
-                        } else {
-                            out.println("Non puoi aprire questo oggetto.");
+                        }
+                        if (p.getInvObject() != null) {
+                            if (p.getInvObject().isOpenable() &&
+                                    p.getInvObject().isOpen() == false) {
+                                if (p.getInvObject().isContainer()) {
+                                    AdvObject c = p.getInvObject();
+                                    if (!c.getObjectsList().isEmpty()) {
+                                        out.print(c.getName() + " contiene:");
+                                        Iterator<AdvObject> it =
+                                                c.getObjectsList().iterator();
+                                        while (it.hasNext()) {
+                                            AdvObject next = it.next();
+                                            getInventory().add(next);
+                                            out.print(" " + next.getName());
+                                            it.remove();
+                                        }
+                                        out.println();
+                                    }
+                                } else {
+                                    p.getInvObject().setOpen(true);
+                                }
+                                out.println("Hai aperto nel tuo inventario: " +
+                                        p.getInvObject().getName());
+                            } else {
+                                out.println("Non puoi aprire questo oggetto.");
+                            }
                         }
                     }
-                }
-            }
-            else if (p.getCommand().getType() == CommandType.PUSH) {
-                //ricerca oggetti pushabili
-                if (p.getObject() != null && p.getObject().isPushable()) {
-                    out.println("Hai premuto: " + p.getObject().getName());
-                    if (p.getObject().getId() == 3) {
-                        end(out);
+                    break;
+                case PUSH:
+                    // ricerca oggetti pushabili
+                    if (p.getObject() != null && p.getObject().isPushable()) {
+                        out.println("Hai premuto: " + p.getObject().getName());
+                        if (p.getObject().getId() == 3) {
+                            end(out);
+                        }
+                    } else if (p.getInvObject() != null &&
+                            p.getInvObject().isPushable()) {
+                        out.println("Hai premuto: " + p.getInvObject().getName());
+                        if (p.getInvObject().getId() == 3) {
+                            end(out);
+                        }
+                    } else {
+                        out.println("Non ci sono oggetti che puoi premere qui.");
                     }
-                } else if (p.getInvObject() != null &&
-                        p.getInvObject().isPushable()) {
-                    out.println("Hai premuto: " + p.getInvObject().getName());
-                    if (p.getInvObject().getId() == 3) {
-                        end(out);
-                    }
-                } else {
-                    out.println("Non ci sono oggetti che puoi premere qui.");
-                }
+                    break;
             }
             if (noroom) {
                 out.println(
