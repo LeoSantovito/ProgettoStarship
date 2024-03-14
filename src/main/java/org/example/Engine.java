@@ -75,8 +75,7 @@ public class Engine {
         } catch (Exception ex) {
             System.err.println(ex);
         } finally {
-            /* Pulisce le nuove partite non salvate, chiude database, fa interrupt del timer e chiude il programma. */
-            database.cleanEmptyGames();
+            /* Chiude la connessione al database, fa l'interrupt del timer e chiude il programma. */
             database.closeDatabase();
             timer.interrupt();
             System.out.println("Partita terminata.");
@@ -86,6 +85,7 @@ public class Engine {
 
     /* Carica i dati di una partita salvata. */
     public void loadSavedGame() {
+        database.cleanEmptyGames(); // Rimuove nuove partite non salvate.
         database.printAllGames();
         System.out.print("Inserisci l'id del salvataggio da caricare: ");
         Scanner scanner = new Scanner(System.in);
@@ -126,8 +126,7 @@ public class Engine {
                     System.out.println();
                     playGame(game);
                 } finally {
-                    /* Pulisce le nuove partite non salvate, chiude database, fa interrupt del timer e chiude il programma. */
-                    database.cleanEmptyGames();
+                    /* Chiude la connessione al database, fa l'interrupt del timer e chiude il programma. */
                     database.closeDatabase();
                     timer.interrupt();
                     System.out.println("Partita terminata.");
