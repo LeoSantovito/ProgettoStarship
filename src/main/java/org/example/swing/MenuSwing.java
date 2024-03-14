@@ -18,7 +18,6 @@ public class MenuSwing {
 
     public MenuSwing() {
 
-
     }
 
     public void startMenu() {
@@ -100,7 +99,6 @@ public class MenuSwing {
                 topLevelFrame.dispose(); // Chiude la finestra principale
                 database.printAllGames();
                 engine.loadSavedGame();
-
             }
         });
 
