@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import org.example.Engine;
 import org.example.GameDescription;
+import org.example.Utils;
 import org.example.parser.ParserOutput;
 import org.example.type.*;
 import org.example.database.*;
@@ -17,12 +18,15 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.lang.reflect.Array;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+
+import static org.example.type.Room.findRoomById;
 
 /**
  * ATTENZIONE: La descrizione del gioco è fatta in modo che qualsiasi gioco
@@ -43,71 +47,12 @@ public class StarshipExodus extends GameDescription {
     @Override
     public void init() throws Exception {
         //Commands
-        List<Command> commands = loadCommandsFromFile("./resources/commands.json");
+        List<Command> commands = Utils.loadObjectsFromFile("./resources/commands.json", Command.class);
         getCommands().addAll(commands);
-        //Rooms
-        Room hall = new Room(0, "Corridoio",
-                "Sei appena tornato a casa e non sai cosa fare.\nTi ricordi che non hai ancora aperto quel fantastico regalo di tua zia Lina.\n"
-                        + " Sarà il caso di cercarlo e di giocarci!");
-        hall.setLook(
-                "Sei nel corridoio, a nord vedi il bagno, a sud il soggiorno e ad ovest la tua cameretta, forse il gioco sarà lì?");
-        Room livingRoom = new Room(1, "Soggiorno",
-                "Ti trovi nel soggiorno.\nCi sono quei mobili marrone scuro che hai sempre odiato e delle orribili sedie.");
-        livingRoom.setLook("Non c'è nulla di interessante qui.");
-        Room kitchen = new Room(2, "Cucina",
-                "Ti trovi nella solita cucina.\nMobili bianchi, maniglie azzurre, quello strano lampadario che adoravi tanto quando eri piccolo.\n"
-                        +
-                        "C'è un tavolo con un bel portafrutta e una finestra.");
-        kitchen.setLook(
-                "La solita cucina, ma noti una chiave vicino al portafrutta.");
-        Room bathroom = new Room(3, "Bagno",
-                "Sei nel bagno.\nQuanto tempo passato qui dentro...meglio non pensarci...");
-        bathroom.setLook(
-                "Vedo delle batterie sul mobile alla destra del lavandino.");
-        Room yourRoom = new Room(4, "La tua cameratta",
-                "Finalmente la tua cameretta!\nQuesto luogo ti è così famigliare...ma non ricordi dove hai messo il nuovo regalo di zia Lina.");
-        yourRoom.setLook(
-                "C'è un armadio bianco, di solito ci conservi i tuoi giochi.");
-        //maps
-        kitchen.setEast(livingRoom);
-        livingRoom.setNorth(hall);
-        livingRoom.setWest(kitchen);
-        hall.setSouth(livingRoom);
-        hall.setWest(yourRoom);
-        hall.setNorth(bathroom);
-        bathroom.setSouth(hall);
-        yourRoom.setEast(hall);
-        getRooms().add(kitchen);
-        getRooms().add(livingRoom);
-        getRooms().add(hall);
-        getRooms().add(bathroom);
-        getRooms().add(yourRoom);
-        //obejcts
-        AdvObject battery = new AdvObject(1, "batteria",
-                "Un pacco di batterie, chissà se sono cariche.");
-        battery.setAlias(new String[] {"batterie", "pile", "pila"});
-        bathroom.getObjects().add(battery);
-        AdvObjectContainer wardrobe =
-                new AdvObjectContainer(2, "armadio", "Un semplice armadio.");
-        wardrobe.setAlias(new String[] {"guardaroba", "vestiario"});
-        wardrobe.setOpenable(true);
-        wardrobe.setPickupable(false);
-        wardrobe.setOpen(false);
-        yourRoom.getObjects().add(wardrobe);
-        AdvObject toy = new AdvObject(3, "giocattolo",
-                "Il gioco che ti ha regalato zia Lina.");
-        toy.setAlias(new String[] {"gioco", "robot"});
-        toy.setPushable(true);
-        toy.setPush(false);
-        wardrobe.add(toy);
-        AdvObject kkey = new AdvObject(4, "chiave",
-                "Usa semplice chiave come tante altre.");
-        toy.setAlias(new String[] {"key"});
-        toy.setPushable(false);
-        toy.setPush(false);
-        kitchen.getObjects().add(kkey);
-        //set starting room
-        setCurrentRoom(hall);
+        List<Room> rooms = Utils.loadObjectsFromFile("./resources/rooms.json", Room.class);
+        setMap(rooms);
+        getRooms().addAll(rooms);
+        setCurrentRoom(findRoomById(rooms, 0));
     }
 
     @Override
@@ -159,7 +104,8 @@ public class StarshipExodus extends GameDescription {
                     out.println("Non c'è niente di interessante qui.");
                 }
             } else if (p.getCommand().getType() == CommandType.PICK_UP) {
-                if (p.getObject() != null) {
+                //gesione degli oggetti da prendere presenti nella stanza
+                if (p.getObject() != null && p.getObject().getContainerId() == -1) {
                     if (p.getObject().isPickupable()) {
                         getInventory().add(p.getObject());
                         getCurrentRoom().getObjects().remove(p.getObject());
@@ -168,41 +114,75 @@ public class StarshipExodus extends GameDescription {
                     } else {
                         out.println("Non puoi raccogliere questo oggetto.");
                     }
-                } else {
+                    // gestione degli oggetti da prendere presenti nei container
+                } else if (p.getObject() != null && p.getObject().getContainerId() != -1) {
+                    if (p.getObject().isPickupable()) {
+
+                        Iterator<AdvObject> roomObjectIterator = getCurrentRoom().getObjects().iterator();
+                        while (roomObjectIterator.hasNext()) {
+                            AdvObject o = roomObjectIterator.next();
+                            // controllo che l'id dell'oggetto contenitore sia uguale all'id del contenitore dell'oggetto da raccogliere
+                            if (o.getId() == p.getObject().getContainerId()) {
+                                if (o.isOpen()) {
+                                    Iterator<AdvObject> containedObjectIterator = o.getObjectsList().iterator();
+                                    while (containedObjectIterator.hasNext()) {
+                                        AdvObject obj = containedObjectIterator.next();
+                                        if (p.getObject().getId() == obj.getId()) {
+                                            p.getObject().setContainerId(-1);
+                                            getInventory().add(p.getObject());
+                                            containedObjectIterator.remove();
+                                            out.println("Hai raccolto: " + p.getObject().getDescription());
+                                        }
+                                    }
+                                } else {
+                                    System.out.println("Non c'è niente da raccogliere qui");
+                                }
+                            }
+                        }
+
+                    } else {
+                        out.println("Non puoi raccogliere questo oggetto.");
+                    }
+                } else if (p.getObject() == null){
                     out.println("Non c'è niente da raccogliere qui.");
                 }
             } else if (p.getCommand().getType() == CommandType.OPEN) {
-                /*ATTENZIONE: quando un oggetto contenitore viene aperto, tutti gli oggetti contenuti
-                 * vengongo inseriti nella stanza o nell'inventario a seconda di dove si trova l'oggetto contenitore.
-                 * Potrebbe non esssere la soluzione ottimale.
-                 */
+                // se un container viene aperto, gli oggetti contenuti rimangono al suo interno finchè non vengono presi
                 if (p.getObject() == null && p.getInvObject() == null) {
                     out.println("Non c'è niente da aprire qui.");
                 } else {
                     if (p.getObject() != null) {
-                        if (p.getObject().isOpenable() &&
-                                p.getObject().isOpen() == false) {
-                            if (p.getObject() instanceof AdvObjectContainer) {
-                                out.println("Hai aperto: " +
-                                        p.getObject().getName());
-                                AdvObjectContainer c =
-                                        (AdvObjectContainer) p.getObject();
-                                if (!c.getList().isEmpty()) {
-                                    out.print(c.getName() + " contiene:");
-                                    Iterator<AdvObject> it =
-                                            c.getList().iterator();
-                                    while (it.hasNext()) {
-                                        AdvObject next = it.next();
-                                        getCurrentRoom().getObjects().add(next);
-                                        out.print(" " + next.getName());
-                                        it.remove();
+                        if (p.getObject().isOpenable()) {
+                            if (p.getObject().isContainer()) {
+                                if (!p.getObject().isOpen()) {
+                                    out.println("Hai aperto: " +
+                                            p.getObject().getName());
+                                    p.getObject().setOpen(true);
+                                    AdvObject c = p.getObject();
+                                    if (!c.getObjectsList().isEmpty()) {
+                                        out.print(c.getName() + " contiene:");
+                                        Iterator<AdvObject> it =
+                                                c.getObjectsList().iterator();
+                                        while (it.hasNext()) {
+                                            AdvObject next = it.next();
+                                            out.print(" " + next.getName());
+                                        }
+                                        out.println();
                                     }
-                                    out.println();
+                                } else {
+                                    out.println("Hai già aperto questo oggetto.");
+                                    AdvObject c = p.getObject();
+                                    if (!c.getObjectsList().isEmpty()) {
+                                        out.print(c.getName() + " contiene:");
+                                        Iterator<AdvObject> it =
+                                                c.getObjectsList().iterator();
+                                        while (it.hasNext()) {
+                                            AdvObject next = it.next();
+                                            out.print(" " + next.getName());
+                                        }
+                                        out.println();
+                                    }
                                 }
-                            } else {
-                                out.println("Hai aperto: " +
-                                        p.getObject().getName());
-                                p.getObject().setOpen(true);
                             }
                         } else {
                             out.println("Non puoi aprire questo oggetto.");
@@ -211,13 +191,12 @@ public class StarshipExodus extends GameDescription {
                     if (p.getInvObject() != null) {
                         if (p.getInvObject().isOpenable() &&
                                 p.getInvObject().isOpen() == false) {
-                            if (p.getInvObject() instanceof AdvObjectContainer) {
-                                AdvObjectContainer c =
-                                        (AdvObjectContainer) p.getInvObject();
-                                if (!c.getList().isEmpty()) {
+                            if (p.getInvObject().isContainer()) {
+                                AdvObject c = p.getInvObject();
+                                if (!c.getObjectsList().isEmpty()) {
                                     out.print(c.getName() + " contiene:");
                                     Iterator<AdvObject> it =
-                                            c.getList().iterator();
+                                            c.getObjectsList().iterator();
                                     while (it.hasNext()) {
                                         AdvObject next = it.next();
                                         getInventory().add(next);
@@ -270,17 +249,28 @@ public class StarshipExodus extends GameDescription {
                 "Premi il pulsante del giocattolo e in seguito ad una forte esplosione la tua casa prende fuoco...\ntu e tuoi famigliari cercate invano di salvarvi e venite avvolti dalle fiamme...\nè stata una morte CALOROSA...addio!");
         System.exit(0);
     }
-
-    private static List<Command> loadCommandsFromFile(String filePath) throws IOException {
-        Gson gson = new Gson();
-        Type commandListType = new TypeToken<List<Command>>() {}.getType();
-
-        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-            // Leggi tutto il JSON come un array di comandi
-            Command[] commandArray = gson.fromJson(br, Command[].class);
-
-            // Converti l'array in una lista di comandi
-            return List.of(commandArray);
+    private void setMap(List<Room> rooms) {
+        for (Room currentRoom : rooms){
+            int northId = currentRoom.getNorthId();
+            if(northId != -1) {
+                Room north = findRoomById(rooms, northId);
+                currentRoom.setNorth(north);
+            }
+            int southId = currentRoom.getSouthId();
+            if(southId != -1) {
+                Room south = findRoomById(rooms, southId);
+                currentRoom.setSouth(south);
+            }
+            int eastId = currentRoom.getEastId();
+            if(eastId != -1) {
+                Room east = findRoomById(rooms, eastId);
+                currentRoom.setEast(east);
+            }
+            int westId = currentRoom.getWestId();
+            if(westId != -1) {
+                Room west = findRoomById(rooms, westId);
+                currentRoom.setWest(west);
+            }
         }
     }
 }
