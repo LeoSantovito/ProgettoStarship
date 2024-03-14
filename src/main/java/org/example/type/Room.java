@@ -109,6 +109,17 @@ public class Room implements Serializable {
         return objects;
     }
 
+    public List<AdvObject> getAllObjects() {
+        List<AdvObject> allObjects = new ArrayList<>();
+        allObjects.addAll(objects);
+        for (AdvObject object : objects) {
+            if (object.isContainer()) {
+                allObjects.addAll(object.getObjectsList());
+            }
+        }
+        return allObjects;
+    }
+
     public int getId() {
         return id;
     }

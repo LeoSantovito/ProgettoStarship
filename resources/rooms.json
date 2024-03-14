@@ -32,6 +32,7 @@
     "eastId": 1,
     "objects": [
       {
+        "containerId": -1,
         "container": false,
         "id": 4,
         "name": "chiave",
@@ -55,6 +56,7 @@
     "eastId": -1,
     "objects": [
       {
+        "containerId": -1,
         "container": false,
         "id": 5,
         "name": "batteria",
@@ -79,6 +81,7 @@
     "eastId": 0,
     "objects": [
       {
+        "containerId": -1,
         "container": true,
         "id": 2,
         "name": "armadio",
@@ -89,6 +92,7 @@
         "open": false,
         "objectsList": [
           {
+            "containerId": 2,
             "container": false,
             "id": 3,
             "name": "gioco",

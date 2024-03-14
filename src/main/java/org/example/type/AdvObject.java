@@ -17,6 +17,7 @@ import java.io.Serializable;
  * @author pierpaolo
  */
 public class AdvObject implements Serializable {
+    private int containerId;
     private boolean container = false;
 
     private final int id;
@@ -171,5 +172,13 @@ public class AdvObject implements Serializable {
 
     public void setObjectsList(List<AdvObject> objectsList) {
         this.objectsList = objectsList;
+    }
+
+    public int getContainerId() {
+        return containerId;
+    }
+
+    public void setContainerId(int containerId) {
+        this.containerId = containerId;
     }
 }

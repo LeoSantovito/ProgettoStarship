@@ -104,8 +104,10 @@ public class StarshipExodus extends GameDescription {
                     out.println("Non c'è niente di interessante qui.");
                 }
             } else if (p.getCommand().getType() == CommandType.PICK_UP) {
-                if (p.getObject() != null) {
+                if (p.getObject() != null && p.getObject().getContainerId() == -1) {
                     if (p.getObject().isPickupable()) {
+                        System.out.println("shit");
+                        System.out.println(p.getObject().getContainerId());
                         getInventory().add(p.getObject());
                         getCurrentRoom().getObjects().remove(p.getObject());
                         out.println("Hai raccolto: " +
@@ -113,8 +115,23 @@ public class StarshipExodus extends GameDescription {
                     } else {
                         out.println("Non puoi raccogliere questo oggetto.");
                     }
-                } else {
-                    out.println("Non c'è niente da raccogliere qui.");
+                } else if (p.getObject() != null && p.getObject().getContainerId() != -1) {
+                    System.out.println("shiiiiiiit");
+                    if (p.getObject().isPickupable()) {
+                        getInventory().add(p.getObject());
+                        for (AdvObject o : getCurrentRoom().getObjects()) {
+                            if (o.getId() == p.getObject().getContainerId()) {
+                                p.getObject().setContainerId(-1);
+                                o.getObjectsList().remove(p.getObject());
+                            }
+                        }
+                        out.println("Hai raccolto: " +
+                                p.getObject().getDescription());
+                    } else {
+                        out.println("Non puoi raccogliere questo oggetto.");
+                    }
+                } else if (p.getObject() == null){
+                    out.println("Non c'è niente da raccogliere qui. Ollare");
                 }
             } else if (p.getCommand().getType() == CommandType.OPEN) {
                 /*ATTENZIONE: quando un oggetto contenitore viene aperto, tutti gli oggetti contenuti

@@ -148,7 +148,7 @@ public class Engine {
         Scanner scanner = new Scanner(System.in);
         while (scanner.hasNextLine()) {
             String command = scanner.nextLine();
-            ParserOutput p = parser.parse(command, game.getCommands(), game.getCurrentRoom().getObjects(), game.getInventory());
+            ParserOutput p = parser.parse(command, game.getCommands(), game.getCurrentRoom().getAllObjects(), game.getInventory());
 
             if (p == null || p.getCommand() == null) {
                 System.out.println("Non capisco quello che mi vuoi dire.");
@@ -167,6 +167,7 @@ public class Engine {
                         /* Interrompe il thread del timer. */
                         timer.interrupt();
                         System.out.println("Addio!");
+                        System.exit(0);
                         return;
                     default:
                         game.nextMove(p, System.out);
@@ -223,7 +224,7 @@ public class Engine {
             engine.database.cleanEmptyGames();
             engine.database.closeDatabase();
 
-            System.out.println("Partita terminata.");
+            //System.out.println("Partita terminata.");
             //System.exit(0);
         }
     }
