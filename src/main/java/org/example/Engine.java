@@ -74,11 +74,19 @@ public class Engine {
             playGame(game);
         } catch (Exception ex) {
             System.err.println(ex);
+        } finally {
+            /* Pulisce le nuove partite non salvate, chiude database, fa interrupt del timer e chiude il programma. */
+            database.cleanEmptyGames();
+            database.closeDatabase();
+            timer.interrupt();
+            System.out.println("Partita terminata.");
+            System.exit(0);
         }
     }
 
     /* Carica i dati di una partita salvata. */
     public void loadSavedGame() {
+        database.printAllGames();
         System.out.print("Inserisci l'id del salvataggio da caricare: ");
         Scanner scanner = new Scanner(System.in);
 
@@ -113,11 +121,18 @@ public class Engine {
                 System.out.println("Salvataggio non trovato. Torno al menu principale.");
                 System.out.println();
 
-                MenuSwing menuSwing = new MenuSwing();
+                MenuSwing menuSwing = new MenuSwing(this);
                 menuSwing.startMenu();
             }
         } catch (Exception ex) {
             System.err.println(ex);
+        } finally {
+            /* Pulisce le nuove partite non salvate, chiude database, fa interrupt del timer e chiude il programma. */
+            database.cleanEmptyGames();
+            database.closeDatabase();
+            timer.interrupt();
+            System.out.println("Partita terminata.");
+            System.exit(0);
         }
     }
 
@@ -130,11 +145,10 @@ public class Engine {
         /* Stampa messaggi di benvenuto. */
         int totalSeconds = game.getTimeElapsed();
         int id = game.getGameId();
-        if(totalSeconds != 0){
+        if (totalSeconds != 0) {
             System.out.println("Abbiamo sentito la tua mancanza, " + database.getPlayerName(id) + "!");
             printGameTime(totalSeconds);
-        }
-        else {
+        } else {
             System.out.println("Benvenuto a bordo, " + database.getPlayerName(id) + "!");
         }
 
@@ -164,8 +178,6 @@ public class Engine {
                         System.out.println();
                         break;
                     case END:
-                        /* Interrompe il thread del timer. */
-                        timer.interrupt();
                         System.out.println("Addio!");
                         return;
                     default:
@@ -214,17 +226,7 @@ public class Engine {
      */
     public static void main(String[] args) {
         Engine engine = new Engine();
-
-        try {
-           MenuSwing menuSwing = new MenuSwing();
-            menuSwing.startMenu();
-        } finally {
-            /* Pulisce le partite non salvate (con id della gameDescription a -1) e chiude la connessione al database. */
-            engine.database.cleanEmptyGames();
-            engine.database.closeDatabase();
-
-            System.out.println("Partita terminata.");
-            //System.exit(0);
-        }
+        MenuSwing menuSwing = new MenuSwing(engine);
+        menuSwing.startMenu();
     }
 }

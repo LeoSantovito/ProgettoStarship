@@ -13,12 +13,10 @@ public class MenuSwing {
     private JButton newGameButton;
     private JButton loadGameButton;
     private JButton exitButton;
-    Database database = new Database();
-    Engine engine = new Engine();
+    private Engine engine;
 
-    public MenuSwing() {
-
-
+    public MenuSwing(Engine engine) {
+        this.engine = engine;
     }
 
     public void startMenu() {
@@ -30,7 +28,7 @@ public class MenuSwing {
 
         // Creazione dello sfondo (il pannello principale che ha lo sfondo)
         Background sfondo = new Background("./resources/bg1.jpg");
-//logo del gioco
+        //logo del gioco
         Background logo = new Background("./resources/gameLogo2.png");
         logo.setBounds(-7, 50, 400, 125);
         logo.setOpaque(false);
@@ -98,9 +96,7 @@ public class MenuSwing {
             public void actionPerformed(ActionEvent e) {
                 JFrame topLevelFrame = (JFrame) SwingUtilities.getWindowAncestor(loadGameButton); // Ottieni la finestra principale
                 topLevelFrame.dispose(); // Chiude la finestra principale
-                database.printAllGames();
                 engine.loadSavedGame();
-
             }
         });
 
@@ -110,9 +106,5 @@ public class MenuSwing {
                 System.exit(0);
             }
         });
-
-
     }
-
-
 }
