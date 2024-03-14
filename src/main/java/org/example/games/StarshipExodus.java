@@ -52,7 +52,7 @@ public class StarshipExodus extends GameDescription {
         List<Room> rooms = Utils.loadObjectsFromFile("./resources/rooms.json", Room.class);
         setMap(rooms);
         getRooms().addAll(rooms);
-        setCurrentRoom(findRoomById(rooms, 2));
+        setCurrentRoom(findRoomById(rooms, 0));
     }
 
     @Override
@@ -177,7 +177,8 @@ public class StarshipExodus extends GameDescription {
                         }
                     }
                 }
-            } else if (p.getCommand().getType() == CommandType.PUSH) {
+            }
+            else if (p.getCommand().getType() == CommandType.PUSH) {
                 //ricerca oggetti pushabili
                 if (p.getObject() != null && p.getObject().isPushable()) {
                     out.println("Hai premuto: " + p.getObject().getName());
@@ -193,7 +194,7 @@ public class StarshipExodus extends GameDescription {
                 } else {
                     out.println("Non ci sono oggetti che puoi premere qui.");
                 }
-        }
+            }
             if (noroom) {
                 out.println(
                         "Da quella parte non si può andare c'è un muro!\nNon hai ancora acquisito i poteri per oltrepassare i muri...");
