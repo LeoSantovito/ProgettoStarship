@@ -134,7 +134,7 @@ public class Database {
         return null;
     }
 
-    /* Seleziona tutti i record dalla tabella games. */
+    /* Estrae le informazioni principali di tutti i record dalla tabella games. */
     public List<GameRecord> selectAllGames() {
         List<GameRecord> games = new ArrayList<>();
         try {
@@ -147,10 +147,10 @@ public class Database {
                 gr.setPlayerName(rs.getString("playername"));
 
                 try {
+                    /* Informazioni ottenute dalla GameDescription. */
                     byte[] loadedGame = rs.getBytes(2);
-                    gr.setGameDescription((GameDescription) Utils.deserializeObject(loadedGame));
-                    gr.setCurrentRoom(gr.getGameDescription().getCurrentRoom().getName());
-                    gr.setTimeElapsed(gr.getGameDescription().getTimeElapsed());
+                    gr.setCurrentRoom(((GameDescription) Utils.deserializeObject(loadedGame)).getCurrentRoom().getName());
+                    gr.setTimeElapsed(((GameDescription) Utils.deserializeObject(loadedGame)).getTimeElapsed());
                 } catch (Exception ex) {
                     System.err.println(ex);
                 }
@@ -163,7 +163,7 @@ public class Database {
         return games;
     }
 
-    /* Seleziona un record dalla tabella games a partire da un id specifico. */
+    /* Estrae le informazioni principali di un singolo record dalla tabella games a partire da un id specifico. */
     public GameRecord selectGame(int id) {
         try {
             PreparedStatement pstmt = conn.prepareStatement(SELECT_GAME);
@@ -173,10 +173,10 @@ public class Database {
                 GameRecord gr = new GameRecord();
 
                 try {
+                    /* Informazioni ottenute dalla GameDescription. */
                     byte[] loadedGame = rs.getBytes(2);
-                    gr.setGameDescription((GameDescription) Utils.deserializeObject(loadedGame));
-                    gr.setCurrentRoom(gr.getGameDescription().getCurrentRoom().getName());
-                    gr.setTimeElapsed(gr.getGameDescription().getTimeElapsed());
+                    gr.setCurrentRoom(((GameDescription) Utils.deserializeObject(loadedGame)).getCurrentRoom().getName());
+                    gr.setTimeElapsed(((GameDescription) Utils.deserializeObject(loadedGame)).getTimeElapsed());
                 } catch (Exception ex) {
                     System.err.println(ex);
                 }
@@ -192,7 +192,7 @@ public class Database {
         return null;
     }
 
-    /* Stampa tutti i salvataggi presenti nella tabella games (esclusa la GameDescription). */
+    /* Stampa tutte le informazioni dei salvataggi nella tabella games. */
     public void printAllGames() {
         List<GameRecord> games = selectAllGames();
         if (games.isEmpty()) {
