@@ -36,3 +36,7 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### Salvataggi ###
+/resources/savedgames.mv.db
+/resources/savedgames.trace.db
