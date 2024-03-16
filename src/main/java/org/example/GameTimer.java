@@ -16,6 +16,10 @@ public class GameTimer extends Thread{
                 /* Aggiorna il tempo di gioco ogni secondo. */
                 Thread.sleep(1000);
                 secondsElapsed++;
+                if ((secondsElapsed) % 300 == 0) {
+                    System.out.println("Hai già giocato per " + (secondsElapsed)/60 + " minuti! Ti vuoi muovere a finire il gioco?");
+                    System.out.println();
+                }
             } catch (InterruptedException ex) {
                 //System.out.println("DEBUG = Timer thread interrotto");
 
