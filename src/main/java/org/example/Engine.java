@@ -230,61 +230,37 @@ public class Engine {
         }
     }
 
-    //da sostituire con la lettura da file
-    private void printGameIntro(String playerName){
-        System.out.println("Anno 2040... io, " + playerName +", ed il mio collega John siamo in una missione esplorativa per conto dell'ESA, ufficialmente con lo scopo di trovare nuove forme di energia.");
-        System.out.println("In realtà, il nostro vero scopo è quello di trovare un nuovo pianeta abitabile per l'umanità, o meglio per una ristretta cerchia di eletti.");
-        System.out.println("La Terra ormai sta velocemente esaurendo le sue risorse e l'umanità è in procinto di estinguersi a causa delle divisioni tra la gente...");
-        System.out.println("Il nostro viaggio è durato 10 anni, e finalmente nelle prossime 72 ore dovremmo arrivare al pianeta che abbiamo chiamato \"Eden\".");
-        System.out.println();
-        System.out.println("Il viaggio è stato tranquillo finora, anche se un po' noioso, ma ora ci troviamo in una situazione di emergenza...");
-        System.out.println("Lo shuttle si è fermato improvvisamente e non riusciamo a capire cosa sia successo... eppure avevamo fatto il pieno!");
-        System.out.println("John è andato a controllare il sistema di navigazione, mentre io sono andato a controllare il sistema di propulsione.");
-        System.out.println("Spero che riusciremo a risolvere il problema in tempo...");
-        System.out.println();
+    private void printGameIntro(String playerName) {
+        printFromFile("resources/dialogs/game_intro_1.txt", playerName);
+        waitForEnter();
+        printFromFile("resources/dialogs/game_intro_2.txt", playerName);
+        waitForEnter();
+        printFromFile("resources/dialogs/game_intro_3.txt", playerName);
+        waitForEnter();
+        printFromFile("resources/dialogs/game_intro_4.txt", playerName);
+    }
+
+    private void printFromFile(String filename, String playerName) {
+        try (Scanner scanner = new Scanner(new File(filename))) {
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                // Sostituisci eventuali segnaposto per il nome del giocatore con il nome effettivo
+                line = line.replace("{playerName}", playerName);
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            System.out.println("Errore durante la lettura del file " + filename);
+        }
+    }
+
+    private void waitForEnter() {
         System.out.println("Premi invio per continuare...");
         try {
             System.in.read();
+            System.in.skip(System.in.available()); // Pulisce il buffer di input
         } catch (IOException e) {
-            System.out.println("Errore durante la lettura dell'input");
+            System.err.println("Errore durante la lettura dell'input: " + e.getMessage());
         }
-        System.out.println("BOOM!!!");
-        System.out.println("C'è stato un impatto! La nostra astronave sarà stata colpita da un meteorite?!?");
-        System.out.println("John è rimasto ferito, ma sembra che non sia nulla di grave...");
-        System.out.println("Dovrei andare a vedere cosa è successo...");
-        System.out.println();
-        System.out.println("Sono uscito dalla sala di propulsione e mi sono diretto verso la sala di navigazione...");
-        System.out.println("Sento dei rumori! Mi precipito di corsa da dove provengono i rumori!");
-        System.out.println();
-        System.out.println("Premi invio per continuare...");
-        try {
-            System.in.read();
-        } catch (IOException e) {
-            System.out.println("Errore durante la lettura dell'input");
-        }
-        System.out.println("Sono arrivato nella sala di navigazione... non ci sono parole per descrivere quello che vedo...");
-        System.out.println("Non siamo stati colpiti da un meteorite...");
-        System.out.println("Quindi... esistono...");
-        System.out.println("N-Non ti avvicinareee!!!");
-        System.out.println();
-        System.out.println("AAAUUURGGHHHH!!!!");
-        System.out.println();
-        System.out.println("Premi invio per continuare...");
-        try {
-            System.in.read();
-        } catch (IOException e) {
-            System.out.println("Errore durante la lettura dell'input");
-        }
-        System.out.println();
-        System.out.println("...");
-        System.out.println();
-        System.out.println("D-dove sono...? Cosa è successo...?");
-        System.out.println("Sarà stato un brutto sogno...?");
-        System.out.println();
-        System.out.println("John? John! Dove sei?");
-        System.out.println();
-        System.out.println("Aspetta ma ...questo non è il mio shuttle!! Dove sono finito?");
-        System.out.println("Devo alzarmi da qua e capire cosa è successo...");
     }
 
     /**
