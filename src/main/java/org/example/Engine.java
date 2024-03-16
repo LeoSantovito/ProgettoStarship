@@ -180,6 +180,18 @@ public class Engine {
                         System.out.println();
                         break;
                     case END:
+                        /* Chiede al giocatore se vuole salvare la partita prima di uscire dal gioco. */
+                        System.out.println("Vuoi salvare la partita prima di uscire? (s/n)");
+                        String answer = scanner.nextLine().toLowerCase();
+
+                        while (!answer.equals("s") && !answer.equals("n")) {
+                            System.out.println("Risposta non valida. Inserisci 's' per salvare o 'n' per uscire senza salvare.");
+                            answer = scanner.nextLine();
+                        }
+                        if (answer.equals("s")) {
+                            saveGame(game);
+                        }
+
                         System.out.println("Addio!");
                         return;
                     default:
