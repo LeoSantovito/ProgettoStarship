@@ -27,26 +27,26 @@ public class MenuSwing {
 
 
         // Creazione dello sfondo (il pannello principale che ha lo sfondo)
-        Background sfondo = new Background("./resources/bg1.jpg");
+        Background sfondo = new Background("./resources/images/bg1.jpg");
         //logo del gioco
-        Background logo = new Background("./resources/gameLogo2.png");
+        Background logo = new Background("./resources/images/gameLogo2.png");
         logo.setBounds(-7, 50, 400, 125);
         logo.setOpaque(false);
         sfondo.add(logo);
         //Icona del bottone che inizia una nuova partita
-        ImageIcon newGameIcon = new ImageIcon("./resources/newGame.png");
+        ImageIcon newGameIcon = new ImageIcon("./resources/images/newGame.png");
         Image imageNew = newGameIcon.getImage();
         Image resizedNew = imageNew.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
         newGameIcon = new ImageIcon(resizedNew);
 
         //icona del bottone che carica una partita
-        ImageIcon loadGameIcon = new ImageIcon("./resources/loadGame.png");
+        ImageIcon loadGameIcon = new ImageIcon("./resources/images/loadGame.png");
         Image imageLoad = loadGameIcon.getImage();
         Image resizedLoad = imageLoad.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
         loadGameIcon = new ImageIcon(resizedLoad);
 
         //icona del bottone che esci dal gioco
-        ImageIcon exitIcon = new ImageIcon("./resources/exitGame.png");
+        ImageIcon exitIcon = new ImageIcon("./resources/images/exitGame.png");
         Image imageExit = exitIcon.getImage();
         Image resizedExit = imageExit.getScaledInstance(25, 25, Image.SCALE_SMOOTH);
         exitIcon = new ImageIcon(resizedExit);
