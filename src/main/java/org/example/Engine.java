@@ -37,7 +37,6 @@ public class Engine {
             Set<String> stopwords = Utils.loadFileListInSet(new File("./resources/stopwords"));
             parser = new Parser(stopwords);
             database = new Database();
-            timer = new GameTimer(0);
         } catch (IOException ex) {
             System.err.println(ex);
         }
@@ -110,20 +109,16 @@ public class Engine {
 
                 MenuSwing menuSwing = new MenuSwing(this);
                 menuSwing.startMenu();
-
             } else {
                 try {
                     GameDescription game = null;
                     game = database.loadGame(id);
 
-                    /* Inizializza il timer prendendo il valore iniziale dalla gameDescription del DB. */
-                    GameTimer timer = new GameTimer(game.getTimeElapsed());
-                    timer.start();
-
                     System.out.println("Partita Caricata con successo!");
                     System.out.println();
                     System.out.println("ID della partita: " + game.getGameId());
                     System.out.println();
+
                     playGame(game);
                 } finally {
                     /* Chiude la connessione al database, fa l'interrupt del timer e chiude il programma. */
@@ -141,7 +136,7 @@ public class Engine {
     /* Gestisce l'esecuzione del gioco. */
     public void playGame(GameDescription game) {
         /* Inizializza il timer prendendo il valore iniziale dalla gameDescription del DB. */
-        timer.setTime(game.getTimeElapsed());
+        timer = new GameTimer(game.getTimeElapsed());
         timer.start();
 
         /* Stampa messaggi di benvenuto. */
