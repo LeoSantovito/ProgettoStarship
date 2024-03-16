@@ -70,6 +70,7 @@ public class Engine {
             System.out.println("Inizio del Gioco...");
             System.out.println();
 
+            printGameIntro(playerName);
             playGame(game);
         } catch (Exception ex) {
             System.err.println(ex);
@@ -139,14 +140,12 @@ public class Engine {
         timer = new GameTimer(game.getTimeElapsed());
         timer.start();
 
-        /* Stampa messaggi di benvenuto. */
+        /* Stampa messaggi di bentornato. */
         int totalSeconds = game.getTimeElapsed();
         int id = game.getGameId();
         if (totalSeconds != 0) {
             System.out.println("Abbiamo sentito la tua mancanza, " + database.getPlayerName(id) + "!");
             printGameTime(totalSeconds);
-        } else {
-            printGameIntro(database.getPlayerName(id));
         }
 
         /* Stampa la stanza iniziale. */
@@ -237,8 +236,8 @@ public class Engine {
         System.out.println("La Terra ormai sta velocemente esaurendo le sue risorse e l'umanità è in procinto di estinguersi a causa delle divisioni tra la gente...");
         System.out.println("Il nostro viaggio è durato 10 anni, e finalmente nelle prossime 72 ore dovremmo arrivare al pianeta che abbiamo chiamato \"Eden\".");
         System.out.println();
-        System.out.println("Il nostro viaggio è stato tranquillo finora, ma ora ci troviamo in una situazione di emergenza...");
-        System.out.println("Lo shuttle si è fermato improvvisamente e non riusciamo a capire cosa sia successo... sapevo che dovevamo prendere uno shuttle a benzina!");
+        System.out.println("Il viaggio è stato tranquillo finora, anche se un po' noioso, ma ora ci troviamo in una situazione di emergenza...");
+        System.out.println("Lo shuttle si è fermato improvvisamente e non riusciamo a capire cosa sia successo... eppure avevamo fatto il pieno!");
         System.out.println("John è andato a controllare il sistema di navigazione, mentre io sono andato a controllare il sistema di propulsione.");
         System.out.println("Spero che riusciremo a risolvere il problema in tempo...");
         System.out.println();

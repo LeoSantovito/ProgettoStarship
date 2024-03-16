@@ -24,7 +24,10 @@ public class CommandsExecution implements Serializable {
                                     c.getObjectsList().iterator();
                             while (it.hasNext()) {
                                 AdvObject next = it.next();
-                                out.print(", " + next.getName());
+                                out.print(" " + next.getName());
+                                if(it.hasNext()) {
+                                    out.print(",");
+                                }
                             }
                             out.println();
                         }

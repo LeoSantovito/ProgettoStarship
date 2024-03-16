@@ -41,7 +41,7 @@
     "id": 1,
     "name": "Laboratorio",
     "description": "È una stanza con molti strumenti scientifici e attrezzature sofisticate.\nDelle strane creature sono conservate in barattoli di formaldeide... sembrano essere dei campioni di vita aliena.\nSembra come se qualcuno stesse facendo degli esperimenti...",
-    "look": "Su un lettino c'è un corpo coperto da un lenzuolo, sembra un cadavere umano... A vederlo meglio sembra John, il capo della missione!\nDevo andare via da qui, non posso restarci a lungo!\nC'è uno zaino a terra, chissà cosa contiene...\nA ovest c'è la sala macchine, ad est una porta chiusa sembra condurre alla sala delle armi...",
+    "look": "Su un lettino c'è un corpo coperto da un lenzuolo, sembra un cadavere umano... A vederlo meglio è John! Che ti hanno combinato!\nDevo andare via da qui, non posso restarci a lungo!\nC'è uno zaino a terra, chissà cosa contiene...\nA ovest c'è la sala macchine, ad est una porta chiusa sembra condurre alla sala delle armi...",
     "intro": "X",
     "southId": -1,
     "westId": 0,
