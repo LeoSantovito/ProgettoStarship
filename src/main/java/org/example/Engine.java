@@ -150,7 +150,6 @@ public class Engine {
         }
 
         /* Stampa la stanza iniziale. */
-        System.out.println();
         System.out.println("Sei nella stanza: " + game.getCurrentRoom().getName() + ".");
         System.out.println();
         System.out.println(game.getCurrentRoom().getDescription());
@@ -233,13 +232,13 @@ public class Engine {
 
     //da sostituire con la lettura da file
     private void printGameIntro(String playerName){
-        System.out.println("Anno 2040... io, " + playerName +" e John siamo in una missione esplorativa per conto dell'ESA, ufficialmente con lo scopo di trovare nuove forme di energia rinnovabile.");
+        System.out.println("Anno 2040... io, " + playerName +", ed il mio collega John siamo in una missione esplorativa per conto dell'ESA, ufficialmente con lo scopo di trovare nuove forme di energia.");
         System.out.println("In realtà, il nostro vero scopo è quello di trovare un nuovo pianeta abitabile per l'umanità, o meglio per una ristretta cerchia di eletti.");
         System.out.println("La Terra ormai sta velocemente esaurendo le sue risorse e l'umanità è in procinto di estinguersi a causa delle divisioni tra la gente...");
         System.out.println("Il nostro viaggio è durato 10 anni, e finalmente nelle prossime 72 ore dovremmo arrivare al pianeta che abbiamo chiamato \"Eden\".");
         System.out.println();
         System.out.println("Il nostro viaggio è stato tranquillo finora, ma ora ci troviamo in una situazione di emergenza...");
-        System.out.println("Il sistema di navigazione della nostra astronave è andato in tilt e non riusciamo a capire cosa sia successo...");
+        System.out.println("Lo shuttle si è fermato improvvisamente e non riusciamo a capire cosa sia successo... sapevo che dovevamo prendere uno shuttle a benzina!");
         System.out.println("John è andato a controllare il sistema di navigazione, mentre io sono andato a controllare il sistema di propulsione.");
         System.out.println("Spero che riusciremo a risolvere il problema in tempo...");
         System.out.println();
@@ -254,12 +253,6 @@ public class Engine {
         System.out.println("John è rimasto ferito, ma sembra che non sia nulla di grave...");
         System.out.println("Dovrei andare a vedere cosa è successo...");
         System.out.println();
-        System.out.println("Premi invio per continuare...");
-        try {
-            System.in.read();
-        } catch (IOException e) {
-            System.out.println("Errore durante la lettura dell'input");
-        }
         System.out.println("Sono uscito dalla sala di propulsione e mi sono diretto verso la sala di navigazione...");
         System.out.println("Sento dei rumori! Mi precipito di corsa da dove provengono i rumori!");
         System.out.println();
@@ -273,7 +266,7 @@ public class Engine {
         System.out.println("Non siamo stati colpiti da un meteorite...");
         System.out.println("Quindi... esistono...");
         System.out.println("N-Non ti avvicinareee!!!");
-        System.out.println("...");
+        System.out.println();
         System.out.println("AAAUUURGGHHHH!!!!");
         System.out.println();
         System.out.println("Premi invio per continuare...");
@@ -287,10 +280,12 @@ public class Engine {
         System.out.println();
         System.out.println("D-dove sono...? Cosa è successo...?");
         System.out.println("Sarà stato un brutto sogno...?");
-        System.out.println("...");
+        System.out.println();
         System.out.println("John? John! Dove sei?");
-        System.out.println("...");
-        System.out.println("Questa non è la mia astronave!! Dove sono finito?");
+        System.out.println();
+        System.out.println("Aspetta ma ...questo non è il mio shuttle!! Dove sono finito?");
+        System.out.println("Devo alzarmi da qua e capire cosa è successo...");
+        System.out.println();
     }
 
     /**
