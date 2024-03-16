@@ -11,7 +11,6 @@ import org.example.parser.ParserOutput;
 import org.example.swing.MenuSwing;
 import org.example.type.CommandType;
 import org.example.database.Database;
-import org.example.Utils;
 
 import java.io.File;
 import java.io.IOException;

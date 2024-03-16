@@ -103,9 +103,9 @@ public class StarshipExodus extends GameDescription {
                     }
                     break;
                 case INVENTORY:
-                    out.println("Nel tuo inventario ci sono:");
+                    out.println("Ecco gli oggetti che ho a disposizione:");
                     for (AdvObject o : getInventory()) {
-                        out.println(o.getName() + ": " + o.getDescription());
+                        out.println("- " + o.getName() + ": " + o.getDescription());
                     }
                     break;
                 case LOOK_AT:
@@ -151,13 +151,14 @@ public class StarshipExodus extends GameDescription {
                 out.println(
                         "Da quella parte non si può andare c'è un muro!\nNon hai ancora acquisito i poteri per oltrepassare i muri...");
             } else if (move) {
+                out.println();
+                out.println("Sei nella stanza: " + getCurrentRoom().getName());
+                out.println();
                 if (!getCurrentRoom().isVisited()){
                     getCurrentRoom().setVisited(true);
                     out.println(getCurrentRoom().getIntro());
                     out.println();
                 }
-                out.println("Sei nella stanza: " + getCurrentRoom().getName());
-                out.println("================================================");
                 out.println(getCurrentRoom().getDescription());
             }
         }
