@@ -11,6 +11,7 @@ import org.example.parser.ParserOutput;
 import org.example.swing.MenuSwing;
 import org.example.type.CommandType;
 import org.example.database.Database;
+import org.example.Utils;
 
 import java.io.File;
 import java.io.IOException;
@@ -231,36 +232,13 @@ public class Engine {
     }
 
     private void printGameIntro(String playerName) {
-        printFromFile("resources/dialogs/game_intro_1.txt", playerName);
-        waitForEnter();
-        printFromFile("resources/dialogs/game_intro_2.txt", playerName);
-        waitForEnter();
-        printFromFile("resources/dialogs/game_intro_3.txt", playerName);
-        waitForEnter();
-        printFromFile("resources/dialogs/game_intro_4.txt", playerName);
-    }
-
-    private void printFromFile(String filename, String playerName) {
-        try (Scanner scanner = new Scanner(new File(filename))) {
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine();
-                // Sostituisci eventuali segnaposto per il nome del giocatore con il nome effettivo
-                line = line.replace("{playerName}", playerName);
-                System.out.println(line);
-            }
-        } catch (IOException e) {
-            System.out.println("Errore durante la lettura del file " + filename);
-        }
-    }
-
-    private void waitForEnter() {
-        System.out.println("Premi invio per continuare...");
-        try {
-            System.in.read();
-            System.in.skip(System.in.available()); // Pulisce il buffer di input
-        } catch (IOException e) {
-            System.err.println("Errore durante la lettura dell'input: " + e.getMessage());
-        }
+        Utils.printFromFile("resources/dialogs/game_intro_1.txt", playerName);
+        Utils.waitForEnter();
+        Utils.printFromFile("resources/dialogs/game_intro_2.txt", playerName);
+        Utils.waitForEnter();
+        Utils.printFromFile("resources/dialogs/game_intro_3.txt", playerName);
+        Utils.waitForEnter();
+        Utils.printFromFile("resources/dialogs/game_intro_4.txt", playerName);
     }
 
     /**

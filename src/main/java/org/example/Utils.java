@@ -14,10 +14,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
@@ -73,6 +70,29 @@ public class Utils {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             T[] objectArray = gson.fromJson(br, (Type) Array.newInstance(objectType, 0).getClass());
             return List.of(objectArray);
+        }
+    }
+
+    public static void printFromFile(String filename, String playerName) {
+        try (Scanner scanner = new Scanner(new File(filename))) {
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                // Sostituisci eventuali segnaposto per il nome del giocatore con il nome effettivo
+                line = line.replace("{playerName}", playerName);
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            System.out.println("Errore durante la lettura del file " + filename);
+        }
+    }
+
+    public static void waitForEnter() {
+        System.out.println("Premi invio per continuare...");
+        try {
+            System.in.read();
+            System.in.skip(System.in.available()); // Pulisce il buffer di input
+        } catch (IOException e) {
+            System.err.println("Errore durante la lettura dell'input: " + e.getMessage());
         }
     }
 
