@@ -15,15 +15,16 @@ public class CommandsExecution implements Serializable {
                     if (!object.isOpen()) {
                         out.println("Hai aperto: " +
                                 object.getName());
+                        out.println(object.getDescription());
                         object.setOpen(true);
                         AdvObject c = object;
                         if (!c.getObjectsList().isEmpty()) {
-                            out.print(c.getName() + " contiene:");
+                            out.print("L'oggetto " + c.getName() + " contiene:");
                             Iterator<AdvObject> it =
                                     c.getObjectsList().iterator();
                             while (it.hasNext()) {
                                 AdvObject next = it.next();
-                                out.print(" " + next.getName());
+                                out.print(", " + next.getName());
                             }
                             out.println();
                         }
@@ -53,8 +54,8 @@ public class CommandsExecution implements Serializable {
             if (object.isPickupable()) {
                 inventory.add(object);
                 currentRoom.getObjects().remove(object);
-                out.println("Hai raccolto: " +
-                        object.getDescription());
+                out.println("Hai raccolto: " + object.getName() + ".");
+                out.println(object.getDescription());
             } else {
                 out.println("Non puoi raccogliere questo oggetto.");
             }

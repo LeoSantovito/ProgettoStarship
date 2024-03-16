@@ -43,7 +43,7 @@ import static org.example.type.Room.findRoomById;
  * @author pierpaolo
  */
 public class StarshipExodus extends GameDescription {
-    private static final int STARTING_ROOM_ID = 0;
+    private static final int STARTING_ROOM_ID = 1;
 
     private CommandsExecution execute = new CommandsExecution();
 
@@ -57,6 +57,7 @@ public class StarshipExodus extends GameDescription {
         getRooms().addAll(rooms);
 
         setCurrentRoom(findRoomById(rooms, STARTING_ROOM_ID));
+        getCurrentRoom().setVisited(true);
     }
 
     @Override
@@ -150,7 +151,12 @@ public class StarshipExodus extends GameDescription {
                 out.println(
                         "Da quella parte non si può andare c'è un muro!\nNon hai ancora acquisito i poteri per oltrepassare i muri...");
             } else if (move) {
-                out.println(getCurrentRoom().getName());
+                if (!getCurrentRoom().isVisited()){
+                    getCurrentRoom().setVisited(true);
+                    out.println(getCurrentRoom().getIntro());
+                    out.println();
+                }
+                out.println("Sei nella stanza: " + getCurrentRoom().getName());
                 out.println("================================================");
                 out.println(getCurrentRoom().getDescription());
             }

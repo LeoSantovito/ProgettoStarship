@@ -1,43 +1,110 @@
 [
   {
     "id": 0,
-    "name": "Corridoio",
-    "description": "Sei appena tornato a casa e non sai cosa fare.\nTi ricordi che non hai ancora aperto quel fantastico regalo di tua zia Lina.Sarà il caso di cercarlo e di giocarci!",
-    "look": "Sei nel corridoio, a nord vedi il bagno, a sud il soggiorno e ad ovest la tua cameretta, forse il gioco sarà lì?\n",
-    "southId": 1,
-    "westId": 4,
-    "northId": 3,
-    "eastId": -1,
-    "objects": []
-  },
-  {
-    "id": 1,
-    "name": "Soggiorno",
-    "description": "Ti trovi nel soggiorno...",
-    "look": "Non c'è nulla di interessante qui...",
-    "southId": -1,
-    "westId": 2,
-    "northId": 0,
-    "eastId": -1,
-    "objects": []
-  },
-  {
-    "id": 2,
-    "name": "Cucina",
-    "description": "Ti trovi nella solita cucina...",
-    "look": "La solita cucina...",
-    "southId": -1,
+    "name": "Sala macchine",
+    "description": "Ci sono grandi motori e turbine che fanno rumore costante. Il pavimento è sporco di olio, grasso e materiali fluorescenti.\nSembra che qui vengono controllati i sistemi di alimentazione e di propulsione della navicella...",
+    "look": "Per terra sempre esserci una cassetta... sembra una cassetta degli attrezzi.\nA sud c'è un varco che porta al magazzino delle scorte. A est c'è il laboratorio.",
+    "intro": "X",
+    "southId": 3,
     "westId": -1,
     "northId": -1,
     "eastId": 1,
     "objects": [
       {
         "containerId": -1,
+        "container": true,
+        "id": 1,
+        "name": "cassetta",
+        "description": "È una cassetta degli attrezzi. Sembra che qualcuno l'abbia dimenticata qui.",
+        "alias": ["valigetta"],
+        "openable": true,
+        "pickupable": false,
+        "open": false,
+        "objectsList": [
+          {
+            "containerId": 1,
+            "container": false,
+            "id": 2,
+            "name": "nastro",
+            "description": "È una specie di nastro adesivo alieno. Non sapevo che anche loro facessero lavori di bricolage... Vabbè, potrebbe sempre servire.",
+            "alias": ["scotch"],
+            "pickupable": true,
+            "openable": false,
+            "open": false,
+            "objectsList": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 1,
+    "name": "Laboratorio",
+    "description": "In questo laboratorio ci sono molti strumenti scientifici e attrezzature sofisticate.\nDelle strane creature sono conservate in barattoli di formaldeide... sembrano essere dei campioni di vita aliena.\nSembra come se qualcuno stesse facendo degli esperimenti...",
+    "look": "Su un lettino c'è un corpo coperto da un lenzuolo, sembra un cadavere umano... A vederlo meglio sembra John, il capo della missione!\nDevo andare via da qui, non posso restarci a lungo!\nC'è uno zaino a terra, chissà cosa contiene...\nA ovest c'è la sala macchine, ad est una porta chiusa sembra condurre alla sala delle armi...",
+    "intro": "X",
+    "southId": -1,
+    "westId": 0,
+    "northId": -1,
+    "eastId": 2,
+    "objects": [
+        {
+            "containerId": -1,
+            "container": true,
+            "id": 3,
+            "name": "zaino",
+            "description": "È uno zaino da esploratore spaziale. Sicuramente era di John.",
+            "alias": ["zainetto", "borsetta"],
+            "openable": true,
+            "pickupable": true,
+            "open": false,
+            "objectsList": [
+            {
+                "containerId": 3,
+                "container": false,
+                "id": 4,
+                "name": "mappa",
+                "description": "Sembra essere una mappa delle stanze della navicella...",
+                "alias": ["cartina", "piano"],
+                "pickupable": true,
+                "openable": false,
+                "open": false,
+                "objectsList": []
+            },
+            {
+                "containerId": 1,
+                "container": false,
+                "id": 5,
+                "name": "foglio",
+                "description": "Sono degli appunti scritti da John. Dovrei leggerli?",
+                "alias": ["appunti"],
+                "pickupable": true,
+                "openable": false,
+                "open": false,
+                "objectsList": []
+            }
+            ]
+        }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Sala delle armi",
+    "description": "Ci sono armi di ogni tipo, da quelle più sofisticate a quelle più rudimentali.\nSembra che qui vengano conservate le armi e le munizioni della navicella...",
+    "look": "Tra le armi c'è una pistola restringente. Potrebbe essere utile per difendersi.\nA ovest c'è il laboratorio.",
+    "intro": "X",
+    "southId": 5,
+    "westId": 1,
+    "northId": -1,
+    "eastId": -1,
+    "objects": [
+      {
+        "containerId": -1,
         "container": false,
-        "id": 4,
-        "name": "chiave",
-        "description": "Usa semplice chiave come tante altre.",
-        "alias": ["key"],
+        "id": 6,
+        "name": "pistola",
+        "description": "È una pistola restringente che rende minuscolo chi viene colpito. In comprenso dà un'ottima personalità... Sembra carica con un colpo pronto all'uso.",
+        "alias": ["arma", "pistola restringente"],
         "pickupable": true,
         "openable": false,
         "open": false,
@@ -47,88 +114,100 @@
   },
   {
     "id": 3,
-    "name": "Bagno",
-    "description": "Sei nel bagno...",
-    "look": "Vedo delle batterie sul mobile...",
-    "southId": 0,
+    "name": "Magazzino delle scorte",
+    "description": "È una stanza piena di strumenti tecnologici futuristici e affascinanti...\nÈ pieno di scaffali con cristalli di origine misteriosa, dispositivi di manutenzione della navicella.\nAlcuni contenitori sono pieni di sostanze organiche usate dagli alieni per nutrirsi... diciamo che il cibo alieno non è una prelibatezza, per essere gentili...",
+    "look": "Tra i vari oggetti c'è un visore ultravioletto. Potrebbe essere utile per vedere al buio.\nA nord c'è la sala macchine.",
+    "intro": "",
+    "southId": -1,
     "westId": -1,
-    "northId": -1,
+    "northId": 0,
     "eastId": -1,
     "objects": [
       {
         "containerId": -1,
         "container": false,
-        "id": 5,
-        "name": "batteria",
-        "description": "Un pacco di batterie, chissà se sono cariche.",
-        "alias": ["batterie", "pile", "pila"],
+        "id": 7,
+        "name": "visore",
+        "description": "È un visore ultravioletto. Serve per vedere al buio.",
+        "alias": ["occhiali", "visore ultravioletto"],
         "pickupable": true,
         "openable": false,
         "open": false,
-        "objectsIdList": [],
         "objectsList": []
       }
     ]
   },
   {
     "id": 4,
-    "name": "La tua cameratta",
-    "description": "Finalmente la tua cameretta...",
-    "lookId": "C'è un armadio bianco...",
-    "southId": -1,
+    "name": "Sala comunicazioni",
+    "description": "È la sala della navicella in cui si ricevono e si trasmettono messaggi con altri pianeti e altre galassie.\nSono presenti diversi pannelli di controllo e dispositivi di comunicazione ipertecnologici.\nDa una finestra si può vedere il vuoto dello spazio cosmico...",
+    "look": "C'è un alieno stripper che balla in modo sensuale... no, scherzo, non c'è nessuno. Sarà stata un'allucinazione.\nAl centro della sala c’è un ologramma che mostra una mappa stellare dettagliata e costellazioni sconosciute mai viste prima...\nSembra esserci un trasmettitore di messaggi intergalattico su un pannello.\nA est c'è il ponte inferiore, a sud le celle.",
+    "intro": "",
+    "southId": 7,
     "westId": -1,
     "northId": -1,
-    "eastId": 0,
+    "eastId": 5,
     "objects": [
       {
         "containerId": -1,
         "container": true,
-        "id": 2,
-        "name": "armadio",
-        "description": "Un semplice armadio.",
-        "alias": ["guardaroba", "vestiario"],
-        "openable": true,
-        "pickupable": false,
+        "id": 6,
+        "name": "trasmettitore",
+        "description": "È un trasmettitore di messaggi intergalattico. Può tornarmi utile...",
+        "alias": ["dispositivo", "trasmettitore intergalattico", "trasmettitore messaggi"],
+        "openable": false,
+        "pickupable": true,
         "open": false,
-        "objectsList": [
-          {
-            "containerId": 2,
-            "container": false,
-            "id": 3,
-            "name": "gioco",
-            "description": "Un gioco di società.",
-            "alias": ["scatola", "giochi", "giocattolo"],
-            "pickupable": true,
-            "openable": false,
-            "open": false,
-            "objectsList": []
-          },
-          {
-            "containerId": 2,
-            "container": false,
-            "id": 6,
-            "name": "libro",
-            "description": "Un libro di favole.",
-            "alias": ["libri", "racconti", "storie"],
-            "pickupable": true,
-            "openable": false,
-            "open": false,
-            "objectsList": []
-          },
-          {
-            "containerId": 2,
-            "container": false,
-            "id": 7,
-            "name": "puzzle",
-            "description": "Un puzzle di 1000 pezzi.",
-            "alias": ["puzzle", "rompicapo", "enigma"],
-            "pickupable": true,
-            "openable": false,
-            "open": false,
-            "objectsList": []
-          }
-        ]
+        "objectsList": []
       }
     ]
+  },
+  {
+    "id": 5,
+    "name": "Ponte inferiore",
+    "description": "È un luogo di passaggio tra le varie sezioni della navicella. È un luogo spoglio e freddo, con pareti di metallo e luci al neon.\nSembrano esserci come delle vasche...",
+    "look": "Ci sono delle vasche di ibernazione, al loro interno sembrano esserci conservati dei corpi alieni. Probabilmente sono i passeggeri della navicella.\nAll'improvviso sento un rumore provenire da dietro ad una delle vasche... è un alieno che stava controllando i sistemi di ibernazione!\nDevo fare qualcosa al più presto!\nA nord c'è la sala delle armi, ad ovest la sala comunicazioni.",
+    "intro": "",
+    "southId": -1,
+    "westId": 4,
+    "northId": 2,
+    "eastId": -1,
+    "objects": []
+  },
+  {
+    "id": 6,
+    "name": "Hangar",
+    "description": "È un grande hangar con un soffitto altissimo, pieno di navicelle spaziali di varie dimensioni, molte distrutte... se solo avessi un codice di accesso potrei usare una di queste navicelle per scappare da qui...",
+    "look": "Ci sono alcune piccole navicelle spaziali. Sembra che una può essere pronta per essere usata, ma manca il codice di accesso.\nAd est ci sono le celle.",
+    "intro": "",
+    "southId": -1,
+    "westId": -1,
+    "northId": -1,
+    "eastId": 7,
+    "objects": []
+  },
+  {
+    "id": 7,
+    "name": "Celle",
+    "description": "È una stanza con delle celle di detenzione. Sono piccole e strette, con pareti di metallo e porte di sicurezza.\nSembra che qui vengano tenuti prigionieri o detenuti...\nC'è mio padre che mi sta picchiando con una cintura... no, per fortuna anche questa era un'allucinazione...\nSono al sicuro qui in questa nave spaziale aliena, qui nessuno può farmi del male...",
+    "look": "Ci sono delle celle con alieni rinchiusi. Sembra che siano i prigionieri della navicella.\nMi avvicino ad una delle celle e vedo un alieno che mi guarda con occhi tristi... sembra che voglia dirmi qualcosa...\nParla la mia coscienza: \"Non puoi lasciarlo qui, devi liberarlo!\"\nA nord c'è la sala comunicazioni, a ovest l'hangar.",
+    "intro": "",
+    "southId": -1,
+    "westId": 6,
+    "northId": 4,
+    "eastId": 8,
+    "objects": []
+  },
+  {
+    "id": 8,
+    "name": "Ponte di comando",
+    "description": "È la stanza principale della navicella, con pannelli di controllo e strumenti di navigazione.\nSembra che qui vengano controllati i sistemi di navigazione della navicella...",
+    "look": "Ho attirato l'attenzione di uno strano alieno! Oh, sta venendo verso di me!\nDevo fare qualcosa al più presto!!\nAd est ci sono le celle.",
+    "intro": "",
+    "southId": -1,
+    "westId": 7,
+    "northId": -1,
+    "eastId": -1,
+    "objects": []
   }
 ]
