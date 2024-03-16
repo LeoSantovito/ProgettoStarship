@@ -207,7 +207,7 @@ public class Engine {
     private void saveGame(GameDescription game) {
         System.out.println("Salvataggio in corso della partita con ID: " + game.getGameId() + "...");
 
-        /* Recupera i secondsElapsed dal timer e li somma a quelli nella gameDescription. */
+        /* Recupera i secondsElapsed dal timer e li aggiorna nella gameDescription. */
         int secondsElapsed = timer.getSecondsElapsed();
         game.setTimeElapsed(secondsElapsed);
 
