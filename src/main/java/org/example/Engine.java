@@ -149,6 +149,7 @@ public class Engine {
         }
 
         /* Stampa la stanza iniziale. */
+        System.out.println();
         System.out.println("Sei nella stanza: " + game.getCurrentRoom().getName() + ".");
         System.out.println();
         System.out.println(game.getCurrentRoom().getDescription());
@@ -284,7 +285,6 @@ public class Engine {
         System.out.println();
         System.out.println("Aspetta ma ...questo non è il mio shuttle!! Dove sono finito?");
         System.out.println("Devo alzarmi da qua e capire cosa è successo...");
-        System.out.println();
     }
 
     /**

@@ -58,32 +58,32 @@
             "openable": true,
             "pickupable": true,
             "open": false,
-            "objectsList": [
+          "objectsList": [
             {
-                "containerId": 3,
-                "container": false,
-                "id": 4,
-                "name": "mappa",
-                "description": "Sembra essere una mappa delle stanze della navicella...",
-                "alias": ["cartina", "piano"],
-                "pickupable": true,
-                "openable": false,
-                "open": false,
-                "objectsList": []
+              "containerId": 3,
+              "container": false,
+              "id": 4,
+              "name": "mappa",
+              "description": "Sembra essere una mappa delle stanze della navicella...",
+              "alias": ["cartina", "piano"],
+              "pickupable": true,
+              "openable": false,
+              "open": false,
+              "objectsList": []
             },
             {
-                "containerId": 1,
-                "container": false,
-                "id": 5,
-                "name": "foglio",
-                "description": "Sono degli appunti scritti da John. Dovrei leggerli?",
-                "alias": ["appunti"],
-                "pickupable": true,
-                "openable": false,
-                "open": false,
-                "objectsList": []
+              "containerId": 3,
+              "container": false,
+              "id": 5,
+              "name": "foglio",
+              "description": "Sono degli appunti scritti da John. Dovrei leggerli?",
+              "alias": ["appunti"],
+              "pickupable": true,
+              "openable": false,
+              "open": false,
+              "objectsList": []
             }
-            ]
+          ]
         }
     ]
   },

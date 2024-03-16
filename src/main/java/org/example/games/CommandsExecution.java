@@ -28,6 +28,9 @@ public class CommandsExecution implements Serializable {
                                 if(it.hasNext()) {
                                     out.print(",");
                                 }
+                                else {
+                                    out.print(".");
+                                }
                             }
                             out.println();
                         }
@@ -41,6 +44,12 @@ public class CommandsExecution implements Serializable {
                             while (it.hasNext()) {
                                 AdvObject next = it.next();
                                 out.print(" " + next.getName());
+                                if(it.hasNext()) {
+                                    out.print(",");
+                                }
+                                else {
+                                    out.print(".");
+                                }
                             }
                             out.println();
                         }
