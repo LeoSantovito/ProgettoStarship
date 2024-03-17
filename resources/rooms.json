@@ -203,7 +203,7 @@
   {
     "id": 6,
     "name": "Hangar",
-    "description": "È un grande hangar con un soffitto altissimo, pieno di navicelle spaziali di varie dimensioni, molte distrutte... se solo avessi un codice di accesso potrei usare una di queste navicelle per scappare da qui...",
+    "description": "È un grande hangar con un soffitto altissimo, pieno di navicelle spaziali di varie dimensioni, molte distrutte...\nSe solo avessi un codice di accesso potrei usare una di queste navicelle per scappare da qui...",
     "look": "Ci sono alcune piccole navicelle spaziali. Sembra che una può essere pronta per essere usata, ma manca la cella combustibile.\nAd est ci sono le celle.",
     "intro": "Sembra che qui ci siano delle navicelle spaziali, se riuscissi ad utilizzarne una potrei scappare da qui! Ma devo trovare un modo per farlo...",
     "southId": -1,
