@@ -9,6 +9,8 @@
     "westId": -1,
     "northId": -1,
     "eastId": 1,
+    "accessible": true,
+    "inaccessibleMessage": "",
     "objects": [
       {
         "containerId": -1,
@@ -47,6 +49,8 @@
     "westId": 0,
     "northId": -1,
     "eastId": 2,
+    "accessible": true,
+    "inaccessibleMessage": "",
     "objects": [
         {
             "containerId": -1,
@@ -97,6 +101,8 @@
     "westId": 1,
     "northId": -1,
     "eastId": -1,
+    "accessible": false,
+    "inaccessibleMessage": "La porta è chiusa, protetta da un codice di sicurezza... se solo potessi trovare un modo per conoscerlo.",
     "objects": [
       {
         "containerId": -1,
@@ -122,6 +128,8 @@
     "westId": -1,
     "northId": 0,
     "eastId": -1,
+    "accessible": true,
+    "inaccessibleMessage": "",
     "objects": [
       {
         "containerId": -1,
@@ -147,6 +155,8 @@
     "westId": -1,
     "northId": -1,
     "eastId": 5,
+    "accessible": true,
+    "inaccessibleMessage": "",
     "objects": [
       {
         "containerId": -1,
@@ -172,7 +182,23 @@
     "westId": 4,
     "northId": 2,
     "eastId": -1,
-    "objects": []
+    "accessible": true,
+    "inaccessibleMessage": "",
+    "objects": [
+      {
+        "containerId": -1,
+        "container": false,
+        "id": 7,
+        "name": "alieno",
+        "description": "È un alieno che stava controllando i sistemi di ibernazione. Sembra essere un dottore alieno.",
+        "alias": ["dottore"],
+        "pickupable": false,
+        "openable": false,
+        "open": false,
+        "isACharacter": true,
+        "objectsList": []
+      }
+    ]
   },
   {
     "id": 6,
@@ -184,6 +210,8 @@
     "westId": -1,
     "northId": -1,
     "eastId": 7,
+    "accessible": true,
+    "inaccessibleMessage": "",
     "objects": []
   },
   {
@@ -196,6 +224,8 @@
     "westId": 6,
     "northId": 4,
     "eastId": 8,
+    "accessible": true,
+    "inaccessibleMessage": "",
     "objects": []
   },
   {
@@ -208,6 +238,8 @@
     "westId": 7,
     "northId": -1,
     "eastId": -1,
+    "accessible": true,
+    "inaccessibleMessage": "",
     "objects": []
   }
 ]

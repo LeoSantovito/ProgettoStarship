@@ -72,32 +72,48 @@ public class StarshipExodus extends GameDescription {
             switch (p.getCommand().getType()) {
                 case NORTH:
                     if (getCurrentRoom().getNorth() != null) {
-                        setCurrentRoom(getCurrentRoom().getNorth());
-                        move = true;
+                        if(getCurrentRoom().getNorth().getAccessible() == true){
+                            setCurrentRoom(getCurrentRoom().getNorth());
+                            move = true;
+                        } else {
+                            System.out.println(getCurrentRoom().getNorth().getInaccessibleMessage());
+                        }
                     } else {
                         noroom = true;
                     }
                     break;
                 case SOUTH:
                     if (getCurrentRoom().getSouth() != null) {
-                        setCurrentRoom(getCurrentRoom().getSouth());
-                        move = true;
+                        if(getCurrentRoom().getSouth().getAccessible() == true){
+                            setCurrentRoom(getCurrentRoom().getSouth());
+                            move = true;
+                        } else {
+                            System.out.println(getCurrentRoom().getSouth().getInaccessibleMessage());
+                        }
                     } else {
                         noroom = true;
                     }
                     break;
                 case EAST:
                     if (getCurrentRoom().getEast() != null) {
-                        setCurrentRoom(getCurrentRoom().getEast());
-                        move = true;
+                        if(getCurrentRoom().getEast().getAccessible() == true){
+                            setCurrentRoom(getCurrentRoom().getEast());
+                            move = true;
+                        } else {
+                            System.out.println(getCurrentRoom().getEast().getInaccessibleMessage());
+                        }
                     } else {
                         noroom = true;
                     }
                     break;
                 case WEST:
                     if (getCurrentRoom().getWest() != null) {
-                        setCurrentRoom(getCurrentRoom().getWest());
-                        move = true;
+                        if(getCurrentRoom().getWest().getAccessible() == true){
+                            setCurrentRoom(getCurrentRoom().getWest());
+                            move = true;
+                        } else {
+                            System.out.println(getCurrentRoom().getWest().getInaccessibleMessage());
+                        }
                     } else {
                         noroom = true;
                     }
@@ -144,6 +160,24 @@ public class StarshipExodus extends GameDescription {
                         }
                     } else {
                         out.println("Non ci sono oggetti che puoi premere qui.");
+                    }
+                    break;
+                case USE:
+                    //controlla se l'oggetto è nell'inventario, se si esegue execute.useItem
+                    if (p.getInvObject() != null) {
+                        execute.useItem(p.getInvObject(), out, getInventory(), getCurrentRoom());
+                    } else {
+                        out.println("Non puoi usare questo oggetto.");
+                    }
+                    break;
+                case TALK_TO:
+                    if ((p.getObject() != null) && (p.getObject().isACharacter())) {
+                        execute.talkTo(p.getObject(), out);
+                    } else if ((p.getInvObject() != null) && (!p.getInvObject().isACharacter())) {
+                        out.println("Non puoi mica parlare con gli oggetti!");
+                    }
+                    else {
+                        out.println("Non c'è nessuno con cui parlare qui.");
                     }
                     break;
             }

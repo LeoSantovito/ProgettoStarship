@@ -11,5 +11,7 @@
   {"type": "SAVE", "name": "salva", "alias": ["save"]},
   {"type": "TIME", "name": "tempo", "alias": ["time", "timer", "cronometro"]},
   {"type": "END", "name": "esci", "alias": ["end", "fine", "muori", "ammazzati", "ucciditi", "suicidati", "exit"]},
-  {"type": "HELP", "name": "aiuto", "alias": ["help", "aiutami", "aiutino"]}
+  {"type": "HELP", "name": "aiuto", "alias": ["help", "aiutami", "aiutino"]},
+  {"type": "USE", "name": "usa", "alias": ["utilizza", "attiva"]},
+  {"type": "TALK_TO", "name":  "parla", "alias": ["chiedi", "domanda", "affronta"]}
 ]

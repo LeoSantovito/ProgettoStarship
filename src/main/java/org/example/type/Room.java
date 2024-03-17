@@ -25,9 +25,13 @@ public class Room implements Serializable {
 
     private String intro;
 
+    private String inaccessibleMessage;
+
     private boolean visible = true;
 
     private boolean visited = false;
+
+    private boolean accessible = true;
     private int southId;
     private int northId;
     private int eastId;
@@ -83,6 +87,22 @@ public class Room implements Serializable {
 
     public void setVisited(boolean visited) {
         this.visited = visited;
+    }
+
+    public boolean getAccessible() {
+        return accessible;
+    }
+
+    public void setAccessible(boolean accessible) {
+        this.accessible = accessible;
+    }
+
+    public String getInaccessibleMessage() {
+        return inaccessibleMessage;
+    }
+
+    public void setInaccessibleMessage(String inaccessibleMessage) {
+        this.inaccessibleMessage = inaccessibleMessage;
     }
 
     public boolean isVisible() {
