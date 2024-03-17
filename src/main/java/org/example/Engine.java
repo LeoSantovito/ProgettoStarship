@@ -232,10 +232,13 @@ public class Engine {
 
     private void printGameIntro(String playerName) {
         Utils.printFromFile("resources/dialogs/game_intro_1.txt", playerName);
+        System.out.println();
         Utils.waitForEnter();
         Utils.printFromFile("resources/dialogs/game_intro_2.txt", playerName);
+        System.out.println();
         Utils.waitForEnter();
         Utils.printFromFile("resources/dialogs/game_intro_3.txt", playerName);
+        System.out.println();
         Utils.waitForEnter();
         Utils.printFromFile("resources/dialogs/game_intro_4.txt", playerName);
     }

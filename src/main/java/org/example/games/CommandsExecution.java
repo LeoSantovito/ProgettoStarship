@@ -34,6 +34,9 @@ public class CommandsExecution implements Serializable {
                             }
                             out.println();
                         }
+                        else {
+                            out.println("Non c'è niente al suo interno.");
+                        }
                     } else {
                         out.println("Hai già aperto questo oggetto.");
                         AdvObject c = object;
@@ -52,6 +55,9 @@ public class CommandsExecution implements Serializable {
                                 }
                             }
                             out.println();
+                        }
+                        else {
+                            out.println("Non c'è niente al suo interno.");
                         }
                     }
                 }
@@ -88,7 +94,8 @@ public class CommandsExecution implements Serializable {
                                     object.setContainerId(-1);
                                     inventory.add(object);
                                     containedObjectIterator.remove();
-                                    out.println("Hai raccolto: " + object.getDescription());
+                                    out.println("Hai raccolto: " + object.getName() + ".");
+                                    out.println(object.getDescription());
                                 }
                             }
                         } else {
