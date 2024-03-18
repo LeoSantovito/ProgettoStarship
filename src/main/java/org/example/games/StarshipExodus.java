@@ -176,11 +176,11 @@ public class StarshipExodus extends GameDescription {
                     } else if (p.getObject() != null && !p.getObject().isPickupable()) {
                         execute.useItem(p.getObject(), out, getInventory(), getCurrentRoom());
                     } else {
-                        out.println("Non puoi usare questo oggetto.");
+                        out.println("Non ci sono oggetti da usare.");
                     }
                 }
                 case SHOW_MAP -> {
-                    // Mostra la mappa se ho l'oggetto mappa nell'inventario
+                    // Mostra la mappa se l'oggetto mappa è nell'inventario
                     if (Utils.findObjectById(getInventory(), MAP_ID)!= null) {
                         execute.showMap();
                     } else {

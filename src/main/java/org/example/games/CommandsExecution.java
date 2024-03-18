@@ -165,7 +165,7 @@ public class CommandsExecution implements Serializable {
                 } else if (currentRoom.getId() == 1 && currentRoom.getEast().getAccessible()) {
                     out.println("Ho già aperto la porta, non c'è bisogno di usare il visore qui.");
                 } else {
-                    out.println("Non posso usare questo oggetto qua.");
+                    out.println("Non puoi usare questo oggetto qui.");
                 }
             }
             case 8 ->
