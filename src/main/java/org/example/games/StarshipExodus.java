@@ -13,7 +13,6 @@ import org.example.Utils;
 import org.example.parser.ParserOutput;
 import org.example.swing.Background;
 import org.example.type.*;
-import org.example.database.*;
 
 import javax.swing.*;
 import java.io.BufferedReader;
@@ -47,6 +46,8 @@ import static org.example.type.Room.findRoomById;
 public class StarshipExodus extends GameDescription {
     private static final int STARTING_ROOM_ID = 1;
 
+    private static final int MAP_ID = 4;
+
     private CommandsExecution execute = new CommandsExecution();
 
     @Override
@@ -72,9 +73,9 @@ public class StarshipExodus extends GameDescription {
             boolean noroom = false;
             boolean move = false;
             switch (p.getCommand().getType()) {
-                case NORTH:
+                case NORTH -> {
                     if (getCurrentRoom().getNorth() != null) {
-                        if(getCurrentRoom().getNorth().getAccessible() == true){
+                        if (getCurrentRoom().getNorth().getAccessible()) {
                             setCurrentRoom(getCurrentRoom().getNorth());
                             move = true;
                         } else {
@@ -83,10 +84,10 @@ public class StarshipExodus extends GameDescription {
                     } else {
                         noroom = true;
                     }
-                    break;
-                case SOUTH:
+                }
+                case SOUTH -> {
                     if (getCurrentRoom().getSouth() != null) {
-                        if(getCurrentRoom().getSouth().getAccessible() == true){
+                        if (getCurrentRoom().getSouth().getAccessible()) {
                             setCurrentRoom(getCurrentRoom().getSouth());
                             move = true;
                         } else {
@@ -95,10 +96,10 @@ public class StarshipExodus extends GameDescription {
                     } else {
                         noroom = true;
                     }
-                    break;
-                case EAST:
+                }
+                case EAST -> {
                     if (getCurrentRoom().getEast() != null) {
-                        if(getCurrentRoom().getEast().getAccessible() == true){
+                        if (getCurrentRoom().getEast().getAccessible()) {
                             setCurrentRoom(getCurrentRoom().getEast());
                             move = true;
                         } else {
@@ -107,10 +108,10 @@ public class StarshipExodus extends GameDescription {
                     } else {
                         noroom = true;
                     }
-                    break;
-                case WEST:
+                }
+                case WEST -> {
                     if (getCurrentRoom().getWest() != null) {
-                        if(getCurrentRoom().getWest().getAccessible() == true){
+                        if (getCurrentRoom().getWest().getAccessible()) {
                             setCurrentRoom(getCurrentRoom().getWest());
                             move = true;
                         } else {
@@ -119,9 +120,9 @@ public class StarshipExodus extends GameDescription {
                     } else {
                         noroom = true;
                     }
-                    break;
-                case INVENTORY:
-                    if(getInventory().isEmpty()){
+                }
+                case INVENTORY -> {
+                    if (getInventory().isEmpty()) {
                         out.println("Non hai oggetti nell'inventario.");
                     } else {
                         out.println("Ecco gli oggetti che hai nell'inventario:");
@@ -129,29 +130,29 @@ public class StarshipExodus extends GameDescription {
                             out.println("- " + o.getName() + ": " + o.getDescription());
                         }
                     }
-                    break;
-                case LOOK_AT:
+                }
+                case LOOK_AT -> {
                     if (getCurrentRoom().getLook() != null) {
                         out.println(getCurrentRoom().getLook());
                     } else {
                         out.println("Non c'è niente di interessante qui.");
                     }
-                    break;
-                case PICK_UP:
+                }
+                case PICK_UP -> {
                     if (p.getObject() != null) {
                         execute.pickItem(p.getObject(), out, getInventory(), getCurrentRoom());
                     } else {
                         out.println("Non c'è niente da raccogliere qui.");
                     }
-                    break;
-                case OPEN:
+                }
+                case OPEN -> {
                     if (p.getObject() != null) {
                         execute.openItem(p.getObject(), out);
                     } else {
                         out.println("Non c'è niente da aprire qui.");
                     }
-                    break;
-                case PUSH:
+                }
+                case PUSH -> {
                     // ricerca oggetti pushabili
                     if (p.getObject() != null && p.getObject().isPushable()) {
                         out.println("Hai premuto: " + p.getObject().getName());
@@ -167,21 +168,25 @@ public class StarshipExodus extends GameDescription {
                     } else {
                         out.println("Non ci sono oggetti che puoi premere qui.");
                     }
-                    break;
-                case USE:
+                }
+                case USE -> {
                     //controlla se l'oggetto è nell'inventario, se si esegue execute.useItem
                     if (p.getInvObject() != null) {
                         execute.useItem(p.getInvObject(), out, getInventory(), getCurrentRoom());
                     } else if (p.getObject() != null && !p.getObject().isPickupable()) {
                         execute.useItem(p.getObject(), out, getInventory(), getCurrentRoom());
-                    }
-                    else {
+                    } else {
                         out.println("Non puoi usare questo oggetto.");
                     }
-                    break;
-                case SHOW_MAP: // Mostra la mappa.
-                    showMap();
-                    break;
+                }
+                case SHOW_MAP -> {
+                    // Mostra la mappa se ho l'oggetto mappa nell'inventario
+                    if (Utils.findObjectById(getInventory(), MAP_ID)!= null) {
+                        execute.showMap();
+                    } else {
+                        out.println("Non hai la mappa nell'inventario!");
+                    }
+                }
             }
             if (noroom) {
                 out.println(
@@ -229,25 +234,4 @@ public class StarshipExodus extends GameDescription {
             }
         }
     }
-    public void showMap() {
-        try {
-            JDialog frame = new JDialog(new JFrame(), "Mappa", true);
-            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            frame.setSize(600, 500);
-
-            Background img = new Background("./resources/images/Mappa.jpg");
-            frame.add(img);
-            // Creazione di un nuovo thread per la finestra della mappa
-            // Imposta la finestra come non bloccante
-            frame.setAlwaysOnTop(true);
-            frame.setVisible(true);
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.out.println("Errore nell'apertura della mappa.");
-        }
-    }
-
-
-
-
 }

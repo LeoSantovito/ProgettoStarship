@@ -7,6 +7,7 @@ package org.example;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import org.example.type.AdvObject;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -94,6 +95,15 @@ public class Utils {
         } catch (IOException e) {
             System.err.println("Errore durante la lettura dell'input: " + e.getMessage());
         }
+    }
+
+    public static AdvObject findObjectById(List<AdvObject> objectsList, int id) {
+        for (AdvObject object : objectsList) {
+            if (object.getId() == id) {
+                return object;
+            }
+        }
+        return null;
     }
 
 }

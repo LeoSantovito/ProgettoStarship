@@ -1,8 +1,10 @@
 package org.example.games;
 
+import org.example.swing.Background;
 import org.example.type.AdvObject;
 import org.example.type.Room;
 
+import javax.swing.*;
 import java.io.PrintStream;
 import java.io.Serializable;
 import java.util.Iterator;
@@ -115,9 +117,13 @@ public class CommandsExecution implements Serializable {
     public void useItem(AdvObject object, PrintStream out, List<AdvObject> inventory, Room currentRoom) {
         //switch case che in base all'id dell'oggetto permette di personalizzare il comportamento del gioco
         switch (object.getId()) {
-            case 6:
+            case 4 -> {
+                //mostra la mappa del gioco
+                showMap();
+            }
+            case 6 -> {
                 //pistola restringente in stanza ponte inferiore
-                if(currentRoom.getId()==5){
+                if (currentRoom.getId() == 5) {
                     out.println("Hai usato: " + object.getName());
                     out.println();
                     out.println("WHOOSH! La pistola ha sparato un raggio laser e ha colpito in pieno l'alieno!");
@@ -131,10 +137,10 @@ public class CommandsExecution implements Serializable {
                 } else {
                     out.println("Non mi conviene usare la pistola qui... meglio tenerla per quando ne avrò bisogno.");
                 }
-                break;
-            case 7:
+            }
+            case 7 -> {
                 //visore ultravioletto in stanza laboratorio
-                if(currentRoom.getId()==1 && !currentRoom.getEast().getAccessible()){
+                if (currentRoom.getId() == 1 && !currentRoom.getEast().getAccessible()) {
                     out.println("Hai usato: " + object.getName());
                     out.println();
                     out.println("Hai acceso il visore ultravioletto.");
@@ -156,21 +162,34 @@ public class CommandsExecution implements Serializable {
 
                     out.println("La porta si è aperta! Ora posso andare alla sala delle armi.");
                     currentRoom.getEast().setAccessible(true);
-                }
-                else if (currentRoom.getId()==1 && currentRoom.getEast().getAccessible()) {
+                } else if (currentRoom.getId() == 1 && currentRoom.getEast().getAccessible()) {
                     out.println("Ho già aperto la porta, non c'è bisogno di usare il visore qui.");
-                }
-                else {
+                } else {
                     out.println("Non posso usare questo oggetto qua.");
                 }
-                break;
-            case 8:
+            }
+            case 8 ->
                 //trasmettitore di messaggi intergalattico
-                out.println("DEBUG");
-                break;
-            default:
-                out.println("Non puoi usare questo oggetto.");
-                break;
+                    out.println("DEBUG");
+            default -> out.println("Non puoi usare questo oggetto.");
+        }
+    }
+
+    public void showMap() {
+        try {
+            JDialog frame = new JDialog(new JFrame(), "Mappa", true);
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            frame.setSize(600, 500);
+
+            Background img = new Background("./resources/images/Mappa.jpg");
+            frame.add(img);
+            // Creazione di un nuovo thread per la finestra della mappa
+            // Imposta la finestra come non bloccante
+            frame.setAlwaysOnTop(true);
+            frame.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Errore nell'apertura della mappa.");
         }
     }
 }
