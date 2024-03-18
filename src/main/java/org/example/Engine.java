@@ -8,17 +8,19 @@ package org.example;
 import org.example.games.StarshipExodus;
 import org.example.parser.Parser;
 import org.example.parser.ParserOutput;
+import org.example.swing.Background;
 import org.example.swing.MenuSwing;
 import org.example.type.CommandType;
 import org.example.database.Database;
 
+import javax.swing.*;
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 import java.util.Set;
 
 /**
- *
  * L'Engine si occupa di inizializzare il gioco, gestire il menu iniziale, caricare, salvare le partite ed eseguirle.
  *
  * @author francesco
@@ -189,6 +191,9 @@ public class Engine {
 
                         System.out.println("Addio!");
                         return;
+                    case SHOW_MAP: // Mostra la mappa.
+                        showMap();
+                        break;
                     default:
                         game.nextMove(p, System.out);
                         System.out.println();
@@ -213,7 +218,7 @@ public class Engine {
     }
 
     /* Stampa il tempo di gioco. */
-    private void printGameTime(int totalSeconds){
+    private void printGameTime(int totalSeconds) {
         int hours = totalSeconds / 3600;
         int minutes = (totalSeconds % 3600) / 60;
         int seconds = totalSeconds % 60;
@@ -221,14 +226,33 @@ public class Engine {
         String printMinutes = minutes == 1 ? "minuto" : "minuti";
         String printSeconds = seconds == 1 ? "secondo" : "secondi";
 
-        if(hours == 0 && minutes == 0){
+        if (hours == 0 && minutes == 0) {
             System.out.println("Hai giocato per " + seconds + " " + printSeconds + " e non hai ancora finito il gioco! Che fallimento!");
-        } else if(hours == 0){
+        } else if (hours == 0) {
             System.out.println("Hai giocato per " + minutes + " " + printMinutes + " e " + seconds + " " + printSeconds + " e non hai ancora finito il gioco! Che fallimento!");
         } else {
             System.out.println("Hai giocato per " + hours + " " + printHours + ", " + minutes + " " + printMinutes + " e " + seconds + " " + printSeconds + " e non hai ancora finito il gioco! Che fallimento!");
         }
     }
+
+    public void showMap() {
+        try {
+            JDialog frame = new JDialog(new JFrame(), "Mappa", true);
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            frame.setSize(500, 300);
+
+            Background img = new Background("./resources/Mappa.png");
+            frame.add(img);
+            // Creazione di un nuovo thread per la finestra della mappa
+            // Imposta la finestra come non bloccante
+            frame.setAlwaysOnTop(true);
+            frame.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Errore nell'apertura della mappa.");
+        }
+    }
+
 
     /**
      * @param args the command line arguments
