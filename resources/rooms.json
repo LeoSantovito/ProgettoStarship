@@ -60,7 +60,7 @@
             "description": "È uno zaino da esploratore spaziale. Sicuramente era di John.",
             "alias": ["zainetto", "borsetta"],
             "openable": true,
-            "pickupable": true,
+            "pickupable": false,
             "open": false,
           "objectsList": [
             {
@@ -136,7 +136,7 @@
         "container": false,
         "id": 7,
         "name": "visore",
-        "description": "È un visore ultravioletto. Serve per vedere al buio.",
+        "description": "È un visore ultravioletto. Potrei usarlo per decifrare codici nascosti o per vedere al buio.",
         "alias": ["occhiali", "visore ultravioletto"],
         "pickupable": true,
         "openable": false,
@@ -184,21 +184,7 @@
     "eastId": -1,
     "accessible": true,
     "inaccessibleMessage": "",
-    "objects": [
-      {
-        "containerId": -1,
-        "container": false,
-        "id": 7,
-        "name": "alieno",
-        "description": "È un alieno che stava controllando i sistemi di ibernazione. Sembra essere un dottore alieno.",
-        "alias": ["dottore"],
-        "pickupable": false,
-        "openable": false,
-        "open": false,
-        "isACharacter": true,
-        "objectsList": []
-      }
-    ]
+    "objects": []
   },
   {
     "id": 6,

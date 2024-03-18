@@ -170,16 +170,6 @@ public class StarshipExodus extends GameDescription {
                         out.println("Non puoi usare questo oggetto.");
                     }
                     break;
-                case TALK_TO:
-                    if ((p.getObject() != null) && (p.getObject().isACharacter())) {
-                        execute.talkTo(p.getObject(), out);
-                    } else if ((p.getInvObject() != null) && (!p.getInvObject().isACharacter())) {
-                        out.println("Non puoi mica parlare con gli oggetti!");
-                    }
-                    else {
-                        out.println("Non c'è nessuno con cui parlare qui.");
-                    }
-                    break;
             }
             if (noroom) {
                 out.println(

@@ -74,8 +74,6 @@ public class CommandsExecution implements Serializable {
                 currentRoom.getObjects().remove(object);
                 out.println("Hai raccolto: " + object.getName() + ".");
                 out.println(object.getDescription());
-            } else if (object.isACharacter()){
-                out.println("Non puoi mica raccogliere un personaggio!");
             }
             else {
                 out.println("Non puoi raccogliere questo oggetto.");
@@ -149,22 +147,4 @@ public class CommandsExecution implements Serializable {
                 break;
         }
     }
-
-    public void talkTo(AdvObject object, PrintStream out) {
-        switch (object.getId()) {
-            case 1:
-                out.println("Hai parlato con: " + object.getName());
-                out.println("Ciao, come stai?");
-                break;
-            case 7:
-                out.println("Hai parlato con: " + object.getName());
-                out.println("Ciao, come stai?");
-                break;
-            default:
-                out.println("X");
-                break;
-        }
-    }
-
-
 }
