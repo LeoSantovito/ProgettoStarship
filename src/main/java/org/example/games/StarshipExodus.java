@@ -177,6 +177,9 @@ public class StarshipExodus extends GameDescription {
                         out.println("Non puoi usare questo oggetto.");
                     }
                     break;
+                case SHOW_MAP: // Mostra la mappa.
+                    showMap();
+                    break;
             }
             if (noroom) {
                 out.println(
@@ -224,4 +227,7 @@ public class StarshipExodus extends GameDescription {
             }
         }
     }
+
+
+
 }
