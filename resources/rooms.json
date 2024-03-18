@@ -189,22 +189,22 @@
   {
     "id": 6,
     "name": "Hangar",
-    "description": "È un grande hangar con un soffitto altissimo, pieno di navicelle spaziali di varie dimensioni, molte distrutte...\nSe solo avessi un codice di accesso potrei usare una di queste navicelle per scappare da qui...",
-    "look": "Ci sono alcune piccole navicelle spaziali. Una di questte sembra pronta per essere usata, ma chi sa guidarla?\nÈ una tecnologia a me sconosciuta... non sembra neanche accesa...\nAd est ci sono le celle.",
+    "description": "È un grande hangar con un soffitto altissimo, pieno di navicelle spaziali di varie dimensioni, molte distrutte...\nSe solo sapessi come pilotare una di queste navicelle potrei tornare a casa...",
+    "look": "Ci sono alcune piccole navicelle spaziali. Una di questte sembra pronta per essere usata, ma sembra spenta e senza energia... \nÈ fatta con una tecnologia a me sconosciuta... magari il mio nuovo compagno alieno può aiutarmi?\nSennò cosa l'ho liberato a fare, per una partita a briscola?\nAd est ci sono le celle.",
     "intro": "Sembra che qui ci siano delle navicelle spaziali, se riuscissi ad utilizzarne una potrei scappare da qui! Ma devo trovare un modo per farlo...",
     "southId": -1,
     "westId": -1,
     "northId": -1,
     "eastId": 7,
-    "accessible": true,
-    "inaccessibleMessage": "",
+    "accessible": false,
+    "inaccessibleMessage": "Da qui c'è l'hangar, ma non posso andare avanti senza un alieno che mi aiuti a far funzionare una delle navicelle...\nDevo trovare un modo di aprire le celle!",
     "objects": []
   },
   {
     "id": 7,
     "name": "Celle",
     "description": "È una stanza con delle celle di detenzione. Sono piccole e strette, con pareti di metallo e porte bloccate da chiave.\nSembra che qui vengano tenuti prigionieri o detenuti...\nC'è mio padre che mi sta picchiando con una cintura... no, per fortuna anche questa era un'allucinazione...\nSono al sicuro qui in questa nave spaziale aliena, qui nessuno può farmi del male...",
-    "look": "Ci sono delle celle con alieni rinchiusi. Sembra che siano i prigionieri della navicella.\nMi avvicino ad una delle celle e vedo un alieno che mi guarda con occhi tristi... sembra che voglia dirmi qualcosa...\nSento che devo liberarlo...\nA nord c'è la sala comunicazioni, a ovest l'hangar.",
+    "look": "Ci sono delle celle con alieni rinchiusi. Sembra che siano i prigionieri della navicella.\nMi avvicino ad una delle celle e vedo un alieno che mi guarda con occhi tristi... sembra che voglia dirmi qualcosa...\nSento che devo liberarlo...\nA nord c'è la sala comunicazioni, a ovest l'hangar, ad est il ponte di comando.",
     "intro": "Dannazione non mi aspettavo di trovare altri prigionieri qui... quindi non sono l'unico!",
     "southId": -1,
     "westId": 6,
@@ -235,7 +235,7 @@
         "description": "È una chiave elettronica. Dovrebbe aprire le celle.",
         "alias": ["chiave elettronica"],
         "openable": false,
-        "pickupable": false,
+        "pickupable": true,
         "open": false,
         "objectsList": []
       }

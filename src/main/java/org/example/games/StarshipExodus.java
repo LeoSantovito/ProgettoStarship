@@ -157,13 +157,13 @@ public class StarshipExodus extends GameDescription {
                     if (p.getObject() != null && p.getObject().isPushable()) {
                         out.println("Hai premuto: " + p.getObject().getName());
                         if (p.getObject().getId() == 3) {
-                            end(out);
+                            execute.end(out);
                         }
                     } else if (p.getInvObject() != null &&
                             p.getInvObject().isPushable()) {
                         out.println("Hai premuto: " + p.getInvObject().getName());
                         if (p.getInvObject().getId() == 3) {
-                            end(out);
+                            execute.end(out);
                         }
                     } else {
                         out.println("Non ci sono oggetti che puoi premere qui.");
@@ -205,11 +205,6 @@ public class StarshipExodus extends GameDescription {
         }
     }
 
-    private void end(PrintStream out) {
-        out.println(
-                "Premi il pulsante del giocattolo e in seguito ad una forte esplosione la tua casa prende fuoco...\ntu e tuoi famigliari cercate invano di salvarvi e venite avvolti dalle fiamme...\nè stata una morte CALOROSA...addio!");
-        System.exit(0);
-    }
     private void setMap(List<Room> rooms) {
         for (Room currentRoom : rooms){
             int northId = currentRoom.getNorthId();

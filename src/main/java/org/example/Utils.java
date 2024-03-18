@@ -74,12 +74,23 @@ public class Utils {
         }
     }
 
-    public static void printFromFile(String filename, String playerName) {
+    public static void printFromFilePlaceholder(String filename, String placeholder) {
         try (Scanner scanner = new Scanner(new File(filename))) {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
-                // Sostituisci eventuali segnaposto per il nome del giocatore con il nome effettivo
-                line = line.replace("{playerName}", playerName);
+                // Sostituisci eventuali segnaposto con la stringa passata
+                line = line.replace("{placeholder}", placeholder);
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            System.out.println("Errore durante la lettura del file " + filename);
+        }
+    }
+
+    public static void printFromFile(String filename) {
+        try (Scanner scanner = new Scanner(new File(filename))) {
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
                 System.out.println(line);
             }
         } catch (IOException e) {

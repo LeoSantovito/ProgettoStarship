@@ -1,4 +1,4 @@
-Anno 2040... io, {playerName}, ed il mio collega John siamo in una missione esplorativa per conto dell'ESA, ufficialmente con lo scopo di trovare nuove forme di energia.
+Anno 2040... io, {placeholder}, ed il mio collega John siamo in una missione esplorativa per conto dell'ESA, ufficialmente con lo scopo di trovare nuove forme di energia.
 In realtà, il nostro vero scopo è quello di trovare un nuovo pianeta abitabile per l'umanità, o meglio per una ristretta cerchia di eletti.
 La Terra ormai sta velocemente esaurendo le sue risorse e l'umanità è in procinto di estinguersi a causa delle divisioni tra la gente...
 Il nostro viaggio è durato 10 anni, e finalmente nelle prossime 72 ore dovremmo arrivare al pianeta che abbiamo chiamato "Eden".

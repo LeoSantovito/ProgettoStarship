@@ -1,5 +1,7 @@
 package org.example.games;
 
+import org.example.GameDescription;
+import org.example.Utils;
 import org.example.swing.Background;
 import org.example.type.AdvObject;
 import org.example.type.Room;
@@ -117,6 +119,19 @@ public class CommandsExecution implements Serializable {
     public void useItem(AdvObject object, PrintStream out, List<AdvObject> inventory, Room currentRoom) {
         //switch case che in base all'id dell'oggetto permette di personalizzare il comportamento del gioco
         switch (object.getId()) {
+            case 2 -> {
+                //uso del cristallo nell'hangar
+                if (currentRoom.getId() == 6) {
+                    out.println("Hai usato: " + object.getName());
+                    out.println();
+
+                    /* Finisce il gioco */
+                    end(out);
+
+                } else {
+                    out.println("Non posso usare il cristallo qui.");
+                }
+            }
             case 4 -> {
                 //mostra la mappa del gioco
                 showMap();
@@ -126,11 +141,7 @@ public class CommandsExecution implements Serializable {
                 if (currentRoom.getId() == 5) {
                     out.println("Hai usato: " + object.getName());
                     out.println();
-                    out.println("WHOOSH! La pistola ha sparato un raggio laser e ha colpito in pieno l'alieno!");
-                    out.println("L'alieno si sta rimpicciolendo sempre di più, fino a scomparire del tutto.");
-                    out.println();
-                    out.println("Ci è mancato poco! Sembrava che l'alieno mi stesse per attaccare!");
-                    out.println("La pistola è scarica ormai... la lascio qua, ma almeno posso andare avanti");
+                    Utils.printFromFile("./resources/dialogs/use_object_6.txt");
 
                     inventory.remove(object);
                     currentRoom.getWest().setAccessible(true);
@@ -143,10 +154,7 @@ public class CommandsExecution implements Serializable {
                 if (currentRoom.getId() == 1 && !currentRoom.getEast().getAccessible()) {
                     out.println("Hai usato: " + object.getName());
                     out.println();
-                    out.println("Hai acceso il visore ultravioletto.");
-                    out.println("Sul tastierino numerico della porta d'accesso alla sala delle armi ci sono delle impronte digitali.");
-                    out.println("Sembra che vengano evidenziati i numeri 1, 3 e 5.");
-                    out.println("Devo capire la combinazione corretta... proverò a tentativi.");
+                    Utils.printFromFile("./resources/dialogs/use_object_7.txt");
                     out.println();
 
                     while (true) {
@@ -168,9 +176,22 @@ public class CommandsExecution implements Serializable {
                     out.println("Non puoi usare questo oggetto qui.");
                 }
             }
-            case 8 ->
+            case 8 -> {
                 //trasmettitore di messaggi intergalattico
-                    out.println("DEBUG");
+                out.println("DEBUG");
+            }
+            case 9 -> {
+                //chiave delle celle
+                if(currentRoom.getId() == 7) {
+                    out.println("Hai usato: " + object.getName());
+                    out.println();
+                    Utils.printFromFile("./resources/dialogs/use_object_9.txt");
+
+                    currentRoom.getWest().setAccessible(true);
+                } else {
+                    out.println("Non posso usare la chiave qui.");
+                }
+            }
             default -> out.println("Non puoi usare questo oggetto.");
         }
     }
@@ -191,5 +212,12 @@ public class CommandsExecution implements Serializable {
             e.printStackTrace();
             System.out.println("Errore nell'apertura della mappa.");
         }
+    }
+
+    //fine del gioco
+    public void end(PrintStream out) {
+        out.println("Fine del gioco. DEBUG.");
+        //da implementare lettura da file come la parte iniziale del gioco
+        System.exit(0);
     }
 }
