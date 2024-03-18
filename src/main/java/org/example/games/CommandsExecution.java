@@ -133,7 +133,7 @@ public class CommandsExecution implements Serializable {
                 break;
             case 7:
                 //visore ultravioletto in stanza laboratorio
-                if(currentRoom.getId()==1) {
+                if(currentRoom.getId()==1 && !currentRoom.getEast().getAccessible()){
                     out.println("Hai usato: " + object.getName());
                     out.println();
                     out.println("Hai acceso il visore ultravioletto.");
@@ -151,8 +151,11 @@ public class CommandsExecution implements Serializable {
                     out.println("La porta si è aperta!");
                     currentRoom.getEast().setAccessible(true);
                 }
+                else if (currentRoom.getId()==1 && currentRoom.getEast().getAccessible()) {
+                    out.println("Ho già aperto la porta, non c'è bisogno di usare il visore qui.");
+                }
                 else {
-                    out.println("Non puoi usare questo oggetto qui.");
+                    out.println("Non posso usare questo oggetto qua.");
                 }
                 break;
             default:

@@ -119,9 +119,13 @@ public class StarshipExodus extends GameDescription {
                     }
                     break;
                 case INVENTORY:
-                    out.println("Ecco gli oggetti che ho a disposizione:");
-                    for (AdvObject o : getInventory()) {
-                        out.println("- " + o.getName() + ": " + o.getDescription());
+                    if(getInventory().isEmpty()){
+                        out.println("Non hai oggetti nell'inventario.");
+                    } else {
+                        out.println("Ecco gli oggetti che hai nell'inventario:");
+                        for (AdvObject o : getInventory()) {
+                            out.println("- " + o.getName() + ": " + o.getDescription());
+                        }
                     }
                     break;
                 case LOOK_AT:
