@@ -114,16 +114,33 @@ public class CommandsExecution implements Serializable {
     public void useItem(AdvObject object, PrintStream out, List<AdvObject> inventory, Room currentRoom) {
         //switch case che in base all'id dell'oggetto permette di personalizzare il comportamento del gioco
         switch (object.getId()) {
+            case 6:
+                //pistola restringente in stanza ponte inferiore
+                if(currentRoom.getId()==5){
+                    out.println("Hai usato: " + object.getName());
+                    out.println();
+                    out.println("WHOOSH! La pistola ha sparato un raggio laser e ha colpito in pieno l'alieno!");
+                    out.println("L'alieno si sta rimpicciolendo sempre di più, fino a scomparire del tutto.");
+                    out.println();
+                    out.println("Ci è mancato poco! Sembrava che l'alieno mi stesse per attaccare!");
+                    out.println("La pistola è scarica ormai... la lascio qua, ma almeno posso andare avanti");
+
+                    inventory.remove(object);
+                    currentRoom.getWest().setAccessible(true);
+                } else {
+                    out.println("Non mi conviene usare la pistola qui... meglio tenerla per quando ne avrò bisogno.");
+                }
+                break;
             case 7:
                 //visore ultravioletto in stanza laboratorio
                 if(currentRoom.getId()==1) {
-                    System.out.println("Hai usato: " + object.getName());
-                    System.out.println();
-                    System.out.println("Hai acceso il visore ultravioletto.");
-                    System.out.println("Sul tastierino numerico della porta d'accesso alla sala delle armi ci sono delle impronte digitali.");
-                    System.out.println("Sembra che vengano evidenziati i numeri 1, 3 e 5.");
-                    System.out.println("Devo capire la combinazione corretta... proverò a tentativi.");
-                    System.out.println();
+                    out.println("Hai usato: " + object.getName());
+                    out.println();
+                    out.println("Hai acceso il visore ultravioletto.");
+                    out.println("Sul tastierino numerico della porta d'accesso alla sala delle armi ci sono delle impronte digitali.");
+                    out.println("Sembra che vengano evidenziati i numeri 1, 3 e 5.");
+                    out.println("Devo capire la combinazione corretta... proverò a tentativi.");
+                    out.println();
 
                     /* Chiede al giocatore di inserire la combinazione corretta, ovvero 513.
                     Se la combinazione è corretta, la porta si apre e la stanza diventa accessibile.
@@ -131,16 +148,12 @@ public class CommandsExecution implements Serializable {
                     DA FARE
                      */
 
-                    System.out.println("La porta si è aperta!");
+                    out.println("La porta si è aperta!");
                     currentRoom.getEast().setAccessible(true);
                 }
                 else {
                     out.println("Non puoi usare questo oggetto qui.");
                 }
-                break;
-            case 2:
-                out.println("Hai usato: " + object.getName());
-                //Esecuzione di un'azione specifica
                 break;
             default:
                 out.println("Non puoi usare questo oggetto.");

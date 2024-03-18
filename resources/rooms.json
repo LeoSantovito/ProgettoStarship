@@ -155,8 +155,8 @@
     "westId": -1,
     "northId": -1,
     "eastId": 5,
-    "accessible": true,
-    "inaccessibleMessage": "",
+    "accessible": false,
+    "inaccessibleMessage": "Devo prima affrontare l'alieno che sta controllando i sistemi di ibernazione!\nDevo usare qualcosa al più presto! Altrimenti mi tocca scappare!",
     "objects": [
       {
         "containerId": -1,
@@ -176,8 +176,8 @@
     "id": 5,
     "name": "Ponte inferiore",
     "description": "È un luogo di passaggio tra le varie sezioni della navicella. È un luogo spoglio e freddo, con pareti di metallo e luci al neon.\nSembrano esserci come delle vasche...",
-    "look": "Ci sono delle vasche di ibernazione, al loro interno sembrano esserci conservati dei corpi alieni. Probabilmente sono i passeggeri della navicella.\nAll'improvviso sento un rumore provenire da dietro ad una delle vasche... è un alieno che stava controllando i sistemi di ibernazione!\nDevo fare qualcosa al più presto!\nA nord c'è la sala delle armi, ad ovest la sala comunicazioni.",
-    "intro": "Ora che sono armato, posso difendermi da eventuali pericoli... ma devo fare attenzione, non so cosa aspettarmi!",
+    "look": "Ci sono delle vasche di ibernazione, al loro interno sembrano esserci conservati dei corpi alieni. Probabilmente sono i passeggeri della navicella.\nA nord c'è la sala delle armi, ad ovest la sala comunicazioni.",
+    "intro": "All'improvviso sento un rumore provenire da dietro ad una delle vasche... è un alieno che sta controllando i sistemi di ibernazione!\nDevo usare qualcosa per difendermi! Altrimenti mi tocca scappare!",
     "southId": -1,
     "westId": 4,
     "northId": 2,
