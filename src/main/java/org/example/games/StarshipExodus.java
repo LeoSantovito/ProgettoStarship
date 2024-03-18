@@ -170,7 +170,10 @@ public class StarshipExodus extends GameDescription {
                     //controlla se l'oggetto è nell'inventario, se si esegue execute.useItem
                     if (p.getInvObject() != null) {
                         execute.useItem(p.getInvObject(), out, getInventory(), getCurrentRoom());
-                    } else {
+                    } else if (p.getObject() != null && !p.getObject().isPickupable()) {
+                        execute.useItem(p.getObject(), out, getInventory(), getCurrentRoom());
+                    }
+                    else {
                         out.println("Non puoi usare questo oggetto.");
                     }
                     break;

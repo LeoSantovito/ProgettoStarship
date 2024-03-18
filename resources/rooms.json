@@ -149,7 +149,7 @@
     "id": 4,
     "name": "Sala comunicazioni",
     "description": "È la sala della navicella in cui si ricevono e si trasmettono messaggi con altri pianeti e altre galassie.\nSono presenti diversi pannelli di controllo e dispositivi di comunicazione ipertecnologici.\nDa una finestra si può vedere il vuoto dello spazio cosmico...",
-    "look": "C'è un alieno stripper che balla in modo sensuale... no, scherzo, non c'è nessuno. Sarà stata un'allucinazione.\nAl centro della sala c’è un ologramma che mostra una mappa stellare dettagliata e costellazioni sconosciute mai viste prima...\nSembra esserci un trasmettitore di messaggi intergalattico su un pannello.\nA est c'è il ponte inferiore, a sud le celle.",
+    "look": "C'è un alieno stripper che balla in modo sensuale... no, scherzo, non c'è nessuno. Sarà stata un'allucinazione.\nAl centro della sala c’è un ologramma che mostra una mappa stellare dettagliata e costellazioni sconosciute mai viste prima...\nSembra esserci un trasmettitore di messaggi intergalattico, posso usarlo per comunicare con la Terra?.\nA est c'è il ponte inferiore, a sud le celle.",
     "intro": "Ci è mancato davvero pochissimo, ora che sono qui posso cercare un modo per comunicare con la Terra e chiedere aiuto!",
     "southId": 7,
     "westId": -1,
@@ -161,12 +161,12 @@
       {
         "containerId": -1,
         "container": true,
-        "id": 6,
+        "id": 8,
         "name": "trasmettitore",
         "description": "È un trasmettitore di messaggi intergalattico. Può tornarmi utile...",
-        "alias": ["dispositivo", "trasmettitore intergalattico", "trasmettitore messaggi"],
+        "alias": ["dispositivo", "trasmettitore intergalattico", "trasmettitore messaggi", "trasmettitore messaggi intergalattico"],
         "openable": false,
-        "pickupable": true,
+        "pickupable": false,
         "open": false,
         "objectsList": []
       }

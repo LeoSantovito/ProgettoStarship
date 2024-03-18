@@ -7,6 +7,7 @@ import java.io.PrintStream;
 import java.io.Serializable;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Scanner;
 
 public class CommandsExecution implements Serializable {
     public void openItem(AdvObject object, PrintStream out) {
@@ -142,13 +143,18 @@ public class CommandsExecution implements Serializable {
                     out.println("Devo capire la combinazione corretta... proverò a tentativi.");
                     out.println();
 
-                    /* Chiede al giocatore di inserire la combinazione corretta, ovvero 513.
-                    Se la combinazione è corretta, la porta si apre e la stanza diventa accessibile.
-                    Se la combinazione è errata, chiede nuovamente finché non inserisce la combinazione corretta.
-                    DA FARE
-                     */
+                    while (true) {
+                        out.println("Inserisci la combinazione corretta:");
+                        String input = new Scanner(System.in).nextLine();
+                        if (input.equals("531")) {
+                            break;
+                        } else {
+                            out.println("La combinazione non è corretta, devo riprovare.");
+                            out.println();
+                        }
+                    }
 
-                    out.println("La porta si è aperta!");
+                    out.println("La porta si è aperta! Ora posso andare alla sala delle armi.");
                     currentRoom.getEast().setAccessible(true);
                 }
                 else if (currentRoom.getId()==1 && currentRoom.getEast().getAccessible()) {
@@ -157,6 +163,10 @@ public class CommandsExecution implements Serializable {
                 else {
                     out.println("Non posso usare questo oggetto qua.");
                 }
+                break;
+            case 8:
+                //trasmettitore di messaggi intergalattico
+                out.println("DEBUG");
                 break;
             default:
                 out.println("Non puoi usare questo oggetto.");
