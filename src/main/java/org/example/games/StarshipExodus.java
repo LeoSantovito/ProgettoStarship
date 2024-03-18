@@ -11,9 +11,11 @@ import org.example.Engine;
 import org.example.GameDescription;
 import org.example.Utils;
 import org.example.parser.ParserOutput;
+import org.example.swing.Background;
 import org.example.type.*;
 import org.example.database.*;
 
+import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -227,6 +229,24 @@ public class StarshipExodus extends GameDescription {
             }
         }
     }
+    public void showMap() {
+        try {
+            JDialog frame = new JDialog(new JFrame(), "Mappa", true);
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            frame.setSize(600, 500);
+
+            Background img = new Background("./resources/images/Mappa.jpg");
+            frame.add(img);
+            // Creazione di un nuovo thread per la finestra della mappa
+            // Imposta la finestra come non bloccante
+            frame.setAlwaysOnTop(true);
+            frame.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Errore nell'apertura della mappa.");
+        }
+    }
+
 
 
 
