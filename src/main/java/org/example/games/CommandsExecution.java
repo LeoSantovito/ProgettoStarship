@@ -214,10 +214,15 @@ public class CommandsExecution implements Serializable {
         }
     }
 
-    //fine del gioco
+    /* Stampa il testo della fine del gioco. */
     public void end(PrintStream out) {
-        out.println("Fine del gioco. DEBUG.");
-        //da implementare lettura da file come la parte iniziale del gioco
+        Utils.printFromFile("./resources/dialogs/game_end_1.txt");
+        out.println();
+        Utils.waitForEnter();
+        Utils.printFromFile("./resources/dialogs/game_end_2.txt");
+        out.println();
+        Utils.waitForEnter();
+        Utils.printFromFile("./resources/dialogs/game_end_3.txt");
         System.exit(0);
     }
 }
