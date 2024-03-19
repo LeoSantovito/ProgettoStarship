@@ -201,11 +201,14 @@ public class CommandsExecution implements Serializable {
         try {
             JDialog frame = new JDialog(new JFrame(), "Mappa", true);
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            frame.setSize(600, 500);
+            // Imposta la finestra al centro dello schermo
+            frame.setLocationRelativeTo(null);
+            frame.setSize(500, 400);
 
-            Background img = new Background("./resources/images/Mappa.jpg");
+            Background img = new Background("./resources/images/Map.png");
             frame.add(img);
-            // Creazione di un nuovo thread per la finestra della mappa
+
+
             // Imposta la finestra come non bloccante
             frame.setAlwaysOnTop(true);
             frame.setVisible(true);

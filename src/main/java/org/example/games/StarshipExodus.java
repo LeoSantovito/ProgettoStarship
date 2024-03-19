@@ -7,6 +7,7 @@ package org.example.games;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import org.example.Api.WeatherApi;
 import org.example.Engine;
 import org.example.GameDescription;
 import org.example.GameTimer;
@@ -48,6 +49,7 @@ public class StarshipExodus extends GameDescription {
     private static final int STARTING_ROOM_ID = 1;
 
     private static final int MAP_ID = 4;
+     WeatherApi weatherApi = new WeatherApi();
 
     private CommandsExecution execute = new CommandsExecution();
 
@@ -170,6 +172,14 @@ public class StarshipExodus extends GameDescription {
                     } else {
                         out.println("Non hai la mappa nell'inventario!");
                     }
+                }
+                case SHOW_WEATHER -> {
+                    try {
+                        weatherApi.getWeatherData();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+
                 }
             }
             if (noroom) {

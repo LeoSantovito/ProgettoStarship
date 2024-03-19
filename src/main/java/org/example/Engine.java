@@ -9,7 +9,6 @@ import org.example.games.StarshipExodus;
 import org.example.parser.Parser;
 import org.example.parser.ParserOutput;
 import org.example.swing.MenuSwing;
-import org.example.type.CommandType;
 import org.example.database.Database;
 
 import java.io.File;
