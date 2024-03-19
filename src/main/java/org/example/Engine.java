@@ -145,7 +145,7 @@ public class Engine {
         int id = game.getGameId();
         if (totalSeconds != 0) {
             System.out.println("Abbiamo sentito la tua mancanza, " + database.getPlayerName(id) + "!");
-            printGameTime(totalSeconds);
+            Utils.printGameTime(totalSeconds);
         }
 
         /* Stampa la stanza iniziale. */
@@ -171,7 +171,7 @@ public class Engine {
                     case TIME -> {
                         /* Stampa il tempo di gioco. */
                         totalSeconds = timer.getSecondsElapsed();
-                        printGameTime(totalSeconds);
+                        Utils.printGameTime(totalSeconds);
                         System.out.println();
                     }
                     case END -> {
@@ -209,24 +209,6 @@ public class Engine {
         database.updateGame(game);
         System.out.println("Salvataggio completato!");
         System.out.println();
-    }
-
-    /* Stampa il tempo di gioco. */
-    private void printGameTime(int totalSeconds){
-        int hours = totalSeconds / 3600;
-        int minutes = (totalSeconds % 3600) / 60;
-        int seconds = totalSeconds % 60;
-        String printHours = hours == 1 ? "ora" : "ore";
-        String printMinutes = minutes == 1 ? "minuto" : "minuti";
-        String printSeconds = seconds == 1 ? "secondo" : "secondi";
-
-        if(hours == 0 && minutes == 0){
-            System.out.println("Hai giocato per " + seconds + " " + printSeconds + " e non hai ancora finito il gioco! Che fallimento!");
-        } else if(hours == 0){
-            System.out.println("Hai giocato per " + minutes + " " + printMinutes + " e " + seconds + " " + printSeconds + " e non hai ancora finito il gioco! Che fallimento!");
-        } else {
-            System.out.println("Hai giocato per " + hours + " " + printHours + ", " + minutes + " " + printMinutes + " e " + seconds + " " + printSeconds + " e non hai ancora finito il gioco! Che fallimento!");
-        }
     }
 
     private void printGameIntro(String playerName) {
