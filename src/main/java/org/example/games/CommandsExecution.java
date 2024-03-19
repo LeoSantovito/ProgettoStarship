@@ -127,7 +127,7 @@ public class CommandsExecution implements Serializable {
                     out.println();
 
                     /* Finisce il gioco */
-                    end(out, timer);
+                    end(out, timer.getSecondsElapsed());
 
                 } else {
                     out.println("Non posso usare il cristallo qui.");
@@ -216,14 +216,14 @@ public class CommandsExecution implements Serializable {
     }
 
     /* Stampa il testo della fine del gioco. */
-    public void end(PrintStream out, GameTimer timer) {
+    public void end(PrintStream out, int totalGameTime) {
         Utils.printFromFile("./resources/dialogs/game_end_1.txt");
         out.println();
         Utils.waitForEnter();
         Utils.printFromFile("./resources/dialogs/game_end_2.txt");
         out.println();
         Utils.waitForEnter();
-        Utils.printFromFilePlaceholder("./resources/dialogs/game_end_3.txt", Utils.printGameTime(timer.getSecondsElapsed()));
+        Utils.printFromFilePlaceholder("./resources/dialogs/game_end_3.txt", Utils.printGameTime(totalGameTime));
 
         System.exit(0);
     }
