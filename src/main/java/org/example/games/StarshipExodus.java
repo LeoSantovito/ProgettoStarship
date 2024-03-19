@@ -50,6 +50,7 @@ public class StarshipExodus extends GameDescription {
     private static final int MAP_ID = 4;
 
     private CommandsExecution execute = new CommandsExecution();
+    private boolean bossKilled = false;
 
     @Override
     public void init() throws Exception {
@@ -189,7 +190,7 @@ public class StarshipExodus extends GameDescription {
                     }
                 }
                 case ATTACK -> {
-                    if (getCurrentRoom().getId() == 1) {
+                    if (getCurrentRoom().getId() == 8 && !bossKilled) {
                         JDialog dialog = new JDialog(new JFrame(), "Starship Exodus", true);
                         dialog.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                         dialog.setAlwaysOnTop(true);
@@ -197,6 +198,7 @@ public class StarshipExodus extends GameDescription {
                         dialog.pack(); // Adatta la dimensione del frame al pannello
                         dialog.setLocationRelativeTo(null); // Posiziona il frame al centro dello schermo
                         dialog.setVisible(true); // Rendi visibile il frame
+                        bossKilled = AlienBossGame.isGameWon();
                     }
                 }
             }

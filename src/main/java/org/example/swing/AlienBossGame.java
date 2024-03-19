@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -21,13 +22,16 @@ public class AlienBossGame extends JPanel {
     private Random random = new Random();
     private int bossX, bossY; // Coordinate x e y del boss
     private int bossRadius = 20; // Raggio del boss
-    private Image backgroundImage;
+    private Image background;
+    private Image winBackground;
     private Image bossImage;
     private boolean killed = false;
+    public static boolean gameWon = false;
 
     public AlienBossGame() {
         setPreferredSize(new Dimension(400, 300)); // Imposta le dimensioni del pannello del gioco
-        backgroundImage = new ImageIcon("./resources/images/spazio.jpg").getImage();
+        background = new ImageIcon("./resources/images/spazio.jpg").getImage();
+        winBackground = new ImageIcon("./resources/images/mostroo.jpg").getImage();
         bossImage = new ImageIcon("./resources/images/boss.jpg").getImage();
 
         // Crea un timer per cambiare l'area del boss ogni 0.5 secondi
@@ -76,32 +80,56 @@ public class AlienBossGame extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        drawBackground(g); // Disegna lo sfondo
         drawGame(g); // Disegna il gioco
     }
 
     private void drawGame(Graphics g) {
-        // Disegna lo sfondo
-        g.drawImage(backgroundImage, 0, 0, getWidth(), getHeight(), null);
+        if (gameWon) {
+            // Disegna un messaggio di vittoria sullo sfondo della vittoria
+            g.setColor(Color.WHITE);
+            g.setFont(new Font("Arial", Font.BOLD, 24));
+            g.drawString("Hai vinto!", getWidth() / 2 - 60, getHeight() / 2);
+        } else {
+            // Disegna il boss alieno come un cerchio
+            g.drawImage(bossImage, bossX, bossY, 2*bossRadius, 2*bossRadius, null);
 
-        // Disegna il boss alieno come un cerchio
-        g.drawImage(bossImage, bossX, bossY, 2*bossRadius, 2*bossRadius, null);
+            // Disegna la salute del boss alieno
+            g.setColor(Color.WHITE);
+            g.drawString("Salute del boss alieno: " + bossHealth, 10, 20);
 
-        // Disegna la salute del boss alieno
-        g.setColor(Color.WHITE);
-        g.drawString("Salute del boss alieno: " + bossHealth, 10, 20);
+            // Disegna il punteggio del giocatore
+            g.drawString("Punteggio: " + score, getWidth() - 100, 20);
 
-        // Disegna il punteggio del giocatore
-        g.drawString("Punteggio: " + score, getWidth() - 100, 20);
-
-        // Mostra un messaggio se il boss è stato colpito nell'ultimo click
-        if (bossHit) {
-            g.setColor(Color.RED);
-            g.drawString("Hai colpito il boss!", getWidth() / 2 - 50, getHeight() - 20);
+            // Mostra un messaggio se il boss è stato colpito nell'ultimo click
+            if (bossHit) {
+                g.setColor(Color.RED);
+                g.drawString("Hai colpito il boss!", getWidth() / 2 - 50, getHeight() - 20);
+            }
         }
     }
 
     private void endGame() {
         JOptionPane.showMessageDialog(this, "Hai sconfitto il boss!\nPunteggio finale: " + score,
                 "Fine del gioco", JOptionPane.INFORMATION_MESSAGE);
+        setGameWon(true);
+        repaint();
+    }
+
+    private void drawBackground(Graphics g) {
+        // Disegna lo sfondo in base allo stato del gioco
+        if (gameWon) {
+            g.drawImage(winBackground, 0, 0, getWidth(), getHeight(), null);
+        } else {
+            g.drawImage(background, 0, 0, getWidth(), getHeight(), null);
+        }
+    }
+
+    public static boolean isGameWon() {
+        return gameWon;
+    }
+
+    public static void setGameWon(boolean gameWon) {
+        AlienBossGame.gameWon = gameWon;
     }
 }
