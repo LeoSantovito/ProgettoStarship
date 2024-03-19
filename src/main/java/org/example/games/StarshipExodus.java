@@ -5,29 +5,16 @@
  */
 package org.example.games;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import org.example.Api.WeatherApi;
-import org.example.Engine;
+import org.example.api.WeatherApi;
 import org.example.GameDescription;
 import org.example.GameTimer;
 import org.example.Utils;
 import org.example.parser.ParserOutput;
-import org.example.swing.Background;
 import org.example.type.*;
 
-import javax.swing.*;
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.lang.reflect.Array;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 
 import static org.example.type.Room.findRoomById;
 

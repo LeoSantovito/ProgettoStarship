@@ -1,4 +1,4 @@
-package org.example.Api;
+package org.example.api;
 
 import java.io.BufferedReader;
 import java.io.IOException;
