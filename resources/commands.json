@@ -7,10 +7,10 @@
   {"type": "LOOK_AT", "name": "osserva", "alias": ["guarda", "vedi", "trova", "cerca", "descrivi"]},
   {"type": "PICK_UP", "name": "raccogli", "alias": ["prendi"]},
   {"type": "OPEN", "name": "apri", "alias": []},
-  {"type": "PUSH", "name": "premi", "alias": ["spingi", "attiva"]},
   {"type": "SAVE", "name": "salva", "alias": ["save"]},
   {"type": "TIME", "name": "tempo", "alias": ["time", "timer", "cronometro"]},
   {"type": "END", "name": "esci", "alias": ["end", "fine", "muori", "ammazzati", "ucciditi", "suicidati", "exit"]},
   {"type": "HELP", "name": "aiuto", "alias": ["help", "aiutami", "aiutino"]},
-  {"type": "SHOW_MAP", "name": "mappa", "alias": ["map", "mappa"]}
+  {"type": "USE", "name": "usa", "alias": ["utilizza", "attiva"]},
+  {"type": "SHOW_MAP", "name": "mappa", "alias": ["map", "cartina", "posizione"]}
 ]

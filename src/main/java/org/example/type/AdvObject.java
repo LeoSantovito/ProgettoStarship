@@ -37,6 +37,8 @@ public class AdvObject implements Serializable {
     private boolean open = false;
 
     private boolean push = false;
+
+
     private List<AdvObject> objectsList = new ArrayList<>();
 
     public AdvObject(int id) {

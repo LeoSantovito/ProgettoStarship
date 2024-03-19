@@ -7,6 +7,7 @@ package org.example;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import org.example.type.AdvObject;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -14,10 +15,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
@@ -74,6 +72,49 @@ public class Utils {
             T[] objectArray = gson.fromJson(br, (Type) Array.newInstance(objectType, 0).getClass());
             return List.of(objectArray);
         }
+    }
+
+    public static void printFromFilePlaceholder(String filename, String placeholder) {
+        try (Scanner scanner = new Scanner(new File(filename))) {
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                // Sostituisci eventuali segnaposto con la stringa passata
+                line = line.replace("{placeholder}", placeholder);
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            System.out.println("Errore durante la lettura del file " + filename);
+        }
+    }
+
+    public static void printFromFile(String filename) {
+        try (Scanner scanner = new Scanner(new File(filename))) {
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            System.out.println("Errore durante la lettura del file " + filename);
+        }
+    }
+
+    public static void waitForEnter() {
+        System.out.println("Premi invio per continuare...");
+        try {
+            System.in.read();
+            System.in.skip(System.in.available()); // Pulisce il buffer di input
+        } catch (IOException e) {
+            System.err.println("Errore durante la lettura dell'input: " + e.getMessage());
+        }
+    }
+
+    public static AdvObject findObjectById(List<AdvObject> objectsList, int id) {
+        for (AdvObject object : objectsList) {
+            if (object.getId() == id) {
+                return object;
+            }
+        }
+        return null;
     }
 
 }
