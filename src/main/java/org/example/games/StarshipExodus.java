@@ -11,6 +11,7 @@ import org.example.Engine;
 import org.example.GameDescription;
 import org.example.Utils;
 import org.example.parser.ParserOutput;
+import org.example.swing.AlienBossGame;
 import org.example.swing.Background;
 import org.example.type.*;
 
@@ -181,10 +182,21 @@ public class StarshipExodus extends GameDescription {
                 }
                 case SHOW_MAP -> {
                     // Mostra la mappa se l'oggetto mappa è nell'inventario
-                    if (Utils.findObjectById(getInventory(), MAP_ID)!= null) {
+                    if (Utils.findObjectById(getInventory(), MAP_ID) != null) {
                         execute.showMap();
                     } else {
                         out.println("Non hai la mappa nell'inventario!");
+                    }
+                }
+                case ATTACK -> {
+                    if (getCurrentRoom().getId() == 1) {
+                        JDialog dialog = new JDialog(new JFrame(), "Starship Exodus", true);
+                        dialog.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                        dialog.setAlwaysOnTop(true);
+                        dialog.getContentPane().add(new AlienBossGame());
+                        dialog.pack(); // Adatta la dimensione del frame al pannello
+                        dialog.setLocationRelativeTo(null); // Posiziona il frame al centro dello schermo
+                        dialog.setVisible(true); // Rendi visibile il frame
                     }
                 }
             }
