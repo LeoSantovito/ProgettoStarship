@@ -171,7 +171,7 @@ public class Engine {
                     case TIME -> {
                         /* Stampa il tempo di gioco. */
                         totalSeconds = timer.getSecondsElapsed();
-                        Utils.printGameTime(totalSeconds);
+                        System.out.print("Hai giocato per " + Utils.printGameTime(totalSeconds) + " e non hai ancora finito il gioco! Che fallimento!");
                         System.out.println();
                     }
                     case END -> {

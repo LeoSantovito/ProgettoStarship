@@ -118,7 +118,7 @@ public class Utils {
     }
 
     /* Stampa il tempo di gioco. */
-    public static void printGameTime(int totalSeconds){
+    public static String printGameTime(int totalSeconds){
         int hours = totalSeconds / 3600;
         int minutes = (totalSeconds % 3600) / 60;
         int seconds = totalSeconds % 60;
@@ -127,11 +127,11 @@ public class Utils {
         String printSeconds = seconds == 1 ? "secondo" : "secondi";
 
         if(hours == 0 && minutes == 0){
-            System.out.println("Hai giocato per " + seconds + " " + printSeconds + " e non hai ancora finito il gioco! Che fallimento!");
+            return seconds + " " + printSeconds;
         } else if(hours == 0){
-            System.out.println("Hai giocato per " + minutes + " " + printMinutes + " e " + seconds + " " + printSeconds + " e non hai ancora finito il gioco! Che fallimento!");
+            return minutes + " " + printMinutes + " e " + seconds + " " + printSeconds;
         } else {
-            System.out.println("Hai giocato per " + hours + " " + printHours + ", " + minutes + " " + printMinutes + " e " + seconds + " " + printSeconds + " e non hai ancora finito il gioco! Che fallimento!");
+            return hours + " " + printHours + ", " + minutes + " " + printMinutes + " e " + seconds + " " + printSeconds;
         }
     }
 
