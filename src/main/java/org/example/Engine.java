@@ -189,7 +189,7 @@ public class Engine {
                         return;
                     }
                     default -> {
-                        game.nextMove(p, System.out);
+                        game.nextMove(p, System.out, timer);
                         System.out.println();
                     }
                 }

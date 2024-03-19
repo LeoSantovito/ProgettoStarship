@@ -1,6 +1,7 @@
 package org.example.games;
 
 import org.example.GameDescription;
+import org.example.GameTimer;
 import org.example.Utils;
 import org.example.swing.Background;
 import org.example.type.AdvObject;
@@ -116,7 +117,7 @@ public class CommandsExecution implements Serializable {
         }
     }
 
-    public void useItem(AdvObject object, PrintStream out, List<AdvObject> inventory, Room currentRoom) {
+    public void useItem(AdvObject object, PrintStream out, List<AdvObject> inventory, Room currentRoom, GameTimer timer) {
         //switch case che in base all'id dell'oggetto permette di personalizzare il comportamento del gioco
         switch (object.getId()) {
             case 2 -> {
@@ -126,7 +127,7 @@ public class CommandsExecution implements Serializable {
                     out.println();
 
                     /* Finisce il gioco */
-                    end(out);
+                    end(out, timer);
 
                 } else {
                     out.println("Non posso usare il cristallo qui.");
@@ -215,14 +216,15 @@ public class CommandsExecution implements Serializable {
     }
 
     /* Stampa il testo della fine del gioco. */
-    public void end(PrintStream out) {
+    public void end(PrintStream out, GameTimer timer) {
         Utils.printFromFile("./resources/dialogs/game_end_1.txt");
         out.println();
         Utils.waitForEnter();
         Utils.printFromFile("./resources/dialogs/game_end_2.txt");
         out.println();
         Utils.waitForEnter();
-        Utils.printFromFile("./resources/dialogs/game_end_3.txt");
+        Utils.printFromFilePlaceholder("./resources/dialogs/game_end_3.txt", Utils.printGameTime(timer.getSecondsElapsed()));
+
         System.exit(0);
     }
 }

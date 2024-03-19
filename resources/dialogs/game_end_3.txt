@@ -1,2 +1,6 @@
 Grazie per aver giocato a Starship Exodus!
-Il tuo salvataggio sarà distrutto. Buona giornata.
+
+Ci hai messo la bellezza di {placeholder} per finire il gioco!
+Si vede che non avevi di meglio da fare! Beh, comunque, speriamo che ti sia piaciuto.
+
+Ah, comunque il tuo salvataggio sarà distrutto. Buona giornata.

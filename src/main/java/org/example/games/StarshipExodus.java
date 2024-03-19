@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import org.example.Engine;
 import org.example.GameDescription;
+import org.example.GameTimer;
 import org.example.Utils;
 import org.example.parser.ParserOutput;
 import org.example.swing.Background;
@@ -64,7 +65,7 @@ public class StarshipExodus extends GameDescription {
     }
 
     @Override
-    public void nextMove(ParserOutput p, PrintStream out) {
+    public void nextMove(ParserOutput p, PrintStream out, GameTimer timer) {
         if (p.getCommand() == null) {
             out.println(
                     "Non ho capito cosa devo fare! Prova con un altro comando.");
@@ -155,9 +156,9 @@ public class StarshipExodus extends GameDescription {
                 case USE -> {
                     //controlla se l'oggetto è nell'inventario, se si esegue execute.useItem
                     if (p.getInvObject() != null) {
-                        execute.useItem(p.getInvObject(), out, getInventory(), getCurrentRoom());
+                        execute.useItem(p.getInvObject(), out, getInventory(), getCurrentRoom(), timer);
                     } else if (p.getObject() != null && !p.getObject().isPickupable()) {
-                        execute.useItem(p.getObject(), out, getInventory(), getCurrentRoom());
+                        execute.useItem(p.getObject(), out, getInventory(), getCurrentRoom(), timer);
                     } else {
                         out.println("Non ci sono oggetti da usare.");
                     }
