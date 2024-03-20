@@ -5,6 +5,7 @@
  */
 package org.example;
 
+import org.example.database.Database;
 import org.example.parser.ParserOutput;
 import org.example.type.AdvObject;
 import org.example.type.Command;
@@ -72,6 +73,6 @@ public abstract class GameDescription implements Serializable {
 
     public abstract void init() throws Exception;
 
-    public abstract void nextMove(ParserOutput p, PrintStream out, GameTimer timer);
+    public abstract void nextMove(ParserOutput p, PrintStream out, GameTimer timer, Database database);
 }
 

@@ -3,6 +3,7 @@ package org.example.games;
 import org.example.GameDescription;
 import org.example.GameTimer;
 import org.example.Utils;
+import org.example.database.Database;
 import org.example.swing.Background;
 import org.example.type.AdvObject;
 import org.example.type.Room;
@@ -117,18 +118,18 @@ public class CommandsExecution implements Serializable {
         }
     }
 
-    public void useItem(AdvObject object, PrintStream out, List<AdvObject> inventory, Room currentRoom, GameTimer timer) {
+    public void useItem(AdvObject object, PrintStream out, GameTimer timer, GameDescription game, Database database) {
         //switch case che in base all'id dell'oggetto permette di personalizzare il comportamento del gioco
         switch (object.getId()) {
             case 2 -> {
                 //uso del cristallo nell'hangar
-                if (currentRoom.getId() == 6) {
+                if (game.getCurrentRoom().getId() == 6) {
                     out.println("Hai usato: " + object.getName());
                     out.println();
 
-                    /* Finisce il gioco */
+                    /* Rimuove il gioco corrente da DB perché terminato, e stampa la fine del gioco. */
+                    database.deleteGame(game.getGameId());
                     end(out, timer.getSecondsElapsed());
-
                 } else {
                     out.println("Non posso usare il cristallo qui.");
                 }
@@ -139,20 +140,20 @@ public class CommandsExecution implements Serializable {
             }
             case 6 -> {
                 //pistola restringente in stanza ponte inferiore
-                if (currentRoom.getId() == 5) {
+                if (game.getCurrentRoom().getId() == 5) {
                     out.println("Hai usato: " + object.getName());
                     out.println();
                     Utils.printFromFile("./resources/dialogs/use_object_6.txt");
 
-                    inventory.remove(object);
-                    currentRoom.getWest().setAccessible(true);
+                    game.getInventory().remove(object);
+                    game.getCurrentRoom().getWest().setAccessible(true);
                 } else {
                     out.println("Non mi conviene usare la pistola qui... meglio tenerla per quando ne avrò bisogno.");
                 }
             }
             case 7 -> {
                 //visore ultravioletto in stanza laboratorio
-                if (currentRoom.getId() == 1 && !currentRoom.getEast().getAccessible()) {
+                if (game.getCurrentRoom().getId() == 1 && !game.getCurrentRoom().getEast().getAccessible()) {
                     out.println("Hai usato: " + object.getName());
                     out.println();
                     Utils.printFromFile("./resources/dialogs/use_object_7.txt");
@@ -170,8 +171,8 @@ public class CommandsExecution implements Serializable {
                     }
 
                     out.println("La porta si è aperta! Ora posso andare alla sala delle armi.");
-                    currentRoom.getEast().setAccessible(true);
-                } else if (currentRoom.getId() == 1 && currentRoom.getEast().getAccessible()) {
+                    game.getCurrentRoom().getEast().setAccessible(true);
+                } else if (game.getCurrentRoom().getId() == 1 && game.getCurrentRoom().getEast().getAccessible()) {
                     out.println("Ho già aperto la porta, non c'è bisogno di usare il visore qui.");
                 } else {
                     out.println("Non puoi usare questo oggetto qui.");
@@ -183,12 +184,12 @@ public class CommandsExecution implements Serializable {
             }
             case 9 -> {
                 //chiave delle celle
-                if(currentRoom.getId() == 7) {
+                if(game.getCurrentRoom().getId() == 7) {
                     out.println("Hai usato: " + object.getName());
                     out.println();
                     Utils.printFromFile("./resources/dialogs/use_object_9.txt");
 
-                    currentRoom.getWest().setAccessible(true);
+                    game.getCurrentRoom().getWest().setAccessible(true);
                 } else {
                     out.println("Non posso usare la chiave qui.");
                 }
