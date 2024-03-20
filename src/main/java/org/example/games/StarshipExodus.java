@@ -17,6 +17,7 @@ import org.example.type.*;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.List;
+import java.util.Scanner;
 
 import static org.example.type.Room.findRoomById;
 
@@ -163,7 +164,11 @@ public class StarshipExodus extends GameDescription {
                 }
                 case SHOW_WEATHER -> {
                     try {
-                        weatherApi.getWeatherData();
+                        Scanner scanner = new Scanner(System.in);
+                        System.out.println("Dove vuoi andare? ");
+                        String location = scanner.nextLine();
+                        weatherApi.getWeatherData(location);
+
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }

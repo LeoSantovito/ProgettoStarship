@@ -211,6 +211,7 @@ public class CommandsExecution implements Serializable {
 
 
             // Imposta la finestra come non bloccante
+            frame.setResizable(false);
             frame.setAlwaysOnTop(true);
             frame.setVisible(true);
         } catch (Exception e) {
