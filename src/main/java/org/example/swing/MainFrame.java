@@ -33,17 +33,19 @@ public class MainFrame extends javax.swing.JFrame {
         inputField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(900, 600));
 
-        consolePanel.setBackground(new java.awt.Color(0, 0, 0));
+        consolePanel.setBackground(new java.awt.Color(30, 30, 30));
         consolePanel.setPreferredSize(new java.awt.Dimension(800, 550));
 
+        textArea.setEditable(false);
+        textArea.setBackground(new java.awt.Color(45, 45, 45));
         textArea.setColumns(20);
+        textArea.setForeground(new java.awt.Color(45, 45, 45));
         textArea.setRows(5);
-        textArea.setFocusable(false);
         textArea.setPreferredSize(new java.awt.Dimension(202, 70));
         textPanel.setViewportView(textArea);
 
+        sendButton.setBackground(new java.awt.Color(70, 70, 70));
         sendButton.setLabel("Invio");
         sendButton.setMargin(new java.awt.Insets(2, 14, 2, 14));
         sendButton.addActionListener(new java.awt.event.ActionListener() {
@@ -57,6 +59,9 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
+        inputField.setBackground(new java.awt.Color(45, 45, 45));
+        inputField.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        inputField.setForeground(new java.awt.Color(255, 255, 255));
         inputField.setToolTipText("Inserisci comando...");
         inputField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,13 +80,13 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(consolePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(consolePanelLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(textPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 876, Short.MAX_VALUE)
-                    .addContainerGap()))
+                    .addComponent(textPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 876, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
             .addGroup(consolePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(consolePanelLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(inputField, javax.swing.GroupLayout.PREFERRED_SIZE, 715, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(167, Short.MAX_VALUE)))
+                    .addComponent(inputField, javax.swing.GroupLayout.PREFERRED_SIZE, 727, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(155, Short.MAX_VALUE)))
         );
         consolePanelLayout.setVerticalGroup(
             consolePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,8 +97,8 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(consolePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(consolePanelLayout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(textPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(107, Short.MAX_VALUE)))
+                    .addComponent(textPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(74, Short.MAX_VALUE)))
             .addGroup(consolePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, consolePanelLayout.createSequentialGroup()
                     .addContainerGap(521, Short.MAX_VALUE)
@@ -101,23 +106,21 @@ public class MainFrame extends javax.swing.JFrame {
                     .addContainerGap()))
         );
 
-        sendButton.getAccessibleContext().setAccessibleName("Invio");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(consolePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 888, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(consolePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 888, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(consolePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 588, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(consolePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 588, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
