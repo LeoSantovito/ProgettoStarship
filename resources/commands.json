@@ -12,6 +12,5 @@
   {"type": "END", "name": "esci", "alias": ["end", "fine", "muori", "ammazzati", "ucciditi", "suicidati", "exit"]},
   {"type": "HELP", "name": "aiuto", "alias": ["help", "aiutami", "aiutino"]},
   {"type": "USE", "name": "usa", "alias": ["utilizza", "attiva"]},
-  {"type": "SHOW_MAP", "name": "mappa", "alias": ["map", "cartina", "posizione"]},
-  {"type": "SHOW_WEATHER", "name": "meteo", "alias": ["met"]}
+  {"type": "SHOW_MAP", "name": "mappa", "alias": ["map", "cartina", "posizione"]}
 ]

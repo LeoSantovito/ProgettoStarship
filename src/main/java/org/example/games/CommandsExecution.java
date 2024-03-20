@@ -3,6 +3,7 @@ package org.example.games;
 import org.example.GameDescription;
 import org.example.GameTimer;
 import org.example.Utils;
+import org.example.api.WeatherApi;
 import org.example.database.Database;
 import org.example.swing.Background;
 import org.example.type.AdvObject;
@@ -180,7 +181,28 @@ public class CommandsExecution implements Serializable {
             }
             case 8 -> {
                 //trasmettitore di messaggi intergalattico
-                out.println("DEBUG");
+                if (object.isUsed()) {
+                    out.println("Ho trasmesso già un messaggio, non posso piangermi addosso per sempre...");
+
+                } else {
+                    out.println("Questa tecnologia potrebbe servirmi per comunicare con la Terra!");
+                    out.println("Si adatta automaticamente a chi la usa, non c'è bisogno di impostarla.");
+                    out.println("Leggo cosa sta scritto sull'interfaccia...");
+                    out.println();
+
+                    WeatherApi weatherApi = new WeatherApi();
+                    try {
+                        //Esegue la trasmissione in ciclo finché non ritorna true
+
+                        out.println("Inserire la località alla quale indirizzare il messaggio:");
+                        String location = new Scanner(System.in).nextLine();
+                        if(weatherApi.getWeatherData(location)){
+                            object.setUsed(true);
+                        }
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                }
             }
             case 9 -> {
                 //chiave delle celle

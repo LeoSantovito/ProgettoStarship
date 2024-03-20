@@ -38,6 +38,8 @@ public class AdvObject implements Serializable {
 
     private boolean push = false;
 
+    private boolean used = false;
+
 
     private List<AdvObject> objectsList = new ArrayList<>();
 
@@ -117,6 +119,14 @@ public class AdvObject implements Serializable {
 
     public void setPush(boolean push) {
         this.push = push;
+    }
+
+    public boolean isUsed() {
+        return used;
+    }
+
+    public void setUsed(boolean used) {
+        this.used = used;
     }
 
     public Set<String> getAlias() {

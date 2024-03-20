@@ -38,7 +38,6 @@ import static org.example.type.Room.findRoomById;
 public class StarshipExodus extends GameDescription {
     private static final int STARTING_ROOM_ID = 1;
     private static final int MAP_ID = 4;
-     WeatherApi weatherApi = new WeatherApi();
 
     private CommandsExecution execute = new CommandsExecution();
 
@@ -161,18 +160,6 @@ public class StarshipExodus extends GameDescription {
                     } else {
                         out.println("Non hai la mappa nell'inventario!");
                     }
-                }
-                case SHOW_WEATHER -> {
-                    try {
-                        Scanner scanner = new Scanner(System.in);
-                        System.out.println("Dove vuoi andare? ");
-                        String location = scanner.nextLine();
-                        weatherApi.getWeatherData(location);
-
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-
                 }
             }
             if (noroom) {

@@ -4,6 +4,7 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.text.DecimalFormat;
 import java.util.Scanner;
 import com.google.gson.JsonElement;
@@ -20,7 +21,7 @@ public class WeatherApi implements Serializable {
 
     }
 
-    public void getWeatherData(String city) throws IOException {
+    public boolean getWeatherData(String city) throws IOException {
         String apiKey = "12fe4119d3075943be8f74ad336dd645";
 
 
@@ -32,16 +33,11 @@ public class WeatherApi implements Serializable {
 
         int responseCode = conn.getResponseCode();
         if (responseCode != 200 || city == null || city.isEmpty()) {
-            System.out.println("Hai bevuto? Non esiste questa città");
-            return;
+            System.out.println("Hai bevuto? Non esiste questo posto! *Si spegne*");
+            return false;
         }
         String encodedCity;
-        try {
-            encodedCity = URLEncoder.encode(city, "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            System.out.println("Errore durante la codifica del nome della città.");
-            return;
-        }
+        encodedCity = URLEncoder.encode(city, StandardCharsets.UTF_8);
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
         StringBuilder response = new StringBuilder();
@@ -57,31 +53,37 @@ public class WeatherApi implements Serializable {
 
         // Estrai e stampa le informazioni tradotte
         String countryName = jsonResponse.get("name").getAsString();
-        System.out.println("Nome del paese: " + countryName);
 
         // Estrai la descrizione del meteo
         String weatherDescription = jsonResponse.getAsJsonArray("weather").get(0).getAsJsonObject().get("description").getAsString();
-        System.out.println("Descrizione del meteo: " + weatherDescription);
 
         // Estrai e stampa la temperatura convertita in Celsius
         double temperature = jsonResponse.getAsJsonObject("main").get("temp").getAsDouble() - 273.15;
         DecimalFormat df = new DecimalFormat("#.##");
         String formattedTemperature = df.format(temperature);
-        System.out.println("Temperatura: " + formattedTemperature + " °C");
 
         int humidity = jsonResponse.getAsJsonObject("main").get("humidity").getAsInt();
-        System.out.println("Umidità: " + humidity + "%");
 
         //coordinate
         double cordsLat = jsonResponse.getAsJsonObject("coord").get("lat").getAsDouble();
         double cordsLon = jsonResponse.getAsJsonObject("coord").get("lon").getAsDouble();
-        System.out.println("Cordinate latitudinale: " + cordsLat);
-        System.out.println("Cordinate longitudinale: " + cordsLon);
 
+        //Stampa il messaggio con le informazioni
+        System.out.println("Creazione tunnel quantico per " + cordsLat + "°N " + cordsLon + "°E, pianeta Terra, via Lattea, Universo 47B...");
+        System.out.println("Collegamento completato, informazioni attuali di " + countryName + ":");
+        System.out.println("Condizioni meteo: " + weatherDescription + ", Temperatura: " + formattedTemperature + "°C, Umidità: " + humidity + "%");
+        System.out.println("Pericolosità dei locali: 0.7%, Adattabilità alla nostra forma di vita: 92%, Colonizzazione consigliata: Sì");
+        System.out.println();
+        System.out.println("Inserire messaggio da trasmettere come onda elettromagnetica:");
+        System.out.println();
+        System.out.println("Sono un essere umano, astronauta ESA della spedizione Eden, sono ancora vivo, ripeto, sono ancora vivo, rispondete, vi prego, rispondete...");
+        System.out.println("Eden non è disabitata, siamo stati attaccati, se qualcuno può sentirmi datemi un segnale, vi prego...");
+        System.out.println();
+        System.out.println("Trasmissione in corso...");
+        System.out.println("Trasmissione completata.");
+        System.out.println();
+        System.out.println("È del tutto inutile, sulla Terra non hanno tecnologie tali da poter rispondere al segnale, ma almeno ho provato...");
+
+        return true;
     }
-
-
-
-
-
 }
