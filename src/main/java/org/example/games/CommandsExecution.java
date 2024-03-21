@@ -142,6 +142,12 @@ public class CommandsExecution implements Serializable {
             case 4 -> {
                 //mostra la mappa del gioco
                 showMap();
+                out.println("Per essere una navicella spaziale, è piuttosto grande...");
+            }
+            case 5 -> {
+                //mostra gli appunti di john
+                showNotes();
+                out.println("Le note sono sporche di sangue, chissà cosa voleva scrivere...");
             }
             case 6 -> {
                 //pistola restringente in stanza ponte inferiore
@@ -235,6 +241,26 @@ public class CommandsExecution implements Serializable {
             Background img = new Background("./resources/images/Map.png");
             frame.add(img);
 
+
+            // Imposta la finestra come non bloccante
+            frame.setResizable(false);
+            frame.setAlwaysOnTop(true);
+            frame.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Errore nell'apertura della mappa.");
+        }
+    }
+
+    public void showNotes() {
+        try {
+            JDialog frame = new JDialog(new JFrame(), "Note", true);
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            frame.setLocationRelativeTo(null);
+
+            frame.setSize(500, 750);
+            Background img = new Background("./resources/images/Notes.png");
+            frame.add(img);
 
             // Imposta la finestra come non bloccante
             frame.setResizable(false);

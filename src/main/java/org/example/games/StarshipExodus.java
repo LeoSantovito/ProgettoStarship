@@ -161,6 +161,7 @@ public class StarshipExodus extends GameDescription {
                     // Mostra la mappa se l'oggetto mappa è nell'inventario
                     if (Utils.findObjectById(getInventory(), MAP_ID) != null) {
                         execute.showMap();
+                        out.println("Per essere una navicella spaziale, è piuttosto grande...");
                     } else {
                         out.println("Non hai la mappa nell'inventario!");
                     }
