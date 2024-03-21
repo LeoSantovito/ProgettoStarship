@@ -63,7 +63,7 @@ public class AlienBossGame extends JPanel {
         });
 
         // Crea un timer per far avanzare il gioco
-        Timer gameTimer = new Timer(1000, new ActionListener() {
+        Timer gameTimer = new Timer(500, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 bossHit = false; // Resetta lo stato del boss dopo ogni avanzamento del gioco
