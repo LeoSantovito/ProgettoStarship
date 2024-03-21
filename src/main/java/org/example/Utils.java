@@ -117,4 +117,22 @@ public class Utils {
         return null;
     }
 
+    /* Stampa il tempo di gioco. */
+    public static String printGameTime(int totalSeconds){
+        int hours = totalSeconds / 3600;
+        int minutes = (totalSeconds % 3600) / 60;
+        int seconds = totalSeconds % 60;
+        String printHours = hours == 1 ? "ora" : "ore";
+        String printMinutes = minutes == 1 ? "minuto" : "minuti";
+        String printSeconds = seconds == 1 ? "secondo" : "secondi";
+
+        if(hours == 0 && minutes == 0){
+            return seconds + " " + printSeconds;
+        } else if(hours == 0){
+            return minutes + " " + printMinutes + " e " + seconds + " " + printSeconds;
+        } else {
+            return hours + " " + printHours + ", " + minutes + " " + printMinutes + " e " + seconds + " " + printSeconds;
+        }
+    }
+
 }

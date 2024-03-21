@@ -1,8 +1,14 @@
 package org.example.games;
 
 import org.example.GameDescription;
+import org.example.GameTimer;
 import org.example.Utils;
+
 import org.example.swing.AlienBossGame;
+
+import org.example.api.WeatherApi;
+import org.example.database.Database;
+
 import org.example.swing.Background;
 import org.example.type.AdvObject;
 import org.example.type.Room;
@@ -47,7 +53,7 @@ public class CommandsExecution implements Serializable {
                         out.println("Hai già aperto questo oggetto.");
                         AdvObject c = object;
                         if (!c.getObjectsList().isEmpty()) {
-                            out.print(c.getName() + " contiene:");
+                            out.print("L'oggetto " + c.getName() + " contiene:");
                             Iterator<AdvObject> it =
                                     c.getObjectsList().iterator();
                             while (it.hasNext()) {
@@ -117,18 +123,18 @@ public class CommandsExecution implements Serializable {
         }
     }
 
-    public void useItem(AdvObject object, PrintStream out, List<AdvObject> inventory, Room currentRoom) {
+    public void useItem(AdvObject object, PrintStream out, GameTimer timer, GameDescription game, Database database) {
         //switch case che in base all'id dell'oggetto permette di personalizzare il comportamento del gioco
         switch (object.getId()) {
             case 2 -> {
                 //uso del cristallo nell'hangar
-                if (currentRoom.getId() == 6) {
+                if (game.getCurrentRoom().getId() == 6) {
                     out.println("Hai usato: " + object.getName());
                     out.println();
 
-                    /* Finisce il gioco */
-                    end(out);
-
+                    /* Rimuove il gioco corrente da DB perché terminato, e stampa la fine del gioco. */
+                    database.deleteGame(game.getGameId());
+                    end(out, timer.getSecondsElapsed());
                 } else {
                     out.println("Non posso usare il cristallo qui.");
                 }
@@ -139,20 +145,20 @@ public class CommandsExecution implements Serializable {
             }
             case 6 -> {
                 //pistola restringente in stanza ponte inferiore
-                if (currentRoom.getId() == 5) {
+                if (game.getCurrentRoom().getId() == 5) {
                     out.println("Hai usato: " + object.getName());
                     out.println();
                     Utils.printFromFile("./resources/dialogs/use_object_6.txt");
 
-                    inventory.remove(object);
-                    currentRoom.getWest().setAccessible(true);
+                    game.getInventory().remove(object);
+                    game.getCurrentRoom().getWest().setAccessible(true);
                 } else {
                     out.println("Non mi conviene usare la pistola qui... meglio tenerla per quando ne avrò bisogno.");
                 }
             }
             case 7 -> {
                 //visore ultravioletto in stanza laboratorio
-                if (currentRoom.getId() == 1 && !currentRoom.getEast().getAccessible()) {
+                if (game.getCurrentRoom().getId() == 1 && !game.getCurrentRoom().getEast().getAccessible()) {
                     out.println("Hai usato: " + object.getName());
                     out.println();
                     Utils.printFromFile("./resources/dialogs/use_object_7.txt");
@@ -170,25 +176,46 @@ public class CommandsExecution implements Serializable {
                     }
 
                     out.println("La porta si è aperta! Ora posso andare alla sala delle armi.");
-                    currentRoom.getEast().setAccessible(true);
-                } else if (currentRoom.getId() == 1 && currentRoom.getEast().getAccessible()) {
+                    game.getCurrentRoom().getEast().setAccessible(true);
+                } else if (game.getCurrentRoom().getId() == 1 && game.getCurrentRoom().getEast().getAccessible()) {
                     out.println("Ho già aperto la porta, non c'è bisogno di usare il visore qui.");
                 } else {
-                    out.println("Non puoi usare questo oggetto qui.");
+                    out.println("Non mi serve usare il visore qui.");
                 }
             }
             case 8 -> {
                 //trasmettitore di messaggi intergalattico
-                out.println("DEBUG");
+                if (object.isUsed()) {
+                    out.println("Ho trasmesso già un messaggio, non posso piangermi addosso per sempre...");
+
+                } else {
+                    out.println("Questa tecnologia potrebbe servirmi per comunicare con la Terra!");
+                    out.println("Si adatta automaticamente a chi la usa, non c'è bisogno di impostarla.");
+                    out.println("Leggo cosa sta scritto sull'interfaccia...");
+                    out.println();
+
+                    WeatherApi weatherApi = new WeatherApi();
+                    try {
+                        //Esegue la trasmissione in ciclo finché non ritorna true
+
+                        out.println("Inserire la località alla quale indirizzare il messaggio:");
+                        String location = new Scanner(System.in).nextLine();
+                        if(weatherApi.getWeatherData(location)){
+                            object.setUsed(true);
+                        }
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                }
             }
             case 9 -> {
                 //chiave delle celle
-                if(currentRoom.getId() == 7) {
+                if(game.getCurrentRoom().getId() == 7) {
                     out.println("Hai usato: " + object.getName());
                     out.println();
                     Utils.printFromFile("./resources/dialogs/use_object_9.txt");
 
-                    currentRoom.getWest().setAccessible(true);
+                    game.getCurrentRoom().getWest().setAccessible(true);
                 } else {
                     out.println("Non posso usare la chiave qui.");
                 }
@@ -201,12 +228,16 @@ public class CommandsExecution implements Serializable {
         try {
             JDialog frame = new JDialog(new JFrame(), "Mappa", true);
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            frame.setSize(600, 500);
+            // Imposta la finestra al centro dello schermo
+            frame.setLocationRelativeTo(null);
+            frame.setSize(500, 400);
 
-            Background img = new Background("./resources/images/Mappa.jpg");
+            Background img = new Background("./resources/images/Map.png");
             frame.add(img);
-            // Creazione di un nuovo thread per la finestra della mappa
+
+
             // Imposta la finestra come non bloccante
+            frame.setResizable(false);
             frame.setAlwaysOnTop(true);
             frame.setVisible(true);
         } catch (Exception e) {
@@ -216,14 +247,15 @@ public class CommandsExecution implements Serializable {
     }
 
     /* Stampa il testo della fine del gioco. */
-    public void end(PrintStream out) {
+    public void end(PrintStream out, int totalGameTime) {
         Utils.printFromFile("./resources/dialogs/game_end_1.txt");
         out.println();
         Utils.waitForEnter();
         Utils.printFromFile("./resources/dialogs/game_end_2.txt");
         out.println();
         Utils.waitForEnter();
-        Utils.printFromFile("./resources/dialogs/game_end_3.txt");
+        Utils.printFromFilePlaceholder("./resources/dialogs/game_end_3.txt", Utils.printGameTime(totalGameTime));
+
         System.exit(0);
     }
 

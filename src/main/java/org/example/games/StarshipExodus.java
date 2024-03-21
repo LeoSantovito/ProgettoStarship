@@ -5,28 +5,22 @@
  */
 package org.example.games;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import org.example.Engine;
+import jdk.jfr.DataAmount;
+import org.example.api.WeatherApi;
 import org.example.GameDescription;
+import org.example.GameTimer;
 import org.example.Utils;
+import org.example.database.Database;
 import org.example.parser.ParserOutput;
+
 import org.example.swing.AlienBossGame;
 import org.example.swing.Background;
 import org.example.type.*;
 
-import javax.swing.*;
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.lang.reflect.Array;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
+import java.util.Scanner;
 
 import static org.example.type.Room.findRoomById;
 
@@ -46,7 +40,6 @@ import static org.example.type.Room.findRoomById;
  */
 public class StarshipExodus extends GameDescription {
     private static final int STARTING_ROOM_ID = 1;
-
     private static final int MAP_ID = 4;
 
     private CommandsExecution execute = new CommandsExecution();
@@ -66,7 +59,7 @@ public class StarshipExodus extends GameDescription {
     }
 
     @Override
-    public void nextMove(ParserOutput p, PrintStream out) {
+    public void nextMove(ParserOutput p, PrintStream out, GameTimer timer, Database database) {
         if (p.getCommand() == null) {
             out.println(
                     "Non ho capito cosa devo fare! Prova con un altro comando.");
@@ -157,9 +150,9 @@ public class StarshipExodus extends GameDescription {
                 case USE -> {
                     //controlla se l'oggetto è nell'inventario, se si esegue execute.useItem
                     if (p.getInvObject() != null) {
-                        execute.useItem(p.getInvObject(), out, getInventory(), getCurrentRoom());
+                        execute.useItem(p.getInvObject(), out, timer, this, database);
                     } else if (p.getObject() != null && !p.getObject().isPickupable()) {
-                        execute.useItem(p.getObject(), out, getInventory(), getCurrentRoom());
+                        execute.useItem(p.getObject(), out, timer, this, database);
                     } else {
                         out.println("Non ci sono oggetti da usare.");
                     }

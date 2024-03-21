@@ -3,7 +3,7 @@
     "id": 0,
     "name": "Sala macchine",
     "description": "Ci sono strani meccanismi che emettono motori mettalici... Il pavimento è sporco di materiali fluorescenti.\nSembra che qui vengono controllati i sistemi di alimentazione e di propulsione della navicella...",
-    "look": "Per terra sempre esserci una cassetta... sembra contenere qualcosa.\nA sud c'è un varco che porta al magazzino delle scorte. A est c'è il laboratorio.",
+    "look": "Per terra sempre esserci una cassetta... sembra contenere qualcosa.\nA sud c'è un varco che porta al magazzino delle scorte. A est c'è il laboratorio, a sud c'è il magazzino scorte.",
     "intro": "Posso andare solo di qua, dato che la porta ad est è bloccata...",
     "southId": 3,
     "westId": -1,
@@ -18,7 +18,7 @@
         "id": 1,
         "name": "cassetta",
         "description": "È una cassetta di metallo. Sembra che qualcuno l'abbia dimenticata qui.",
-        "alias": ["contenitore"],
+        "alias": ["cassa","contenitore"],
         "openable": true,
         "pickupable": false,
         "open": false,
@@ -52,50 +52,50 @@
     "accessible": true,
     "inaccessibleMessage": "",
     "objects": [
-        {
-            "containerId": -1,
-            "container": true,
-            "id": 3,
-            "name": "zaino",
-            "description": "È uno zaino da esploratore spaziale. Sicuramente era di John.",
-            "alias": ["zainetto", "borsetta"],
-            "openable": true,
-            "pickupable": false,
+      {
+        "containerId": -1,
+        "container": true,
+        "id": 3,
+        "name": "zaino",
+        "description": "È uno zaino da esploratore spaziale. Sicuramente era di John.",
+        "alias": ["zainetto", "borsetta"],
+        "openable": true,
+        "pickupable": false,
+        "open": false,
+        "objectsList": [
+          {
+            "containerId": 3,
+            "container": false,
+            "id": 4,
+            "name": "mappa",
+            "description": "Sembra essere una mappa delle stanze della navicella...",
+            "alias": ["cartina", "piano"],
+            "pickupable": true,
+            "openable": false,
             "open": false,
-          "objectsList": [
-            {
-              "containerId": 3,
-              "container": false,
-              "id": 4,
-              "name": "mappa",
-              "description": "Sembra essere una mappa delle stanze della navicella...",
-              "alias": ["cartina", "piano"],
-              "pickupable": true,
-              "openable": false,
-              "open": false,
-              "objectsList": []
-            },
-            {
-              "containerId": 3,
-              "container": false,
-              "id": 5,
-              "name": "foglio",
-              "description": "Sono degli appunti scritti da John. Dovrei leggerli?",
-              "alias": ["appunti"],
-              "pickupable": true,
-              "openable": false,
-              "open": false,
-              "objectsList": []
-            }
-          ]
-        }
+            "objectsList": []
+          },
+          {
+            "containerId": 3,
+            "container": false,
+            "id": 5,
+            "name": "foglio",
+            "description": "Sono degli appunti scritti da John. Dovrei leggerli?",
+            "alias": ["appunti"],
+            "pickupable": true,
+            "openable": false,
+            "open": false,
+            "objectsList": []
+          }
+        ]
+      }
     ]
   },
   {
     "id": 2,
     "name": "Sala delle armi",
     "description": "Ci sono armi di ogni tipo, da quelle più sofisticate a quelle più rudimentali.\nSembra che qui vengano conservate le armi e le munizioni della navicella...",
-    "look": "Tra le armi c'è una pistola restringente. Potrebbe essere utile per difendersi.\nA ovest c'è il laboratorio.",
+    "look": "Tra le armi c'è una pistola restringente. Potrebbe essere utile per difendersi.\nA ovest c'è il laboratorio, a sud c'è il ponte inferiore.",
     "intro": "Le mie intuizioni sono state giuste, il codice era corretto! Sono riuscito ad aprire la porta e ad entrare nella sala delle armi!",
     "southId": 5,
     "westId": 1,
@@ -204,8 +204,8 @@
     "id": 7,
     "name": "Celle",
     "description": "È una stanza con delle celle di detenzione. Sono piccole e strette, con pareti di metallo e porte bloccate da chiave.\nSembra che qui vengano tenuti prigionieri o detenuti...\nC'è mio padre che mi sta picchiando con una cintura... no, per fortuna anche questa era un'allucinazione...\nSono al sicuro qui in questa nave spaziale aliena, qui nessuno può farmi del male...",
-    "look": "Ci sono delle celle con alieni rinchiusi. Sembra che siano i prigionieri della navicella.\nMi avvicino ad una delle celle e vedo un alieno che mi guarda con occhi tristi... sembra che voglia dirmi qualcosa...\nSento che devo liberarlo...\nA nord c'è la sala comunicazioni, a ovest l'hangar, ad est il ponte di comando.",
-    "intro": "Dannazione non mi aspettavo di trovare altri prigionieri qui... quindi non sono l'unico!",
+    "look": "Ci sono delle piccole celle con alieni rinchiusi. Sembra che siano i prigionieri della navicella.\nA nord c'è la sala comunicazioni, a ovest l'hangar, ad est il ponte di comando.",
+    "intro": "Dannazione non mi aspettavo di trovare altri prigionieri qui... quindi non sono l'unico!\nMi avvicino ad una delle celle e vedo un alieno che mi guarda con occhi tristi... sembra che voglia dirmi qualcosa...\nSento che devo liberarlo...",
     "southId": -1,
     "westId": 6,
     "northId": 4,
@@ -218,7 +218,7 @@
     "id": 8,
     "name": "Ponte di comando",
     "description": "È la stanza di comando della navicella, con pannelli di controllo e strumenti di navigazione.\nSembra che qui vengano controllati i sistemi di navigazione della navicella...",
-    "look": "Ci sono dei pannelli di controllo e strumenti di navigazione. Sembra che qui vengano controllati i sistemi di navigazione della navicella.\nAd est ci sono le celle.",
+    "look": "Ci sono dei pannelli di controllo e strumenti di navigazione. Sembra che qui vengano controllati i sistemi di navigazione della navicella.\nC'è una chiave elettronica, vicino ad uno dei pannelli. Sarà la chiave delle celle?\nAd est ci sono le celle.",
     "intro": "Questo dovrebbe essere il ponte di comando, magari qui posso trovare la chiave per liberare i prigionieri! Devo cercare bene!\nA-aspetta... ma...\nUno strano alieno sta usando le attrezzature elettroniche... Sarà il capitano della nave??\nOh, sta venendo verso di me! Devo fare qualcosa al più presto!!",
     "southId": -1,
     "westId": 7,
