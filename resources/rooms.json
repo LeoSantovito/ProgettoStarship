@@ -235,7 +235,7 @@
         "description": "È una chiave elettronica. Dovrebbe aprire le celle.",
         "alias": ["chiave elettronica"],
         "openable": false,
-        "pickupable": true,
+        "pickupable": false,
         "open": false,
         "objectsList": []
       }

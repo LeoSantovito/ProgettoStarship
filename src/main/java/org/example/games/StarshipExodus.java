@@ -192,6 +192,13 @@ public class StarshipExodus extends GameDescription {
                 case ATTACK -> {
                     execute.attackBoss(bossKilled, getCurrentRoom(), out);
                     bossKilled = AlienBossGame.isGameWon();
+                    if (bossKilled && getCurrentRoom().getId() == 8) {
+                        AdvObject keyItem = Utils.findObjectById(getCurrentRoom().getObjects(), 9);
+                        if (keyItem != null) {
+                            keyItem.setPickupable(true);
+                            out.println("Complimenti! Ora puoi raccogliere la chiave");
+                        }
+                    }
                 }
             }
             if (noroom) {
