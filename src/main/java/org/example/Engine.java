@@ -165,20 +165,19 @@ public class Engine {
                 System.out.println("Non capisco quello che mi vuoi dire.");
             } else {
                 switch (p.getCommand().getType()) {
-                    case SAVE:
+                    case SAVE -> {
                         saveGame(game);
-                        break;
-                    case TIME:
+                    }
+                    case TIME -> {
                         /* Stampa il tempo di gioco. */
                         totalSeconds = timer.getSecondsElapsed();
                         printGameTime(totalSeconds);
                         System.out.println();
-                        break;
-                    case END:
+                    }
+                    case END -> {
                         /* Chiede al giocatore se vuole salvare la partita prima di uscire dal gioco. */
                         System.out.println("Vuoi salvare la partita prima di uscire? (s/n)");
                         String answer = scanner.nextLine().toLowerCase();
-
                         while (!answer.equals("s") && !answer.equals("n")) {
                             System.out.println("Risposta non valida. Inserisci 's' per salvare o 'n' per uscire senza salvare.");
                             answer = scanner.nextLine();
@@ -186,13 +185,13 @@ public class Engine {
                         if (answer.equals("s")) {
                             saveGame(game);
                         }
-
                         System.out.println("Addio!");
                         return;
-                    default:
+                    }
+                    default -> {
                         game.nextMove(p, System.out);
                         System.out.println();
-                        break;
+                    }
                 }
             }
         }

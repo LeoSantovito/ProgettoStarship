@@ -154,23 +154,6 @@ public class StarshipExodus extends GameDescription {
                         out.println("Non c'è niente da aprire qui.");
                     }
                 }
-                case PUSH -> {
-                    // ricerca oggetti pushabili
-                    if (p.getObject() != null && p.getObject().isPushable()) {
-                        out.println("Hai premuto: " + p.getObject().getName());
-                        if (p.getObject().getId() == 3) {
-                            execute.end(out);
-                        }
-                    } else if (p.getInvObject() != null &&
-                            p.getInvObject().isPushable()) {
-                        out.println("Hai premuto: " + p.getInvObject().getName());
-                        if (p.getInvObject().getId() == 3) {
-                            execute.end(out);
-                        }
-                    } else {
-                        out.println("Non ci sono oggetti che puoi premere qui.");
-                    }
-                }
                 case USE -> {
                     //controlla se l'oggetto è nell'inventario, se si esegue execute.useItem
                     if (p.getInvObject() != null) {
