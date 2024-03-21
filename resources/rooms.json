@@ -18,7 +18,7 @@
         "id": 1,
         "name": "cassetta",
         "description": "È una cassetta di metallo. Sembra che qualcuno l'abbia dimenticata qui.",
-        "alias": ["contenitore"],
+        "alias": ["cassa","contenitore"],
         "openable": true,
         "pickupable": false,
         "open": false,

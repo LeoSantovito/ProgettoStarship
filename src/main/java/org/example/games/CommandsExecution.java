@@ -49,7 +49,7 @@ public class CommandsExecution implements Serializable {
                         out.println("Hai già aperto questo oggetto.");
                         AdvObject c = object;
                         if (!c.getObjectsList().isEmpty()) {
-                            out.print(c.getName() + " contiene:");
+                            out.print("L'oggetto " + c.getName() + " contiene:");
                             Iterator<AdvObject> it =
                                     c.getObjectsList().iterator();
                             while (it.hasNext()) {
@@ -176,7 +176,7 @@ public class CommandsExecution implements Serializable {
                 } else if (game.getCurrentRoom().getId() == 1 && game.getCurrentRoom().getEast().getAccessible()) {
                     out.println("Ho già aperto la porta, non c'è bisogno di usare il visore qui.");
                 } else {
-                    out.println("Non puoi usare questo oggetto qui.");
+                    out.println("Non mi serve usare il visore qui.");
                 }
             }
             case 8 -> {
