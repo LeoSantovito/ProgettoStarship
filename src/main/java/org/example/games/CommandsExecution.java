@@ -147,7 +147,7 @@ public class CommandsExecution implements Serializable {
             case 5 -> {
                 //mostra gli appunti di john
                 showNotes();
-                out.println("Le note sono sporche di sangue, chissà cosa voleva scrivere...");
+                out.println("Avranno ucciso John perché sapeva troppo? Chissà cosa aveva scoperto...");
             }
             case 6 -> {
                 //pistola restringente in stanza ponte inferiore
