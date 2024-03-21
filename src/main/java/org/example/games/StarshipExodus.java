@@ -190,24 +190,8 @@ public class StarshipExodus extends GameDescription {
                     }
                 }
                 case ATTACK -> {
-                    if (bossKilled && getCurrentRoom().getId() == 1) {
-                        out.println("Hai già ucciso il boss, non c'è bisogno di combattere di nuovo!\nSfogati con qualcos'altro se proprio ne hai bisogno...");
-                    } else if (getCurrentRoom().getId() == 1 && !bossKilled) {
-                        out.println("Preparati a combattere!");
-                        JDialog dialog = new JDialog(new JFrame(), "Starship Exodus", true);
-                        dialog.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                        dialog.setAlwaysOnTop(true);
-                        dialog.getContentPane().add(new AlienBossGame());
-                        dialog.pack(); // Adatta la dimensione del frame al pannello
-                        dialog.setLocationRelativeTo(null); // Posiziona il frame al centro dello schermo
-                        dialog.setVisible(true); // Rendi visibile il frame
-                        bossKilled = AlienBossGame.isGameWon();
-                    } else if (getCurrentRoom().getId() == 5) {
-                        out.println("Con cosa dovrei attaccare questo alieno?\nNon credo che il wrestling visto da bambino possa aiutarmi in questa situazione...");
-                    }
-                    else if (getCurrentRoom().getId() != 8 && getCurrentRoom().getId() != 5) {
-                        out.println("Non c'è nessuno da attaccare qui!");
-                    }
+                    execute.attackBoss(bossKilled, getCurrentRoom(), out);
+                    bossKilled = AlienBossGame.isGameWon();
                 }
             }
             if (noroom) {
