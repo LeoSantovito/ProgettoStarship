@@ -3,8 +3,12 @@ package org.example.games;
 import org.example.GameDescription;
 import org.example.GameTimer;
 import org.example.Utils;
+
+import org.example.swing.AlienBossGame;
+
 import org.example.api.WeatherApi;
 import org.example.database.Database;
+
 import org.example.swing.Background;
 import org.example.type.AdvObject;
 import org.example.type.Room;
@@ -253,5 +257,25 @@ public class CommandsExecution implements Serializable {
         Utils.printFromFilePlaceholder("./resources/dialogs/game_end_3.txt", Utils.printGameTime(totalGameTime));
 
         System.exit(0);
+    }
+
+    public void attackBoss(boolean bossKilled, Room room, PrintStream out) {
+        if (bossKilled && room.getId() == 8) {
+            out.println("Hai già ucciso il boss, non c'è bisogno di combattere di nuovo!\nSfogati con qualcos'altro se proprio ne hai bisogno...");
+        } else if (room.getId() == 8 && !bossKilled) {
+            out.println("Preparati a combattere!");
+            JDialog dialog = new JDialog(new JFrame(), "Starship Exodus", true);
+            dialog.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            dialog.setAlwaysOnTop(true);
+            dialog.getContentPane().add(new AlienBossGame());
+            dialog.pack(); // Adatta la dimensione del frame al pannello
+            dialog.setLocationRelativeTo(null); // Posiziona il frame al centro dello schermo
+            dialog.setVisible(true); // Rendi visibile il frame
+        } else if (room.getId() == 5) {
+            out.println("Con cosa dovrei attaccare questo alieno?\nNon credo che il wrestling visto da bambino possa aiutarmi in questa situazione...");
+        }
+        else if (room.getId() != 8 && room.getId() != 5) {
+            out.println("Non c'è nessuno da attaccare qui!");
+        }
     }
 }

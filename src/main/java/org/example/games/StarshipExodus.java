@@ -12,6 +12,9 @@ import org.example.GameTimer;
 import org.example.Utils;
 import org.example.database.Database;
 import org.example.parser.ParserOutput;
+
+import org.example.swing.AlienBossGame;
+import org.example.swing.Background;
 import org.example.type.*;
 
 import java.io.IOException;
@@ -40,6 +43,7 @@ public class StarshipExodus extends GameDescription {
     private static final int MAP_ID = 4;
 
     private CommandsExecution execute = new CommandsExecution();
+    private boolean bossKilled = false;
 
     @Override
     public void init() throws Exception {
@@ -155,11 +159,15 @@ public class StarshipExodus extends GameDescription {
                 }
                 case SHOW_MAP -> {
                     // Mostra la mappa se l'oggetto mappa è nell'inventario
-                    if (Utils.findObjectById(getInventory(), MAP_ID)!= null) {
+                    if (Utils.findObjectById(getInventory(), MAP_ID) != null) {
                         execute.showMap();
                     } else {
                         out.println("Non hai la mappa nell'inventario!");
                     }
+                }
+                case ATTACK -> {
+                    execute.attackBoss(bossKilled, getCurrentRoom(), out);
+                    bossKilled = AlienBossGame.isGameWon();
                 }
             }
             if (noroom) {
