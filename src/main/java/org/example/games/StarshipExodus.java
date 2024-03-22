@@ -174,7 +174,7 @@ public class StarshipExodus extends GameDescription {
                         AdvObject keyItem = Utils.findObjectById(getCurrentRoom().getObjects(), 9);
                         if (keyItem != null) {
                             keyItem.setPickupable(true);
-                            out.println("Complimenti! Hai sconfitto il capitano alieno ed ora puoi raccogliere la chiave.");
+                            out.println("Complimenti! Ora puoi raccogliere la chiave.");
                         }
                     }
                 }
