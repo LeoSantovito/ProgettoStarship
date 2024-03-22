@@ -274,7 +274,7 @@ public class CommandsExecution implements Serializable {
 
     public JDialog showHelp() {
         JDialog helpDialog = new JDialog(new JFrame(), "Help", true);
-        helpDialog.setSize(400,500);
+        helpDialog.setSize(800,500);
         helpDialog.setLocationRelativeTo(null);
         helpDialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         helpDialog.setResizable(false);
@@ -282,7 +282,7 @@ public class CommandsExecution implements Serializable {
         JTextArea textArea = new JTextArea();
         textArea.setFont(new Font("Arial", Font.PLAIN, 12));
         textArea.setLineWrap(true); // Imposta il wrap delle righe
-        textArea.setSize(400, 500);
+        textArea.setSize(800, 500);
         textArea.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(textArea);
         helpDialog.add(scrollPane);
@@ -293,7 +293,7 @@ public class CommandsExecution implements Serializable {
             StringBuilder content = new StringBuilder();
             String line;
             while ((line = br.readLine()) != null) {
-                content.append(line).append("\n");
+                content.append("\t").append(line).append("\t\n");
             }
             br.close();
             textArea.setText(content.toString());

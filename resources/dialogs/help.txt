@@ -1,21 +1,25 @@
-Starship Exodus
-
-Benvenuto a bordo della Starship Exodus, un'avventura intergalattica che ti porterà attraverso misteriosi pianeti e incontri alieni. Il tuo obiettivo è sopravvivere e trovare un modo per tornare a casa.
+Benvenuto su Starship Exodus, un'avventura testuale che ti porterà in un viaggio attraverso lo spazio profondo.
+In questo gioco, vestirai i panni di un esploratore spaziale intrappolato su una nave aliena ostile.
+Il tuo obiettivo è sopravvivere e trovare un modo per tornare a casa.
 
 Istruzioni:
 
 1.Esplora: Utilizza i comandi NORD, SUD, EST e OVEST per muoverti attraverso le varie stanze della nave e dei pianeti.
 
-2.Interagisci: Puoi interagire con oggetti e personaggi usandocomandi come PRENDI, APRI, USA, OSSERVA e altri. Esamina gli ambienti circostanti per scoprire indizi utili e oggetti preziosi.
+2.Interagisci: Puoi interagire con gli oggetti nel gioco con i comandi PRENDI, APRI, USA, OSSERVA seguiti dall'oggetto.
+Esamina gli ambienti circostanti per scoprire indizi utili e oggetti cruciali per andare avanti.
 
-3.Inventario: Tieni traccia degli oggetti che raccogli utilizzando il comando INVENTARIO. Alcuni oggetti potrebbero essere cruciali per risolvere determinati enigmi o affrontare sfide.
+3.Inventario: Tieni traccia degli oggetti che raccogli utilizzando il comando INVENTARIO.
+Alcuni oggetti potrebbero essere cruciali per risolvere determinati enigmi o affrontare sfide.
 
-4.Combatti: Incontra pericoli lungo il tuo viaggio e affrontali con il comando ATTACCA. Preparati a sconfiggere nemici potenti e a risolvere situazioni pericolose.
+4.Combatti: Se la situazione si fa dura, sarai costretto a difenderti dalle minacce con il comando ATTACCA.
+Preparati a sconfiggere nemici potenti e a risolvere situazioni pericolose.
 
-5.Obiettivo finale: La tua missione culmina con la battaglia contro il capitano alieno.
+5.Obiettivo finale: Il tuo obiettivo principale è trovare un modo per tornare a casa.
+Esplora attentamente la nave aliena e le sue stanze per trovare un modo per fuggire.
 
 6.Salvataggio: Puoi salvare il tuo progresso in qualsiasi momento usando il comando SALVA.
 
-7.Aiuto: Per ulteriori informazioni sui comandi disponibili o per ottenere assistenza, utilizza il comando HELP.
+7.Aiuto: Puoi tornare in questa sezione in ogni momento durante il gioco usando il comando HELP.
 
 Buona fortuna, esploratore! Che la forza sia con te nella tua avventura attraverso lo spazio.
