@@ -15,6 +15,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 import java.util.Set;
+import org.example.swing.MainFrame;
 
 /**
  *
@@ -228,7 +229,8 @@ public class Engine {
      */
     public static void main(String[] args) {
         Engine engine = new Engine();
-        MenuSwing menuSwing = new MenuSwing(engine);
-        menuSwing.startMenu();
+        MainFrame.frameGUI(engine);
+        //MenuSwing menuSwing = new MenuSwing(engine);
+        //menuSwing.startMenu();
     }
 }
