@@ -217,6 +217,7 @@ public class CommandsExecution implements Serializable {
                             out.println("Voglio indirizzare il messaggio a " + location + ", pianeta Terra...");
                             out.println();
                             weatherApi.getWeatherData(location);
+                            object.setUsed(true);
                         }
                     } catch (Exception e) {
                         throw new RuntimeException(e);
