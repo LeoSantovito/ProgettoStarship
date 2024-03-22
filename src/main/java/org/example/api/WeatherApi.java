@@ -69,18 +69,18 @@ public class WeatherApi implements Serializable {
         double cordsLon = jsonResponse.getAsJsonObject("coord").get("lon").getAsDouble();
 
         //Stampa il messaggio con le informazioni
-        System.out.println("Creazione tunnel quantico per " + cordsLat + "°N " + cordsLon + "°E, pianeta Terra, via Lattea, Universo 47B...");
+        System.out.println("<< Creazione tunnel quantico per " + cordsLat + "°N " + cordsLon + "°E, pianeta Terra, via Lattea, Universo 47B...");
         System.out.println("Collegamento completato, informazioni attuali di " + countryName + ":");
         System.out.println("Condizioni meteo: " + weatherDescription + ", Temperatura: " + formattedTemperature + "°C, Umidità: " + humidity + "%");
         System.out.println("Pericolosità dei locali: 0.7%, Adattabilità alla nostra forma di vita: 92%, Colonizzazione consigliata: Sì");
         System.out.println();
-        System.out.println("Inserire messaggio da trasmettere come onda elettromagnetica:");
+        System.out.println("Inserire messaggio da trasmettere come onda elettromagnetica: >>");
         System.out.println();
         System.out.println("Sono un essere umano, astronauta ESA della spedizione Eden, sono ancora vivo, ripeto, sono ancora vivo, rispondete, vi prego, rispondete...");
         System.out.println("Eden non è disabitata, siamo stati attaccati, se qualcuno può sentirmi datemi un segnale, vi prego...");
         System.out.println();
-        System.out.println("Trasmissione in corso...");
-        System.out.println("Trasmissione completata.");
+        System.out.println("<< Trasmissione in corso...");
+        System.out.println("Trasmissione completata. >>");
         System.out.println();
         System.out.println("È del tutto inutile, sulla Terra non hanno tecnologie tali da poter rispondere al segnale, ma almeno ho provato...");
 

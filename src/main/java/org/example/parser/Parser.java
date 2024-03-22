@@ -11,6 +11,7 @@ import org.example.type.Command;
 
 import java.util.List;
 import java.util.Set;
+import java.util.function.Predicate;
 import java.util.stream.IntStream;
 
 /**
@@ -25,19 +26,27 @@ public class Parser {
         this.stopwords = stopwords;
     }
 
-    private int checkForCommand(String token, List<Command> commands) {
-        return IntStream.range(0, commands.size())
-                .filter(i -> commands.get(i).getName().equals(token) || commands.get(i).getAlias().contains(token))
+    private <T> int findIndex(List<T> items, String token, Predicate<T> matcher) {
+        return IntStream.range(0, items.size())
+                .filter(i -> {
+                    T item = items.get(i);
+                    return matcher.test(item) && (item instanceof Command ?
+                            ((Command) item).getName().equals(token) || ((Command) item).getAlias().contains(token) :
+                            ((AdvObject) item).getName().equals(token) || ((AdvObject) item).getAlias().contains(token));
+                })
                 .findFirst()
                 .orElse(-1);
     }
 
-    private int checkForObject(String token, List<AdvObject> objects) {
-        return IntStream.range(0, objects.size())
-                .filter(i -> objects.get(i).getName().equals(token) || objects.get(i).getAlias().contains(token))
-                .findFirst()
-                .orElse(-1);
+    private int checkForCommand(String token, List<Command> commands) {
+        return findIndex(commands, token, command -> true);
     }
+
+    private int checkForObject(String token, List<AdvObject> objects) {
+        return findIndex(objects, token, object -> true);
+    }
+
+
 
     /* ATTENZIONE: il parser è implementato in modo abbastanza independete dalla lingua, ma riconosce solo 
     * frasi semplici del tipo <azione> <oggetto> <oggetto>. Eventuali articoli o preposizioni vengono semplicemente

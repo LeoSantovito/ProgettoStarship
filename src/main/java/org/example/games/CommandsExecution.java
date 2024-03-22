@@ -4,6 +4,7 @@ import org.example.GameDescription;
 import org.example.GameTimer;
 import org.example.Utils;
 
+import org.example.api.LocationApi;
 import org.example.swing.AlienBossGame;
 
 import org.example.api.WeatherApi;
@@ -196,17 +197,31 @@ public class CommandsExecution implements Serializable {
 
                 } else {
                     out.println("Questa tecnologia potrebbe servirmi per comunicare con la Terra!");
+
                     out.println("E tutto scritto in italiano!\nSembra si adatti automaticamente a chi la usa.\nOppure gli italiani discendono dagli alieni :)");
                     out.println("Leggo cosa sta scritto sull'interfaccia...");
+
+                    out.println("Si adatta automaticamente a chi la usa, non c'è bisogno di impostarla.");
+
                     out.println();
 
                     WeatherApi weatherApi = new WeatherApi();
                     try {
                         //Esegue la trasmissione in ciclo finché non ritorna true
-
-                        out.println("Inserire la località alla quale indirizzare il messaggio:");
-                        String location = new Scanner(System.in).nextLine();
-                        if(weatherApi.getWeatherData(location)){
+                        String ip = LocationApi.getPublicIP();
+                        if(ip.equals("unknown") || LocationApi.getGeolocation().equals("unknown")) {
+                            out.println("Leggo cosa sta scritto sull'interfaccia...");
+                            out.println();
+                            out.println("<< Inserire la località alla quale indirizzare il messaggio: >>");
+                            String location = new Scanner(System.in).nextLine();
+                            if(weatherApi.getWeatherData(location)){
+                                object.setUsed(true);
+                            }
+                        } else {
+                            String location = LocationApi.getGeolocation();
+                            out.println("Voglio indirizzare il messaggio a " + location + ", pianeta Terra...");
+                            out.println();
+                            weatherApi.getWeatherData(location);
                             object.setUsed(true);
                         }
                     } catch (Exception e) {
