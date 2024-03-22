@@ -15,6 +15,7 @@ import org.example.parser.ParserOutput;
 
 import org.example.swing.AlienBossGame;
 import org.example.swing.Background;
+import org.example.swing.MenuSwing;
 import org.example.type.*;
 
 import java.io.IOException;
@@ -177,6 +178,12 @@ public class StarshipExodus extends GameDescription {
                         }
                     }
                 }
+                case HELP -> {
+                    execute.showHelp().setVisible(true);
+
+                }
+
+                default -> out.println("Comando non valido.");
             }
             if (noroom) {
                 out.println(

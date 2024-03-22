@@ -14,8 +14,8 @@ import org.example.type.AdvObject;
 import org.example.type.Room;
 
 import javax.swing.*;
-import java.io.PrintStream;
-import java.io.Serializable;
+import java.awt.*;
+import java.io.*;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
@@ -270,6 +270,39 @@ public class CommandsExecution implements Serializable {
             e.printStackTrace();
             System.out.println("Errore nell'apertura della mappa.");
         }
+    }
+
+    public JDialog showHelp() {
+        JDialog helpDialog = new JDialog(new JFrame(), "Help", true);
+        helpDialog.setSize(400,500);
+        helpDialog.setLocationRelativeTo(null);
+        helpDialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        helpDialog.setResizable(false);
+
+        JTextArea textArea = new JTextArea();
+        textArea.setFont(new Font("Arial", Font.PLAIN, 12));
+        textArea.setLineWrap(true); // Imposta il wrap delle righe
+        textArea.setSize(400, 500);
+        textArea.setEditable(false);
+        JScrollPane scrollPane = new JScrollPane(textArea);
+        helpDialog.add(scrollPane);
+
+        try {
+            File file = new File("resources/dialogs/help.txt");
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            StringBuilder content = new StringBuilder();
+            String line;
+            while ((line = br.readLine()) != null) {
+                content.append(line).append("\n");
+            }
+            br.close();
+            textArea.setText(content.toString());
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(helpDialog, "Error reading file: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        helpDialog.pack();
+        return helpDialog;
     }
 
     /* Stampa il testo della fine del gioco. */
