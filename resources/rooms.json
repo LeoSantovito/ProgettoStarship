@@ -2,7 +2,7 @@
   {
     "id": 0,
     "name": "Sala macchine",
-    "description": "Ci sono strani meccanismi che emettono motori mettalici... Il pavimento è sporco di materiali fluorescenti.\nSembra che qui vengono controllati i sistemi di alimentazione e di propulsione della navicella...",
+    "description": "Ci sono strani meccanismi che emettono rumori mettalici... Il pavimento è sporco di materiali fluorescenti.\nSembra che qui vengono controllati i sistemi di alimentazione e di propulsione della navicella...",
     "look": "Per terra sempre esserci una cassetta... sembra contenere qualcosa.\nA sud c'è un varco che porta al magazzino delle scorte, ad est c'è il laboratorio.",
     "intro": "Posso andare solo di qua, dato che la porta ad est è bloccata...",
     "southId": 3,

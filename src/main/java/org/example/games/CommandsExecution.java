@@ -136,7 +136,7 @@ public class CommandsExecution implements Serializable {
                     database.deleteGame(game.getGameId());
                     end(out, timer.getSecondsElapsed());
                 } else {
-                    out.println("Non posso usare il cristallo qui.");
+                    out.println("Non si può usare il cristallo qui.");
                 }
             }
             case 4 -> {
@@ -184,9 +184,9 @@ public class CommandsExecution implements Serializable {
                     out.println("La porta si è aperta! Ora posso andare alla sala delle armi.");
                     game.getCurrentRoom().getEast().setAccessible(true);
                 } else if (game.getCurrentRoom().getId() == 1 && game.getCurrentRoom().getEast().getAccessible()) {
-                    out.println("Ho già aperto la porta, non c'è bisogno di usare il visore qui.");
+                    out.println("Hai già aperto la porta, non c'è bisogno di usare il visore qui.");
                 } else {
-                    out.println("Non mi serve usare il visore qui.");
+                    out.println("Non serve usare il visore qui.");
                 }
             }
             case 8 -> {
@@ -196,7 +196,7 @@ public class CommandsExecution implements Serializable {
 
                 } else {
                     out.println("Questa tecnologia potrebbe servirmi per comunicare con la Terra!");
-                    out.println("Si adatta automaticamente a chi la usa, non c'è bisogno di impostarla.");
+                    out.println("E tutto scritto in italiano!\nSembra si adatti automaticamente a chi la usa.\nOppure gli italiani discendono dagli alieni :)");
                     out.println("Leggo cosa sta scritto sull'interfaccia...");
                     out.println();
 
@@ -278,14 +278,15 @@ public class CommandsExecution implements Serializable {
         helpDialog.setLocationRelativeTo(null);
         helpDialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         helpDialog.setResizable(false);
-
+        Background img = new Background("./resources/images/bgHelp.jpg");
+        helpDialog.add(img);
         JTextArea textArea = new JTextArea();
+        textArea.setOpaque(false);
         textArea.setFont(new Font("Arial", Font.PLAIN, 12));
         textArea.setLineWrap(true); // Imposta il wrap delle righe
         textArea.setSize(800, 500);
         textArea.setEditable(false);
-        JScrollPane scrollPane = new JScrollPane(textArea);
-        helpDialog.add(scrollPane);
+        img.add(textArea);
 
         try {
             File file = new File("resources/dialogs/help.txt");
