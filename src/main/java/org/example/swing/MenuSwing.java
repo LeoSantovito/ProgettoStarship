@@ -2,18 +2,26 @@ package org.example.swing;
 
 import org.example.Engine;
 import org.example.database.Database;
+import org.example.games.CommandsExecution;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.security.PrivateKey;
 
 public class MenuSwing {
     private JButton newGameButton;
     private JButton loadGameButton;
     private JButton exitButton;
+
+    private JButton helpButton;
     private Engine engine;
+     CommandsExecution  execute = new CommandsExecution();
 
     public MenuSwing(Engine engine) {
         this.engine = engine;
@@ -51,6 +59,12 @@ public class MenuSwing {
         Image resizedExit = imageExit.getScaledInstance(25, 25, Image.SCALE_SMOOTH);
         exitIcon = new ImageIcon(resizedExit);
 
+        //icona del bottone che mostra i comandi del gioco
+        ImageIcon helpIcon = new ImageIcon("./resources/images/help.png");
+        Image imageHelp = helpIcon.getImage();
+        Image resizedHelp = imageHelp.getScaledInstance(25, 25, Image.SCALE_SMOOTH);
+        helpIcon = new ImageIcon(resizedHelp);
+
         // Creazione dei bottoni per nuova partita, caricam partita ed esci dal gioco
         newGameButton = new JButton("Nuova Partita");
         newGameButton.setIcon(newGameIcon);
@@ -61,6 +75,10 @@ public class MenuSwing {
         exitButton = new JButton("Esci");
         exitButton.setIcon(exitIcon);
 
+
+        helpButton = new JButton("Help");
+        helpButton.setIcon(helpIcon);
+
         // Set the border with shadow for the buttons
         newGameButton.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
         loadGameButton.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
@@ -70,41 +88,44 @@ public class MenuSwing {
         sfondo.setLayout(null);
 
         //posizionamento dei bottoni e dimensioni
-        newGameButton.setBounds(120, 280, 150, 50);
-        loadGameButton.setBounds(120, 340, 150, 50);
+        newGameButton.setBounds(120, 220, 150, 50);
+        loadGameButton.setBounds(120, 280, 150, 50);
+        helpButton.setBounds(120, 340, 150, 50);
         exitButton.setBounds(120, 400, 150, 50);
+
 
 
         sfondo.add(newGameButton);
         sfondo.add(loadGameButton);
         sfondo.add(exitButton);
+        sfondo.add(helpButton);
 
         frame.add(sfondo); // Add sfondo to the frame
         frame.setResizable(false);
         frame.setVisible(true);
 
-        newGameButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                JFrame topLevelFrame = (JFrame) SwingUtilities.getWindowAncestor(newGameButton); // Ottieni la finestra principale
-                topLevelFrame.dispose(); // Chiude la finestra principale
-                engine.newGame();
+        newGameButton.addActionListener(e -> {
+            JFrame topLevelFrame = (JFrame) SwingUtilities.getWindowAncestor(newGameButton); // Ottieni la finestra principale
+            topLevelFrame.dispose(); // Chiude la finestra principale
+            engine.newGame();
 
-            }
         });
 
-        loadGameButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                JFrame topLevelFrame = (JFrame) SwingUtilities.getWindowAncestor(loadGameButton); // Ottieni la finestra principale
-                topLevelFrame.dispose(); // Chiude la finestra principale
-                engine.loadSavedGame();
-            }
+        loadGameButton.addActionListener(e -> {
+            JFrame topLevelFrame = (JFrame) SwingUtilities.getWindowAncestor(loadGameButton); // Ottieni la finestra principale
+            topLevelFrame.dispose(); // Chiude la finestra principale
+            engine.loadSavedGame();
         });
 
-        exitButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                frame.dispose();
-                System.exit(0);
-            }
+        exitButton.addActionListener(e -> {
+            frame.dispose();
+            System.exit(0);
         });
+
+        helpButton.addActionListener(e -> execute.showHelp().setVisible(true));
     }
-}
+
+
+
+    }
+
