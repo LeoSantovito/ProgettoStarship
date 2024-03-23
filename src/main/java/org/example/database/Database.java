@@ -193,10 +193,10 @@ public class Database {
     }
 
     /* Stampa tutte le informazioni dei salvataggi nella tabella games. */
-    public void printAllGames() {
+    public boolean printAllGames() {
         List<GameRecord> games = selectAllGames();
         if (games.isEmpty()) {
-            System.out.println("Nessun salvataggio trovato.");
+            return false;
         } else {
             System.out.println();
             System.out.println("Lista dei Salvataggi:");
@@ -215,6 +215,7 @@ public class Database {
                 System.out.println("Tempo di Gioco: " + hours + "h " + minutes + "m " + seconds + "s");
                 System.out.println("-----------------------");
             }
+            return true;
         }
     }
 
