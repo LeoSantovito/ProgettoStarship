@@ -29,11 +29,10 @@ public class CommandsExecution implements Serializable {
                                 object.getName());
                         out.println(object.getDescription());
                         object.setOpen(true);
-                        AdvObject c = object;
-                        if (!c.getObjectsList().isEmpty()) {
-                            out.print("L'oggetto " + c.getName() + " contiene:");
+                        if (!object.getObjectsList().isEmpty()) {
+                            out.print("L'oggetto " + object.getName() + " contiene:");
                             Iterator<AdvObject> it =
-                                    c.getObjectsList().iterator();
+                                    object.getObjectsList().iterator();
                             while (it.hasNext()) {
                                 AdvObject next = it.next();
                                 out.print(" " + next.getName());
@@ -51,11 +50,10 @@ public class CommandsExecution implements Serializable {
                         }
                     } else {
                         out.println("Hai già aperto questo oggetto.");
-                        AdvObject c = object;
-                        if (!c.getObjectsList().isEmpty()) {
-                            out.print("L'oggetto " + c.getName() + " contiene:");
+                        if (!object.getObjectsList().isEmpty()) {
+                            out.print("L'oggetto " + object.getName() + " contiene:");
                             Iterator<AdvObject> it =
-                                    c.getObjectsList().iterator();
+                                    object.getObjectsList().iterator();
                             while (it.hasNext()) {
                                 AdvObject next = it.next();
                                 out.print(" " + next.getName());
@@ -94,9 +92,7 @@ public class CommandsExecution implements Serializable {
         } else if (object.getContainerId() != -1) {
             if (object.isPickupable()) {
 
-                Iterator<AdvObject> roomObjectIterator = currentRoom.getObjects().iterator();
-                while (roomObjectIterator.hasNext()) {
-                    AdvObject o = roomObjectIterator.next();
+                for (AdvObject o : currentRoom.getObjects()) {
                     // controllo che l'id dell'oggetto contenitore sia uguale all'id del contenitore dell'oggetto da raccogliere
                     if (o.getId() == object.getContainerId()) {
                         if (o.isOpen()) {

@@ -5,23 +5,16 @@
  */
 package org.example.games;
 
-import jdk.jfr.DataAmount;
-import org.example.api.WeatherApi;
 import org.example.GameDescription;
 import org.example.GameTimer;
 import org.example.Utils;
 import org.example.database.Database;
 import org.example.parser.ParserOutput;
-
 import org.example.swing.AlienBossGame;
-import org.example.swing.Background;
-import org.example.swing.MenuSwing;
 import org.example.type.*;
 
-import java.io.IOException;
 import java.io.PrintStream;
 import java.util.List;
-import java.util.Scanner;
 
 import static org.example.type.Room.findRoomById;
 
@@ -182,7 +175,6 @@ public class StarshipExodus extends GameDescription {
                     execute.showHelp().setVisible(true);
 
                 }
-
                 default -> out.println("Comando non valido.");
             }
             if (noroom) {

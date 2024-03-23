@@ -153,6 +153,7 @@ public class Engine {
             System.out.println("Hai già giocato " + Utils.printGameTime(totalSeconds) + "! È un po' tanto per questo gioco...");
         }
 
+        System.out.println();
         System.out.println("Sei nella stanza: " + game.getCurrentRoom().getName() + ".");
         System.out.println();
         System.out.println(game.getCurrentRoom().getDescription());
