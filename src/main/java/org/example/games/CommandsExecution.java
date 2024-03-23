@@ -4,7 +4,6 @@ import org.example.GameDescription;
 import org.example.GameTimer;
 import org.example.Utils;
 
-import org.example.api.LocationApi;
 import org.example.swing.AlienBossGame;
 
 import org.example.api.WeatherApi;
@@ -208,20 +207,9 @@ public class CommandsExecution implements Serializable {
                     WeatherApi weatherApi = new WeatherApi();
                     try {
                         //Esegue la trasmissione in ciclo finché non ritorna true
-                        String ip = LocationApi.getPublicIP();
-                        if(ip.equals("unknown") || LocationApi.getGeolocation().equals("unknown")) {
-                            out.println("Leggo cosa sta scritto sull'interfaccia...");
-                            out.println();
-                            out.println("<< Inserire la località alla quale indirizzare il messaggio: >>");
-                            String location = new Scanner(System.in).nextLine();
-                            if(weatherApi.getWeatherData(location)){
-                                object.setUsed(true);
-                            }
-                        } else {
-                            String location = LocationApi.getGeolocation();
-                            out.println("Voglio indirizzare il messaggio a " + location + ", pianeta Terra...");
-                            out.println();
-                            weatherApi.getWeatherData(location);
+                        out.println("Inserire la località alla quale indirizzare il messaggio:");
+                        String location = new Scanner(System.in).nextLine();
+                        if(weatherApi.getWeatherData(location)){
                             object.setUsed(true);
                         }
                     } catch (Exception e) {
