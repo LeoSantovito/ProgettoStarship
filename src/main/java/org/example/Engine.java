@@ -29,7 +29,6 @@ public class Engine {
     private Parser parser;
     private Database database;
     private GameTimer timer;
-    private MenuSwing menu;
 
 
     public Engine() {
