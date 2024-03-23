@@ -103,8 +103,6 @@ public class Engine {
             }
             int id = scanner.nextInt();
             scanner.nextLine();
-            System.out.println();
-            System.out.println("Caricamento di una Partita Salvata...");
 
             /* Fa una query sulla tabella games nel DB a partire dall'id. */
             try {
@@ -115,8 +113,8 @@ public class Engine {
                     id = scanner.nextInt();
                 }
                 try {
-                    GameDescription game = null;
-                    game = database.loadGame(id);
+                    System.out.println("Caricamento di una Partita Salvata...");
+                    GameDescription game = database.loadGame(id);
 
                     System.out.println("Partita Caricata con successo!");
                     System.out.println();
