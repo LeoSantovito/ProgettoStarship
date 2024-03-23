@@ -196,18 +196,15 @@ public class CommandsExecution implements Serializable {
 
                 } else {
                     out.println("Questa tecnologia potrebbe servirmi per comunicare con la Terra!");
-
-                    out.println("E tutto scritto in italiano!\nSembra si adatti automaticamente a chi la usa.\nOppure gli italiani discendono dagli alieni :)");
+                    out.println("Si adatta automaticamente alla lingua di chi la usa, non c'è bisogno di impostarla.");
                     out.println("Leggo cosa sta scritto sull'interfaccia...");
-
-                    out.println("Si adatta automaticamente a chi la usa, non c'è bisogno di impostarla.");
 
                     out.println();
 
                     WeatherApi weatherApi = new WeatherApi();
                     try {
                         //Esegue la trasmissione in ciclo finché non ritorna true
-                        out.println("Inserire la località alla quale indirizzare il messaggio:");
+                        out.println(\"<< Inserire la località alla quale indirizzare il messaggio: >>");
                         String location = new Scanner(System.in).nextLine();
                         if(weatherApi.getWeatherData(location)){
                             object.setUsed(true);
