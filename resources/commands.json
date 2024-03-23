@@ -1,7 +1,5 @@
 [
   {"type": "ATTACK", "name": "attacca", "alias": ["colpisci", "uccidi", "combatti", "spara"]},
-  {"type": "TALK", "name": "parla", "alias": ["dialoga", "chatta", "discuti"]},
-  {"type": "GO", "name": "vai", "alias": ["muoviti", "spostati", "cammina", "corri", "fuggi", "scappa", "esplora", "avanza", "prosegui"]},
   {"type": "NORTH", "name": "nord", "alias": ["n"]},
   {"type": "SOUTH", "name": "sud", "alias": ["s"]},
   {"type": "EAST", "name": "est", "alias": ["e"]},
