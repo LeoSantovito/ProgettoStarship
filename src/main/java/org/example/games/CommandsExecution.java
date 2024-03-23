@@ -204,7 +204,7 @@ public class CommandsExecution implements Serializable {
                     WeatherApi weatherApi = new WeatherApi();
                     try {
                         //Esegue la trasmissione in ciclo finché non ritorna true
-                        out.println(\"<< Inserire la località alla quale indirizzare il messaggio: >>");
+                        out.println("<< Inserire la località alla quale indirizzare il messaggio: >>");
                         String location = new Scanner(System.in).nextLine();
                         if(weatherApi.getWeatherData(location)){
                             object.setUsed(true);
