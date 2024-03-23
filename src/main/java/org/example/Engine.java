@@ -29,8 +29,6 @@ public class Engine {
     private Parser parser;
     private Database database;
     private GameTimer timer;
-    private MenuSwing menu;
-
 
     public Engine() {
         try {
@@ -152,12 +150,10 @@ public class Engine {
         int id = game.getGameId();
         if (totalSeconds != 0) {
             System.out.println("Abbiamo sentito la tua mancanza, " + database.getPlayerName(id) + "!");
-            Utils.printGameTime(totalSeconds);
+            System.out.println("Hai già giocato " + Utils.printGameTime(totalSeconds) + "! È un po' tanto per questo gioco...");
         }
 
-        /* Stampa la stanza iniziale. */
-        System.out.println();
-        System.out.println("Sei nella stanza: " + game.getCurrentRoom().getName() + ".");
+        System.out.println("Vabbè, eri nella stanza: " + game.getCurrentRoom().getName() + ".");
         System.out.println();
         System.out.println(game.getCurrentRoom().getDescription());
         System.out.println();
