@@ -110,6 +110,12 @@ public class Engine {
                     System.out.println("Salvataggio non trovato. Inserisci un id valido.");
                     System.out.println();
                     System.out.print("Inserisci l'id del salvataggio da caricare: ");
+                    while (!scanner.hasNextInt()) {
+                        System.out.println("Quello non è un numero intero!");
+                        System.out.println();
+                        System.out.print("Inserisci l'id del salvataggio da caricare: ");
+                        scanner.next();
+                    }
                     id = scanner.nextInt();
                 }
                 try {
