@@ -99,7 +99,6 @@ Mediante la chiave primaria `id` della partita scelta, il giocatore seleziona la
 Per quanto riguarda la programmazione concorrente, il caso di studio utilizza la classe `Thread` per gestire il timer di gioco all'interno della classe `GameTimer`. Questa classe estende la classe `Thread` e implementa un meccanismo per aggiornare il tempo di gioco ogni secondo.
 
 La variabile `secondsElapsed` tiene traccia del tempo trascorso di gioco in secondi, mentre il flag `running` viene utilizzato per controllare l'esecuzione del thread del timer.
-
 Quando viene creata una nuova partita, `secondsElapsed` viene inizializzato a 0 e il thread del timer viene avviato. Al momento del salvataggio, si aggiornerà la variabile `timeElapsed` nella `GameDescription` della partita, in modo da poter riprendere il timer al momento del caricamento.
 
 Il metodo `run` viene eseguito all'avvio del thread e continua ad eseguire un loop finché il gioco è in esecuzione e il thread non è interrotto. Ogni secondo, il tempo di gioco viene aggiornato e, se trascorrono 300 secondi (5 minuti), viene visualizzato un messaggio di avviso.
@@ -108,7 +107,21 @@ I metodi `stopTimer`, `resumeTimer`, `resetTimer` e `setTime` permettono rispett
 
 ### Programmazione in rete
 
+Nel contesto della programmazione in rete, sono state impiegate le API con architettura REST per ottenere informazioni meteorologiche in tempo reale. Per fare ciò, è stata implementata la classe `WeatherApi` all'interno del package `org/example/api/` che si occupa di effettuare richieste HTTP all'API di OpenWeatherMap per ottenere i dati meteorologici di una determinata città.
+
+La classe `WeatherApi` contiene un metodo `getWeatherData` che accetta il nome di una città come parametro e restituisce informazioni sulle condizioni meteorologiche attuali di quella città.
+Si utilizza la libreria `Gson`, includendo la relativa dipendenza nel file `pom.xml`, per il parsing dei dati JSON ricevuti dall'API, con la quale vengono estratte le informazioni necessarie quali la descrizione del meteo, la temperatura, l'umidità e le coordinate geografiche della città.
+
+La classe `WeatherApi` viene utilizzata all'interno del metodo `useItem` della classe `CommandsExecution`, durante l'esecuzione del gioco.
+In particolare, quando il giocatore utilizza l'oggetto "trasmettitore di messaggi intergalattico", crea un tunnel quantico con un posto specifico della Terra, verso il quale vuole inviare un messaggio di richiesta di aiuto, da trasmettere come onda elettromagnetica.
+Il dispositivo risponderà con informazioni relative al meteo del posto desiderato, oltre che ad altre informazioni come "Pericolosità dei locali" o "Adattabilità alla nostra forma di vita".
+
+Per fare ciò, viene istanziato un oggetto `WeatherApi` e invocato il metodo `getWeatherData`, passando come parametro la città scelta dal giocatore. Una volta ottenute le informazioni, vengono visualizzate sullo schermo insieme al messaggio inviato, caricato dal file testuale `use_object_8.txt`, salvato in `resources/dialogs/`.
+
 ### Framework Swing
 
 ### Espressioni Lambda
 
+## Diagramma delle classi
+
+## Specifica algebrica
