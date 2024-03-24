@@ -57,7 +57,7 @@ Di seguito sono riportate le funzionalità principali del gioco:
 - **Esplorazione**: il giocatore può esaminare le stanze usando `osserva`, raccogliere eventuali oggetti presenti nelle stanze usando `prendi`, aprire oggetti contenitori con `apri`, con `usa` può usarli per risolvere enigmi e sfide.
 - **Combattimento**: quando diventa necessario, il giocatore sarà costretto ad usare il comando `attacca` per combattere contro nemici presenti nell'astronave aliena.
 - **Inventario**: utilizzando il comando `inventario` il giocatore può visualizzare la lista degli oggetti raccolti e la relativa descrizione.
-- **Mappa*: il giocatore può visualizzare la mappa dell'astronave aliena con il comando `mappa`, ammesso che abbia la mappa nell'inventario.
+- **Mappa**: il giocatore può visualizzare la mappa dell'astronave aliena con il comando `mappa`, ammesso che abbia la mappa nell'inventario.
 - **Tempo**: il giocatore può tener traccia del tempo di gioco usando il comando `tempo`.
 - **Aiuto**: con il comando `aiuto`, si può visualizzare una schermata con informazioni utili al giocatore.
 - **Uscita**: il giocatore può uscire dal gioco in qualsiasi momento con `esci`, e gli verrà chiesto se vuole salvare o meno la partita corrente.
