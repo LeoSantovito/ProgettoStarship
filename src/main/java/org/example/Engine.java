@@ -29,8 +29,6 @@ public class Engine {
     private Parser parser;
     private Database database;
     private GameTimer timer;
-    private MenuSwing menu;
-
 
     public Engine() {
         try {
@@ -86,34 +84,41 @@ public class Engine {
     /* Carica i dati di una partita salvata. */
     public void loadSavedGame() {
         database.cleanEmptyGames(); // Rimuove nuove partite non salvate.
-        database.printAllGames();
-        System.out.print("Inserisci l'id del salvataggio da caricare: ");
-        Scanner scanner = new Scanner(System.in);
-
-        /* Verifica che l'id sia un intero. */
-        while (!scanner.hasNextInt()) {
-            System.out.println("Quello non è un numero intero!");
+        if (!database.printAllGames()) {
+            System.out.println("Non ci sono partite salvate. Creo una nuova partita.");
             System.out.println();
+            newGame();
+        } else {
             System.out.print("Inserisci l'id del salvataggio da caricare: ");
-            scanner.next();
-        }
-        int id = scanner.nextInt();
-        scanner.nextLine();
-        System.out.println();
-        System.out.println("Caricamento di una Partita Salvata...");
+            Scanner scanner = new Scanner(System.in);
 
-        /* Fa una query sulla tabella games nel DB a partire dall'id. */
-        try {
-            if (database.selectGame(id) == null) {
-                System.out.println("Salvataggio non trovato. Torno al menu principale.");
+            /* Verifica che l'id sia un intero. */
+            while (!scanner.hasNextInt()) {
+                System.out.println("Quello non è un numero intero!");
                 System.out.println();
+                System.out.print("Inserisci l'id del salvataggio da caricare: ");
+                scanner.next();
+            }
+            int id = scanner.nextInt();
+            scanner.nextLine();
 
-                MenuSwing menuSwing = new MenuSwing(this);
-                menuSwing.startMenu();
-            } else {
+            /* Fa una query sulla tabella games nel DB a partire dall'id. */
+            try {
+                while (database.selectGame(id) == null) {
+                    System.out.println("Salvataggio non trovato. Inserisci un id valido.");
+                    System.out.println();
+                    System.out.print("Inserisci l'id del salvataggio da caricare: ");
+                    while (!scanner.hasNextInt()) {
+                        System.out.println("Quello non è un numero intero!");
+                        System.out.println();
+                        System.out.print("Inserisci l'id del salvataggio da caricare: ");
+                        scanner.next();
+                    }
+                    id = scanner.nextInt();
+                }
                 try {
-                    GameDescription game = null;
-                    game = database.loadGame(id);
+                    System.out.println("Caricamento di una Partita Salvata...");
+                    GameDescription game = database.loadGame(id);
 
                     System.out.println("Partita Caricata con successo!");
                     System.out.println();
@@ -128,9 +133,9 @@ public class Engine {
                     System.out.println("Partita terminata.");
                     System.exit(0);
                 }
+            } catch (Exception ex) {
+                System.err.println(ex);
             }
-        } catch (Exception ex) {
-            System.err.println(ex);
         }
     }
 
@@ -145,10 +150,9 @@ public class Engine {
         int id = game.getGameId();
         if (totalSeconds != 0) {
             System.out.println("Abbiamo sentito la tua mancanza, " + database.getPlayerName(id) + "!");
-            Utils.printGameTime(totalSeconds);
+            System.out.println("Hai già giocato " + Utils.printGameTime(totalSeconds) + "! È un po' tanto per questo gioco...");
         }
 
-        /* Stampa la stanza iniziale. */
         System.out.println();
         System.out.println("Sei nella stanza: " + game.getCurrentRoom().getName() + ".");
         System.out.println();
