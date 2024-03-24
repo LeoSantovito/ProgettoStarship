@@ -28,24 +28,27 @@ import static org.example.type.Room.findRoomById;
 public class StarshipExodus extends GameDescription {
     private static final int STARTING_ROOM_ID = 1;
     private static final int MAP_ID = 4;
+    private static final int BOSS_ROOM_ID = 8;
+    private static final int KEY_ID = 9;
+    private static final int INVALID_ROOM_ID = -1;
 
-    private CommandsExecution execute = new CommandsExecution();
+    private final CommandsExecution execute = new CommandsExecution();
     private boolean bossKilled = false;
 
-
+    /*
+      Il metodo init() è stato implementato in modo da caricare i comandi e le stanze del gioco da file JSON.
+      Inoltre, inizializza la posizione iniziale del giocatore sulla mappa e imposta la stanza corrente come visitata.
+      Nel file JSON delle stanze, vengono impostate le stanze con le relative caratteristiche, compresi gli oggetti all'interno,
+      i confini tra le stanze vengono rappresentati con interi nel file JSON e associati a oggetti Room con il metodo setMap(List<Room> rooms).
+      In questo modo se si vuole cambiare le stanze del giocoe  gli oggetti con tutte le relative caratteristiche,
+      basta modificare il file JSON rooms.
+       */
     @Override
     public void init() throws Exception {
-        /*
-        Il metodo init() è stato implementato in modo da caricare i comandi e le stanze del gioco da file JSON.
-        Inoltre, inizializza la posizione iniziale del giocatore sulla mappa e imposta la stanza corrente come visitata.
-        Nel file JSON delle stanze, vengono impostate le stanze con le relative caratteristiche, compresi gli oggetti all'interno,
-        i confini tra le stanze vengono rappresentati con interi nel file JSON e associati a oggetti Room con il metodo setMap(List<Room> rooms).
-        In questo modo se si vuole cambiare le stanze del giocoe  gli oggetti con tutte le relative caratteristiche,
-        basta modificare il file JSON rooms.
-         */
         //Commands
         List<Command> commands = Utils.loadObjectsFromFile("./resources/commands.json", Command.class);
         getCommands().addAll(commands);
+        //Rooms and objects
         List<Room> rooms = Utils.loadObjectsFromFile("./resources/rooms.json", Room.class);
         setMap(rooms);
         getRooms().addAll(rooms);
@@ -174,18 +177,17 @@ public class StarshipExodus extends GameDescription {
                 case ATTACK -> {
                     execute.attackBoss(bossKilled, getCurrentRoom(), out);
                     bossKilled = AlienBossGame.isGameWon();
-                    if (bossKilled && getCurrentRoom().getId() == 8) {
-                        AdvObject keyItem = Utils.findObjectById(getCurrentRoom().getObjects(), 9);
+                    if (bossKilled && getCurrentRoom().getId() == BOSS_ROOM_ID) {
+                        AdvObject keyItem = Utils.findObjectById(getCurrentRoom().getObjects(), KEY_ID);
                         if (keyItem != null) {
                             keyItem.setPickupable(true);
                             out.println("Complimenti! Ora puoi raccogliere la chiave.");
                         }
                     }
                 }
-                case HELP -> {
+                case HELP ->
                     execute.showHelp().setVisible(true);
 
-                }
                 default -> out.println("Comando non valido.");
             }
             if (noroom) {
@@ -212,22 +214,22 @@ public class StarshipExodus extends GameDescription {
     private void setMap(List<Room> rooms) {
         for (Room currentRoom : rooms){
             int northId = currentRoom.getNorthId();
-            if(northId != -1) {
+            if(northId != INVALID_ROOM_ID) {
                 Room north = findRoomById(rooms, northId);
                 currentRoom.setNorth(north);
             }
             int southId = currentRoom.getSouthId();
-            if(southId != -1) {
+            if(southId != INVALID_ROOM_ID) {
                 Room south = findRoomById(rooms, southId);
                 currentRoom.setSouth(south);
             }
             int eastId = currentRoom.getEastId();
-            if(eastId != -1) {
+            if(eastId != INVALID_ROOM_ID) {
                 Room east = findRoomById(rooms, eastId);
                 currentRoom.setEast(east);
             }
             int westId = currentRoom.getWestId();
-            if(westId != -1) {
+            if(westId != INVALID_ROOM_ID) {
                 Room west = findRoomById(rooms, westId);
                 currentRoom.setWest(west);
             }

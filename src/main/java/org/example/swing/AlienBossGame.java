@@ -87,7 +87,7 @@ public class AlienBossGame extends JPanel {
     private void drawGame(Graphics g) {
         if (gameWon) {
             // Disegna un messaggio di vittoria sullo sfondo della vittoria
-            g.setColor(Color.WHITE);
+            g.setColor(Color.BLACK);
             g.setFont(new Font("Arial", Font.BOLD, 24));
             g.drawString("Hai vinto!", getWidth() / 2 - 60, getHeight() / 2);
         } else {

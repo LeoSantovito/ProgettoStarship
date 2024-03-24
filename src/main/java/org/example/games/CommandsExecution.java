@@ -28,7 +28,6 @@ import java.util.Scanner;
  */
 
 public class CommandsExecution implements Serializable {
-    private boolean padUnlocked = false;
     private boolean alienKillled = false;
     public void openItem(AdvObject object, PrintStream out) {
             if (object.isOpenable()) {
@@ -193,7 +192,7 @@ public class CommandsExecution implements Serializable {
                     dialog.setLocationRelativeTo(null); // Posiziona il frame al centro dello schermo
                     dialog.setVisible(true); // Rendi visibile il frame
 
-                    padUnlocked = NumericKeypadUnlocker.isPadUnlocked();
+                    boolean padUnlocked = NumericKeypadUnlocker.isPadUnlocked();
                     if (padUnlocked) {
                         out.println("La porta si è aperta! Ora posso andare alla sala delle armi.");
                         game.getCurrentRoom().getEast().setAccessible(true);

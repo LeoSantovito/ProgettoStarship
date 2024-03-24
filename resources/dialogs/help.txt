@@ -1,5 +1,5 @@
 Benvenuto su Starship Exodus, un'avventura testuale che ti porterà in un viaggio attraverso lo spazio profondo.
-In questo gioco, vestirai i panni di un esploratore spaziale intrappolato su una nave aliena ostile.
+In questo gioco, vestirai i panni di un esploratore spaziale intrappolato su una nave comandata da alieni ostili.
 Il tuo obiettivo è sopravvivere e trovare un modo per tornare a casa.
 
 Istruzioni:
@@ -12,8 +12,9 @@ Esamina gli ambienti circostanti per scoprire indizi utili e oggetti cruciali pe
 3.Inventario: Tieni traccia degli oggetti che raccogli utilizzando il comando INVENTARIO.
 Alcuni oggetti potrebbero essere cruciali per risolvere determinati enigmi o affrontare sfide.
 
-4.Combatti: Se la situazione si fa dura, sarai costretto a difenderti dalle minacce con il comando ATTACCA.
-Preparati a sconfiggere nemici potenti e a risolvere situazioni pericolose.
+4.Combatti: Se la situazione si fa dura, sarai costretto a difenderti dalle minacce provando a usare gli oggetti nel tuo
+inventario. Preparati a sconfiggere nemici potenti e a risolvere situazioni pericolose.
+Ricorda di usare il comando ATTACCA per cominciare la battaglia finale.
 
 5.Obiettivo finale: Il tuo obiettivo principale è trovare un modo per tornare a casa.
 Esplora attentamente la nave aliena e le sue stanze per trovare un modo per fuggire.
