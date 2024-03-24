@@ -17,20 +17,13 @@ import java.io.PrintStream;
 import java.util.List;
 
 import static org.example.type.Room.findRoomById;
-
-/**
- * ATTENZIONE: La descrizione del gioco è fatta in modo che qualsiasi gioco
- * debba estendere la classe GameDescription. L'Engine è fatto in modo che possa
- * eseguire qualsiasi gioco che estende GameDescription, in questo modo si
- * possono creare più gioci utilizzando lo stesso Engine.
- *
- * Diverse migliorie possono essere applicate: - la descrizione del gioco
- * potrebbe essere caricate da file o da DBMS in modo da non modificare il
- * codice sorgente - l'utilizzo di file e DBMS non è semplice poiché all'interno
- * del file o del DBMS dovrebbe anche essere codificata la logica del gioco
- * (nextMove) oltre alla descrizione di stanze, oggetti, ecc...
- *
- * @author pierpaolo
+/*
+    * La classe StarshipExodus rappresenta il gioco vero e proprio. Estende la classe GameDescription e implementa i metodi
+    * astratti init() e nextMove(). Inoltre, contiene un attributo booleano bossKilled che indica se il boss è stato sconfitto.
+    * La classe contiene anche un oggetto CommandsExecution che si occupa di eseguire i comandi del gioco.
+    * La classe implementa il metodo init() per inizializzare il gioco e il metodo nextMove() per gestire il prossimo movimento del giocatore.
+    * Il metodo nextMove() gestisce i comandi del giocatore e aggiorna la posizione del giocatore sulla mappa.
+    * La classe contiene anche un metodo setMap(List<Room> rooms) che imposta le stanze della mappa.
  */
 public class StarshipExodus extends GameDescription {
     private static final int STARTING_ROOM_ID = 1;
@@ -39,8 +32,17 @@ public class StarshipExodus extends GameDescription {
     private CommandsExecution execute = new CommandsExecution();
     private boolean bossKilled = false;
 
+
     @Override
     public void init() throws Exception {
+        /*
+        Il metodo init() è stato implementato in modo da caricare i comandi e le stanze del gioco da file JSON.
+        Inoltre, inizializza la posizione iniziale del giocatore sulla mappa e imposta la stanza corrente come visitata.
+        Nel file JSON delle stanze, vengono impostate le stanze con le relative caratteristiche, compresi gli oggetti all'interno,
+        i confini tra le stanze vengono rappresentati con interi nel file JSON e associati a oggetti Room con il metodo setMap(List<Room> rooms).
+        In questo modo se si vuole cambiare le stanze del giocoe  gli oggetti con tutte le relative caratteristiche,
+        basta modificare il file JSON rooms.
+         */
         //Commands
         List<Command> commands = Utils.loadObjectsFromFile("./resources/commands.json", Command.class);
         getCommands().addAll(commands);
@@ -52,6 +54,15 @@ public class StarshipExodus extends GameDescription {
         getCurrentRoom().setVisited(true);
     }
 
+    /*
+    Il metodo nextMove() è stato implementato in modo da gestire i comandi del giocatore e aggiornare la posizione del giocatore sulla mappa.
+    Il metodo controlla se il comando è valido e se la direzione in cui il giocatore vuole andare è accessibile.
+    Se il giocatore prova ad andare in una direzione non accessibile, il metodo restituisce un messaggio di errore.
+    Se il giocatore prova ad andare in una direzione accessibile, il metodo aggiorna la posizione del giocatore e restituisce la descrizione della stanza.
+    Il metodo gestisce anche i comandi relativi all'inventario, all'osservazione della stanza, al raccoglimento di oggetti,
+     all'apertura di oggetti, all'uso di oggetti, alla visualizzazione della mappa e all'attacco del boss.
+    Il metodo restituisce un messaggio di errore se il comando non è valido.
+     */
     @Override
     public void nextMove(ParserOutput p, PrintStream out, GameTimer timer, Database database) {
         if (p.getCommand() == null) {
@@ -194,6 +205,10 @@ public class StarshipExodus extends GameDescription {
         }
     }
 
+    /*
+    Il metodo setMap(List<Room> rooms) è stato implementato in modo da associare i confini rapprensentati da interi nel file JSON con
+    gli attributi di tipo Room della classe Room. In questo modo, se si vuole cambiare la mappa del gioco, basta modificare il file JSON rooms.
+     */
     private void setMap(List<Room> rooms) {
         for (Room currentRoom : rooms){
             int northId = currentRoom.getNorthId();

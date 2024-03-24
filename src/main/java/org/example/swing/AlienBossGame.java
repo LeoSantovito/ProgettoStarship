@@ -30,11 +30,11 @@ public class AlienBossGame extends JPanel {
 
     public AlienBossGame() {
         setPreferredSize(new Dimension(400, 300)); // Imposta le dimensioni del pannello del gioco
-        background = new ImageIcon("./resources/images/sfondo.jpg").getImage();
-        winBackground = new ImageIcon("./resources/images/spazio.jpg").getImage();
+        background = new ImageIcon("./resources/images/spazio.jpg").getImage();
+        winBackground = new ImageIcon("./resources/images/sfondo.jpg").getImage();
         bossImage = new ImageIcon("./resources/images/boss.jpg").getImage();
 
-        // Crea un timer per cambiare l'area del boss ogni 0.5 secondi
+        // Crea un timer per cambiare l'area del boss ogni secondo
         Timer areaTimer = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -63,7 +63,7 @@ public class AlienBossGame extends JPanel {
         });
 
         // Crea un timer per far avanzare il gioco
-        Timer gameTimer = new Timer(500, new ActionListener() {
+        Timer gameTimer = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 bossHit = false; // Resetta lo stato del boss dopo ogni avanzamento del gioco
