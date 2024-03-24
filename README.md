@@ -1,12 +1,15 @@
 # Caso di studio - Metodi Avanzati di Programmazione 22-23
 ***NURJA Luan Abdurahman, REGGIO Francesco Maria, SANTOVITO Leonardo***
 
-## Introduzione
+### Introduzione
 Il caso di studio consiste nella realizzazione di una avventura testuale nel linguaggio Java, con l'obiettivo di applicare i concetti di programmazione orientata agli oggetti e di utilizzare gli argomenti spiegati durante il corso di Metodi Avanzati di Programmazione.
 
 Il programma risultante è un gioco testuale, con interazione da linea di comando, in cui il giocatore impersona un personaggio che si trova in un mondo virtuale e deve interagire con esso per risolvere enigmi e proseguire nella storia.
 
 ## Descrizione generale del caso di studio
+
+### Introduzione al gioco Starship Exodus
+
 *Terra, anno 2030, la crisi energetica è la priorità di tutti i governi mondiali. Le discordie tra i paesi produttori di petrolio e le guerre rendono la situazione sempre più fuori controllo. L'Unione Europea si sta mobilitando per cercare una soluzione a questa crisi, allocando ingenti risorse nella ricerca e sviluppo di nuove fonti di energia rinnovabili. 
 L'Agenzia Spaziale Europea (ESA) ricerca nello spazio nuove forme di energia e ha scoperto un pianeta potenzialmente abitabile, denominato 'Eden', situato ad una distanza incredibilmente vicina alla Terra. Viene organizzata una spedizione di due astronauti per esplorare il pianeta e cercare di capire se è possibile trasferirvi una cerchia di eletti.
 Dieci anni dopo, lo shuttle è quasi giunto a destinazione...*
@@ -17,8 +20,9 @@ La mappa del gioco è strutturata in stanze comunicanti, ognuna delle quali rapp
 Il giocatore può muoversi tra le stanze, esaminare oggetti, raccoglierli, usarli per risolvere enigmi e sfide e quindi per poter proseguire nella storia. L'obiettivo finale del gioco è trovare un modo di fuggire dall'astronave aliena e tornare a casa.
 
 ![Mappa astronave](./resources/images/Map.png)
+*Figura 1. Mappa che mostra la configurazione delle stanze del gioco.*
 
-## Struttura del progetto
+### Struttura del progetto
 
 Il progetto è strutturato in package, ognuno dei quali contiene classi che implementano funzionalità specifiche del gioco. Di seguito è riportata la struttura del progetto, inclusa la sezione `resources` che contiene le risorse necessarie per il funzionamento del gioco.
     
@@ -41,8 +45,9 @@ Il progetto è strutturato in package, ognuno dei quali contiene classi che impl
     │   └───test
     │       └───java
     ```
+*Figura 2. Struttura del progetto 'Starship Exodus'.*
 
-## Funzionalità del gioco
+### Funzionalità del gioco
 Il gioco è strutturato in modo da permettere al giocatore di interagire con l'ambiente circostante, con comandi appositi che garantiscono una interazione intuitiva e naturale.
 Di seguito sono riportate le funzionalità principali del gioco:
 
@@ -56,4 +61,21 @@ Di seguito sono riportate le funzionalità principali del gioco:
 - **Salvataggio**: il giocatore può salvare la partita in qualsiasi momento e riprenderla successivamente con il comando `salva`.
 - **Caricamento**: dal menu iniziale il giocatore può caricare una partita salvata in precedenza e riprenderla da dove l'aveva interrotta.
 - **Vittoria**: il giocatore vince il gioco se trova il modo di fuggire dall'astronave aliena.
+
+## Applicazione degli argomenti del corso nel progetto
+
+Nel caso di studio 'Starship Exodus' sono stati impiegati i concetti di programmazione orientata agli oggetti e le conoscenze acquisite durante il corso di Metodi Avanzati di Programmazione.
+Di seguito sono riportati gli argomenti trattati durante il corso e il relativo utilizzo nel progetto.
+
+### Files per Input/Output
+
+### Java Database Connectivity
+
+### Programmazione concorrente
+
+### Programmazione in rete
+
+### Framework Swing
+
+### Espressioni Lambda
 
