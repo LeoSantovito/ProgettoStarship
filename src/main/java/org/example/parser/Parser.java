@@ -14,10 +14,6 @@ import java.util.Set;
 import java.util.function.Predicate;
 import java.util.stream.IntStream;
 
-/**
- *
- * @author pierpaolo
- */
 public class Parser {
 
     private final Set<String> stopwords;

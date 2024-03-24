@@ -8,10 +8,6 @@ package org.example.parser;
 import org.example.type.AdvObject;
 import org.example.type.Command;
 
-/**
- *
- * @author pierpaolo
- */
 public class ParserOutput {
 
     private Command command;
