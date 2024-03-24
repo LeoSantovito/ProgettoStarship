@@ -1,3 +1,5 @@
+<div style="text-align: justify">
+
 # Caso di studio - Metodi Avanzati di Programmazione 22-23
 ***NURJA Luan Abdurahman, REGGIO Francesco Maria, SANTOVITO Leonardo***
 
@@ -174,3 +176,5 @@ Per fare ciò, viene istanziato un oggetto `WeatherApi` e invocato il metodo `ge
 ## Diagramma delle classi
 
 ## Specifica algebrica
+
+</div>
