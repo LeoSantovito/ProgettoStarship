@@ -13,4 +13,12 @@ Dieci anni dopo, lo shuttle è quasi giunto a destinazione...*
 
 In **Starship Exodus**, il giocatore dovrà impersonare uno dei due astronauti della spedizione spaziale in arrivo verso 'Eden'. Sul pianeta, però, non ci metterà mai piede. Il giocatore si ritroverà improvvisamente in una astronave aliena, e utilizzare tutti i mezzi a propria disposizione per sopravvivere, con la speranza di tornare a casa.
 
-Il gioco è strutturato in stanze, ognuna delle quali rappresenta un luogo all'interno dell'astronave aliena. Il giocatore può muoversi tra le stanze, esaminare oggetti, raccoglierli, usarli per risolvere enigmi e sfide per poter proseguire nella storia. L'obiettivo del gioco è trovare un modo di fuggire dall'astronave aliena e tornare a casa.
+La mappa del gioco è strutturata in stanze comunicanti, ognuna delle quali rappresenta un luogo all'interno dell'astronave aliena. All'interno delle stanze possono esserci degli oggetti che il giocatore potrebbe raccogliere e utilizzare per risolvere enigmi e sfide. Alcune stanze potrebbero essere bloccate e richiedere l'utilizzo di oggetti specifici per poter essere aperte.
+Il giocatore può muoversi tra le stanze, esaminare oggetti, raccoglierli, usarli per risolvere enigmi e sfide per poter proseguire nella storia. L'obiettivo finale del gioco è trovare un modo di fuggire dall'astronave aliena e tornare a casa.
+
+![Mappa astronave](./resources/images/Map.png)
+
+## Struttura del progetto
+
+Il progetto è strutturato in package, ognuno dei quali contiene classi che implementano funzionalità specifiche del gioco. Di seguito è riportata la struttura del progetto:
+
