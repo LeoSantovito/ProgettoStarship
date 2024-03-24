@@ -20,7 +20,7 @@ Il giocatore può muoversi tra le stanze, esaminare oggetti, raccoglierli, usarl
 
 ## Struttura del progetto
 
-Il progetto è strutturato in package, ognuno dei quali contiene classi che implementano funzionalità specifiche del gioco. Di seguito è riportata la struttura del progetto, inclusa la sezione resources che contiene le risorse necessarie per il funzionamento del gioco.
+Il progetto è strutturato in package, ognuno dei quali contiene classi che implementano funzionalità specifiche del gioco. Di seguito è riportata la struttura del progetto, inclusa la sezione `resources` che contiene le risorse necessarie per il funzionamento del gioco.
     
     ```
     ├───resources
@@ -41,3 +41,19 @@ Il progetto è strutturato in package, ognuno dei quali contiene classi che impl
     │   └───test
     │       └───java
     ```
+
+## Funzionalità del gioco
+Il gioco è strutturato in modo da permettere al giocatore di interagire con l'ambiente circostante, con comandi appositi che garantiscono una interazione intuitiva e naturale.
+Di seguito sono riportate le funzionalità principali del gioco:
+
+- **Movimento**: il giocatore può muoversi tra le stanze dell'astronave aliena usando i comandi `nord`, `sud`, `est` e `ovest`.
+- **Esplorazione**: il giocatore può esaminare le stanze usando `osserva`, raccogliere eventuali oggetti presenti nelle stanze usandi `prendi`, aprire oggetti contenitori con `apri`, con `usa` può usarli per risolvere enigmi e sfide.
+- **Combattimento**: quando diventa necessario, il giocatore sarà costretto ad usare il comando `attacca` per combattere contro nemici presenti nell'astronave aliena.
+- **Inventario**: utilizzando il comando `inventario` il giocatore può visualizzare la lista degli oggetti raccolti e la relativa descrizione.
+- **Tempo**: il giocatore può tener traccia del tempo di gioco usando il comando `tempo`.
+- **Aiuto**: con il comando `aiuto`, si può visualizzare una schermata con informazioni utili al giocatore.
+- **Uscita**: il giocatore può uscire dal gioco in qualsiasi momento con `esci`, e gli verrà chiesto se vuole salvare o meno la partita corrente.
+- **Salvataggio**: il giocatore può salvare la partita in qualsiasi momento e riprenderla successivamente con il comando `salva`.
+- **Caricamento**: dal menu iniziale il giocatore può caricare una partita salvata in precedenza e riprenderla da dove l'aveva interrotta.
+- **Vittoria**: il giocatore vince il gioco se trova il modo di fuggire dall'astronave aliena.
+
