@@ -19,7 +19,6 @@ public class NumericKeypadUnlocker extends JPanel {
     public static boolean padUnlocked = false;
 
     public NumericKeypadUnlocker() {
-        setSize(900, 900);
         setLayout(new BorderLayout());
 
         inputField = new JTextField();

@@ -176,7 +176,8 @@ public class CommandsExecution implements Serializable {
                     dialog.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                     dialog.setAlwaysOnTop(true);
                     dialog.getContentPane().add(new NumericKeypadUnlocker());
-                    dialog.pack(); // Adatta la dimensione del frame al pannello
+                    dialog.setSize(350, 500);
+
                     dialog.setLocationRelativeTo(null); // Posiziona il frame al centro dello schermo
                     dialog.setVisible(true); // Rendi visibile il frame
 
