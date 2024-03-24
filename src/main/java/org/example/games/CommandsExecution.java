@@ -4,13 +4,13 @@ import org.example.GameDescription;
 import org.example.GameTimer;
 import org.example.Utils;
 
-import org.example.swing.AlienBossGame;
+import org.example.gui.AlienBossGame;
 
 import org.example.api.WeatherApi;
 import org.example.database.Database;
 
-import org.example.swing.Background;
-import org.example.swing.NumericKeypadUnlocker;
+import org.example.gui.Background;
+import org.example.gui.NumericKeypadUnlocker;
 import org.example.type.AdvObject;
 import org.example.type.Room;
 

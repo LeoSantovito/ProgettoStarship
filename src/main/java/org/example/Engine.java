@@ -8,7 +8,7 @@ package org.example;
 import org.example.games.StarshipExodus;
 import org.example.parser.Parser;
 import org.example.parser.ParserOutput;
-import org.example.swing.MenuSwing;
+import org.example.gui.MenuSwing;
 import org.example.database.Database;
 
 import java.io.File;
@@ -32,7 +32,7 @@ public class Engine {
 
     public Engine() {
         try {
-            Set<String> stopwords = Utils.loadFileListInSet(new File("./resources/stopwords"));
+            Set<String> stopwords = Utils.loadFileListInSet(new File("./resources/files/stopwords"));
             parser = new Parser(stopwords);
             database = new Database();
         } catch (IOException ex) {

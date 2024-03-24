@@ -20,5 +20,24 @@ Il giocatore può muoversi tra le stanze, esaminare oggetti, raccoglierli, usarl
 
 ## Struttura del progetto
 
-Il progetto è strutturato in package, ognuno dei quali contiene classi che implementano funzionalità specifiche del gioco. Di seguito è riportata la struttura del progetto:
-
+Il progetto è strutturato in package, ognuno dei quali contiene classi che implementano funzionalità specifiche del gioco. Di seguito è riportata la struttura del progetto, inclusa la sezione resources che contiene le risorse necessarie per il funzionamento del gioco.
+    
+    ```
+    ├───resources
+    │   ├───dialogs
+    │   ├───files
+    │   ├───images
+    │   └───sounds
+    ├───src
+    │   ├───main
+    │   │   └───java
+    │   │       └───org
+    │   │           └───example
+    │   │               ├───api
+    │   │               ├───database
+    │   │               ├───gui
+    │   │               ├───parser
+    │   │               └───type
+    │   └───test
+    │       └───java
+    ```
