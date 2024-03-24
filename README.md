@@ -96,6 +96,16 @@ Mediante la chiave primaria `id` della partita scelta, il giocatore seleziona la
 
 ### Programmazione concorrente
 
+Per quanto riguarda la programmazione concorrente, il caso di studio utilizza la classe `Thread` per gestire il timer di gioco all'interno della classe `GameTimer`. Questa classe estende la classe `Thread` e implementa un meccanismo per aggiornare il tempo di gioco ogni secondo.
+
+La variabile `secondsElapsed` tiene traccia del tempo trascorso di gioco in secondi, mentre il flag `running` viene utilizzato per controllare l'esecuzione del thread del timer.
+
+Quando viene creata una nuova partita, `secondsElapsed` viene inizializzato a 0 e il thread del timer viene avviato. Al momento del salvataggio, si aggiornerà la variabile `timeElapsed` nella `GameDescription` della partita, in modo da poter riprendere il timer al momento del caricamento.
+
+Il metodo `run` viene eseguito all'avvio del thread e continua ad eseguire un loop finché il gioco è in esecuzione e il thread non è interrotto. Ogni secondo, il tempo di gioco viene aggiornato e, se trascorrono 300 secondi (5 minuti), viene visualizzato un messaggio di avviso.
+
+I metodi `stopTimer`, `resumeTimer`, `resetTimer` e `setTime` permettono rispettivamente di fermare temporaneamente il thread, riprenderlo, azzerare il timer e impostare il tempo di gioco a un valore specifico, nel caso dovessero essere necessarie queste funzionalità.
+
 ### Programmazione in rete
 
 ### Framework Swing
