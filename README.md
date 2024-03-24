@@ -1,10 +1,26 @@
 # Caso di studio - Metodi Avanzati di Programmazione 22-23
 ***NURJA Luan Abdurahman, REGGIO Francesco Maria, SANTOVITO Leonardo***
 
-### Introduzione
+## Introduzione
 Il caso di studio consiste nella realizzazione di una avventura testuale nel linguaggio Java, con l'obiettivo di applicare i concetti di programmazione orientata agli oggetti e di utilizzare gli argomenti spiegati durante il corso di Metodi Avanzati di Programmazione.
 
 Il programma risultante è un gioco testuale, con interazione da linea di comando, in cui il giocatore impersona un personaggio che si trova in un mondo virtuale e deve interagire con esso per risolvere enigmi e proseguire nella storia.
+
+## Indice
+
+1. [Descrizione generale del caso di studio](#descrizione-generale-del-caso-di-studio)
+    - [Introduzione al gioco Starship Exodus](#introduzione-al-gioco-starship-exodus)
+    - [Struttura del progetto](#struttura-del-progetto)
+    - [Funzionalità del gioco](#funzionalità-del-gioco)
+2. [Applicazione degli argomenti del corso nel progetto](#applicazione-degli-argomenti-del-corso-nel-progetto)
+    - [Files](#files)
+    - [Java Database Connectivity](#java-database-connectivity)
+    - [Programmazione concorrente](#programmazione-concorrente)
+    - [Programmazione in rete](#programmazione-in-rete)
+    - [Framework Swing](#framework-swing)
+    - [Espressioni Lambda](#espressioni-lambda)
+3. [Diagramma delle classi](#diagramma-delle-classi)
+4. [Specifica algebrica](#specifica-algebrica)
 
 ## Descrizione generale del caso di studio
 
