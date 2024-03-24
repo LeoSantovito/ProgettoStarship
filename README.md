@@ -14,7 +14,7 @@ Il programma risultante è un gioco testuale, con interazione da linea di comand
 L'Agenzia Spaziale Europea (ESA) ricerca nello spazio nuove forme di energia e ha scoperto un pianeta potenzialmente abitabile, denominato 'Eden', situato ad una distanza incredibilmente vicina alla Terra. Viene organizzata una spedizione di due astronauti per esplorare il pianeta e cercare di capire se è possibile trasferirvi una cerchia di eletti.
 Dieci anni dopo, lo shuttle è quasi giunto a destinazione...*
 
-In **Starship Exodus**, il giocatore dovrà impersonare uno dei due astronauti della spedizione spaziale in arrivo verso 'Eden'. Sul pianeta, però, non ci metterà mai piede. Il giocatore si ritroverà improvvisamente in una astronave aliena, e utilizzare tutti i mezzi a propria disposizione per sopravvivere, con la speranza di tornare a casa.
+In **Starship Exodus**, il giocatore dovrà impersonare uno dei due astronauti della spedizione spaziale in arrivo verso 'Eden'. Sul pianeta, però, non ci metterà mai piede. Il giocatore si ritroverà improvvisamente in una astronave aliena, e dovrà utilizzare tutti i mezzi a propria disposizione per sopravvivere, con la speranza di tornare a casa.
 
 La mappa del gioco è strutturata in stanze comunicanti, ognuna delle quali rappresenta un luogo all'interno dell'astronave aliena. All'interno delle stanze possono esserci degli oggetti che il giocatore potrebbe raccogliere e utilizzare per risolvere enigmi e sfide. Alcune stanze potrebbero essere bloccate e richiedere l'utilizzo di oggetti specifici per poter essere aperte.
 Il giocatore può muoversi tra le stanze, esaminare oggetti, raccoglierli, usarli per risolvere enigmi e sfide e quindi per poter proseguire nella storia. L'obiettivo finale del gioco è trovare un modo di fuggire dall'astronave aliena e tornare a casa.
@@ -57,6 +57,7 @@ Di seguito sono riportate le funzionalità principali del gioco:
 - **Esplorazione**: il giocatore può esaminare le stanze usando `osserva`, raccogliere eventuali oggetti presenti nelle stanze usando `prendi`, aprire oggetti contenitori con `apri`, con `usa` può usarli per risolvere enigmi e sfide.
 - **Combattimento**: quando diventa necessario, il giocatore sarà costretto ad usare il comando `attacca` per combattere contro nemici presenti nell'astronave aliena.
 - **Inventario**: utilizzando il comando `inventario` il giocatore può visualizzare la lista degli oggetti raccolti e la relativa descrizione.
+- **Mappa*: il giocatore può visualizzare la mappa dell'astronave aliena con il comando `mappa`, ammesso che abbia la mappa nell'inventario.
 - **Tempo**: il giocatore può tener traccia del tempo di gioco usando il comando `tempo`.
 - **Aiuto**: con il comando `aiuto`, si può visualizzare una schermata con informazioni utili al giocatore.
 - **Uscita**: il giocatore può uscire dal gioco in qualsiasi momento con `esci`, e gli verrà chiesto se vuole salvare o meno la partita corrente.
