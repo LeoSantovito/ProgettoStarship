@@ -10,7 +10,6 @@ al giocatore, e salva id, GameDescription, CurrentRoom, Data e ora di creazione,
 
 
 import org.example.GameDescription;
-import org.example.type.Room;
 import org.example.Utils;
 
 import java.sql.*;

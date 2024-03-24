@@ -20,6 +20,7 @@ La mappa del gioco è strutturata in stanze comunicanti, ognuna delle quali rapp
 Il giocatore può muoversi tra le stanze, esaminare oggetti, raccoglierli, usarli per risolvere enigmi e sfide e quindi per poter proseguire nella storia. L'obiettivo finale del gioco è trovare un modo di fuggire dall'astronave aliena e tornare a casa.
 
 ![Mappa astronave](./resources/images/Map.png)
+
 *Figura 1. Mappa che mostra la configurazione delle stanze del gioco.*
 
 ### Struttura del progetto
@@ -51,6 +52,7 @@ Il progetto è strutturato in package, ognuno dei quali contiene classi che impl
 Il gioco è strutturato in modo da permettere al giocatore di interagire con l'ambiente circostante, con comandi appositi che garantiscono una interazione intuitiva e naturale.
 Di seguito sono riportate le funzionalità principali del gioco:
 
+- **Menu iniziale**: mediante un menu grafico iniziale, il giocatore può scegliere se creare una nuova partita, caricare una delle partite salvate, visualizzare informazioni sul gioco, oppure uscire. 
 - **Movimento**: il giocatore può muoversi tra le stanze dell'astronave aliena usando i comandi `nord`, `sud`, `est` e `ovest`.
 - **Esplorazione**: il giocatore può esaminare le stanze usando `osserva`, raccogliere eventuali oggetti presenti nelle stanze usando `prendi`, aprire oggetti contenitori con `apri`, con `usa` può usarli per risolvere enigmi e sfide.
 - **Combattimento**: quando diventa necessario, il giocatore sarà costretto ad usare il comando `attacca` per combattere contro nemici presenti nell'astronave aliena.
@@ -70,6 +72,27 @@ Di seguito sono riportati gli argomenti trattati durante il corso e il relativo 
 ### Files per Input/Output
 
 ### Java Database Connectivity
+
+I database sono integrati nel gioco per memorizzare i progressi del giocatore e permettere il salvataggio e il caricamento delle partite.
+Il database è implementato utilizzando la tecnologia Java Database Connectivity (JDBC) per la connessione al database.
+Si fa uso di H2 come database embedded permamentemente salvato su file, per garantire la persistenza dei dati anche dopo la chiusura del gioco.
+
+
+In particolare, all'interno della classe `Database` sono implementati i metodi per la connessione al database, il salvataggio e il caricamento delle partite.
+Della partita vengono salvate in `resources/files/savedgames` le seguenti informazioni:
+- `id`: chiave primaria generata con un contatore `auto_increment` per identificare univocamente la partita.
+- `gamedescription`: stringa di tipo BLOB (Binary Large Object) che contiene lo stato della partita.
+- `creationdate`: timestamp di creazione del record nel database.
+- `playername`: nome del giocatore che viene richiesto alla creazione di una nuova partita.
+
+Quando viene creata una nuova partita mediante il metodo `newGame` nella classe `Engine`, viene creata una nuova riga nella tabella `games` del database con i dati relativi alla partita corrente, mediante il metodo `insertGame` della classe `Database`.
+Il campo `gameId` all'interno della `GameDescription` viene inizialmente impostato a `-1`, e solamente aver inserito il record in tabella viene aggiornato con la chiave primaria `id` della riga corrispondente nel database.
+In questo modo, se non viene salvata la partita, si potranno semplicemente eliminare le righe con il campo `gameId` uguale a `-1` all'interno della `GameDescription` per liberare spazio nel database.
+
+Quando il giocatore salva una partita, viene invocato il metodo `saveGame` in `Engine`, che aggiorna il tempo di gioco salvato all'interno della `GameDescription`, e passa la `GameDescription` al metodo `updateGame` di `Database`. Quest'ultimo, a partire dal campo `gameId` dello stato del gioco, esegue una query di aggiornamento del record corrispondente nella tabella `games`, salvando su memoria permanente lo stato della partita.
+
+Se il giocatore seleziona dal menu principale di caricare una partita salvata, viene mostrata una lista di tutte le partite salvate nella tabella `games` all'interno del database. Viene utilizzata la classe `GameRecord` che include solo le informazioni essenziali dei salvataggi, al fine di semplificare controlli e stampe in quanto non viene salvato in memoria l'intero `BLOB` della `GameDescription`.
+Mediante la chiave primaria `id` della partita scelta, il giocatore seleziona la partita che desidera caricare, viene invocato il metodo `loadGame` nella classe `Database` che esegue una query sulla tabella `games` e restituisce la `GameDescription` corrispondente.
 
 ### Programmazione concorrente
 

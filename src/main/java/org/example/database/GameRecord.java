@@ -1,11 +1,9 @@
 package org.example.database;
-
-import org.example.GameDescription;
-
 import java.sql.Timestamp;
 
-/* La classe GameRecord viene utilizzata per rapprensentare le informazioni principali
- * di una partita salvata. In questo modo, si aggregano le informazioni della partita in un'unica struttura dati.
+/* La classe GameRecord viene utilizzata per rapprensentare le informazioni principali di una partita salvata.
+ * In questo modo, si aggregano le informazioni della partita in un'unica struttura dati che può essere utilizzata facilmente
+ * per operazioni di controllo e visualizzazione dei record. Non viene memorizzata la GameDescription completa della partita.
  */
 
 public class GameRecord {
