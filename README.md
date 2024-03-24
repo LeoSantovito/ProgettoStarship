@@ -70,7 +70,39 @@ Di seguito sono riportate le funzionalità principali del gioco:
 Nel caso di studio 'Starship Exodus' sono stati impiegati i concetti di programmazione orientata agli oggetti e le conoscenze acquisite durante il corso di Metodi Avanzati di Programmazione.
 Di seguito sono riportati gli argomenti trattati durante il corso e il relativo utilizzo nel progetto.
 
-### Files per Input/Output
+### Files
+
+All'interno del caso di studio vengono utilizzati diversi tipi di file per memorizzare in modo permanente una serie di informazioni necessarie al funzionamento del gioco, in modo tale da separarle dall'implementazione del codice e consentire una facile modifica e personalizzazione del gioco.
+
+#### File Testuali Semplici
+
+Nel progetto sono presenti diversi file testuali semplici, utilizzati principalmente per memorizzare dialoghi, descrizioni e altri testi di supporto al gioco.
+
+I file testuali che si trovano nella directory `resources/dialogs/` hanno una estensione `.txt` e contengono i testi utilizzati durante l'esecuzione del gioco. Questi file vengono caricati dai metodi `printFromFile` e `printFromFilePlaceholder` che prendono in input il path del file e stampano sul terminale i testi salvati.
+Il secondo metodo prende in input anche una stringa che verrà sostituita all'eventuale `{placeholder}` presente nel testo. 
+Questi file in generale vengono utilizzati per caricare l'introduzione del gioco, il testo della fine del gioco e per fornire descrizioni di risposte a determinate azioni compiute dal giocatore. Un esempio di utilizzo di questi file si trova all'interno della classe `CommandsExecution`, dove vengono caricati i dialoghi relativi alle risposte del gioco all'uso di oggetti.
+
+La directory `resources/files/` contiene anche un file `stopwords`, ovvero elenchi di parole da ignorare durante l'analisi del testo.
+Le stopwords vengono caricate dal file all'interno della classe `Engine` quando viene inizializzata dal costruttore. Le stopwords vengono utilizzate nell'analisi dei comandi immessi dal giocatore per eliminare parole non rilevanti alla classe `Parser` che si occupa di interpretare i comandi.
+
+#### File Strutturati
+
+Oltre ai file testuali semplici, il progetto fa ampio uso di file strutturati di tipo JSON, situati nella directory `resources/files/`, per memorizzare informazioni più complesse, come la configurazione delle stanze, con i relativi oggetti, e i campi dei comandi del gioco.
+
+Il file `rooms.json` contiene la definizione delle stanze presenti nell'astronave aliena del gioco, insieme alle loro caratteristiche e agli oggetti al loro interno.
+Le stanze sono rappresentate come oggetti JSON, ciascuno con attributi quali `id`, `name`, `description`,`look` (testo che viene visualizzato quando il giocatore invoca il comando `osserva` mentre è nella stanza relativa), `intro` (testo che viene visualizzato solo la prima volta che l'utente entra in una stanza, ai fini della storia), i collegamenti alle stanze adiacenti identificate tramite il rispettivo `id`, variabili che vengono impiegate quando una stanza è inaccessibile, e gli oggetti all'interno della stanza.
+
+Gli oggetti, pertanto, sebbene siano delle entità separate come definiti dalla classe `AdvObject` nel package `org.example.type`, vengono memorizzati all'interno delle stanze, in modo da semplificare la gestione degli oggetti e delle stanze all'interno del gioco. Degli oggetti vengono salvati `id`, `name`, `description`, la lista degli `alias`, e variabili booleane come `openable`, `pickupble`, `open`.
+La gestione degli oggetti containers è stata implementata in modo tale che ogni oggetto ha una lista `objectsList` che contiene gli oggetti al suo interno, un attributo `open` che indica se l'oggetto è aperto e quindi gli oggetti al suo interno sono raccoglibili dal giocatore.
+Sono presenti anche le variabili `containerId`, che definisce l'`id` dell'oggetto contenitore, e la variabile boolena `container` settata a `true` se l'oggetto è un contenitore.
+
+Analogamente al file delle stanze, il file `commands.json` contiene la definizione dei comandi disponibili nel gioco, insieme alle relative azioni associate. Ogni comando è rappresentato come un oggetto JSON con attributi come `type` che indica il tipo di comando salvato nella classe enumerativa `CommandType` nel package `org.example.type`, `name`, e la lista degli `alias` utilizzati dal parser.
+
+L'inizializzazione del gioco è attuata dal metodo `init` all'interno della classe `StarshipExodus` che implementa la classe astratta `GameDescription`.
+In `init` le informazioni vengono caricate dai rispettivi file JSON mediante il metodo `loadObjectsFromFile` nella classe `Utils` e caricate in memoria nelle rispettive liste di stanze e comandi della `GameDescription`. 
+Tutto ciò ha permesso una facile modifica e personalizzazione delle stanze e dei comandi senza dover modificare direttamente il codice sorgente.
+
+I file JSON sono stati gestiti mediante la libreria `Gson`, inclusa nel file `pom.xml` come dipendenza, che permette di convertire oggetti Java in formato JSON e viceversa.
 
 ### Java Database Connectivity
 
@@ -108,7 +140,7 @@ I metodi `stopTimer`, `resumeTimer`, `resetTimer` e `setTime` permettono rispett
 
 ### Programmazione in rete
 
-Nel contesto della programmazione in rete, sono state impiegate le API con architettura REST per ottenere informazioni meteorologiche in tempo reale. Per fare ciò, è stata implementata la classe `WeatherApi` all'interno del package `org/example/api/` che si occupa di effettuare richieste HTTP all'API di OpenWeatherMap per ottenere i dati meteorologici di una determinata città.
+Nel contesto della programmazione in rete, sono state impiegate le API con architettura REST per ottenere informazioni meteorologiche in tempo reale. Per fare ciò, è stata implementata la classe `WeatherApi`, all'interno del package `org/example/api/`, che si occupa di effettuare richieste HTTP all'API di OpenWeatherMap per ottenere i dati meteorologici di una determinata città.
 
 La classe `WeatherApi` contiene un metodo `getWeatherData` che accetta il nome di una città come parametro e restituisce informazioni sulle condizioni meteorologiche attuali di quella città.
 Si utilizza la libreria `Gson`, includendo la relativa dipendenza nel file `pom.xml`, per il parsing dei dati JSON ricevuti dall'API, con la quale vengono estratte le informazioni necessarie quali la descrizione del meteo, la temperatura, l'umidità e le coordinate geografiche della città.
