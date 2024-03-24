@@ -80,7 +80,7 @@ Nel progetto sono presenti diversi file testuali semplici, utilizzati principalm
 
 I file testuali che si trovano nella directory `resources/dialogs/` hanno una estensione `.txt` e contengono i testi utilizzati durante l'esecuzione del gioco. Questi file vengono caricati dai metodi `printFromFile` e `printFromFilePlaceholder` che prendono in input il path del file e stampano sul terminale i testi salvati.
 Il secondo metodo prende in input anche una stringa che verrà sostituita all'eventuale `{placeholder}` presente nel testo. 
-Questi file in generale vengono utilizzati per caricare l'introduzione del gioco, il testo della fine del gioco e per fornire descrizioni di risposte a determinate azioni compiute dal giocatore. Un esempio di utilizzo di questi file si trova all'interno della classe `CommandsExecution`, dove vengono caricati i dialoghi relativi alle risposte del gioco all'uso di oggetti.
+Questi file in generale vengono utilizzati per caricare l'introduzione del gioco, il testo della fine del gioco, il testo da visualizzare con il comando `aiuto` e per fornire descrizioni di risposte a determinate azioni compiute dal giocatore. Un esempio di utilizzo di questi file si trova all'interno della classe `CommandsExecution`, dove vengono caricati i dialoghi relativi alle risposte del gioco all'uso di oggetti.
 
 La directory `resources/files/` contiene anche un file `stopwords`, ovvero elenchi di parole da ignorare durante l'analisi del testo.
 Le stopwords vengono caricate dal file all'interno della classe `Engine` quando viene inizializzata dal costruttore. Le stopwords vengono utilizzate nell'analisi dei comandi immessi dal giocatore per eliminare parole non rilevanti alla classe `Parser` che si occupa di interpretare i comandi.
