@@ -21,8 +21,15 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
+/*
+    * La classe CommandsExecution contiene i metodi per l'esecuzione dei comandi del gioco.
+    * Questi metodi vengono chiamati dalla classe StarshipExodus per eseguire le azioni
+    * richieste dal giocatore.
+ */
+
 public class CommandsExecution implements Serializable {
     private boolean padUnlocked = false;
+    private boolean alienKillled = false;
     public void openItem(AdvObject object, PrintStream out) {
             if (object.isOpenable()) {
                 if (object.isContainer()) {
@@ -82,6 +89,11 @@ public class CommandsExecution implements Serializable {
 
     public void pickItem(AdvObject object, PrintStream out, List<AdvObject> inventory, Room currentRoom) {
         // gesione degli oggetti da prendere presenti nella stanza
+
+        /*
+        Se l'attributo containerId dell'oggetto è -1,
+        significa che l'oggetto è direttamente nella stanza e non all'interno di un contenitore.
+         */
         if (object.getContainerId() == -1) {
             if (object.isPickupable()) {
                 inventory.add(object);
@@ -93,10 +105,15 @@ public class CommandsExecution implements Serializable {
                 out.println("Non puoi raccogliere questo oggetto.");
             }
             // gestione degli oggetti da prendere presenti nei container
+            /*
+            Se l'attributo containerId dell'oggetto è diverso da -1,
+            significa che l'oggetto è all'interno di un contenitore.
+             */
         } else if (object.getContainerId() != -1) {
             if (object.isPickupable()) {
 
                 Iterator<AdvObject> roomObjectIterator = currentRoom.getObjects().iterator();
+                //itero sugli oggetti presenti nella stanza
                 while (roomObjectIterator.hasNext()) {
                     AdvObject o = roomObjectIterator.next();
                     // controllo che l'id dell'oggetto contenitore sia uguale all'id del contenitore dell'oggetto da raccogliere
@@ -157,6 +174,7 @@ public class CommandsExecution implements Serializable {
                     out.println("Hai usato: " + object.getName());
                     out.println();
                     Utils.printFromFile("./resources/dialogs/use_object_6.txt");
+                    alienKillled = true;
 
                     game.getInventory().remove(object);
                     game.getCurrentRoom().getWest().setAccessible(true);
@@ -328,6 +346,12 @@ public class CommandsExecution implements Serializable {
     }
 
     public void attackBoss(boolean bossKilled, Room room, PrintStream out) {
+        /*
+        * Se il boss è già stato ucciso e il giocatore si trova nella stanza del boss, non è possibile combattere di nuovo.
+        * Se il giocatore si trova nella stanza del boss e il boss non è stato ucciso, viene aperta una finestra di gioco
+        * per combattere contro il boss.
+        * Se il giocatore si trova in una stanza diversa dalla stanza del boss, viene stampato un messaggio di errore.
+         */
         if (bossKilled && room.getId() == 8) {
             out.println("Hai già ucciso il boss, non c'è bisogno di combattere di nuovo!\nSfogati con qualcos'altro se proprio ne hai bisogno...");
         } else if (room.getId() == 8 && !bossKilled) {
@@ -340,7 +364,11 @@ public class CommandsExecution implements Serializable {
             dialog.setLocationRelativeTo(null); // Posiziona il frame al centro dello schermo
             dialog.setVisible(true); // Rendi visibile il frame
         } else if (room.getId() == 5) {
-            out.println("Con cosa dovrei attaccare questo alieno?\nNon credo che il wrestling visto da bambino possa aiutarmi in questa situazione...");
+            if (!alienKillled) {
+                out.println("Con cosa dovrei attaccare questo alieno?\nNon credo che il wrestling visto da bambino possa aiutarmi in questa situazione...");
+            } else {
+                out.println("Hai già ucciso l'alieno, non c'è bisogno di combattere di nuovo!");
+            }
         }
         else if (room.getId() != 8 && room.getId() != 5) {
             out.println("Non c'è nessuno da attaccare qui!");

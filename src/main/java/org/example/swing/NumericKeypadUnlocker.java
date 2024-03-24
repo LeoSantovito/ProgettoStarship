@@ -33,7 +33,7 @@ public class NumericKeypadUnlocker extends JPanel {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                ImageIcon backgroundImage = new ImageIcon("./resources/images/bgTastierino.jpg"); // Sostituisci con il percorso dell'immagine di sfondo
+                ImageIcon backgroundImage = new ImageIcon("./resources/images/bgTastierino.jpg");
                 g.drawImage(backgroundImage.getImage(), 0, 0, getWidth(), getHeight(), null);
             }
         };
@@ -149,7 +149,7 @@ public class NumericKeypadUnlocker extends JPanel {
 
     private void playClickSound() {
         try {
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("./resources/sounds/suono.wav")); // Sostituisci con il percorso del file audio
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("./resources/sounds/suono.wav"));
             Clip clip = AudioSystem.getClip();
             clip.open(audioInputStream);
             clip.start();
