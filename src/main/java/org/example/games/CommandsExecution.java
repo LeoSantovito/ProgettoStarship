@@ -10,6 +10,7 @@ import org.example.api.WeatherApi;
 import org.example.database.Database;
 
 import org.example.swing.Background;
+import org.example.swing.NumericKeypadUnlocker;
 import org.example.type.AdvObject;
 import org.example.type.Room;
 
@@ -21,6 +22,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class CommandsExecution implements Serializable {
+    private boolean padUnlocked = false;
     public void openItem(AdvObject object, PrintStream out) {
             if (object.isOpenable()) {
                 if (object.isContainer()) {
@@ -170,19 +172,21 @@ public class CommandsExecution implements Serializable {
                     Utils.printFromFile("./resources/dialogs/use_object_7.txt");
                     out.println();
 
-                    while (true) {
-                        out.println("Inserisci la combinazione corretta:");
-                        String input = new Scanner(System.in).nextLine();
-                        if (input.equals("531")) {
-                            break;
-                        } else {
-                            out.println("La combinazione non è corretta, devo riprovare.");
-                            out.println();
-                        }
-                    }
+                    JDialog dialog = new JDialog(new JFrame(), "Keypad", true);
+                    dialog.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    dialog.setAlwaysOnTop(true);
+                    dialog.getContentPane().add(new NumericKeypadUnlocker());
+                    dialog.pack(); // Adatta la dimensione del frame al pannello
+                    dialog.setLocationRelativeTo(null); // Posiziona il frame al centro dello schermo
+                    dialog.setVisible(true); // Rendi visibile il frame
 
-                    out.println("La porta si è aperta! Ora posso andare alla sala delle armi.");
-                    game.getCurrentRoom().getEast().setAccessible(true);
+                    padUnlocked = NumericKeypadUnlocker.isPadUnlocked();
+                    if (padUnlocked) {
+                        out.println("La porta si è aperta! Ora posso andare alla sala delle armi.");
+                        game.getCurrentRoom().getEast().setAccessible(true);
+                    } else {
+                        out.println("La porta non si è aperta... forse devo riprovare.");
+                    }
                 } else if (game.getCurrentRoom().getId() == 1 && game.getCurrentRoom().getEast().getAccessible()) {
                     out.println("Hai già aperto la porta, non c'è bisogno di usare il visore qui.");
                 } else {

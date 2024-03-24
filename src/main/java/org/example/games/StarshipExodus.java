@@ -46,6 +46,7 @@ public class StarshipExodus extends GameDescription {
     private CommandsExecution execute = new CommandsExecution();
     private boolean bossKilled = false;
 
+
     @Override
     public void init() throws Exception {
         //Commands
