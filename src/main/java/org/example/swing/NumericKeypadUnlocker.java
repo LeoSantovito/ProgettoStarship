@@ -4,17 +4,15 @@ package org.example.swing;
 import javax.sound.sampled.*;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 
 public class NumericKeypadUnlocker extends JPanel {
-    private JTextField inputField;
-    private StringBuilder inputBuffer = new StringBuilder();
-    private final String unlockSequence = "531";
+    private final JTextField inputField;
+    private final StringBuilder inputBuffer = new StringBuilder();
 
     public static boolean padUnlocked = false;
 
@@ -47,14 +45,11 @@ public class NumericKeypadUnlocker extends JPanel {
             buttons[i - 1].setBorderPainted(false);
             buttons[i - 1].setBackground(Color.LIGHT_GRAY);
             buttons[i - 1].setFont(new Font("Arial", Font.PLAIN, 20));
-            buttons[i - 1].addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    inputBuffer.append(num);
-                    updateInputField();
-                    playClickSound(); // Riproduci il suono del clic
-                    checkUnlockSequence();
-                }
+            buttons[i - 1].addActionListener(e -> {
+                inputBuffer.append(num);
+                updateInputField();
+                playClickSound(); // Riproduci il suono del clic
+                checkUnlockSequence();
             });
             buttons[i - 1].addMouseListener(new MouseAdapter() {
                 @Override
@@ -74,12 +69,7 @@ public class NumericKeypadUnlocker extends JPanel {
         JButton clearButton = createButton("Cancella");
         clearButton.setForeground(Color.BLACK);
         clearButton.setBackground(Color.RED);
-        clearButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                clearInput();
-            }
-        });
+        clearButton.addActionListener(e -> clearInput());
         keypadPanel.add(clearButton);
 
         // Aggiungi il tasto "0" al centro nella riga inferiore
@@ -89,14 +79,11 @@ public class NumericKeypadUnlocker extends JPanel {
         zeroButton.setBorderPainted(false);
         zeroButton.setBackground(Color.LIGHT_GRAY);
         zeroButton.setFont(new Font("Arial", Font.PLAIN, 20));
-        zeroButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                inputBuffer.append(0);
-                updateInputField();
-                playClickSound(); // Riproduci il suono del clic
-                checkUnlockSequence();
-            }
+        zeroButton.addActionListener(e -> {
+            inputBuffer.append(0);
+            updateInputField();
+            playClickSound(); // Riproduci il suono del clic
+            checkUnlockSequence();
         });
         zeroButton.addMouseListener(new MouseAdapter() {
             @Override
@@ -114,14 +101,12 @@ public class NumericKeypadUnlocker extends JPanel {
         JButton okButton = createButton("OK");
         okButton.setForeground(Color.BLACK); // Testo nero
         okButton.setBackground(Color.GREEN); // Sfondo verde
-        okButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (inputBuffer.length() == 3) { // Controlla se sono state inserite 3 cifre
-                    JOptionPane.showMessageDialog(NumericKeypadUnlocker.this, "Input confermato: " + inputBuffer.toString(), "OK", JOptionPane.INFORMATION_MESSAGE);
-                } else {
-                    JOptionPane.showMessageDialog(NumericKeypadUnlocker.this, "Inserire esattamente 3 cifre", "Errore", JOptionPane.ERROR_MESSAGE);
-                }
+        okButton.addActionListener(e -> {
+            if (inputBuffer.length() == 3) { // Controlla se sono state inserite 3 cifre
+                JOptionPane.showMessageDialog(NumericKeypadUnlocker.this, "Input confermato: " +
+                        inputBuffer, "OK", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(NumericKeypadUnlocker.this, "Inserire esattamente 3 cifre", "Errore", JOptionPane.ERROR_MESSAGE);
             }
         });
         keypadPanel.add(okButton);
@@ -134,10 +119,12 @@ public class NumericKeypadUnlocker extends JPanel {
     }
 
     private void checkUnlockSequence() {
+        String unlockSequence = "531";
         if (inputBuffer.length() >= unlockSequence.length()) {
-            if (inputBuffer.substring(inputBuffer.length() - unlockSequence.length()).equals(unlockSequence)) {
+            if (inputBuffer.substring(inputBuffer.length() - unlockSequence.length()).equals(
+                    unlockSequence)) {
                 JOptionPane.showMessageDialog(this, "Porta sbloccata!", "Sbloccato", JOptionPane.INFORMATION_MESSAGE);
-                padUnlocked = true;
+                setPadUnlocked(true);
                 SwingUtilities.getWindowAncestor(NumericKeypadUnlocker.this).dispose();
             } else {
                 JOptionPane.showMessageDialog(this, "Combinazione errata!", "Errore", JOptionPane.ERROR_MESSAGE);
