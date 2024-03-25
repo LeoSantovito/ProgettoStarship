@@ -134,6 +134,11 @@ Della partita vengono salvate in `resources/files/savedgames` le seguenti inform
 - `creationdate`: timestamp di creazione del record nel database.
 - `playername`: nome del giocatore che viene richiesto alla creazione di una nuova partita.
 
+
+![dbSchema.jpg](resources%2Fimages%2FdbSchema.jpg)
+
+*Figura 3. Schema della tabella games nel database.*
+
 Quando viene creata una nuova partita mediante il metodo `newGame` nella classe `Engine`, viene creata una nuova riga nella tabella `games` del database con i dati relativi alla partita corrente, mediante il metodo `insertGame` della classe `Database`.
 Il campo `gameId` all'interno della `GameDescription` viene inizialmente impostato a `-1`, e solamente aver inserito il record in tabella viene aggiornato con la chiave primaria `id` della riga corrispondente nel database.
 In questo modo, se non viene salvata la partita, si potranno semplicemente eliminare le righe con il campo `gameId` uguale a `-1` all'interno della `GameDescription` per liberare spazio nel database.
