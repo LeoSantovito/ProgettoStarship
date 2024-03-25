@@ -9,11 +9,8 @@ import java.awt.*;
 public class MenuSwing {
     private JButton newGameButton;
     private JButton loadGameButton;
-    private JButton exitButton;
-
-    private JButton helpButton;
-    private Engine engine;
-     CommandsExecution  execute = new CommandsExecution();
+    private final Engine engine;
+    private final CommandsExecution  execute = new CommandsExecution();
 
     public MenuSwing(Engine engine) {
         this.engine = engine;
@@ -64,11 +61,11 @@ public class MenuSwing {
         loadGameButton = new JButton("Carica Partita");
         loadGameButton.setIcon(loadGameIcon);
 
-        exitButton = new JButton("Esci");
+        JButton exitButton = new JButton("Esci");
         exitButton.setIcon(exitIcon);
 
 
-        helpButton = new JButton("Help");
+        JButton helpButton = new JButton("Help");
         helpButton.setIcon(helpIcon);
 
         // Set the border with shadow for the buttons
