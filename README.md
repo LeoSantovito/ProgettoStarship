@@ -174,27 +174,27 @@ Per fare ciò, viene istanziato un oggetto `WeatherApi` e invocato il metodo `ge
 
 ### Framework Swing
 
-Nel progetto, abbiamo impiegato le Swing Java per creare interfacce grafiche utente (GUI) interattive. Le Swing sono una libreria di classi e componenti grafici forniti da Java che permettono di sviluppare GUI, rendendo l'esperienza utente più intuitiva e coinvolgente. Queste classi sono contenute nel package javax.swing.
+Nel progetto, sono state impiegate le Swing Java per creare interfacce grafiche utente (GUI) interattive. Le Swing sono una libreria di classi e componenti grafici forniti da Java che permettono di sviluppare GUI, rendendo l'esperienza utente più intuitiva e coinvolgente. Queste classi sono contenute nel package `javax.swing`.
 
-Un componente fondamentale delle Swing è JPanel, che agisce come un contenitore leggero per organizzare altri componenti Swing. Nel nostro progetto, abbiamo esteso la classe JPanel per creare sia il pannello di gioco AlienBossGame che il tastierino numerico NumericKeypadUnlocker. Questi pannelli forniscono l'ambiente visivo per l'interazione dell'utente con il gioco e per l'inserimento di una combinazione numerica.
+Un componente fondamentale delle Swing è JPanel, che agisce come un contenitore leggero per organizzare altri componenti Swing. Nel progetto, è stata estesa la classe JPanel per creare sia il pannello di gioco AlienBossGame che il tastierino numerico NumericKeypadUnlocker. Questi pannelli forniscono l'ambiente visivo per l'interazione dell'utente con il gioco e per l'inserimento di una combinazione numerica.
 
-Abbiamo utilizzato ampiamente la classe JButton per creare pulsanti cliccabili all'interno della GUI. Questi pulsanti, presenti sia nel tastierino numerico che nel pannello di gioco, permettono agli utenti di eseguire azioni come inserire numeri, cancellare l'input o confermare una combinazione.
+E' stata utilizzata ampiamente la classe JButton per creare pulsanti cliccabili all'interno della GUI. Questi pulsanti, presenti sia nel tastierino numerico che nel pannello di gioco, permettono agli utenti di eseguire azioni come inserire numeri, cancellare l'input o confermare una combinazione.
 
-Per l'inserimento dell'input da parte dell'utente, abbiamo impiegato il componente JTextField, che offre una semplice interfaccia per l'inserimento di testo singolo. Nel nostro caso, il JTextField è stato utilizzato nel tastierino numerico per visualizzare le cifre inserite dall'utente.
+Per l'inserimento dell'input da parte dell'utente, è stato impiegato il componente JTextField, che offre una semplice interfaccia per l'inserimento di testo singolo. Nel nostro caso, il JTextField è stato utilizzato nel tastierino numerico per visualizzare le cifre inserite dall'utente.
 
-Abbiamo anche sfruttato la classe JDialog per creare finestre di dialogo modali o non modali, utilizzate per mostrare la mappa del gioco, le note, l'help e per creare una finestra modale per il combattimento con il boss alieno. Queste finestre forniscono informazioni aggiuntive all'utente o richiedono input specifico per proseguire nel gioco.
+E' stato anche sfruttato la classe JDialog per creare finestre di dialogo modali o non modali, utilizzate per mostrare la mappa del gioco, le note, l'help e per creare una finestra modale per il combattimento con il boss alieno. Queste finestre forniscono informazioni aggiuntive all'utente o richiedono input specifico per proseguire nel gioco.
 
-Per gestire gli eventi generati dall'interazione dell'utente con i componenti Swing, abbiamo implementato le interfacce MouseListener e ActionListener. Queste interfacce permettono di definire comportamenti specifici da eseguire quando un utente interagisce con pulsanti, aree di disegno e altri componenti GUI.
+Per gestire gli eventi generati dall'interazione dell'utente con i componenti Swing, sono state implementate le interfacce MouseListener e ActionListener. Queste interfacce permettono di definire comportamenti specifici da eseguire quando un utente interagisce con pulsanti, aree di disegno e altri componenti GUI.
 
-Infine, abbiamo personalizzato l'aspetto della GUI sovrascrivendo il metodo paintComponent(Graphics g), che ci ha permesso di disegnare grafica personalizzata nei pannelli di gioco. Questo ci ha fornito il controllo completo sull'aspetto visivo del gioco, permettendoci di rendere l'esperienza utente più accattivante e coinvolgente.
+Infine, è stato personalizzato l'aspetto della GUI sovrascrivendo il metodo `paintComponent()`, che ha permesso di disegnare grafica personalizzata nei pannelli di gioco. Questo ci ha fornito il controllo completo sull'aspetto visivo del gioco, permettendoci di rendere l'esperienza utente più accattivante e coinvolgente.
 
-L'utilizzo delle Swing nel nostro progetto ha consentito di creare un'interfaccia grafica. Le classi e i componenti Swing hanno reso possibile la realizzazione di una GUI interattiva e dinamica, migliorando significativamente l'esperienza complessiva dell'avventura.
+L'utilizzo delle Swing nel progetto ha consentito di creare un'interfaccia grafica. Le classi e i componenti Swing hanno reso possibile la realizzazione di una GUI interattiva e dinamica, migliorando significativamente l'esperienza complessiva dell'avventura.
 
 MENU SWING
 
-La classe MenuSwing svolge un ruolo fondamentale nel gioco come il frame principale visualizzato all'avvio. Essenzialmente, crea una finestra di dimensioni fisse (400x500 pixel) che ospita i pulsanti principali del gioco e fornisce un'interfaccia utente per gestire diverse azioni.
+La classe `MenuSwing` svolge un ruolo fondamentale nel gioco come il frame principale visualizzato all'avvio. Essenzialmente, crea una finestra di dimensioni fisse (400x500 pixel) che ospita i pulsanti principali del gioco e fornisce un'interfaccia utente per gestire diverse azioni.
 
-Per prima cosa, all'interno del metodo startMenu(), viene istanziato un oggetto JFrame con il titolo "Starship Exodus", dimensioni fisse e posizionamento al centro dello schermo. Questo frame rappresenta il contenitore principale della nostra interfaccia.
+Per prima cosa, all'interno del metodo `startMenu()`, viene istanziato un oggetto JFrame con il titolo "Starship Exodus", dimensioni fisse e posizionamento al centro dello schermo. Questo frame rappresenta il contenitore principale della nostra interfaccia.
 
 Successivamente, viene creato un pannello personalizzato chiamato Background, che funge da contenitore per il layout grafico. Questo pannello è fondamentale perché permette di inserire uno sfondo personalizzato, rendendo l'interfaccia più accattivante. All'interno di questo pannello vengono aggiunti anche altri componenti grafici, come il logo del gioco.
 
@@ -212,26 +212,26 @@ I pulsanti vengono posizionati manualmente all'interno del pannello grafico e ve
 
 Infine, vengono gestiti gli eventi associati ai pulsanti tramite ActionListener. Quando un pulsante viene premuto, viene eseguita un'azione specifica, come avviare una nuova partita o chiudere il gioco.
 
-In breve, la classe MenuSwing fornisce un'interfaccia utente semplice ma intuitiva per avviare e gestire il gioco attraverso pulsanti grafici.
+In breve, la classe `MenuSwing` fornisce un'interfaccia utente semplice ma intuitiva per avviare e gestire il gioco attraverso pulsanti grafici.
 
 ALIEN BOSS GAME
 
-La classe AlienBossGame è una sottoclasse di JPanel che rappresenta il pannello di gioco per un semplice gioco in cui il giocatore deve colpire un boss alieno. Vediamo una descrizione dettagliata dei suoi componenti e del suo funzionamento:
+La classe `AlienBossGame` è una sottoclasse di JPanel che rappresenta il pannello di gioco per un semplice gioco in cui il giocatore deve colpire un boss alieno. Vediamo una descrizione dettagliata dei suoi componenti e del suo funzionamento:
 
 **Componenti della classe**:
 
 **Variabili di stato**:
-bossHealth: Rappresenta la salute del boss alieno.
-score: Punteggio del giocatore.
-bossHit: Indica se il boss è stato colpito nell'ultimo click.
-bossX, bossY: Coordinate x e y del boss alieno.
-killed: Indica se il boss è stato sconfitto.
-gameWon: Indica se il gioco è stato vinto.
+`bossHealth`: Rappresenta la salute del boss alieno.
+`score`: Punteggio del giocatore.
+`bossHit`: Indica se il boss è stato colpito nell'ultimo click.
+`bossX`, `bossY`: Coordinate x e y del boss alieno.
+`killed`: Indica se il boss è stato sconfitto.
+`gameWon`: Indica se il gioco è stato vinto.
 
 **Immagini**:
-background: Immagine dello sfondo del gioco.
-winBackground: Immagine dello sfondo della schermata di vittoria.
-bossImage: Immagine del boss alieno.
+`background`: Immagine dello sfondo del gioco.
+`winBackground`: Immagine dello sfondo della schermata di vittoria.
+`bossImage`: Immagine del boss alieno.
 
 **Costruttore**:
 Imposta le dimensioni del pannello di gioco.
@@ -241,13 +241,13 @@ Aggiunge un MouseListener per rilevare i click del mouse.
 Avvia un timer per far avanzare il gioco e controllare la sconfitta del boss.
 
 **Metodi protetti**:
-paintComponent(Graphics g): Disegna il gioco sul pannello.
-drawGame(Graphics g): Disegna il boss, la salute e il punteggio.
-endGame(): Mostra un messaggio di vittoria e termina il gioco.
-drawBackground(Graphics g): Disegna lo sfondo in base allo stato del gioco.
+`paintComponent()`: Disegna il gioco sul pannello.
+`drawGame()`: Disegna il boss, la salute e il punteggio.
+`endGame()`: Mostra un messaggio di vittoria e termina il gioco.
+`drawBackground()`: Disegna lo sfondo in base allo stato del gioco.
 
 **Metodi pubblici**:
-isGameWon(), setGameWon(boolean gameWon): Metodi per accedere e modificare lo stato di gameWon.
+`isGameWon()`, `setGameWon()`: Metodi per accedere e modificare lo stato di gameWon.
 
 **Funzionamento della classe**:
 Il pannello di gioco disegna il background, il boss, la salute e il punteggio, il timer cambia l'area del boss ogni secondo, rendendolo "scorrevole", il mouse listener rileva i click del mouse e controlla se il boss viene colpito, il timer del gioco controlla se il boss è stato sconfitto e se il boss viene sconfitto, viene mostrato un messaggio di vittoria e il gioco termina.
@@ -281,7 +281,7 @@ La classe `NumericKeypadUnlocker` rappresenta un pannello per un tastierino nume
 
 La classe fornisce un'interfaccia utente interattiva e reattiva per l'inserimento di una combinazione di cifre e lo sblocco di un dispositivo o di una funzionalità.
 
-Entrambe le classi AlienBossGame e NumericKeypadUnlocker vengono instanziate all'interno di un JDialog nella classe CommandExecution rispettivamente in corrispondenza dei comandi attacca e usa visore.
+Entrambe le classi `AlienBossGame` e `NumericKeypadUnlocker` vengono instanziate all'interno di un JDialog nella classe CommandExecution rispettivamente in corrispondenza dei comandi attacca e usa visore.
 
 
 ### Espressioni Lambda
