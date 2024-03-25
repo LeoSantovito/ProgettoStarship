@@ -10,7 +10,7 @@ import org.example.GameTimer;
 import org.example.Utils;
 import org.example.database.Database;
 import org.example.parser.ParserOutput;
-import org.example.swing.AlienBossGame;
+import org.example.gui.AlienBossGame;
 import org.example.type.*;
 
 import java.io.PrintStream;
@@ -46,10 +46,9 @@ public class StarshipExodus extends GameDescription {
     @Override
     public void init() throws Exception {
         //Commands
-        List<Command> commands = Utils.loadObjectsFromFile("./resources/commands.json", Command.class);
+        List<Command> commands = Utils.loadObjectsFromFile("./resources/files/commands.json", Command.class);
         getCommands().addAll(commands);
-        //Rooms and objects
-        List<Room> rooms = Utils.loadObjectsFromFile("./resources/rooms.json", Room.class);
+        List<Room> rooms = Utils.loadObjectsFromFile("./resources/files/rooms.json", Room.class);
         setMap(rooms);
         getRooms().addAll(rooms);
 

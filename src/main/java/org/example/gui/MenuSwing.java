@@ -1,18 +1,10 @@
-package org.example.swing;
+package org.example.gui;
 
 import org.example.Engine;
-import org.example.database.Database;
 import org.example.games.CommandsExecution;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.security.PrivateKey;
 
 public class MenuSwing {
     private JButton newGameButton;

@@ -10,7 +10,6 @@ al giocatore, e salva id, GameDescription, CurrentRoom, Data e ora di creazione,
 
 
 import org.example.GameDescription;
-import org.example.type.Room;
 import org.example.Utils;
 
 import java.sql.*;
@@ -18,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Database {
-    private static final String DB_URL = "jdbc:h2:./resources/savedgames";
+    private static final String DB_URL = "jdbc:h2:./resources/files/savedgames";
     private static final String DB_USER = "user";
     private static final String DB_PASS = "password";
 
