@@ -223,6 +223,7 @@ public class CommandsExecution implements Serializable {
                         out.println("<< Inserire la località alla quale indirizzare il messaggio: >>");
                         String location = new Scanner(System.in).nextLine();
                         if(weatherApi.getWeatherData(location)){
+                            Utils.printFromFile("./resources/dialogs/use_object_8.txt");
                             object.setUsed(true);
                         }
                     } catch (Exception e) {
