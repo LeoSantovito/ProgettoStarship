@@ -9,8 +9,6 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Random;
@@ -19,12 +17,12 @@ public class AlienBossGame extends JPanel {
     private int bossHealth = 100; // Salute del boss alieno
     private int score = 0; // Punteggio del giocatore
     private boolean bossHit = false; // Indica se il boss è stato colpito nell'ultimo click
-    private Random random = new Random();
+    private final Random random = new Random();
     private int bossX, bossY; // Coordinate x e y del boss
-    private int bossRadius = 20; // Raggio del boss
-    private Image background;
-    private Image winBackground;
-    private Image bossImage;
+    private final int bossRadius = 20; // Raggio del boss
+    private final Image background;
+    private final Image winBackground;
+    private final Image bossImage;
     private boolean killed = false;
     public static boolean gameWon = false;
 
@@ -35,13 +33,10 @@ public class AlienBossGame extends JPanel {
         bossImage = new ImageIcon("./resources/images/boss.jpg").getImage();
 
         // Crea un timer per cambiare l'area del boss ogni secondo
-        Timer areaTimer = new Timer(1000, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                bossX = random.nextInt(getWidth() - 2 * bossRadius) + bossRadius; // Nuova coordinata x casuale per il boss
-                bossY = random.nextInt(getHeight() - 2 * bossRadius) + bossRadius; // Nuova coordinata y casuale per il boss
-                repaint(); // Ridisegna il pannello del gioco con la nuova area del boss
-            }
+        Timer areaTimer = new Timer(1000, e -> {
+            bossX = random.nextInt(getWidth() - 2 * bossRadius) + bossRadius; // Nuova coordinata x casuale per il boss
+            bossY = random.nextInt(getHeight() - 2 * bossRadius) + bossRadius; // Nuova coordinata y casuale per il boss
+            repaint(); // Ridisegna il pannello del gioco con la nuova area del boss
         });
         areaTimer.start(); // Avvia il timer per cambiare l'area del boss
 
@@ -63,15 +58,12 @@ public class AlienBossGame extends JPanel {
         });
 
         // Crea un timer per far avanzare il gioco
-        Timer gameTimer = new Timer(1000, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                bossHit = false; // Resetta lo stato del boss dopo ogni avanzamento del gioco
-                repaint(); // Ridisegna il pannello del gioco dopo ogni avanzamento
-                if (bossHealth <= 0 && !killed) {
-                    killed = true;
-                    endGame(); // Termina il gioco se il boss è stato sconfitto
-                }
+        Timer gameTimer = new Timer(1000, e -> {
+            bossHit = false; // Resetta lo stato del boss dopo ogni avanzamento del gioco
+            repaint(); // Ridisegna il pannello del gioco dopo ogni avanzamento
+            if (bossHealth <= 0 && !killed) {
+                killed = true;
+                endGame(); // Termina il gioco se il boss è stato sconfitto
             }
         });
         gameTimer.start(); // Avvia il timer del gioco
@@ -87,7 +79,7 @@ public class AlienBossGame extends JPanel {
     private void drawGame(Graphics g) {
         if (gameWon) {
             // Disegna un messaggio di vittoria sullo sfondo della vittoria
-            g.setColor(Color.WHITE);
+            g.setColor(Color.BLACK);
             g.setFont(new Font("Arial", Font.BOLD, 24));
             g.drawString("Hai vinto!", getWidth() / 2 - 60, getHeight() / 2);
         } else {
