@@ -185,6 +185,10 @@ Per l'inserimento dell'input da parte dell'utente, è stato impiegato il compone
 È stata anche sfruttata la classe JDialog per creare finestre di dialogo modali (mentre il dialog è aperto non si può interagire con altro) o non modali, utilizzate per mostrare la mappa del gioco, l'oggetto `note`, il testo di aiuto (al quale si può accedere sia dal menu iniziale che durante il gioco con il comando `aiuto`) e per creare una finestra modale per il combattimento con il boss alieno.
 Queste finestre vengono utilizzate, quindi, per fornire informazioni aggiuntive all'utente o per creare delle sfide per proseguire nel gioco.
 
+![Notes.png](resources%2Fimages%2FNotes.png)
+
+*Figura 4. Utilizzo di JDialog per visualizzare l'oggetto "Note" durante il gioco.*
+
 Per gestire gli eventi generati dall'interazione dell'utente con i componenti Swing, sono state implementate le interfacce `MouseListener` e `ActionListener`. Queste interfacce permettono di definire comportamenti specifici da eseguire quando un utente interagisce con pulsanti, aree di disegno e altri componenti GUI.
 
 Infine, è stato personalizzato l'aspetto della GUI sovrascrivendo il metodo `paintComponent`, che ha permesso di disegnare grafica personalizzata nei pannelli di gioco. Questo ci ha fornito il controllo completo sull'aspetto visivo del gioco, permettendoci di rendere l'esperienza utente più accattivante e coinvolgente.
