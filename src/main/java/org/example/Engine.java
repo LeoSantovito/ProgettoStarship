@@ -40,7 +40,7 @@ public class Engine {
         }
     }
 
-    /* Inizializa una nuova partita. */
+    /* Inizializza una nuova partita. */
     public void newGame() {
 
         /* Richiede il nome del giocatore da usare per il salvataggio. */
