@@ -288,8 +288,17 @@ Entrambe le classi `AlienBossGame` e `NumericKeypadUnlocker` vengono instanziate
 
 
 ## Diagramma delle classi
-![GameTimer_structure.svg](resources%2Fdiagrams%2FGameTimer_structure.svg)
-![StarshipExodus_structure.svg](resources%2Fdiagrams%2FStarshipExodus_structure.svg)
+**Diagramma della classe `Engine`**
+
 ![Engine_structure.svg](resources%2Fdiagrams%2FEngine_structure.svg)
+
+**Diagramma della classe `StarshipExodus`**
+
+![StarshipExodus_structure.svg](resources%2Fdiagrams%2FStarshipExodus_structure.svg)
+
+**Diagramma della classe `GameTimer`**
+
+![GameTimer_structure.svg](resources%2Fdiagrams%2FGameTimer_structure.svg)
+
 
 ## Specifica algebrica
