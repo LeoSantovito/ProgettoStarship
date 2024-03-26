@@ -221,48 +221,38 @@ La classe `AlienBossGame` è una sottoclasse di JPanel che rappresenta il pannel
 **Componenti della classe**:
 
 **Variabili di stato**:
-
-`bossHealth`: Rappresenta la salute del boss alieno.
-
-`score`: Punteggio del giocatore.
-
-`bossHit`: Indica se il boss è stato colpito nell'ultimo click.
-
-`bossX`, `bossY`: Coordinate x e y del boss alieno.
-
-`killed`: Indica se il boss è stato sconfitto.
-
-`gameWon`: Indica se il gioco è stato vinto.
+- `bossHealth`: Rappresenta la salute del boss alieno.
+- `score`: Punteggio del giocatore.
+- `bossHit`: Indica se il boss è stato colpito nell'ultimo click.
+- `bossX`, `bossY`: Coordinate x e y del boss alieno.
+- `killed`: Indica se il boss è stato sconfitto.
+- `gameWon`: Indica se il gioco è stato vinto.
 
 **Immagini**:
 
-`background`: Immagine dello sfondo del gioco.
-
-`winBackground`: Immagine dello sfondo della schermata di vittoria.
-
-`bossImage`: Immagine del boss alieno.
+- `background`: Immagine dello sfondo del gioco.
+- `winBackground`: Immagine dello sfondo della schermata di vittoria.
+- `bossImage`: Immagine del boss alieno.
 
 **Costruttore**:
+
 Il costruttore imposta le dimensioni del pannello di gioco,
 carica le immagini dello sfondo, del boss e dello sfondo di vittoria,
 avvia un timer per cambiare l'area del boss ogni secondo e uno per far avanzare il gioco.
 Aggiunge un MouseListener per rilevare i click del mouse e controlla la sconfitta del boss.
 
 **Metodi protetti**:
-
-`paintComponent`: Disegna il gioco sul pannello.
-
-`drawGame`: Disegna il boss, la salute e il punteggio.
-
-`endGame`: Mostra un messaggio di vittoria e termina il gioco.
-
-`drawBackground`: Disegna lo sfondo in base allo stato del gioco.
+- `paintComponent`: Disegna il gioco sul pannello.
+- `drawGame`: Disegna il boss, la salute e il punteggio.
+- `endGame`: Mostra un messaggio di vittoria e termina il gioco.
+- `drawBackground`: Disegna lo sfondo in base allo stato del gioco.
 
 **Metodi pubblici**:
 
 `isGameWon`, `setGameWon`: Metodi per accedere e modificare lo stato di gameWon.
 
 **Funzionamento della classe**:
+
 Il pannello di gioco disegna il background, il boss, la salute e il punteggio, il timer cambia l'area del boss ogni secondo, rendendolo "scorrevole", il mouse listener rileva i click del mouse e controlla se il boss viene colpito, il timer del gioco controlla se il boss è stato sconfitto e se il boss viene sconfitto, viene mostrato un messaggio di vittoria e il gioco termina.
 In sintesi, la classe `AlienBossGame` fornisce un'interfaccia grafica per un semplice gioco in cui il giocatore deve colpire un boss alieno finché la sua salute non raggiunge lo zero. Una volta sconfitto il boss, il giocatore vince il mini gioco e potrà raccogliere la chiave necessaria a copletare l'avventura.
 
