@@ -182,7 +182,8 @@ Un componente fondamentale delle Swing è JPanel, che agisce come un contenitore
 
 Per l'inserimento dell'input da parte dell'utente, è stato impiegato il componente JTextField, che offre una semplice interfaccia per l'inserimento di testo singolo. Nel nostro caso, il JTextField è stato utilizzato nel tastierino numerico per visualizzare le cifre inserite dall'utente.
 
-È stata anche sfruttata la classe JDialog per creare finestre di dialogo modali (mentre il dialog è aperto non si può interagire con altro) o non modali, utilizzate per mostrare la mappa del gioco, le note, l'help e per creare una finestra modale per il combattimento con il boss alieno. Queste finestre forniscono informazioni aggiuntive all'utente o richiedono input specifico per proseguire nel gioco.
+È stata anche sfruttata la classe JDialog per creare finestre di dialogo modali (mentre il dialog è aperto non si può interagire con altro) o non modali, utilizzate per mostrare la mappa del gioco, l'oggetto `note`, il testo di aiuto (al quale si può accedere sia dal menu iniziale che durante il gioco con il comando `aiuto`) e per creare una finestra modale per il combattimento con il boss alieno.
+Queste finestre vengono utilizzate, quindi, per fornire informazioni aggiuntive all'utente o per creare delle sfide per proseguire nel gioco.
 
 Per gestire gli eventi generati dall'interazione dell'utente con i componenti Swing, sono state implementate le interfacce `MouseListener` e `ActionListener`. Queste interfacce permettono di definire comportamenti specifici da eseguire quando un utente interagisce con pulsanti, aree di disegno e altri componenti GUI.
 
@@ -276,7 +277,7 @@ Il campo statico `padUnlocked` tiene traccia dello stato di sblocco del tastieri
 
 La classe fornisce l'interfaccia utente interattiva per l'inserimento della combinazione che permette di sbloccare la porta che permette di accedere alla stanza "Sala delle Armi" dal "Laboratorio", e di conseguenza continuare il gioco.
 
-Entrambe le classi `AlienBossGame` e `NumericKeypadUnlocker` vengono instanziate all'interno di un JDialog nella classe CommandExecution rispettivamente in corrispondenza dei comandi attacca e usa visore.
+Entrambe le classi `AlienBossGame` e `NumericKeypadUnlocker` vengono instanziate all'interno di un JDialog nella classe `CommandExecution` rispettivamente in corrispondenza dei comandi attacca e usa visore.
 
 
 ### Espressioni Lambda
