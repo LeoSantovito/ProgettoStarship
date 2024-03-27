@@ -20,7 +20,12 @@ Il programma risultante è un gioco testuale, con interazione da linea di comand
     - [Framework Swing](#framework-swing)
     - [Espressioni Lambda](#espressioni-lambda)
 3. [Diagramma delle classi](#diagramma-delle-classi)
+    - [Diagramma della classe Engine](#diagramma-della-classe-engine)
+    - [Diagramma della classe StarsipExodus](#diagramma-della-classe-starsipexodus)
+    - [Diagramma della classe GameTimer](#diagramma-della-classe-gametimer)
 4. [Specifica algebrica](#specifica-algebrica)
+    - [Specifica sintattica](#specifica-sintattica)
+    - [Specifica semantica](#specifica-semantica)
 
 ## Descrizione generale del caso di studio
 
@@ -45,6 +50,7 @@ Il progetto è strutturato in package, ognuno dei quali contiene classi che impl
     
     ```
     ├───resources
+    │   ├───diagrams
     │   ├───dialogs
     │   ├───files
     │   ├───images
@@ -311,17 +317,45 @@ Le espressioni lambda sono state usate in più parti del progetto per instanziar
 
 
 ## Diagramma delle classi
-**Diagramma della classe `Engine`**
+
+### Diagramma della classe Engine
+
+Il seguente diagramma delle classi mostra la struttura dell'applicazione di gioco, con la classe principale `Engine` al centro delle operazioni.
+La classe `Engine` si occupa dell'inizializzazione del gioco, della gestione del menu iniziale, del caricamento e del salvataggio delle partite, nonché dell'esecuzione del gioco stesso.
+Per fare ciò, questa classe interagisce con diverse altre classi, come segue.
+
+1. `GameDescription`: Rappresenta la descrizione del gioco corrente, gestendo le informazioni relative alla partita in corso come l'ID della partita, il tempo trascorso e lo stato attuale del gioco.
+
+2. `Parser`: Si occupa dell'analisi dei comandi inseriti dall'utente durante il gioco, interpretandoli e restituendo un output utilizzabile per guidare l'evoluzione del gioco.
+
+3. `Database`: Gestisce l'interfacciamento con il database, consentendo il caricamento e il salvataggio dei dati delle partite.
+
+4. `GameTimer`: Fornisce funzionalità di misurazione del tempo di gioco, permettendo di tenere traccia del tempo trascorso durante una partita.
+
+Inoltre, la classe `Engine` interagisce con l'interfaccia utente tramite la classe `MenuSwing`, che gestisce il menu grafico e le interazioni con l'utente attraverso un'interfaccia Swing.
+
+Insieme, queste classi costituiscono il nucleo dell'applicazione di gioco, fornendo le funzionalità necessarie per avviare, gestire e giocare a una partita.
 
 ![Engine_structure.svg](resources%2Fdiagrams%2FEngine_structure.svg)
 
-**Diagramma della classe `StarshipExodus`**
+*Figura 5. Diagramma delle classi in formato vettoriale che rappresenta la struttura della classe Engine.*
 
-![StarshipExodus_structure.svg](resources%2Fdiagrams%2FStarshipExodus_structure.svg)
+### Diagramma della classe GameTimer
 
-**Diagramma della classe `GameTimer`**
+La classe `GameTimer` estende `Thread` per gestire un timer che tiene conto del tempo di gioco di ogni partita.
+Mantiene il tempo trascorso in secondi (`secondsElapsed`) e offre metodi per avviare, fermare, riprendere, reimpostare e impostare il tempo del timer.
+Il timer viene inizializzato a 0 all'avvio di una nuova partita e viene avviato come thread separato.
+Quando viene salvata la partita, il tempo trascorso viene memorizzato nella `GameDescription` per poter riprendere il timer al caricamento.
+
+Durante l'esecuzione, il timer viene aggiornato ogni secondo in cui viene incrementato il campo `secondsElapsed`, e stampa un messaggio di sollecitazione all'utente, con l'obiettivo di mettergli ansia e stress, ogni 5 minuti.
 
 ![GameTimer_structure.svg](resources%2Fdiagrams%2FGameTimer_structure.svg)
 
+*Figura 6. Diagramma delle classi in formato vettoriale che rappresenta la struttura della classe GameTimer.*
+
 
 ## Specifica algebrica
+
+### Specifica sintattica
+
+### Specifica semantica
