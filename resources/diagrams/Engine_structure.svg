@@ -1,407 +1,427 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="1866pt" height="1961pt"
- viewBox="0.00 0.00 1866.00 1960.80" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="2055pt" height="1961pt"
+ viewBox="0.00 0.00 2055.00 1960.80" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 1956.8)">
 <title>g</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-1956.8 1862,-1956.8 1862,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-1956.8 2051,-1956.8 2051,4 -4,4"/>
 <g id="clust1" class="cluster">
 <title>cluster_1322970774</title>
-<polygon fill="#ececec" stroke="black" points="8,-8 8,-1944.8 1850,-1944.8 1850,-8 8,-8"/>
+<polygon fill="#ececec" stroke="black" points="8,-8 8,-1944.8 2039,-1944.8 2039,-8 8,-8"/>
 <text text-anchor="middle" x="39.71" y="-1928.2" font-family="Times New Roman,serif" font-size="14.00">example</text>
-</g>
-<g id="clust4" class="cluster">
-<title>cluster_1944009033</title>
-<polygon fill="#d8d8d8" stroke="black" points="1537,-1351.6 1537,-1586.4 1783,-1586.4 1783,-1351.6 1537,-1351.6"/>
-<text text-anchor="middle" x="1553.95" y="-1569.8" font-family="Times New Roman,serif" font-size="14.00">gui</text>
-</g>
-<g id="clust2" class="cluster">
-<title>cluster_117504317</title>
-<polygon fill="#d8d8d8" stroke="black" points="589,-566.4 589,-1255.6 1251,-1255.6 1251,-566.4 589,-566.4"/>
-<text text-anchor="middle" x="614.88" y="-1239" font-family="Times New Roman,serif" font-size="14.00">games</text>
-</g>
-<g id="clust3" class="cluster">
-<title>cluster_134346434</title>
-<polygon fill="#d8d8d8" stroke="black" points="28,-16 28,-969.2 581,-969.2 581,-16 28,-16"/>
-<text text-anchor="middle" x="48.05" y="-952.6" font-family="Times New Roman,serif" font-size="14.00">type</text>
 </g>
 <g id="clust5" class="cluster">
 <title>cluster_1944014954</title>
-<polygon fill="#d8d8d8" stroke="black" points="794,-148 794,-262.8 1046,-262.8 1046,-148 794,-148"/>
-<text text-anchor="middle" x="810.55" y="-246.2" font-family="Times New Roman,serif" font-size="14.00">api</text>
-</g>
-<g id="clust7" class="cluster">
-<title>cluster_564401793</title>
-<polygon fill="#d8d8d8" stroke="black" points="1468,-16 1468,-394.8 1832,-394.8 1832,-16 1468,-16"/>
-<text text-anchor="middle" x="1500.1" y="-378.2" font-family="Times New Roman,serif" font-size="14.00">database</text>
+<polygon fill="#d8d8d8" stroke="black" points="983,-148 983,-262.8 1235,-262.8 1235,-148 983,-148"/>
+<text text-anchor="middle" x="999.55" y="-246.2" font-family="Times New Roman,serif" font-size="14.00">api</text>
 </g>
 <g id="clust6" class="cluster">
 <title>cluster_394509021</title>
-<polygon fill="#d8d8d8" stroke="black" points="783,-1375.6 783,-1562.4 1529,-1562.4 1529,-1375.6 783,-1375.6"/>
-<text text-anchor="middle" x="808.1" y="-1545.8" font-family="Times New Roman,serif" font-size="14.00">parser</text>
+<polygon fill="#d8d8d8" stroke="black" points="972,-1375.6 972,-1562.4 1718,-1562.4 1718,-1375.6 972,-1375.6"/>
+<text text-anchor="middle" x="997.1" y="-1545.8" font-family="Times New Roman,serif" font-size="14.00">parser</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_117504317</title>
+<polygon fill="#d8d8d8" stroke="black" points="778,-566.4 778,-1255.6 1440,-1255.6 1440,-566.4 778,-566.4"/>
+<text text-anchor="middle" x="803.88" y="-1239" font-family="Times New Roman,serif" font-size="14.00">games</text>
+</g>
+<g id="clust7" class="cluster">
+<title>cluster_564401793</title>
+<polygon fill="#d8d8d8" stroke="black" points="1657,-16 1657,-394.8 2021,-394.8 2021,-16 1657,-16"/>
+<text text-anchor="middle" x="1689.1" y="-378.2" font-family="Times New Roman,serif" font-size="14.00">database</text>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_134346434</title>
+<polygon fill="#d8d8d8" stroke="black" points="16,-16 16,-969.2 770,-969.2 770,-16 16,-16"/>
+<text text-anchor="middle" x="36.05" y="-952.6" font-family="Times New Roman,serif" font-size="14.00">type</text>
+</g>
+<g id="clust4" class="cluster">
+<title>cluster_1944009033</title>
+<polygon fill="#d8d8d8" stroke="black" points="1726,-1351.6 1726,-1586.4 1972,-1586.4 1972,-1351.6 1726,-1351.6"/>
+<text text-anchor="middle" x="1742.95" y="-1569.8" font-family="Times New Roman,serif" font-size="14.00">gui</text>
 </g>
 <!-- Engine1526836320 -->
 <g id="node1" class="node">
 <title>Engine1526836320</title>
-<polygon fill="#ffffff" stroke="transparent" points="1353,-1912 1129,-1912 1129,-1646 1353,-1646 1353,-1912"/>
-<text text-anchor="start" x="1134" y="-1894.4" font-family="Times New Roman,serif" font-size="14.00">(C)Engine</text>
-<text text-anchor="start" x="1134" y="-1870.4" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;database: Database [0..1]</text>
-<text text-anchor="start" x="1134" y="-1846.4" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;game: GameDescription [0..1]</text>
-<text text-anchor="start" x="1134" y="-1822.4" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;parser: Parser [0..1]</text>
-<text text-anchor="start" x="1134" y="-1798.4" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;timer: GameTimer [0..1]</text>
-<text text-anchor="start" x="1134" y="-1774.4" font-family="Times New Roman,serif" font-size="14.00">+ loadSavedGame()</text>
-<text text-anchor="start" x="1134" y="-1750.4" font-family="Times New Roman,serif" font-size="14.00">+ main(args: String[])</text>
-<text text-anchor="start" x="1134" y="-1726.4" font-family="Times New Roman,serif" font-size="14.00">+ newGame()</text>
-<text text-anchor="start" x="1133.65" y="-1702.4" font-family="Times New Roman,serif" font-size="14.00">+ playGame(game: GameDescription)</text>
-<text text-anchor="start" x="1133.71" y="-1678.4" font-family="Times New Roman,serif" font-size="14.00">&#45; printGameIntro(playerName: String)</text>
-<text text-anchor="start" x="1134" y="-1654.4" font-family="Times New Roman,serif" font-size="14.00">&#45; saveGame(game: GameDescription)</text>
-<polygon fill="black" stroke="black" points="1129,-1887 1129,-1887 1353,-1887 1353,-1887 1129,-1887"/>
-<polygon fill="black" stroke="black" points="1129,-1791 1129,-1791 1353,-1791 1353,-1791 1129,-1791"/>
-<polygon fill="none" stroke="black" points="1129,-1646 1129,-1912 1353,-1912 1353,-1646 1129,-1646"/>
+<polygon fill="#ffffff" stroke="transparent" points="1642,-1912 1418,-1912 1418,-1646 1642,-1646 1642,-1912"/>
+<text text-anchor="start" x="1423" y="-1894.4" font-family="Times New Roman,serif" font-size="14.00">(C)Engine</text>
+<text text-anchor="start" x="1423" y="-1870.4" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;database: Database [0..1]</text>
+<text text-anchor="start" x="1423" y="-1846.4" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;game: GameDescription [0..1]</text>
+<text text-anchor="start" x="1423" y="-1822.4" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;parser: Parser [0..1]</text>
+<text text-anchor="start" x="1423" y="-1798.4" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;timer: GameTimer [0..1]</text>
+<text text-anchor="start" x="1423" y="-1774.4" font-family="Times New Roman,serif" font-size="14.00">+ loadSavedGame()</text>
+<text text-anchor="start" x="1423" y="-1750.4" font-family="Times New Roman,serif" font-size="14.00">+ main(args: String[])</text>
+<text text-anchor="start" x="1423" y="-1726.4" font-family="Times New Roman,serif" font-size="14.00">+ newGame()</text>
+<text text-anchor="start" x="1422.65" y="-1702.4" font-family="Times New Roman,serif" font-size="14.00">+ playGame(game: GameDescription)</text>
+<text text-anchor="start" x="1422.71" y="-1678.4" font-family="Times New Roman,serif" font-size="14.00">&#45; printGameIntro(playerName: String)</text>
+<text text-anchor="start" x="1423" y="-1654.4" font-family="Times New Roman,serif" font-size="14.00">&#45; saveGame(game: GameDescription)</text>
+<polygon fill="black" stroke="black" points="1418,-1887 1418,-1887 1642,-1887 1642,-1887 1418,-1887"/>
+<polygon fill="black" stroke="black" points="1418,-1791 1418,-1791 1642,-1791 1642,-1791 1418,-1791"/>
+<polygon fill="none" stroke="black" points="1418,-1646 1418,-1912 1642,-1912 1642,-1646 1418,-1646"/>
 </g>
 <!-- GameDescription1526836320 -->
 <g id="node2" class="node">
 <title>GameDescription1526836320</title>
-<polygon fill="#ffffff" stroke="transparent" points="595,-1565.6 95,-1565.6 95,-1347.6 595,-1347.6 595,-1565.6"/>
-<text text-anchor="start" x="100" y="-1548" font-family="Times New Roman,serif" font-size="14.00">(C)GameDescription</text>
-<text text-anchor="start" x="100" y="-1524" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;commands: List&lt;Command&gt; [0..*]</text>
-<text text-anchor="start" x="100" y="-1500" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;currentRoom: Room [0..1]</text>
-<text text-anchor="start" x="100" y="-1476" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;gameId: int [1]</text>
-<text text-anchor="start" x="100" y="-1452" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;inventory: List&lt;AdvObject&gt; [0..*]</text>
-<text text-anchor="start" x="100" y="-1428" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;rooms: List&lt;Room&gt; [0..*]</text>
-<text text-anchor="start" x="100" y="-1404" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;timeElapsed: int [1]</text>
-<text text-anchor="start" x="100" y="-1380" font-family="Times New Roman,serif" font-size="14.00">+ init()</text>
-<text text-anchor="start" x="99.82" y="-1356" font-family="Times New Roman,serif" font-size="14.00">+ nextMove(p: ParserOutput, out: PrintStream, timer: GameTimer, database: Database)</text>
-<polygon fill="black" stroke="black" points="95,-1540.6 95,-1540.6 595,-1540.6 595,-1540.6 95,-1540.6"/>
-<polygon fill="black" stroke="black" points="95,-1396.6 95,-1396.6 595,-1396.6 595,-1396.6 95,-1396.6"/>
-<polygon fill="none" stroke="black" points="95,-1347.6 95,-1565.6 595,-1565.6 595,-1347.6 95,-1347.6"/>
+<polygon fill="#ffffff" stroke="transparent" points="774,-1565.6 274,-1565.6 274,-1347.6 774,-1347.6 774,-1565.6"/>
+<text text-anchor="start" x="279" y="-1548" font-family="Times New Roman,serif" font-size="14.00">(C)GameDescription</text>
+<text text-anchor="start" x="279" y="-1524" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;commands: List&lt;Command&gt; [0..*]</text>
+<text text-anchor="start" x="279" y="-1500" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;currentRoom: Room [0..1]</text>
+<text text-anchor="start" x="279" y="-1476" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;gameId: int [1]</text>
+<text text-anchor="start" x="279" y="-1452" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;inventory: Inventory [0..1]</text>
+<text text-anchor="start" x="279" y="-1428" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;rooms: List&lt;Room&gt; [0..*]</text>
+<text text-anchor="start" x="279" y="-1404" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;timeElapsed: int [1]</text>
+<text text-anchor="start" x="279" y="-1380" font-family="Times New Roman,serif" font-size="14.00">+ init()</text>
+<text text-anchor="start" x="278.82" y="-1356" font-family="Times New Roman,serif" font-size="14.00">+ nextMove(p: ParserOutput, out: PrintStream, timer: GameTimer, database: Database)</text>
+<polygon fill="black" stroke="black" points="274,-1540.6 274,-1540.6 774,-1540.6 774,-1540.6 274,-1540.6"/>
+<polygon fill="black" stroke="black" points="274,-1396.6 274,-1396.6 774,-1396.6 774,-1396.6 274,-1396.6"/>
+<polygon fill="none" stroke="black" points="274,-1347.6 274,-1565.6 774,-1565.6 774,-1347.6 274,-1347.6"/>
 </g>
 <!-- Engine1526836320&#45;&gt;GameDescription1526836320 -->
 <g id="edge4" class="edge">
 <title>Engine1526836320&#45;&gt;GameDescription1526836320</title>
-<path fill="none" stroke="black" d="M1128.92,-1743.97C947.59,-1688.91 610,-1586.4 610,-1586.4 610,-1586.4 596.92,-1580.04 576.57,-1570.15"/>
-<polygon fill="black" stroke="black" points="577.95,-1566.93 567.42,-1565.71 574.89,-1573.23 577.95,-1566.93"/>
-<text text-anchor="middle" x="761.16" y="-1615.4" font-family="Times New Roman,serif" font-size="14.00">game</text>
-<text text-anchor="middle" x="761.16" y="-1598.6" font-family="Times New Roman,serif" font-size="14.00">[0..1]</text>
+<path fill="none" stroke="black" d="M1417.78,-1748.59C1212.87,-1694.88 799,-1586.4 799,-1586.4 799,-1586.4 785.3,-1579.99 764.03,-1570.02"/>
+<polygon fill="black" stroke="black" points="765.36,-1566.78 754.82,-1565.71 762.39,-1573.12 765.36,-1566.78"/>
+<text text-anchor="middle" x="971.16" y="-1615.4" font-family="Times New Roman,serif" font-size="14.00">game</text>
+<text text-anchor="middle" x="971.16" y="-1598.6" font-family="Times New Roman,serif" font-size="14.00">[0..1]</text>
 </g>
 <!-- GameTimer1526836320 -->
 <g id="node3" class="node">
 <title>GameTimer1526836320</title>
-<polygon fill="#ffffff" stroke="transparent" points="773.5,-1541.6 618.5,-1541.6 618.5,-1371.6 773.5,-1371.6 773.5,-1541.6"/>
-<text text-anchor="start" x="624" y="-1524" font-family="Times New Roman,serif" font-size="14.00">(C)GameTimer</text>
-<text text-anchor="start" x="624" y="-1500" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;running: boolean [1]</text>
-<text text-anchor="start" x="623.61" y="-1476" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;secondsElapsed: int [1]</text>
-<text text-anchor="start" x="624" y="-1452" font-family="Times New Roman,serif" font-size="14.00">+ resetTimer()</text>
-<text text-anchor="start" x="624" y="-1428" font-family="Times New Roman,serif" font-size="14.00">+ resumeTimer()</text>
-<text text-anchor="start" x="624" y="-1404" font-family="Times New Roman,serif" font-size="14.00">+ run()</text>
-<text text-anchor="start" x="624" y="-1380" font-family="Times New Roman,serif" font-size="14.00">+ stopTimer()</text>
-<polygon fill="black" stroke="black" points="619,-1516.6 619,-1516.6 774,-1516.6 774,-1516.6 619,-1516.6"/>
-<polygon fill="black" stroke="black" points="619,-1468.6 619,-1468.6 774,-1468.6 774,-1468.6 619,-1468.6"/>
-<polygon fill="none" stroke="black" points="618.5,-1371.6 618.5,-1541.6 773.5,-1541.6 773.5,-1371.6 618.5,-1371.6"/>
+<polygon fill="#ffffff" stroke="transparent" points="962.5,-1541.6 807.5,-1541.6 807.5,-1371.6 962.5,-1371.6 962.5,-1541.6"/>
+<text text-anchor="start" x="813" y="-1524" font-family="Times New Roman,serif" font-size="14.00">(C)GameTimer</text>
+<text text-anchor="start" x="813" y="-1500" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;running: boolean [1]</text>
+<text text-anchor="start" x="812.61" y="-1476" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;secondsElapsed: int [1]</text>
+<text text-anchor="start" x="813" y="-1452" font-family="Times New Roman,serif" font-size="14.00">+ resetTimer()</text>
+<text text-anchor="start" x="813" y="-1428" font-family="Times New Roman,serif" font-size="14.00">+ resumeTimer()</text>
+<text text-anchor="start" x="813" y="-1404" font-family="Times New Roman,serif" font-size="14.00">+ run()</text>
+<text text-anchor="start" x="813" y="-1380" font-family="Times New Roman,serif" font-size="14.00">+ stopTimer()</text>
+<polygon fill="black" stroke="black" points="808,-1516.6 808,-1516.6 963,-1516.6 963,-1516.6 808,-1516.6"/>
+<polygon fill="black" stroke="black" points="808,-1468.6 808,-1468.6 963,-1468.6 963,-1468.6 808,-1468.6"/>
+<polygon fill="none" stroke="black" points="807.5,-1371.6 807.5,-1541.6 962.5,-1541.6 962.5,-1371.6 807.5,-1371.6"/>
 </g>
 <!-- Engine1526836320&#45;&gt;GameTimer1526836320 -->
 <g id="edge5" class="edge">
 <title>Engine1526836320&#45;&gt;GameTimer1526836320</title>
-<path fill="none" stroke="black" d="M1128.87,-1731.5C992.13,-1674.79 779,-1586.4 779,-1586.4 779,-1586.4 768.92,-1570.76 755.79,-1550.38"/>
-<polygon fill="black" stroke="black" points="758.56,-1548.22 750.2,-1541.71 752.68,-1552.02 758.56,-1548.22"/>
-<text text-anchor="middle" x="893.16" y="-1615.4" font-family="Times New Roman,serif" font-size="14.00">timer</text>
-<text text-anchor="middle" x="893.16" y="-1598.6" font-family="Times New Roman,serif" font-size="14.00">[0..1]</text>
+<path fill="none" stroke="black" d="M1417.96,-1739.8C1254.01,-1683.91 968,-1586.4 968,-1586.4 968,-1586.4 957.92,-1570.76 944.79,-1550.38"/>
+<polygon fill="black" stroke="black" points="947.56,-1548.22 939.2,-1541.71 941.68,-1552.02 947.56,-1548.22"/>
+<text text-anchor="middle" x="1104.16" y="-1615.4" font-family="Times New Roman,serif" font-size="14.00">timer</text>
+<text text-anchor="middle" x="1104.16" y="-1598.6" font-family="Times New Roman,serif" font-size="14.00">[0..1]</text>
 </g>
 <!-- MenuSwing1873475245 -->
-<g id="node10" class="node">
+<g id="node11" class="node">
 <title>MenuSwing1873475245</title>
-<polygon fill="#ffffff" stroke="transparent" points="1774.5,-1553.6 1545.5,-1553.6 1545.5,-1359.6 1774.5,-1359.6 1774.5,-1553.6"/>
-<text text-anchor="start" x="1551" y="-1536" font-family="Times New Roman,serif" font-size="14.00">(C)MenuSwing</text>
-<text text-anchor="start" x="1551" y="-1512" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;engine: Engine [0..1]</text>
-<text text-anchor="start" x="1550.67" y="-1488" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;execute: CommandsExecution [0..1]</text>
-<text text-anchor="start" x="1551" y="-1464" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;exitButton: JButton [0..1]</text>
-<text text-anchor="start" x="1551" y="-1440" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;helpButton: JButton [0..1]</text>
-<text text-anchor="start" x="1551" y="-1416" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;loadGameButton: JButton [0..1]</text>
-<text text-anchor="start" x="1551" y="-1392" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;newGameButton: JButton [0..1]</text>
-<text text-anchor="start" x="1551" y="-1368" font-family="Times New Roman,serif" font-size="14.00">+ startMenu()</text>
-<polygon fill="black" stroke="black" points="1546,-1528.6 1546,-1528.6 1775,-1528.6 1775,-1528.6 1546,-1528.6"/>
-<polygon fill="black" stroke="black" points="1546,-1384.6 1546,-1384.6 1775,-1384.6 1775,-1384.6 1546,-1384.6"/>
-<polygon fill="none" stroke="black" points="1545.5,-1359.6 1545.5,-1553.6 1774.5,-1553.6 1774.5,-1359.6 1545.5,-1359.6"/>
+<polygon fill="#ffffff" stroke="transparent" points="1963.5,-1553.6 1734.5,-1553.6 1734.5,-1359.6 1963.5,-1359.6 1963.5,-1553.6"/>
+<text text-anchor="start" x="1740" y="-1536" font-family="Times New Roman,serif" font-size="14.00">(C)MenuSwing</text>
+<text text-anchor="start" x="1740" y="-1512" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;engine: Engine [0..1]</text>
+<text text-anchor="start" x="1739.67" y="-1488" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;execute: CommandsExecution [0..1]</text>
+<text text-anchor="start" x="1740" y="-1464" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;exitButton: JButton [0..1]</text>
+<text text-anchor="start" x="1740" y="-1440" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;helpButton: JButton [0..1]</text>
+<text text-anchor="start" x="1740" y="-1416" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;loadGameButton: JButton [0..1]</text>
+<text text-anchor="start" x="1740" y="-1392" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;newGameButton: JButton [0..1]</text>
+<text text-anchor="start" x="1740" y="-1368" font-family="Times New Roman,serif" font-size="14.00">+ startMenu()</text>
+<polygon fill="black" stroke="black" points="1735,-1528.6 1735,-1528.6 1964,-1528.6 1964,-1528.6 1735,-1528.6"/>
+<polygon fill="black" stroke="black" points="1735,-1384.6 1735,-1384.6 1964,-1384.6 1964,-1384.6 1735,-1384.6"/>
+<polygon fill="none" stroke="black" points="1734.5,-1359.6 1734.5,-1553.6 1963.5,-1553.6 1963.5,-1359.6 1734.5,-1359.6"/>
 </g>
 <!-- Engine1526836320&#45;&gt;MenuSwing1873475245 -->
 <g id="edge6" class="edge">
 <title>Engine1526836320&#45;&gt;MenuSwing1873475245</title>
-<path fill="none" stroke="black" d="M1330.49,-1645.54C1350.05,-1616.59 1365.05,-1594.4 1365.05,-1594.4 1365.05,-1594.4 1533,-1586.4 1533,-1586.4 1533,-1586.4 1543.28,-1575.97 1558,-1561.05"/>
-<polygon fill="black" stroke="black" points="1560.52,-1563.48 1565.05,-1553.9 1555.53,-1558.56 1560.52,-1563.48"/>
-<text text-anchor="middle" x="1426.48" y="-1607" font-family="Times New Roman,serif" font-size="14.00">main() &#45;&gt; startMenu()</text>
+<path fill="none" stroke="black" d="M1642.1,-1650.98C1669.97,-1619.42 1692.05,-1594.4 1692.05,-1594.4 1692.05,-1594.4 1722,-1586.4 1722,-1586.4 1722,-1586.4 1732.28,-1575.97 1747,-1561.05"/>
+<polygon fill="black" stroke="black" points="1749.52,-1563.48 1754.05,-1553.9 1744.53,-1558.56 1749.52,-1563.48"/>
+<text text-anchor="middle" x="1753.48" y="-1607" font-family="Times New Roman,serif" font-size="14.00">main() &#45;&gt; startMenu()</text>
 </g>
 <!-- Parser159413907 -->
-<g id="node12" class="node">
+<g id="node13" class="node">
 <title>Parser159413907</title>
-<polygon fill="#ffffff" stroke="transparent" points="1520.5,-1529.6 791.5,-1529.6 791.5,-1383.6 1520.5,-1383.6 1520.5,-1529.6"/>
-<text text-anchor="start" x="797" y="-1512" font-family="Times New Roman,serif" font-size="14.00">(C)Parser</text>
-<text text-anchor="start" x="797" y="-1488" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;stopwords: Set&lt;String&gt; [0..*]</text>
-<text text-anchor="start" x="797" y="-1464" font-family="Times New Roman,serif" font-size="14.00">&#45; checkForCommand(token: String, commands: List&lt;Command&gt;): int</text>
-<text text-anchor="start" x="797" y="-1440" font-family="Times New Roman,serif" font-size="14.00">&#45; checkForObject(token: String, objects: List&lt;AdvObject&gt;): int</text>
-<text text-anchor="start" x="797" y="-1416" font-family="Times New Roman,serif" font-size="14.00">&#45; findIndex(items: List&lt;T&gt;, token: String, matcher: Predicate&lt;T&gt;): int</text>
-<text text-anchor="start" x="796.82" y="-1392" font-family="Times New Roman,serif" font-size="14.00">+ parse(command: String, commands: List&lt;Command&gt;, objects: List&lt;AdvObject&gt;, inventory: List&lt;AdvObject&gt;): ParserOutput</text>
-<polygon fill="black" stroke="black" points="792,-1504.6 792,-1504.6 1521,-1504.6 1521,-1504.6 792,-1504.6"/>
-<polygon fill="black" stroke="black" points="792,-1480.6 792,-1480.6 1521,-1480.6 1521,-1480.6 792,-1480.6"/>
-<polygon fill="none" stroke="black" points="791.5,-1383.6 791.5,-1529.6 1520.5,-1529.6 1520.5,-1383.6 791.5,-1383.6"/>
+<polygon fill="#ffffff" stroke="transparent" points="1709.5,-1529.6 980.5,-1529.6 980.5,-1383.6 1709.5,-1383.6 1709.5,-1529.6"/>
+<text text-anchor="start" x="986" y="-1512" font-family="Times New Roman,serif" font-size="14.00">(C)Parser</text>
+<text text-anchor="start" x="986" y="-1488" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;stopwords: Set&lt;String&gt; [0..*]</text>
+<text text-anchor="start" x="986" y="-1464" font-family="Times New Roman,serif" font-size="14.00">&#45; checkForCommand(token: String, commands: List&lt;Command&gt;): int</text>
+<text text-anchor="start" x="986" y="-1440" font-family="Times New Roman,serif" font-size="14.00">&#45; checkForObject(token: String, objects: List&lt;AdvObject&gt;): int</text>
+<text text-anchor="start" x="986" y="-1416" font-family="Times New Roman,serif" font-size="14.00">&#45; findIndex(items: List&lt;T&gt;, token: String, matcher: Predicate&lt;T&gt;): int</text>
+<text text-anchor="start" x="985.82" y="-1392" font-family="Times New Roman,serif" font-size="14.00">+ parse(command: String, commands: List&lt;Command&gt;, objects: List&lt;AdvObject&gt;, inventory: List&lt;AdvObject&gt;): ParserOutput</text>
+<polygon fill="black" stroke="black" points="981,-1504.6 981,-1504.6 1710,-1504.6 1710,-1504.6 981,-1504.6"/>
+<polygon fill="black" stroke="black" points="981,-1480.6 981,-1480.6 1710,-1480.6 1710,-1480.6 981,-1480.6"/>
+<polygon fill="none" stroke="black" points="980.5,-1383.6 980.5,-1529.6 1709.5,-1529.6 1709.5,-1383.6 980.5,-1383.6"/>
 </g>
 <!-- Engine1526836320&#45;&gt;Parser159413907 -->
 <g id="edge7" class="edge">
 <title>Engine1526836320&#45;&gt;Parser159413907</title>
-<path fill="none" stroke="black" d="M1205.94,-1645.83C1196.4,-1609.9 1186.36,-1572.03 1177.79,-1539.75"/>
-<polygon fill="black" stroke="black" points="1181.13,-1538.69 1175.19,-1529.92 1174.37,-1540.49 1181.13,-1538.69"/>
-<text text-anchor="middle" x="1218.1" y="-1615.4" font-family="Times New Roman,serif" font-size="14.00">parser</text>
-<text text-anchor="middle" x="1218.1" y="-1598.6" font-family="Times New Roman,serif" font-size="14.00">[0..1]</text>
+<path fill="none" stroke="black" d="M1453.69,-1645.83C1432.76,-1609.59 1410.69,-1571.38 1391.95,-1538.92"/>
+<polygon fill="black" stroke="black" points="1394.79,-1536.83 1386.76,-1529.92 1388.73,-1540.33 1394.79,-1536.83"/>
+<text text-anchor="middle" x="1460.1" y="-1615.4" font-family="Times New Roman,serif" font-size="14.00">parser</text>
+<text text-anchor="middle" x="1460.1" y="-1598.6" font-family="Times New Roman,serif" font-size="14.00">[0..1]</text>
 </g>
 <!-- Database2023703369 -->
-<g id="node13" class="node">
+<g id="node14" class="node">
 <title>Database2023703369</title>
-<polygon fill="#ffffff" stroke="transparent" points="1824,-362 1476,-362 1476,-24 1824,-24 1824,-362"/>
-<text text-anchor="start" x="1481" y="-344.4" font-family="Times New Roman,serif" font-size="14.00">(C)Database</text>
-<text text-anchor="start" x="1481" y="-320.4" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;conn: Connection [0..1]</text>
-<text text-anchor="start" x="1481" y="-296.4" font-family="Times New Roman,serif" font-size="14.00">+ cleanEmptyGames()</text>
-<text text-anchor="start" x="1481" y="-272.4" font-family="Times New Roman,serif" font-size="14.00">+ closeDatabase()</text>
-<text text-anchor="start" x="1481" y="-248.4" font-family="Times New Roman,serif" font-size="14.00">+ deleteGame(id: int)</text>
-<text text-anchor="start" x="1481" y="-224.4" font-family="Times New Roman,serif" font-size="14.00">+ dropTable()</text>
-<text text-anchor="start" x="1481" y="-200.4" font-family="Times New Roman,serif" font-size="14.00">+ getPlayerName(id: int): String</text>
-<text text-anchor="start" x="1480.64" y="-176.4" font-family="Times New Roman,serif" font-size="14.00">+ insertGame(game: GameDescription, playerName: String)</text>
-<text text-anchor="start" x="1481" y="-152.4" font-family="Times New Roman,serif" font-size="14.00">+ loadGame(id: int): GameDescription</text>
-<text text-anchor="start" x="1481" y="-128.4" font-family="Times New Roman,serif" font-size="14.00">+ printAllGames(): boolean</text>
-<text text-anchor="start" x="1481" y="-104.4" font-family="Times New Roman,serif" font-size="14.00">+ selectAllGames(): List&lt;GameRecord&gt;</text>
-<text text-anchor="start" x="1481" y="-80.4" font-family="Times New Roman,serif" font-size="14.00">+ selectGame(id: int): GameRecord</text>
-<text text-anchor="start" x="1481" y="-56.4" font-family="Times New Roman,serif" font-size="14.00">+ updateGame(game: GameDescription)</text>
-<text text-anchor="start" x="1481" y="-32.4" font-family="Times New Roman,serif" font-size="14.00">&#45; updateGameId(game: GameDescription)</text>
-<polygon fill="black" stroke="black" points="1476,-337 1476,-337 1824,-337 1824,-337 1476,-337"/>
-<polygon fill="black" stroke="black" points="1476,-313 1476,-313 1824,-313 1824,-313 1476,-313"/>
-<polygon fill="none" stroke="black" points="1476,-24 1476,-362 1824,-362 1824,-24 1476,-24"/>
+<polygon fill="#ffffff" stroke="transparent" points="2013,-362 1665,-362 1665,-24 2013,-24 2013,-362"/>
+<text text-anchor="start" x="1670" y="-344.4" font-family="Times New Roman,serif" font-size="14.00">(C)Database</text>
+<text text-anchor="start" x="1670" y="-320.4" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;conn: Connection [0..1]</text>
+<text text-anchor="start" x="1670" y="-296.4" font-family="Times New Roman,serif" font-size="14.00">+ cleanEmptyGames()</text>
+<text text-anchor="start" x="1670" y="-272.4" font-family="Times New Roman,serif" font-size="14.00">+ closeDatabase()</text>
+<text text-anchor="start" x="1670" y="-248.4" font-family="Times New Roman,serif" font-size="14.00">+ deleteGame(id: int)</text>
+<text text-anchor="start" x="1670" y="-224.4" font-family="Times New Roman,serif" font-size="14.00">+ dropTable()</text>
+<text text-anchor="start" x="1670" y="-200.4" font-family="Times New Roman,serif" font-size="14.00">+ getPlayerName(id: int): String</text>
+<text text-anchor="start" x="1669.64" y="-176.4" font-family="Times New Roman,serif" font-size="14.00">+ insertGame(game: GameDescription, playerName: String)</text>
+<text text-anchor="start" x="1670" y="-152.4" font-family="Times New Roman,serif" font-size="14.00">+ loadGame(id: int): GameDescription</text>
+<text text-anchor="start" x="1670" y="-128.4" font-family="Times New Roman,serif" font-size="14.00">+ printAllGames(): boolean</text>
+<text text-anchor="start" x="1670" y="-104.4" font-family="Times New Roman,serif" font-size="14.00">+ selectAllGames(): List&lt;GameRecord&gt;</text>
+<text text-anchor="start" x="1670" y="-80.4" font-family="Times New Roman,serif" font-size="14.00">+ selectGame(id: int): GameRecord</text>
+<text text-anchor="start" x="1670" y="-56.4" font-family="Times New Roman,serif" font-size="14.00">+ updateGame(game: GameDescription)</text>
+<text text-anchor="start" x="1670" y="-32.4" font-family="Times New Roman,serif" font-size="14.00">&#45; updateGameId(game: GameDescription)</text>
+<polygon fill="black" stroke="black" points="1665,-337 1665,-337 2013,-337 2013,-337 1665,-337"/>
+<polygon fill="black" stroke="black" points="1665,-313 1665,-313 2013,-313 2013,-313 1665,-313"/>
+<polygon fill="none" stroke="black" points="1665,-24 1665,-362 2013,-362 2013,-24 1665,-24"/>
 </g>
 <!-- Engine1526836320&#45;&gt;Database2023703369 -->
 <g id="edge3" class="edge">
 <title>Engine1526836320&#45;&gt;Database2023703369</title>
-<path fill="none" stroke="black" d="M1353.14,-1738.65C1512.93,-1682.58 1787,-1586.4 1787,-1586.4 1787,-1586.4 1794,-1457.6 1794,-1457.6 1794,-1457.6 1794,-1457.6 1794,-694.4 1794,-694.4 1742.57,-515.7 1701.19,-371.87"/>
-<polygon fill="black" stroke="black" points="1704.48,-370.66 1698.35,-362.02 1697.75,-372.6 1704.48,-370.66"/>
-<text text-anchor="middle" x="1818.1" y="-1166" font-family="Times New Roman,serif" font-size="14.00">database</text>
-<text text-anchor="middle" x="1818.1" y="-1149.2" font-family="Times New Roman,serif" font-size="14.00">[0..1]</text>
+<path fill="none" stroke="black" d="M1642.26,-1729.77C1774.38,-1673.02 1976,-1586.4 1976,-1586.4 1976,-1586.4 1983,-1457.6 1983,-1457.6 1983,-1457.6 1983,-1457.6 1983,-694.4 1983,-694.4 1931.57,-515.7 1890.19,-371.87"/>
+<polygon fill="black" stroke="black" points="1893.48,-370.66 1887.35,-362.02 1886.75,-372.6 1893.48,-370.66"/>
+<text text-anchor="middle" x="2007.1" y="-1166" font-family="Times New Roman,serif" font-size="14.00">database</text>
+<text text-anchor="middle" x="2007.1" y="-1149.2" font-family="Times New Roman,serif" font-size="14.00">[0..1]</text>
 </g>
 <!-- StarshipExodus817824691 -->
 <g id="node6" class="node">
 <title>StarshipExodus817824691</title>
-<polygon fill="#ffffff" stroke="transparent" points="1097,-1222.8 597,-1222.8 597,-1100.8 1097,-1100.8 1097,-1222.8"/>
-<text text-anchor="start" x="602" y="-1205.2" font-family="Times New Roman,serif" font-size="14.00">(C)StarshipExodus</text>
-<text text-anchor="start" x="602" y="-1181.2" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;bossKilled: boolean [1]</text>
-<text text-anchor="start" x="602" y="-1157.2" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;execute: CommandsExecution [0..1]</text>
-<text text-anchor="start" x="602" y="-1133.2" font-family="Times New Roman,serif" font-size="14.00">+ init()</text>
-<text text-anchor="start" x="601.82" y="-1109.2" font-family="Times New Roman,serif" font-size="14.00">+ nextMove(p: ParserOutput, out: PrintStream, timer: GameTimer, database: Database)</text>
-<polygon fill="black" stroke="black" points="597,-1197.8 597,-1197.8 1097,-1197.8 1097,-1197.8 597,-1197.8"/>
-<polygon fill="black" stroke="black" points="597,-1149.8 597,-1149.8 1097,-1149.8 1097,-1149.8 597,-1149.8"/>
-<polygon fill="none" stroke="black" points="597,-1100.8 597,-1222.8 1097,-1222.8 1097,-1100.8 597,-1100.8"/>
+<polygon fill="#ffffff" stroke="transparent" points="1286,-1222.8 786,-1222.8 786,-1100.8 1286,-1100.8 1286,-1222.8"/>
+<text text-anchor="start" x="791" y="-1205.2" font-family="Times New Roman,serif" font-size="14.00">(C)StarshipExodus</text>
+<text text-anchor="start" x="791" y="-1181.2" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;bossKilled: boolean [1]</text>
+<text text-anchor="start" x="791" y="-1157.2" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;execute: CommandsExecution [0..1]</text>
+<text text-anchor="start" x="791" y="-1133.2" font-family="Times New Roman,serif" font-size="14.00">+ init()</text>
+<text text-anchor="start" x="790.82" y="-1109.2" font-family="Times New Roman,serif" font-size="14.00">+ nextMove(p: ParserOutput, out: PrintStream, timer: GameTimer, database: Database)</text>
+<polygon fill="black" stroke="black" points="786,-1197.8 786,-1197.8 1286,-1197.8 1286,-1197.8 786,-1197.8"/>
+<polygon fill="black" stroke="black" points="786,-1149.8 786,-1149.8 1286,-1149.8 1286,-1149.8 786,-1149.8"/>
+<polygon fill="none" stroke="black" points="786,-1100.8 786,-1222.8 1286,-1222.8 1286,-1100.8 786,-1100.8"/>
 </g>
 <!-- GameDescription1526836320&#45;&gt;StarshipExodus817824691 -->
 <g id="edge12" class="edge">
 <title>GameDescription1526836320&#45;&gt;StarshipExodus817824691</title>
-<path fill="none" stroke="black" d="M539.4,-1342.21C609.07,-1301.57 684.88,-1257.36 743.81,-1222.99"/>
-<polygon fill="none" stroke="black" points="537.37,-1339.34 530.5,-1347.4 540.9,-1345.39 537.37,-1339.34"/>
-</g>
-<!-- AdvObject2051418104 -->
-<g id="node7" class="node">
-<title>AdvObject2051418104</title>
-<polygon fill="#ffffff" stroke="transparent" points="388,-362 162,-362 162,-24 388,-24 388,-362"/>
-<text text-anchor="start" x="167" y="-344.4" font-family="Times New Roman,serif" font-size="14.00">(C)AdvObject</text>
-<text text-anchor="start" x="167" y="-320.4" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;alias: Set&lt;String&gt; [0..*]</text>
-<text text-anchor="start" x="167" y="-296.4" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;container: boolean [1]</text>
-<text text-anchor="start" x="167" y="-272.4" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;containerId: int [1]</text>
-<text text-anchor="start" x="167" y="-248.4" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;description: String [0..1]</text>
-<text text-anchor="start" x="167" y="-224.4" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;id: int [1]</text>
-<text text-anchor="start" x="167" y="-200.4" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;name: String [0..1]</text>
-<text text-anchor="start" x="166.6" y="-176.4" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;objectsList: List&lt;AdvObject&gt; [0..*]</text>
-<text text-anchor="start" x="167" y="-152.4" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;open: boolean [1]</text>
-<text text-anchor="start" x="167" y="-128.4" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;openable: boolean [1]</text>
-<text text-anchor="start" x="167" y="-104.4" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;pickupable: boolean [1]</text>
-<text text-anchor="start" x="167" y="-80.4" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;push: boolean [1]</text>
-<text text-anchor="start" x="167" y="-56.4" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;pushable: boolean [1]</text>
-<text text-anchor="start" x="167" y="-32.4" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;used: boolean [1]</text>
-<polygon fill="black" stroke="black" points="162,-337 162,-337 388,-337 388,-337 162,-337"/>
-<polygon fill="none" stroke="black" points="162,-24 162,-362 388,-362 388,-24 162,-24"/>
-</g>
-<!-- GameDescription1526836320&#45;&gt;AdvObject2051418104 -->
-<g id="edge8" class="edge">
-<title>GameDescription1526836320&#45;&gt;AdvObject2051418104</title>
-<path fill="none" stroke="black" d="M251.51,-1347.45C226.37,-1318.36 206,-1294.8 206,-1294.8 206,-1294.8 27,-969.2 27,-969.2 27,-969.2 27,-454.4 27,-454.4 27,-454.4 91.68,-386.49 154.98,-320.03"/>
-<polygon fill="black" stroke="black" points="157.52,-322.42 161.89,-312.77 152.45,-317.6 157.52,-322.42"/>
-<text text-anchor="middle" x="76.83" y="-998.2" font-family="Times New Roman,serif" font-size="14.00">inventory</text>
-<text text-anchor="middle" x="76.83" y="-981.4" font-family="Times New Roman,serif" font-size="14.00">[0..*]</text>
+<path fill="none" stroke="black" d="M722.28,-1342.21C793.34,-1301.57 870.65,-1257.36 930.75,-1222.99"/>
+<polygon fill="none" stroke="black" points="720.14,-1339.4 713.2,-1347.4 723.61,-1345.48 720.14,-1339.4"/>
 </g>
 <!-- Command2051418104 -->
 <g id="node8" class="node">
 <title>Command2051418104</title>
-<polygon fill="#ffffff" stroke="transparent" points="213.5,-756.4 36.5,-756.4 36.5,-634.4 213.5,-634.4 213.5,-756.4"/>
-<text text-anchor="start" x="42" y="-738.8" font-family="Times New Roman,serif" font-size="14.00">(C)Command</text>
-<text text-anchor="start" x="42" y="-714.8" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;alias: Set&lt;String&gt; [0..*]</text>
-<text text-anchor="start" x="42" y="-690.8" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;name: String [0..1]</text>
-<text text-anchor="start" x="41.71" y="-666.8" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;type: CommandType [0..1]</text>
-<text text-anchor="start" x="42" y="-642.8" font-family="Times New Roman,serif" font-size="14.00">+ addAlias(trim: String)</text>
-<polygon fill="black" stroke="black" points="37,-731.4 37,-731.4 214,-731.4 214,-731.4 37,-731.4"/>
-<polygon fill="black" stroke="black" points="37,-659.4 37,-659.4 214,-659.4 214,-659.4 37,-659.4"/>
-<polygon fill="none" stroke="black" points="36.5,-634.4 36.5,-756.4 213.5,-756.4 213.5,-634.4 36.5,-634.4"/>
+<polygon fill="#ffffff" stroke="transparent" points="201.5,-756.4 24.5,-756.4 24.5,-634.4 201.5,-634.4 201.5,-756.4"/>
+<text text-anchor="start" x="30" y="-738.8" font-family="Times New Roman,serif" font-size="14.00">(C)Command</text>
+<text text-anchor="start" x="30" y="-714.8" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;alias: Set&lt;String&gt; [0..*]</text>
+<text text-anchor="start" x="30" y="-690.8" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;name: String [0..1]</text>
+<text text-anchor="start" x="29.71" y="-666.8" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;type: CommandType [0..1]</text>
+<text text-anchor="start" x="30" y="-642.8" font-family="Times New Roman,serif" font-size="14.00">+ addAlias(trim: String)</text>
+<polygon fill="black" stroke="black" points="25,-731.4 25,-731.4 202,-731.4 202,-731.4 25,-731.4"/>
+<polygon fill="black" stroke="black" points="25,-659.4 25,-659.4 202,-659.4 202,-659.4 25,-659.4"/>
+<polygon fill="none" stroke="black" points="24.5,-634.4 24.5,-756.4 201.5,-756.4 201.5,-634.4 24.5,-634.4"/>
 </g>
 <!-- GameDescription1526836320&#45;&gt;Command2051418104 -->
-<g id="edge9" class="edge">
+<g id="edge8" class="edge">
 <title>GameDescription1526836320&#45;&gt;Command2051418104</title>
-<path fill="none" stroke="black" d="M298.15,-1347.45C285.55,-1318.36 275.35,-1294.8 275.35,-1294.8 275.35,-1294.8 182.36,-924.69 142.64,-766.62"/>
-<polygon fill="black" stroke="black" points="145.94,-765.36 140.1,-756.52 139.15,-767.07 145.94,-765.36"/>
-<text text-anchor="middle" x="305.33" y="-1166" font-family="Times New Roman,serif" font-size="14.00">commands</text>
-<text text-anchor="middle" x="305.33" y="-1149.2" font-family="Times New Roman,serif" font-size="14.00">[0..*]</text>
+<path fill="none" stroke="black" d="M390.39,-1347.45C354.46,-1318.36 325.35,-1294.8 325.35,-1294.8 325.35,-1294.8 193.75,-923.95 137.75,-766.14"/>
+<polygon fill="black" stroke="black" points="140.98,-764.77 134.33,-756.52 134.38,-767.11 140.98,-764.77"/>
+<text text-anchor="middle" x="355.33" y="-1166" font-family="Times New Roman,serif" font-size="14.00">commands</text>
+<text text-anchor="middle" x="355.33" y="-1149.2" font-family="Times New Roman,serif" font-size="14.00">[0..*]</text>
+</g>
+<!-- Inventory2051418104 -->
+<g id="node9" class="node">
+<title>Inventory2051418104</title>
+<polygon fill="#ffffff" stroke="transparent" points="402,-744.4 220,-744.4 220,-646.4 402,-646.4 402,-744.4"/>
+<text text-anchor="start" x="225" y="-726.8" font-family="Times New Roman,serif" font-size="14.00">(C)Inventory</text>
+<text text-anchor="start" x="224.76" y="-702.8" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;list: List&lt;AdvObject&gt; [0..*]</text>
+<text text-anchor="start" x="225" y="-678.8" font-family="Times New Roman,serif" font-size="14.00">+ add(o: AdvObject)</text>
+<text text-anchor="start" x="225" y="-654.8" font-family="Times New Roman,serif" font-size="14.00">+ remove(o: AdvObject)</text>
+<polygon fill="black" stroke="black" points="220,-719.4 220,-719.4 402,-719.4 402,-719.4 220,-719.4"/>
+<polygon fill="black" stroke="black" points="220,-695.4 220,-695.4 402,-695.4 402,-695.4 220,-695.4"/>
+<polygon fill="none" stroke="black" points="220,-646.4 220,-744.4 402,-744.4 402,-646.4 220,-646.4"/>
+</g>
+<!-- GameDescription1526836320&#45;&gt;Inventory2051418104 -->
+<g id="edge9" class="edge">
+<title>GameDescription1526836320&#45;&gt;Inventory2051418104</title>
+<path fill="none" stroke="black" d="M475.13,-1347.45C461.99,-1318.36 451.34,-1294.8 451.34,-1294.8 451.34,-1294.8 359.91,-904.96 324.65,-754.59"/>
+<polygon fill="black" stroke="black" points="328,-753.55 322.31,-744.61 321.18,-755.15 328,-753.55"/>
+<text text-anchor="middle" x="477.83" y="-1166" font-family="Times New Roman,serif" font-size="14.00">inventory</text>
+<text text-anchor="middle" x="477.83" y="-1149.2" font-family="Times New Roman,serif" font-size="14.00">[0..1]</text>
 </g>
 <!-- Room2051418104 -->
-<g id="node9" class="node">
+<g id="node10" class="node">
 <title>Room2051418104</title>
-<polygon fill="#ffffff" stroke="transparent" points="572.5,-936.4 231.5,-936.4 231.5,-454.4 572.5,-454.4 572.5,-936.4"/>
-<text text-anchor="start" x="237" y="-918.8" font-family="Times New Roman,serif" font-size="14.00">(C)Room</text>
-<text text-anchor="start" x="237" y="-894.8" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;accessible: boolean [1]</text>
-<text text-anchor="start" x="237" y="-870.8" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;description: String [0..1]</text>
-<text text-anchor="start" x="237" y="-846.8" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;east: Room [0..1]</text>
-<text text-anchor="start" x="237" y="-822.8" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;eastId: int [1]</text>
-<text text-anchor="start" x="237" y="-798.8" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;id: int [1]</text>
-<text text-anchor="start" x="237" y="-774.8" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;inaccessibleMessage: String [0..1]</text>
-<text text-anchor="start" x="237" y="-750.8" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;intro: String [0..1]</text>
-<text text-anchor="start" x="237" y="-726.8" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;look: String [0..1]</text>
-<text text-anchor="start" x="237" y="-702.8" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;name: String [0..1]</text>
-<text text-anchor="start" x="237" y="-678.8" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;north: Room [0..1]</text>
-<text text-anchor="start" x="237" y="-654.8" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;northId: int [1]</text>
-<text text-anchor="start" x="237" y="-630.8" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;objects: List&lt;AdvObject&gt; [0..*]</text>
-<text text-anchor="start" x="237" y="-606.8" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;south: Room [0..1]</text>
-<text text-anchor="start" x="237" y="-582.8" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;southId: int [1]</text>
-<text text-anchor="start" x="237" y="-558.8" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;visible: boolean [1]</text>
-<text text-anchor="start" x="237" y="-534.8" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;visited: boolean [1]</text>
-<text text-anchor="start" x="237" y="-510.8" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;west: Room [0..1]</text>
-<text text-anchor="start" x="237" y="-486.8" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;westId: int [1]</text>
-<text text-anchor="start" x="236.66" y="-462.8" font-family="Times New Roman,serif" font-size="14.00">+ findRoomById(rooms: List&lt;Room&gt;, roomId: int): Room</text>
-<polygon fill="black" stroke="black" points="232,-911.4 232,-911.4 573,-911.4 573,-911.4 232,-911.4"/>
-<polygon fill="black" stroke="black" points="232,-479.4 232,-479.4 573,-479.4 573,-479.4 232,-479.4"/>
-<polygon fill="none" stroke="black" points="231.5,-454.4 231.5,-936.4 572.5,-936.4 572.5,-454.4 231.5,-454.4"/>
+<polygon fill="#ffffff" stroke="transparent" points="761.5,-936.4 420.5,-936.4 420.5,-454.4 761.5,-454.4 761.5,-936.4"/>
+<text text-anchor="start" x="426" y="-918.8" font-family="Times New Roman,serif" font-size="14.00">(C)Room</text>
+<text text-anchor="start" x="426" y="-894.8" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;accessible: boolean [1]</text>
+<text text-anchor="start" x="426" y="-870.8" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;description: String [0..1]</text>
+<text text-anchor="start" x="426" y="-846.8" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;east: Room [0..1]</text>
+<text text-anchor="start" x="426" y="-822.8" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;eastId: int [1]</text>
+<text text-anchor="start" x="426" y="-798.8" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;id: int [1]</text>
+<text text-anchor="start" x="426" y="-774.8" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;inaccessibleMessage: String [0..1]</text>
+<text text-anchor="start" x="426" y="-750.8" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;intro: String [0..1]</text>
+<text text-anchor="start" x="426" y="-726.8" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;look: String [0..1]</text>
+<text text-anchor="start" x="426" y="-702.8" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;name: String [0..1]</text>
+<text text-anchor="start" x="426" y="-678.8" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;north: Room [0..1]</text>
+<text text-anchor="start" x="426" y="-654.8" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;northId: int [1]</text>
+<text text-anchor="start" x="426" y="-630.8" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;objects: List&lt;AdvObject&gt; [0..*]</text>
+<text text-anchor="start" x="426" y="-606.8" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;south: Room [0..1]</text>
+<text text-anchor="start" x="426" y="-582.8" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;southId: int [1]</text>
+<text text-anchor="start" x="426" y="-558.8" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;visible: boolean [1]</text>
+<text text-anchor="start" x="426" y="-534.8" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;visited: boolean [1]</text>
+<text text-anchor="start" x="426" y="-510.8" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;west: Room [0..1]</text>
+<text text-anchor="start" x="426" y="-486.8" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;westId: int [1]</text>
+<text text-anchor="start" x="425.66" y="-462.8" font-family="Times New Roman,serif" font-size="14.00">+ findRoomById(rooms: List&lt;Room&gt;, roomId: int): Room</text>
+<polygon fill="black" stroke="black" points="421,-911.4 421,-911.4 762,-911.4 762,-911.4 421,-911.4"/>
+<polygon fill="black" stroke="black" points="421,-479.4 421,-479.4 762,-479.4 762,-479.4 421,-479.4"/>
+<polygon fill="none" stroke="black" points="420.5,-454.4 420.5,-936.4 761.5,-936.4 761.5,-454.4 420.5,-454.4"/>
 </g>
 <!-- GameDescription1526836320&#45;&gt;Room2051418104 -->
 <g id="edge10" class="edge">
 <title>GameDescription1526836320&#45;&gt;Room2051418104</title>
-<path fill="none" stroke="black" d="M367.87,-1347.45C374.02,-1318.36 379,-1294.8 379,-1294.8 379,-1294.8 386.07,-1110.93 392.37,-947.04"/>
-<polygon fill="black" stroke="black" points="395.87,-946.9 392.76,-936.77 388.88,-946.63 395.87,-946.9"/>
-<text text-anchor="middle" x="424.93" y="-1166" font-family="Times New Roman,serif" font-size="14.00">currentRoom</text>
-<text text-anchor="middle" x="424.93" y="-1149.2" font-family="Times New Roman,serif" font-size="14.00">[0..1]</text>
+<path fill="none" stroke="black" d="M514,-1347.45C511.31,-1318.36 509.13,-1294.8 509.13,-1294.8 509.13,-1294.8 509.13,-1028.8 509.13,-1028.8 509.13,-1028.8 517.74,-993.83 529.38,-946.58"/>
+<polygon fill="black" stroke="black" points="532.83,-947.2 531.83,-936.65 526.04,-945.52 532.83,-947.2"/>
+<text text-anchor="middle" x="545.93" y="-1166" font-family="Times New Roman,serif" font-size="14.00">currentRoom</text>
+<text text-anchor="middle" x="545.93" y="-1149.2" font-family="Times New Roman,serif" font-size="14.00">[0..1]</text>
 </g>
 <!-- GameDescription1526836320&#45;&gt;Room2051418104 -->
 <g id="edge11" class="edge">
 <title>GameDescription1526836320&#45;&gt;Room2051418104</title>
-<path fill="none" stroke="black" d="M341.64,-1347.45C340.74,-1318.36 340,-1294.8 340,-1294.8 340,-1294.8 340,-1028.8 340,-1028.8 340,-1028.8 346.53,-993.83 355.34,-946.58"/>
-<polygon fill="black" stroke="black" points="358.8,-947.12 357.19,-936.65 351.92,-945.84 358.8,-947.12"/>
-<text text-anchor="middle" x="357.5" y="-1166" font-family="Times New Roman,serif" font-size="14.00">rooms</text>
-<text text-anchor="middle" x="357.5" y="-1149.2" font-family="Times New Roman,serif" font-size="14.00">[0..*]</text>
+<path fill="none" stroke="black" d="M563.68,-1347.45C574.35,-1318.36 583,-1294.8 583,-1294.8 583,-1294.8 585.46,-1110.93 587.65,-947.04"/>
+<polygon fill="black" stroke="black" points="591.15,-946.82 587.79,-936.77 584.15,-946.73 591.15,-946.82"/>
+<text text-anchor="middle" x="603.5" y="-1166" font-family="Times New Roman,serif" font-size="14.00">rooms</text>
+<text text-anchor="middle" x="603.5" y="-1149.2" font-family="Times New Roman,serif" font-size="14.00">[0..*]</text>
 </g>
 <!-- Utils1526836320 -->
 <g id="node4" class="node">
 <title>Utils1526836320</title>
-<polygon fill="#ffffff" stroke="transparent" points="1679,-1294.8 1259,-1294.8 1259,-1028.8 1679,-1028.8 1679,-1294.8"/>
-<text text-anchor="start" x="1264" y="-1277.2" font-family="Times New Roman,serif" font-size="14.00">(C)Utils</text>
-<text text-anchor="start" x="1264" y="-1253.2" font-family="Times New Roman,serif" font-size="14.00">+ deserializeObject(data: byte[]): Object</text>
-<text text-anchor="start" x="1264" y="-1229.2" font-family="Times New Roman,serif" font-size="14.00">+ findObjectById(objectsList: List&lt;AdvObject&gt;, id: int): AdvObject</text>
-<text text-anchor="start" x="1264" y="-1205.2" font-family="Times New Roman,serif" font-size="14.00">+ loadFileListInSet(file: File): Set&lt;String&gt;</text>
-<text text-anchor="start" x="1263.8" y="-1181.2" font-family="Times New Roman,serif" font-size="14.00">+ loadObjectsFromFile(filePath: String, objectType: Class&lt;T&gt;): List&lt;T&gt;</text>
-<text text-anchor="start" x="1264" y="-1157.2" font-family="Times New Roman,serif" font-size="14.00">+ parseString(string: String, stopwords: Set&lt;String&gt;): List&lt;String&gt;</text>
-<text text-anchor="start" x="1264" y="-1133.2" font-family="Times New Roman,serif" font-size="14.00">+ printFromFile(filename: String)</text>
-<text text-anchor="start" x="1264" y="-1109.2" font-family="Times New Roman,serif" font-size="14.00">+ printFromFilePlaceholder(filename: String, placeholder: String)</text>
-<text text-anchor="start" x="1264" y="-1085.2" font-family="Times New Roman,serif" font-size="14.00">+ printGameTime(totalSeconds: int): String</text>
-<text text-anchor="start" x="1264" y="-1061.2" font-family="Times New Roman,serif" font-size="14.00">+ serializeObject(obj: Object): byte[]</text>
-<text text-anchor="start" x="1264" y="-1037.2" font-family="Times New Roman,serif" font-size="14.00">+ waitForEnter()</text>
-<polygon fill="black" stroke="black" points="1259,-1269.8 1259,-1269.8 1679,-1269.8 1679,-1269.8 1259,-1269.8"/>
-<polygon fill="none" stroke="black" points="1259,-1028.8 1259,-1294.8 1679,-1294.8 1679,-1028.8 1259,-1028.8"/>
+<polygon fill="#ffffff" stroke="transparent" points="1868,-1294.8 1448,-1294.8 1448,-1028.8 1868,-1028.8 1868,-1294.8"/>
+<text text-anchor="start" x="1453" y="-1277.2" font-family="Times New Roman,serif" font-size="14.00">(C)Utils</text>
+<text text-anchor="start" x="1453" y="-1253.2" font-family="Times New Roman,serif" font-size="14.00">+ deserializeObject(data: byte[]): Object</text>
+<text text-anchor="start" x="1453" y="-1229.2" font-family="Times New Roman,serif" font-size="14.00">+ findObjectById(objectsList: List&lt;AdvObject&gt;, id: int): AdvObject</text>
+<text text-anchor="start" x="1453" y="-1205.2" font-family="Times New Roman,serif" font-size="14.00">+ loadFileListInSet(file: File): Set&lt;String&gt;</text>
+<text text-anchor="start" x="1452.8" y="-1181.2" font-family="Times New Roman,serif" font-size="14.00">+ loadObjectsFromFile(filePath: String, objectType: Class&lt;T&gt;): List&lt;T&gt;</text>
+<text text-anchor="start" x="1453" y="-1157.2" font-family="Times New Roman,serif" font-size="14.00">+ parseString(string: String, stopwords: Set&lt;String&gt;): List&lt;String&gt;</text>
+<text text-anchor="start" x="1453" y="-1133.2" font-family="Times New Roman,serif" font-size="14.00">+ printFromFile(filename: String)</text>
+<text text-anchor="start" x="1453" y="-1109.2" font-family="Times New Roman,serif" font-size="14.00">+ printFromFilePlaceholder(filename: String, placeholder: String)</text>
+<text text-anchor="start" x="1453" y="-1085.2" font-family="Times New Roman,serif" font-size="14.00">+ printGameTime(totalSeconds: int): String</text>
+<text text-anchor="start" x="1453" y="-1061.2" font-family="Times New Roman,serif" font-size="14.00">+ serializeObject(obj: Object): byte[]</text>
+<text text-anchor="start" x="1453" y="-1037.2" font-family="Times New Roman,serif" font-size="14.00">+ waitForEnter()</text>
+<polygon fill="black" stroke="black" points="1448,-1269.8 1448,-1269.8 1868,-1269.8 1868,-1269.8 1448,-1269.8"/>
+<polygon fill="none" stroke="black" points="1448,-1028.8 1448,-1294.8 1868,-1294.8 1868,-1028.8 1448,-1028.8"/>
 </g>
 <!-- CommandsExecution817824691 -->
 <g id="node5" class="node">
 <title>CommandsExecution817824691</title>
-<polygon fill="#ffffff" stroke="transparent" points="1243,-816.4 597,-816.4 597,-574.4 1243,-574.4 1243,-816.4"/>
-<text text-anchor="start" x="602" y="-798.8" font-family="Times New Roman,serif" font-size="14.00">(C)CommandsExecution</text>
-<text text-anchor="start" x="602" y="-774.8" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;alienKillled: boolean [1]</text>
-<text text-anchor="start" x="602" y="-750.8" font-family="Times New Roman,serif" font-size="14.00">+ attackBoss(bossKilled: boolean, room: Room, out: PrintStream)</text>
-<text text-anchor="start" x="602" y="-726.8" font-family="Times New Roman,serif" font-size="14.00">+ end(out: PrintStream, totalGameTime: int)</text>
-<text text-anchor="start" x="602" y="-702.8" font-family="Times New Roman,serif" font-size="14.00">+ openItem(object: AdvObject, out: PrintStream)</text>
-<text text-anchor="start" x="602" y="-678.8" font-family="Times New Roman,serif" font-size="14.00">+ pickItem(object: AdvObject, out: PrintStream, inventory: List&lt;AdvObject&gt;, currentRoom: Room)</text>
-<text text-anchor="start" x="602" y="-654.8" font-family="Times New Roman,serif" font-size="14.00">+ showHelp(): JDialog</text>
-<text text-anchor="start" x="602" y="-630.8" font-family="Times New Roman,serif" font-size="14.00">+ showMap()</text>
-<text text-anchor="start" x="602" y="-606.8" font-family="Times New Roman,serif" font-size="14.00">+ showNotes()</text>
-<text text-anchor="start" x="601.94" y="-582.8" font-family="Times New Roman,serif" font-size="14.00">+ useItem(object: AdvObject, out: PrintStream, timer: GameTimer, game: GameDescription, database: Database)</text>
-<polygon fill="black" stroke="black" points="597,-791.4 597,-791.4 1243,-791.4 1243,-791.4 597,-791.4"/>
-<polygon fill="black" stroke="black" points="597,-767.4 597,-767.4 1243,-767.4 1243,-767.4 597,-767.4"/>
-<polygon fill="none" stroke="black" points="597,-574.4 597,-816.4 1243,-816.4 1243,-574.4 597,-574.4"/>
+<polygon fill="#ffffff" stroke="transparent" points="1432,-816.4 786,-816.4 786,-574.4 1432,-574.4 1432,-816.4"/>
+<text text-anchor="start" x="791" y="-798.8" font-family="Times New Roman,serif" font-size="14.00">(C)CommandsExecution</text>
+<text text-anchor="start" x="791" y="-774.8" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;alienKillled: boolean [1]</text>
+<text text-anchor="start" x="791" y="-750.8" font-family="Times New Roman,serif" font-size="14.00">+ attackBoss(bossKilled: boolean, room: Room, out: PrintStream)</text>
+<text text-anchor="start" x="791" y="-726.8" font-family="Times New Roman,serif" font-size="14.00">+ end(out: PrintStream, totalGameTime: int)</text>
+<text text-anchor="start" x="791" y="-702.8" font-family="Times New Roman,serif" font-size="14.00">+ openItem(object: AdvObject, out: PrintStream)</text>
+<text text-anchor="start" x="791" y="-678.8" font-family="Times New Roman,serif" font-size="14.00">+ pickItem(object: AdvObject, out: PrintStream, inventory: Inventory, currentRoom: Room)</text>
+<text text-anchor="start" x="791" y="-654.8" font-family="Times New Roman,serif" font-size="14.00">+ showHelp(): JDialog</text>
+<text text-anchor="start" x="791" y="-630.8" font-family="Times New Roman,serif" font-size="14.00">+ showMap()</text>
+<text text-anchor="start" x="791" y="-606.8" font-family="Times New Roman,serif" font-size="14.00">+ showNotes()</text>
+<text text-anchor="start" x="790.94" y="-582.8" font-family="Times New Roman,serif" font-size="14.00">+ useItem(object: AdvObject, out: PrintStream, timer: GameTimer, game: GameDescription, database: Database)</text>
+<polygon fill="black" stroke="black" points="786,-791.4 786,-791.4 1432,-791.4 1432,-791.4 786,-791.4"/>
+<polygon fill="black" stroke="black" points="786,-767.4 786,-767.4 1432,-767.4 1432,-767.4 786,-767.4"/>
+<polygon fill="none" stroke="black" points="786,-574.4 786,-816.4 1432,-816.4 1432,-574.4 786,-574.4"/>
 </g>
 <!-- WeatherApi1873469324 -->
-<g id="node11" class="node">
+<g id="node12" class="node">
 <title>WeatherApi1873469324</title>
-<polygon fill="#ffffff" stroke="transparent" points="1037.5,-230 802.5,-230 802.5,-156 1037.5,-156 1037.5,-230"/>
-<text text-anchor="start" x="808" y="-212.4" font-family="Times New Roman,serif" font-size="14.00">(C)WeatherApi</text>
-<text text-anchor="start" x="808" y="-188.4" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;city: String [0..1]</text>
-<text text-anchor="start" x="807.51" y="-164.4" font-family="Times New Roman,serif" font-size="14.00">+ getWeatherData(city: String): boolean</text>
-<polygon fill="black" stroke="black" points="803,-205 803,-205 1038,-205 1038,-205 803,-205"/>
-<polygon fill="black" stroke="black" points="803,-181 803,-181 1038,-181 1038,-181 803,-181"/>
-<polygon fill="none" stroke="black" points="802.5,-156 802.5,-230 1037.5,-230 1037.5,-156 802.5,-156"/>
+<polygon fill="#ffffff" stroke="transparent" points="1226.5,-230 991.5,-230 991.5,-156 1226.5,-156 1226.5,-230"/>
+<text text-anchor="start" x="997" y="-212.4" font-family="Times New Roman,serif" font-size="14.00">(C)WeatherApi</text>
+<text text-anchor="start" x="997" y="-188.4" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;city: String [0..1]</text>
+<text text-anchor="start" x="996.51" y="-164.4" font-family="Times New Roman,serif" font-size="14.00">+ getWeatherData(city: String): boolean</text>
+<polygon fill="black" stroke="black" points="992,-205 992,-205 1227,-205 1227,-205 992,-205"/>
+<polygon fill="black" stroke="black" points="992,-181 992,-181 1227,-181 1227,-181 992,-181"/>
+<polygon fill="none" stroke="black" points="991.5,-156 991.5,-230 1226.5,-230 1226.5,-156 991.5,-156"/>
 </g>
 <!-- CommandsExecution817824691&#45;&gt;WeatherApi1873469324 -->
 <g id="edge2" class="edge">
 <title>CommandsExecution817824691&#45;&gt;WeatherApi1873469324</title>
-<path fill="none" stroke="black" d="M920,-574.22C920,-466.93 920,-315.46 920,-240.19"/>
-<polygon fill="black" stroke="black" points="923.5,-240.09 920,-230.09 916.5,-240.09 923.5,-240.09"/>
-<text text-anchor="middle" x="1006.73" y="-415.4" font-family="Times New Roman,serif" font-size="14.00">useItem() &#45;&gt; getWeatherData()</text>
+<path fill="none" stroke="black" d="M1109,-574.22C1109,-466.93 1109,-315.46 1109,-240.19"/>
+<polygon fill="black" stroke="black" points="1112.5,-240.09 1109,-230.09 1105.5,-240.09 1112.5,-240.09"/>
+<text text-anchor="middle" x="1195.73" y="-415.4" font-family="Times New Roman,serif" font-size="14.00">useItem() &#45;&gt; getWeatherData()</text>
 </g>
 <!-- CommandsExecution817824691&#45;&gt;Database2023703369 -->
 <g id="edge1" class="edge">
 <title>CommandsExecution817824691&#45;&gt;Database2023703369</title>
-<path fill="none" stroke="black" d="M1051.44,-574.11C1139.21,-493.79 1238.64,-402.8 1238.64,-402.8 1238.64,-402.8 1356.91,-342.77 1466.61,-287.08"/>
-<polygon fill="black" stroke="black" points="1468.51,-290.05 1475.84,-282.4 1465.34,-283.8 1468.51,-290.05"/>
-<text text-anchor="middle" x="1312.68" y="-415.4" font-family="Times New Roman,serif" font-size="14.00">useItem() &#45;&gt; deleteGame()</text>
+<path fill="none" stroke="black" d="M1240.44,-574.11C1328.21,-493.79 1427.64,-402.8 1427.64,-402.8 1427.64,-402.8 1545.91,-342.77 1655.61,-287.08"/>
+<polygon fill="black" stroke="black" points="1657.51,-290.05 1664.84,-282.4 1654.34,-283.8 1657.51,-290.05"/>
+<text text-anchor="middle" x="1501.68" y="-415.4" font-family="Times New Roman,serif" font-size="14.00">useItem() &#45;&gt; deleteGame()</text>
 </g>
 <!-- StarshipExodus817824691&#45;&gt;CommandsExecution817824691 -->
-<g id="edge17" class="edge">
+<g id="edge18" class="edge">
 <title>StarshipExodus817824691&#45;&gt;CommandsExecution817824691</title>
-<path fill="none" stroke="black" d="M856.47,-1100.56C867.33,-1031.49 885.44,-916.23 899.56,-826.43"/>
-<polygon fill="black" stroke="black" points="903.03,-826.86 901.13,-816.44 896.12,-825.78 903.03,-826.86"/>
-<text text-anchor="middle" x="895.37" y="-998.2" font-family="Times New Roman,serif" font-size="14.00">execute</text>
-<text text-anchor="middle" x="895.37" y="-981.4" font-family="Times New Roman,serif" font-size="14.00">[0..1]</text>
+<path fill="none" stroke="black" d="M1045.47,-1100.56C1056.33,-1031.49 1074.44,-916.23 1088.56,-826.43"/>
+<polygon fill="black" stroke="black" points="1092.03,-826.86 1090.13,-816.44 1085.12,-825.78 1092.03,-826.86"/>
+<text text-anchor="middle" x="1084.37" y="-998.2" font-family="Times New Roman,serif" font-size="14.00">execute</text>
+<text text-anchor="middle" x="1084.37" y="-981.4" font-family="Times New Roman,serif" font-size="14.00">[0..1]</text>
 </g>
 <!-- StarshipExodus817824691&#45;&gt;Room2051418104 -->
-<g id="edge18" class="edge">
+<g id="edge19" class="edge">
 <title>StarshipExodus817824691&#45;&gt;Room2051418104</title>
-<path fill="none" stroke="black" d="M764.82,-1100.7C687.98,-1044.51 585,-969.2 585,-969.2 585,-969.2 578.82,-959.99 568.73,-944.94"/>
-<polygon fill="black" stroke="black" points="571.59,-942.92 563.11,-936.56 565.77,-946.82 571.59,-942.92"/>
-<text text-anchor="middle" x="711.82" y="-989.8" font-family="Times New Roman,serif" font-size="14.00">init() &#45;&gt; findRoomById()</text>
+<path fill="none" stroke="black" d="M953.82,-1100.7C876.98,-1044.51 774,-969.2 774,-969.2 774,-969.2 767.82,-959.99 757.73,-944.94"/>
+<polygon fill="black" stroke="black" points="760.59,-942.92 752.11,-936.56 754.77,-946.82 760.59,-942.92"/>
+<text text-anchor="middle" x="900.82" y="-989.8" font-family="Times New Roman,serif" font-size="14.00">init() &#45;&gt; findRoomById()</text>
+</g>
+<!-- AdvObject2051418104 -->
+<g id="node7" class="node">
+<title>AdvObject2051418104</title>
+<polygon fill="#ffffff" stroke="transparent" points="564,-362 338,-362 338,-24 564,-24 564,-362"/>
+<text text-anchor="start" x="343" y="-344.4" font-family="Times New Roman,serif" font-size="14.00">(C)AdvObject</text>
+<text text-anchor="start" x="343" y="-320.4" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;alias: Set&lt;String&gt; [0..*]</text>
+<text text-anchor="start" x="343" y="-296.4" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;container: boolean [1]</text>
+<text text-anchor="start" x="343" y="-272.4" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;containerId: int [1]</text>
+<text text-anchor="start" x="343" y="-248.4" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;description: String [0..1]</text>
+<text text-anchor="start" x="343" y="-224.4" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;id: int [1]</text>
+<text text-anchor="start" x="343" y="-200.4" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;name: String [0..1]</text>
+<text text-anchor="start" x="342.6" y="-176.4" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;objectsList: List&lt;AdvObject&gt; [0..*]</text>
+<text text-anchor="start" x="343" y="-152.4" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;open: boolean [1]</text>
+<text text-anchor="start" x="343" y="-128.4" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;openable: boolean [1]</text>
+<text text-anchor="start" x="343" y="-104.4" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;pickupable: boolean [1]</text>
+<text text-anchor="start" x="343" y="-80.4" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;push: boolean [1]</text>
+<text text-anchor="start" x="343" y="-56.4" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;pushable: boolean [1]</text>
+<text text-anchor="start" x="343" y="-32.4" font-family="Times New Roman,serif" font-size="14.00">&#45; &#160;&#160;used: boolean [1]</text>
+<polygon fill="black" stroke="black" points="338,-337 338,-337 564,-337 564,-337 338,-337"/>
+<polygon fill="none" stroke="black" points="338,-24 338,-362 564,-362 564,-24 338,-24"/>
+</g>
+<!-- Inventory2051418104&#45;&gt;AdvObject2051418104 -->
+<g id="edge13" class="edge">
+<title>Inventory2051418104&#45;&gt;AdvObject2051418104</title>
+<path fill="none" stroke="black" d="M324.55,-645.96C342.18,-582.94 373.96,-469.35 401.25,-371.81"/>
+<polygon fill="black" stroke="black" points="404.64,-372.7 403.96,-362.13 397.9,-370.81 404.64,-372.7"/>
+<text text-anchor="middle" x="404.16" y="-423.8" font-family="Times New Roman,serif" font-size="14.00">list</text>
+<text text-anchor="middle" x="404.16" y="-407" font-family="Times New Roman,serif" font-size="14.00">[0..*]</text>
 </g>
 <!-- Room2051418104&#45;&gt;AdvObject2051418104 -->
-<g id="edge16" class="edge">
+<g id="edge17" class="edge">
 <title>Room2051418104&#45;&gt;AdvObject2051418104</title>
-<path fill="none" stroke="black" d="M341.01,-454.09C333.99,-426.42 326.92,-398.58 320.16,-371.94"/>
-<polygon fill="black" stroke="black" points="323.54,-371.01 317.68,-362.18 316.75,-372.73 323.54,-371.01"/>
-<text text-anchor="middle" x="353.83" y="-423.8" font-family="Times New Roman,serif" font-size="14.00">objects</text>
-<text text-anchor="middle" x="353.83" y="-407" font-family="Times New Roman,serif" font-size="14.00">[0..*]</text>
+<path fill="none" stroke="black" d="M523.77,-454.09C516.02,-426.42 508.24,-398.58 500.78,-371.94"/>
+<polygon fill="black" stroke="black" points="504.12,-370.87 498.05,-362.18 497.38,-372.75 504.12,-370.87"/>
+<text text-anchor="middle" x="535.83" y="-423.8" font-family="Times New Roman,serif" font-size="14.00">objects</text>
+<text text-anchor="middle" x="535.83" y="-407" font-family="Times New Roman,serif" font-size="14.00">[0..*]</text>
 </g>
 <!-- MenuSwing1873475245&#45;&gt;Engine1526836320 -->
-<g id="edge14" class="edge">
+<g id="edge15" class="edge">
 <title>MenuSwing1873475245&#45;&gt;Engine1526836320</title>
-<path fill="none" stroke="black" d="M1565.05,-1553.9C1546.67,-1572.53 1533,-1586.4 1533,-1586.4 1533,-1586.4 1488,-1628 1488,-1628 1488,-1628 1424.65,-1666.47 1362.11,-1704.45"/>
-<polygon fill="black" stroke="black" points="1360.03,-1701.62 1353.3,-1709.8 1363.66,-1707.6 1360.03,-1701.62"/>
-<text text-anchor="middle" x="1541.66" y="-1615.4" font-family="Times New Roman,serif" font-size="14.00">engine</text>
-<text text-anchor="middle" x="1541.66" y="-1598.6" font-family="Times New Roman,serif" font-size="14.00">[0..1]</text>
+<path fill="none" stroke="black" d="M1829.81,-1553.76C1822.1,-1592.41 1815,-1628 1815,-1628 1815,-1628 1728.76,-1673.39 1651.16,-1714.23"/>
+<polygon fill="black" stroke="black" points="1649.45,-1711.18 1642.23,-1718.93 1652.71,-1717.37 1649.45,-1711.18"/>
+<text text-anchor="middle" x="1839.66" y="-1615.4" font-family="Times New Roman,serif" font-size="14.00">engine</text>
+<text text-anchor="middle" x="1839.66" y="-1598.6" font-family="Times New Roman,serif" font-size="14.00">[0..1]</text>
 </g>
 <!-- MenuSwing1873475245&#45;&gt;CommandsExecution817824691 -->
-<g id="edge13" class="edge">
+<g id="edge14" class="edge">
 <title>MenuSwing1873475245&#45;&gt;CommandsExecution817824691</title>
-<path fill="none" stroke="black" d="M1698.15,-1359.46C1704.99,-1342.21 1710,-1329.6 1710,-1329.6 1710,-1329.6 1710,-1312.8 1710,-1312.8 1710,-1312.8 1693,-1028.8 1693,-1028.8 1693,-1028.8 1247,-969.2 1247,-969.2 1247,-969.2 1157.14,-894.23 1071.63,-822.9"/>
-<polygon fill="black" stroke="black" points="1073.82,-820.17 1063.9,-816.45 1069.34,-825.54 1073.82,-820.17"/>
-<text text-anchor="middle" x="1729.37" y="-1166" font-family="Times New Roman,serif" font-size="14.00">execute</text>
-<text text-anchor="middle" x="1729.37" y="-1149.2" font-family="Times New Roman,serif" font-size="14.00">[0..1]</text>
+<path fill="none" stroke="black" d="M1887.15,-1359.46C1893.99,-1342.21 1899,-1329.6 1899,-1329.6 1899,-1329.6 1899,-1312.8 1899,-1312.8 1899,-1312.8 1882,-1028.8 1882,-1028.8 1882,-1028.8 1436,-969.2 1436,-969.2 1436,-969.2 1346.14,-894.23 1260.63,-822.9"/>
+<polygon fill="black" stroke="black" points="1262.82,-820.17 1252.9,-816.45 1258.34,-825.54 1262.82,-820.17"/>
+<text text-anchor="middle" x="1918.37" y="-1166" font-family="Times New Roman,serif" font-size="14.00">execute</text>
+<text text-anchor="middle" x="1918.37" y="-1149.2" font-family="Times New Roman,serif" font-size="14.00">[0..1]</text>
 </g>
 <!-- Parser159413907&#45;&gt;Utils1526836320 -->
-<g id="edge15" class="edge">
+<g id="edge16" class="edge">
 <title>Parser159413907&#45;&gt;Utils1526836320</title>
-<path fill="none" stroke="black" d="M1232.97,-1383.6C1259.42,-1358.86 1289.99,-1330.25 1320.19,-1302.01"/>
-<polygon fill="black" stroke="black" points="1322.94,-1304.23 1327.85,-1294.84 1318.16,-1299.11 1322.94,-1304.23"/>
-<text text-anchor="middle" x="1368.75" y="-1317" font-family="Times New Roman,serif" font-size="14.00">parse() &#45;&gt; parseString()</text>
+<path fill="none" stroke="black" d="M1421.97,-1383.6C1448.42,-1358.86 1478.99,-1330.25 1509.19,-1302.01"/>
+<polygon fill="black" stroke="black" points="1511.94,-1304.23 1516.85,-1294.84 1507.16,-1299.11 1511.94,-1304.23"/>
+<text text-anchor="middle" x="1557.75" y="-1317" font-family="Times New Roman,serif" font-size="14.00">parse() &#45;&gt; parseString()</text>
 </g>
 </g>
 </svg>
