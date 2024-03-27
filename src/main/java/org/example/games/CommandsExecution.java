@@ -12,6 +12,7 @@ import org.example.database.Database;
 import org.example.gui.Background;
 import org.example.gui.NumericKeypadUnlocker;
 import org.example.type.AdvObject;
+import org.example.type.Inventory;
 import org.example.type.Room;
 
 import javax.swing.*;
@@ -84,7 +85,7 @@ public class CommandsExecution implements Serializable {
             }
     }
 
-    public void pickItem(AdvObject object, PrintStream out, List<AdvObject> inventory, Room currentRoom) {
+    public void pickItem(AdvObject object, PrintStream out, Inventory inventory, Room currentRoom) {
         // gesione degli oggetti da prendere presenti nella stanza
 
         /*

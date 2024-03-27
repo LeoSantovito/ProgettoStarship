@@ -28,7 +28,7 @@
             "container": false,
             "id": 2,
             "name": "cristallo",
-            "description": "È un cristallo di energia. Emane una tale energia da alimentare un'astronave!",
+            "description": "È un cristallo di energia. Emana una tale energia da alimentare un'astronave!",
             "alias": ["cristallo di energia"],
             "pickupable": true,
             "openable": false,

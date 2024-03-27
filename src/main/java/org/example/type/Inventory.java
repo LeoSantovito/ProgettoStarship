@@ -5,14 +5,10 @@
  */
 package org.example.type;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
-/**
- *
- * @author pierpaolo
- */
-public class Inventory {
+public class Inventory implements Serializable {
 
     private List<AdvObject> list = new ArrayList<>();
 
@@ -30,5 +26,9 @@ public class Inventory {
 
     public void remove(AdvObject o) {
         list.remove(o);
+    }
+
+    public boolean isEmpty() {
+        return list.isEmpty();
     }
 }
