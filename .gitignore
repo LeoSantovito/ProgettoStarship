@@ -39,4 +39,4 @@ build/
 
 ### Salvataggi ###
 /resources/files/savedgames.mv.db
-/resources/savedgames.trace.db
+/resources/files/savedgames.trace.db
