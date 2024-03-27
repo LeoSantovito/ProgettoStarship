@@ -22,6 +22,7 @@ public class Parser {
         this.stopwords = stopwords;
     }
 
+    /* Metodo per trovare l'indice di un oggetto all'interno di una lista */
     private <T> int findIndex(List<T> items, String token, Predicate<T> matcher) {
         return IntStream.range(0, items.size())
                 .filter(i -> {
@@ -34,20 +35,17 @@ public class Parser {
                 .orElse(-1);
     }
 
+    /* Metodo per controllare se il token è un comando, usando il metodo findIndex */
     private int checkForCommand(String token, List<Command> commands) {
         return findIndex(commands, token, command -> true);
     }
 
+    /* Metodo per controllare se il token è un oggetto, usando il metodo findIndex */
     private int checkForObject(String token, List<AdvObject> objects) {
         return findIndex(objects, token, object -> true);
     }
 
-
-
-    /* ATTENZIONE: il parser è implementato in modo abbastanza independete dalla lingua, ma riconosce solo 
-    * frasi semplici del tipo <azione> <oggetto> <oggetto>. Eventuali articoli o preposizioni vengono semplicemente
-    * rimossi.
-     */
+    /* Metodo che restituisce ParserOutput in base al comando e agli oggetti trovati */
     public ParserOutput parse(String command, List<Command> commands, List<AdvObject> objects, List<AdvObject> inventory) {
         List<String> tokens = Utils.parseString(command, stopwords);
         if (!tokens.isEmpty()) {
