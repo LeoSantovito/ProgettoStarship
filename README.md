@@ -21,7 +21,6 @@ Il programma risultante è un gioco testuale, con interazione da linea di comand
     - [Espressioni Lambda](#espressioni-lambda)
 3. [Diagramma delle classi](#diagramma-delle-classi)
     - [Diagramma della classe Engine](#diagramma-della-classe-engine)
-    - [Diagramma della classe StarsipExodus](#diagramma-della-classe-starsipexodus)
     - [Diagramma della classe GameTimer](#diagramma-della-classe-gametimer)
 4. [Specifica algebrica](#specifica-algebrica)
     - [Specifica sintattica](#specifica-sintattica)
