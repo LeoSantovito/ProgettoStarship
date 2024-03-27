@@ -203,7 +203,7 @@
   {
     "id": 7,
     "name": "Celle",
-    "description": "È una stanza con delle celle di detenzione. Sono piccole e strette, con pareti di metallo e porte bloccate da chiave.\nSembra che qui vengano tenuti prigionieri o detenuti...\nC'è mio padre che mi sta picchiando con una cintura... no, per fortuna anche questa era un'allucinazione...\nSono al sicuro qui in questa nave spaziale aliena, qui nessuno può farmi del male...",
+    "description": "È una stanza con delle celle di detenzione. Sono piccole e strette, con pareti di metallo e porte bloccate da chiave.\nSembra che qui vengano tenuti prigionieri o detenuti...",
     "look": "Ci sono delle piccole celle con alieni rinchiusi. Sembra che siano i prigionieri della navicella.\nA nord c'è la sala comunicazioni, a ovest l'hangar, ad est il ponte di comando.",
     "intro": "Dannazione non mi aspettavo di trovare altri prigionieri qui... quindi non sono l'unico!\nMi avvicino ad una delle celle e vedo un alieno che mi guarda con occhi tristi... sembra che voglia dirmi qualcosa...\nSento che devo liberarlo...",
     "southId": -1,

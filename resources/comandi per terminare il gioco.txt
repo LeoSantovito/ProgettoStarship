@@ -1,0 +1,44 @@
+[INVIO]
+[INVIO]
+[INVIO]
+osserva
+apri zaino
+prendi mappa
+prendi note
+usa mappa
+[X]
+usa note
+[X]
+ovest
+osserva
+apri cassetta
+prendi cristallo
+sud
+osserva
+prendi visore
+nord
+est
+usa visore
+531
+est
+osserva
+prendi pistola
+sud
+usa pistola
+ovest
+osserva
+usa trasmettitore
+[inserire nome di posto]
+sud
+est
+attacca
+[clicca 10 volte sull'icona]
+[X]
+prendi chiave
+ovest
+usa chiave
+ovest
+usa cristallo
+[INVIO]
+[INVIO]
+[INVIO]
