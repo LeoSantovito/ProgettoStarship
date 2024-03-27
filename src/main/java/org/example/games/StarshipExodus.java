@@ -128,7 +128,7 @@ public class StarshipExodus extends GameDescription {
                         out.println("Non hai oggetti nell'inventario.");
                     } else {
                         out.println("Ecco gli oggetti che hai nell'inventario:");
-                        for (AdvObject o : getInventory()) {
+                        for (AdvObject o : getInventory().getList()) {
                             out.println("- " + o.getName() + ": " + o.getDescription());
                         }
                     }
@@ -166,7 +166,7 @@ public class StarshipExodus extends GameDescription {
                 }
                 case SHOW_MAP -> {
                     // Mostra la mappa se l'oggetto mappa è nell'inventario
-                    if (Utils.findObjectById(getInventory(), MAP_ID) != null) {
+                    if (Utils.findObjectById(getInventory().getList(), MAP_ID) != null) {
                         execute.showMap();
                         out.println("Per essere una navicella spaziale, è piuttosto grande...");
                     } else {

@@ -9,6 +9,7 @@ import org.example.database.Database;
 import org.example.parser.ParserOutput;
 import org.example.type.AdvObject;
 import org.example.type.Command;
+import org.example.type.Inventory;
 import org.example.type.Room;
 
 import java.io.PrintStream;
@@ -31,7 +32,7 @@ public abstract class GameDescription implements Serializable {
 
     private final List<Command> commands = new ArrayList<>();
 
-    private final List<AdvObject> inventory = new ArrayList<>();
+    private final Inventory inventory = new Inventory();
 
     private Room currentRoom;
 
@@ -67,7 +68,7 @@ public abstract class GameDescription implements Serializable {
         this.currentRoom = currentRoom;
     }
 
-    public List<AdvObject> getInventory() {
+    public Inventory getInventory() {
         return inventory;
     }
 
