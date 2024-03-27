@@ -196,7 +196,7 @@ public class StarshipExodus extends GameDescription {
                 out.println();
                 out.println("Sei nella stanza: " + getCurrentRoom().getName());
                 out.println();
-                if (!getCurrentRoom().isVisited()){
+                if (!getCurrentRoom().isVisited()) {
                     getCurrentRoom().setVisited(true);
                     out.println(getCurrentRoom().getIntro());
                     out.println();
@@ -211,24 +211,24 @@ public class StarshipExodus extends GameDescription {
     gli attributi di tipo Room della classe Room. In questo modo, se si vuole cambiare la mappa del gioco, basta modificare il file JSON rooms.
      */
     private void setMap(List<Room> rooms) {
-        for (Room currentRoom : rooms){
+        for (Room currentRoom : rooms) {
             int northId = currentRoom.getNorthId();
-            if(northId != INVALID_ROOM_ID) {
+            if (northId != INVALID_ROOM_ID) {
                 Room north = findRoomById(rooms, northId);
                 currentRoom.setNorth(north);
             }
             int southId = currentRoom.getSouthId();
-            if(southId != INVALID_ROOM_ID) {
+            if (southId != INVALID_ROOM_ID) {
                 Room south = findRoomById(rooms, southId);
                 currentRoom.setSouth(south);
             }
             int eastId = currentRoom.getEastId();
-            if(eastId != INVALID_ROOM_ID) {
+            if (eastId != INVALID_ROOM_ID) {
                 Room east = findRoomById(rooms, eastId);
                 currentRoom.setEast(east);
             }
             int westId = currentRoom.getWestId();
-            if(westId != INVALID_ROOM_ID) {
+            if (westId != INVALID_ROOM_ID) {
                 Room west = findRoomById(rooms, westId);
                 currentRoom.setWest(west);
             }

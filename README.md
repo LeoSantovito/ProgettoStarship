@@ -285,6 +285,29 @@ Entrambe le classi `AlienBossGame` e `NumericKeypadUnlocker` vengono instanziate
 
 
 ### Espressioni Lambda
+Le espressioni lambda sono state usate in più parti del progetto per instanziare oggetti di interfacce funzionali, come `Runnable` e `ActionListener`, in modo conciso e leggibile, senza la necessità di creare classi anonime. Ecco le parti del progetto in cui sono state utilizzate:
+- **NumericKeypadUnlocker**: qui le espressioni lambda sono state usate per gestire gli eventi dei pulsanti del tastierino numerico e per gestire l'evento di chiusura del pannello
+
+![lambdaKeypad3.png](resources%2Fimages%2FlambdaKeypad3.png)
+
+![lambdaKeypad2.png](resources%2Fimages%2FlambdaKeypad2.png)
+
+![lambdaKeypad1.png](resources%2Fimages%2FlambdaKeypad1.png)
+
+- **Parser**: qui le espressioni lambda sono state usate per filtrare gli indici nella lista `item` in base alle condizioni specificate. 
+
+![lambdaParser.png](resources%2Fimages/lambdaParser.png)
+
+- **AlienBossGame**: qui le espressioni lambda sono state usate per gestire gli eventi del mouse per colpire il boss alieno e per gestire il timer del gioco.
+
+![lambdaBoss.png](resources%2Fimages/lambdaBoss.png)
+
+![lambdaBoss2.png](resources%2Fimages/lambdaBoss2.png)
+
+- **MenuSwing**: qui le espressioni lambda sono state usate per gestire gli eventi dei pulsanti del menu iniziale.
+
+![lambdaMenu.png](resources%2Fimages/lambdaMenu.png)
+
 
 
 ## Diagramma delle classi
