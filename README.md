@@ -25,6 +25,7 @@ Il programma risultante è un gioco testuale, con interazione da linea di comand
 4. [Specifica algebrica](#specifica-algebrica)
     - [Specifica sintattica](#specifica-sintattica)
     - [Specifica semantica](#specifica-semantica)
+    - [Specifica di restrizione](#specifica-di-restrizione)
 
 ## Descrizione generale del caso di studio
 
@@ -352,9 +353,33 @@ Durante l'esecuzione, il timer viene aggiornato ogni secondo in cui viene increm
 
 *Figura 6. Diagramma delle classi in formato vettoriale che rappresenta la struttura della classe GameTimer.*
 
-
 ## Specifica algebrica
+
+La struttura dati selezionata per la specifica algebrica è `Inventory`, che rappresenta l'inventario del giocatore e contiene gli oggetti raccolti durante il gioco.
+L'inventario è implementato come una lista di oggetti `AdvObject`, con metodi per aggiungere, rimuovere oggetti al suo interno, impostarlo ad una lista di oggetti esistenti e verificare che sia vuoto.
 
 ### Specifica sintattica
 
+*Sorts:*
+- `Inventory`: Tipo che rappresenta un inventario di oggetti del gioco.
+- `AdvObject`: Tipo che rappresenta un oggetto del gioco.
+- `List`: Tipo che rappresenta una lista di oggetti.
+
+*Operations:*
+- `Create() → Inventory`: Crea un inventario vuoto.
+- `GetList(Inventory) → List`: Restituisce la lista di oggetti contenuti nell'inventario.
+- `SetList(Inventory, List) → Inventory`: Imposta la lista di oggetti nell'inventario.
+- `Add(Inventory, AdvObject) → Inventory`: Aggiunge un oggetto all'inventario.
+- `Remove(Inventory, AdvObject) → Inventory`: Rimuove un oggetto dall'inventario.
+- `IsEmpty(Inventory) → Boolean`: Verifica se l'inventario è vuoto.
+- `FindObjectById(List, Integer) → AdvObject`: Trova un oggetto nella lista dato l'ID.
+
 ### Specifica semantica
+
+### Specifica di restrizione
+
+1. L'inventario può contenere oggetti di tipo `AdvObject` o delle sue sottoclassi.
+2. La lista degli oggetti nell'inventario può contenere duplicati.
+3. L'inventario può essere vuoto o contenere uno o più oggetti.
+4. L'inventario può essere modificato aggiungendo o rimuovendo oggetti.
+5. L'operazione `IsEmpty` restituisce `true` se l'inventario è vuoto, altrimenti restituisce `false`.
