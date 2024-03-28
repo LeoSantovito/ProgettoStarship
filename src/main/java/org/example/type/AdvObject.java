@@ -12,10 +12,6 @@ import java.util.List;
 import java.util.Set;
 import java.io.Serializable;
 
-/**
- *
- * @author pierpaolo
- */
 public class AdvObject implements Serializable {
     private int containerId;
     private boolean container = false;

@@ -17,10 +17,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author pierpaolo
- */
 
 public abstract class GameDescription implements Serializable {
 

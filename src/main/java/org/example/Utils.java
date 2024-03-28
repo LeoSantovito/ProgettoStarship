@@ -21,10 +21,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-/**
- *
- * @author pierpaolo
- */
 public class Utils {
 
     public static Set<String> loadFileListInSet(File file) throws IOException {

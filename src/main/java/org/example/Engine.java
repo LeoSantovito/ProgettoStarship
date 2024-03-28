@@ -20,7 +20,6 @@ import java.util.Set;
  *
  * L'Engine si occupa di inizializzare il gioco, gestire il menu iniziale, caricare, salvare le partite ed eseguirle.
  *
- * @author francesco
  */
 
 public class Engine {

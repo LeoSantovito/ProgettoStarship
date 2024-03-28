@@ -5,10 +5,6 @@
  */
 package org.example.type;
 
-/**
- *
- * @author pierpaolo
- */
 public enum CommandType {
     END, INVENTORY, NORTH, SOUTH, EAST, WEST, OPEN, PICK_UP, USE, LOOK_AT, SAVE, HELP, TIME, SHOW_MAP, ATTACK,
 }

@@ -9,10 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.io.Serializable;
 
-/**
- *
- * @author pierpaolo
- */
 public class Room implements Serializable {
 
     private final int id;

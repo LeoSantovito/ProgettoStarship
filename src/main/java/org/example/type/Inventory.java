@@ -10,7 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 public class Inventory implements Serializable {
 
-    private List<AdvObject> list = new ArrayList<>();
+    private List<AdvObject> list;
+
+    public Inventory(){
+        list = new ArrayList<>();
+    }
 
     public List<AdvObject> getList() {
         return list;
