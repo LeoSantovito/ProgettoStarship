@@ -256,7 +256,7 @@ public class CommandsExecution implements Serializable {
             frame.setLocationRelativeTo(null);
             frame.setSize(500, 400);
 
-            Background img = new Background("./resources/images/Map.png");
+            Background img = new Background("./resources/images/map.png");
             frame.add(img);
 
 
@@ -277,7 +277,7 @@ public class CommandsExecution implements Serializable {
             frame.setLocationRelativeTo(null);
 
             frame.setSize(500, 750);
-            Background img = new Background("./resources/images/Notes.png");
+            Background img = new Background("./resources/images/notes.png");
             frame.add(img);
 
             // Imposta la finestra come non bloccante

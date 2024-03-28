@@ -35,4 +35,8 @@ public class Inventory implements Serializable {
     public boolean contains(AdvObject o) {
         return list.contains(o);
     }
+
+    public void clear(){
+        list.clear();
+    }
 }
