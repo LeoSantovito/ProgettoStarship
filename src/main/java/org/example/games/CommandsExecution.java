@@ -19,7 +19,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.*;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Scanner;
 
 /*
@@ -29,7 +28,20 @@ import java.util.Scanner;
  */
 
 public class CommandsExecution implements Serializable {
-    private boolean alienKillled = false;
+    private boolean alienKilled = false;
+    private static final int CRISTAL_ID = 2;
+    private static final int MAP_ID = 4;
+    private static final int NOTES_ID = 5;
+    private static final int GUN_ID = 6;
+    private static final int UV_ID = 7;
+    private static final int TRANSMITTER_ID = 8;
+    private static final int KEY_ID = 9;
+    private static final int HANGAR_ID = 6;
+    private static final int LOWER_DECK_ID = 5;
+    private static final int LAB_ID = 1;
+
+    private static final int PRISON_ID = 7;
+
     public void openItem(AdvObject object, PrintStream out) {
             if (object.isOpenable()) {
                 if (object.isContainer()) {
@@ -139,9 +151,9 @@ public class CommandsExecution implements Serializable {
     public void useItem(AdvObject object, PrintStream out, GameTimer timer, GameDescription game, Database database) {
         //switch case che in base all'id dell'oggetto permette di personalizzare il comportamento del gioco
         switch (object.getId()) {
-            case 2 -> {
+            case CRISTAL_ID -> {
                 //uso del cristallo nell'hangar
-                if (game.getCurrentRoom().getId() == 6) {
+                if (game.getCurrentRoom().getId() == HANGAR_ID) {
                     out.println("Hai usato: " + object.getName());
                     out.println();
 
@@ -152,23 +164,23 @@ public class CommandsExecution implements Serializable {
                     out.println("Non si può usare il cristallo qui.");
                 }
             }
-            case 4 -> {
+            case MAP_ID -> {
                 //mostra la mappa del gioco
                 showMap();
                 out.println("Per essere una navicella spaziale, è piuttosto grande...");
             }
-            case 5 -> {
+            case NOTES_ID -> {
                 //mostra gli appunti di john
                 showNotes();
                 out.println("Avranno ucciso John perché sapeva troppo? Chissà cosa aveva scoperto...");
             }
-            case 6 -> {
+            case GUN_ID -> {
                 //pistola restringente in stanza ponte inferiore
-                if (game.getCurrentRoom().getId() == 5) {
+                if (game.getCurrentRoom().getId() == LOWER_DECK_ID) {
                     out.println("Hai usato: " + object.getName());
                     out.println();
                     Utils.printFromFile("./resources/dialogs/use_object_6.txt");
-                    alienKillled = true;
+                    alienKilled = true;
 
                     game.getInventory().remove(object);
                     game.getCurrentRoom().getWest().setAccessible(true);
@@ -176,9 +188,9 @@ public class CommandsExecution implements Serializable {
                     out.println("Non mi conviene usare la pistola qui... meglio tenerla per quando ne avrò bisogno.");
                 }
             }
-            case 7 -> {
+            case UV_ID -> {
                 //visore ultravioletto in stanza laboratorio
-                if (game.getCurrentRoom().getId() == 1 && !game.getCurrentRoom().getEast().getAccessible()) {
+                if (game.getCurrentRoom().getId() == LAB_ID && !game.getCurrentRoom().getEast().getAccessible()) {
                     out.println("Hai usato: " + object.getName());
                     out.println();
                     Utils.printFromFile("./resources/dialogs/use_object_7.txt");
@@ -206,7 +218,7 @@ public class CommandsExecution implements Serializable {
                     out.println("Non serve usare il visore qui.");
                 }
             }
-            case 8 -> {
+            case TRANSMITTER_ID -> {
                 //trasmettitore di messaggi intergalattico
                 if (object.isUsed()) {
                     out.println("Ho trasmesso già un messaggio, non posso piangermi addosso per sempre...");
@@ -232,9 +244,9 @@ public class CommandsExecution implements Serializable {
                     }
                 }
             }
-            case 9 -> {
+            case KEY_ID -> {
                 //chiave delle celle
-                if(game.getCurrentRoom().getId() == 7) {
+                if(game.getCurrentRoom().getId() == PRISON_ID) {
                     out.println("Hai usato: " + object.getName());
                     out.println();
                     Utils.printFromFile("./resources/dialogs/use_object_9.txt");
@@ -356,7 +368,7 @@ public class CommandsExecution implements Serializable {
             dialog.setLocationRelativeTo(null); // Posiziona il frame al centro dello schermo
             dialog.setVisible(true); // Rendi visibile il frame
         } else if (room.getId() == 5) {
-            if (!alienKillled) {
+            if (!alienKilled) {
                 out.println("Con cosa dovrei attaccare questo alieno?\nNon credo che il wrestling visto da bambino possa aiutarmi in questa situazione...");
             } else {
                 out.println("Hai già ucciso l'alieno, non c'è bisogno di combattere di nuovo!");
