@@ -6,6 +6,12 @@ import org.example.games.CommandsExecution;
 import javax.swing.*;
 import java.awt.*;
 
+/*
+ * Questa classe rappresenta il menu iniziale del gioco.
+ * L'utente può scegliere di iniziare una nuova partita, caricare una partita salvata,
+ * visualizzare i comandi del gioco o uscire dal gioco.
+ */
+
 public class MenuSwing {
     private JButton newGameButton;
     private JButton loadGameButton;

@@ -10,20 +10,21 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-
+/*
+ * Questa classe si occupa di effettuare una richiesta HTTP all'API di OpenWeatherMap
+ * per ottenere le informazioni meteo di una città specificata dall'utente.
+ *
+ * L'API di OpenWeatherMap restituisce i dati in formato JSON, che vengono analizzati
+ * per estrarre le informazioni desiderate e stamparle a video.
+ */
 
 public class WeatherApi implements Serializable {
     private String city;
     // Costruttore
-    public WeatherApi() {
-
-
-    }
+    public WeatherApi() {}
 
     public boolean getWeatherData(String city) throws IOException {
         String apiKey = "12fe4119d3075943be8f74ad336dd645";
-
-
         String urlString = "http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey + "&lang=it";
 
         URL url = new URL(urlString);
@@ -31,15 +32,17 @@ public class WeatherApi implements Serializable {
         conn.setRequestMethod("GET");
 
         int responseCode = conn.getResponseCode();
+
         if (responseCode != 200 || city == null || city.isEmpty()) {
             System.out.println("Hai bevuto? Non esiste questo posto! *Si spegne*");
             return false;
         }
-        String encodedCity;
-        encodedCity = URLEncoder.encode(city, StandardCharsets.UTF_8);
+
+        String encodedCity = URLEncoder.encode(city, StandardCharsets.UTF_8);
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
         StringBuilder response = new StringBuilder();
+
         String line;
         while ((line = reader.readLine()) != null) {
             response.append(line);

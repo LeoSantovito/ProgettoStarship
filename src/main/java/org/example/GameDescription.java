@@ -17,6 +17,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+ * Questa classe astratta rappresenta lo stato del gioco.
+ * Contiene le informazioni sul gioco e i metodi per inizializzarlo e modificarlo.
+ */
 
 public abstract class GameDescription implements Serializable {
 

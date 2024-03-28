@@ -1,13 +1,7 @@
 package org.example.database;
 
-/* In questo file vengono definiti i metodi per la gestione del database utilizzato per salvare le partite
- * per poterle caricare in un secondo momento.
- */
-
-/* Classe che crea un record nel database quando viene creata una partita. Genera una chiave univoca, chiede il nome
-al giocatore, e salva id, GameDescription, CurrentRoom, Data e ora di creazione, e il nome del giocatore.
- */
-
+/* Questa classe si occupa di gestire la connessione al database H2 e di eseguire le query per
+ * inserire, selezionare, eliminare e aggiornare i record della tabella games. */
 
 import org.example.GameDescription;
 import org.example.Utils;
@@ -42,7 +36,7 @@ public class Database {
     /* Query per eliminare un record dalla tabella games a partire da un id specifico. */
     private static final String DELETE_GAME = "DELETE FROM games WHERE id = ?";
 
-    /* Query che aggiorna gamedescription e currentroom in un record per salvare lo stato del gioco. */
+    /* Query che aggiorna gamedescription in un record per salvare lo stato del gioco. */
     private static final String SAVE_GAME = "UPDATE games SET gamedescription = ? WHERE id = ?";
 
     /* Query per eliminare la tabella games con tutti i salvataggi. */

@@ -1,6 +1,5 @@
 package org.example.gui;
 
-
 import javax.sound.sampled.*;
 import javax.swing.*;
 import java.awt.*;
@@ -9,6 +8,11 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
+
+/*
+ * Questa classe rappresenta un pannello con un tastierino numerico.
+ * L'utente deve inserire una sequenza di 3 cifre per sbloccare la porta.
+ */
 
 public class NumericKeypadUnlocker extends JPanel {
     private final JTextField inputField;

@@ -13,6 +13,11 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Random;
 
+/*
+ * Questa classe rappresenta un gioco in cui il giocatore deve colpire un boss alieno
+ * cliccando sulla sua area per abbatterlo. Il gioco termina quando il boss è stato sconfitto.
+ */
+
 public class AlienBossGame extends JPanel {
     private int bossHealth = 100; // Salute del boss alieno
     private int score = 0; // Punteggio del giocatore

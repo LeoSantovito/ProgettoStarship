@@ -21,6 +21,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+/* Classe di utilità che contiene metodi pubblici per la gestione di file e oggetti. */
+
 public class Utils {
 
     public static Set<String> loadFileListInSet(File file) throws IOException {

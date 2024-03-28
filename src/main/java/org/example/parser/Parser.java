@@ -14,6 +14,10 @@ import java.util.Set;
 import java.util.function.Predicate;
 import java.util.stream.IntStream;
 
+/**
+ * Questa classe rappresenta un parser per analizzare i comandi inseriti dall'utente.
+ */
+
 public class Parser {
 
     private final Set<String> stopwords;

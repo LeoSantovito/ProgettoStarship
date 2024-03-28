@@ -8,6 +8,11 @@ package org.example.parser;
 import org.example.type.AdvObject;
 import org.example.type.Command;
 
+/*
+ * Questa classe rappresenta l'output del parser.
+ * Contiene il comando inserito dall'utente e gli oggetti associati.
+ */
+
 public class ParserOutput {
 
     private Command command;

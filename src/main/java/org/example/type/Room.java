@@ -9,6 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.io.Serializable;
 
+/*
+ * Questa classe rappresenta una stanza all'interno del gioco.
+ */
+
 public class Room implements Serializable {
 
     private final int id;

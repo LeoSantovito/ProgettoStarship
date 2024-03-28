@@ -8,6 +8,12 @@ package org.example.type;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+/*
+ * Questa classe rappresenta l'inventario del giocatore.
+ * Contiene una lista di oggetti.
+ */
+
 public class Inventory implements Serializable {
 
     private List<AdvObject> list;

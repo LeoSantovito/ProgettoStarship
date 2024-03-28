@@ -4,6 +4,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+
+/*
+ * Questa classe rappresenta un pannello con un'immagine di sfondo.
+ * Viene usata per impostare un'immagine di sfondo personalizzata per un pannello.
+ */
+
 public class Background extends JPanel {
     private Image backgroundImage;
 

@@ -10,6 +10,11 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 import java.io.Serializable;
+
+/*
+ * Questa classe rappresenta un comando all'interno del gioco.
+ */
+
 public class Command implements Serializable {
 
     private final CommandType type;

@@ -12,6 +12,11 @@ import java.util.List;
 import java.util.Set;
 import java.io.Serializable;
 
+/*
+ * Questa classe rappresenta un oggetto all'interno del gioco.
+ * Ogni oggetto ha un nome, una descrizione e delle proprietà che ne definiscono il comportamento.
+ */
+
 public class AdvObject implements Serializable {
     private int containerId;
     private boolean container = false;
@@ -35,7 +40,6 @@ public class AdvObject implements Serializable {
     private boolean push = false;
 
     private boolean used = false;
-
 
     private List<AdvObject> objectsList = new ArrayList<>();
 
