@@ -376,6 +376,15 @@ L'inventario è implementato come una lista di oggetti `AdvObject`, con metodi p
 
 ### Specifica semantica
 
+*Declare:* `inv`, `inv'` = Inventory; `obj` = AdvObject; `l` = List; `b` = Boolean
+
+- `SetList(inv, l) = inv'`
+- `Remove(add(inv, obj), obj) = inv'`
+- `IsEmpty(newInventory()) = true`
+- `IsEmpty(add(inv, obj)) = false`
+- `Contains(newInventory(), obj) = false`
+- `Contains(add(inv, obj), obj) = true`
+
 ### Specifica di restrizione
 
 1. L'inventario può contenere oggetti di tipo `AdvObject` o delle sue sottoclassi.
