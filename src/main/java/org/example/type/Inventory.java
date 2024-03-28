@@ -31,4 +31,8 @@ public class Inventory implements Serializable {
     public boolean isEmpty() {
         return list.isEmpty();
     }
+
+    public boolean contains(AdvObject o) {
+        return list.contains(o);
+    }
 }

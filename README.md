@@ -366,13 +366,13 @@ L'inventario è implementato come una lista di oggetti `AdvObject`, con metodi p
 - `List`: Tipo che rappresenta una lista di oggetti.
 
 *Operations:*
-- `Create() → Inventory`: Crea un inventario vuoto.
+- `NewInventory() → Inventory`: Crea un inventario vuoto.
 - `GetList(Inventory) → List`: Restituisce la lista di oggetti contenuti nell'inventario.
 - `SetList(Inventory, List) → Inventory`: Imposta la lista di oggetti nell'inventario.
 - `Add(Inventory, AdvObject) → Inventory`: Aggiunge un oggetto all'inventario.
 - `Remove(Inventory, AdvObject) → Inventory`: Rimuove un oggetto dall'inventario.
 - `IsEmpty(Inventory) → Boolean`: Verifica se l'inventario è vuoto.
-- `FindObjectById(List, Integer) → AdvObject`: Trova un oggetto nella lista dato l'ID.
+- `Contains(Inventory, AdvObject) → Boolean`: Verifica se l'inventario contiene un oggetto specifico.
 
 ### Specifica semantica
 
