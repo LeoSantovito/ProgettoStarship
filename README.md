@@ -224,6 +224,10 @@ Sono presenti i seguenti quattro pulsanti.
 
 Infine, vengono gestiti gli eventi associati ai pulsanti tramite ActionListener. Quando un pulsante viene premuto, viene eseguita un'azione specifica, come avviare una nuova partita o chiudere il gioco.
 
+![menuSwing.png](resources%2Fdiagrams%2FmenuSwing.png)
+
+*Figura 5. Interfaccia grafica del menu iniziale del gioco.*
+
 #### Alien Boss Game
 
 La classe `AlienBossGame` è una sottoclasse di JPanel che rappresenta il pannello di gioco per un semplice gioco in cui il giocatore deve colpire il capo dell'astronave aliena, nella stanza "Ponte di comando".
@@ -263,7 +267,12 @@ I metodi pubblici sono utilizzati per accedere e modificare lo stato di `gameWon
 
 Il pannello di gioco disegna il background, il boss, la salute e il punteggio, il timer cambia l'area del boss ogni secondo, rendendolo "scorrevole", il mouse listener rileva i click del mouse e controlla se il boss viene colpito, il timer del gioco controlla se il boss è stato sconfitto e se il boss viene sconfitto, viene mostrato un messaggio di vittoria e il gioco termina.
 
-La classe `AlienBossGame` fornisce, pertanto, un'interfaccia grafica per un semplice gioco in cui il giocatore deve colpire il boss alieno finché la sua salute non raggiunge lo zero. Una volta sconfitto il boss, il giocatore vince il mini gioco e potrà raccogliere la chiave necessaria a proseguire l'avventura.
+La classe `AlienBossGame` fornisce, pertanto, un'interfaccia grafica per un semplice gioco in cui il giocatore deve colpire il boss alieno finché la sua salute non raggiunge lo zero.
+Una volta sconfitto il boss, il giocatore vince il mini gioco e potrà raccogliere la chiave necessaria a proseguire l'avventura.
+
+![bossFight.png](resources%2Fdiagrams%2FbossFight.png)
+
+*Figura 6. Interfaccia grafica del mini gioco per sconfiggere il boss alieno.*
 
 #### Numeric Keypad Unlocker
 
@@ -289,6 +298,9 @@ La classe fornisce l'interfaccia utente interattiva per l'inserimento della comb
 
 Entrambe le classi `AlienBossGame` e `NumericKeypadUnlocker` vengono instanziate all'interno di un JDialog nella classe `CommandExecution` rispettivamente in corrispondenza dei comandi attacca e usa visore.
 
+![keypad.png](resources%2Fdiagrams%2Fkeypad.png)
+
+*Figura 7. Interfaccia grafica del tastierino numerico per sbloccare la combinazione.*
 
 ### Espressioni Lambda
 Le espressioni lambda sono state usate in più parti del progetto per instanziare oggetti di interfacce funzionali, come `Runnable` e `ActionListener`, in modo conciso e leggibile, senza la necessità di creare classi anonime. Ecco le parti del progetto in cui sono state utilizzate:
@@ -338,7 +350,7 @@ Insieme, queste classi costituiscono il nucleo dell'applicazione di gioco, forne
 
 ![engineStructure.svg](resources%2Fdiagrams%2FengineStructure.svg)
 
-*Figura 5. Diagramma delle classi in formato vettoriale che rappresenta la struttura della classe Engine.*
+*Figura 8. Diagramma delle classi in formato vettoriale che rappresenta la struttura della classe Engine.*
 
 ### Diagramma della classe GameTimer
 
@@ -351,7 +363,7 @@ Durante l'esecuzione, il timer viene aggiornato ogni secondo in cui viene increm
 
 ![gameTimerStructure.svg](resources%2Fdiagrams%2FgameTimerStructure.svg)
 
-*Figura 6. Diagramma delle classi in formato vettoriale che rappresenta la struttura della classe GameTimer.*
+*Figura 9. Diagramma delle classi in formato vettoriale che rappresenta la struttura della classe GameTimer.*
 
 ## Specifica algebrica
 
