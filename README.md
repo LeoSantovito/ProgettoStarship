@@ -40,7 +40,7 @@ In **Starship Exodus**, il giocatore dovrà impersonare uno dei due astronauti d
 La mappa del gioco è strutturata in stanze comunicanti, ognuna delle quali rappresenta un luogo all'interno dell'astronave aliena. All'interno delle stanze possono esserci degli oggetti che il giocatore potrebbe raccogliere e utilizzare per risolvere enigmi e sfide. Alcune stanze potrebbero essere bloccate e richiedere l'utilizzo di oggetti specifici per poter essere aperte.
 Il giocatore può muoversi tra le stanze, esaminare oggetti, raccoglierli, usarli per risolvere enigmi e sfide e quindi per poter proseguire nella storia. L'obiettivo finale del gioco è trovare un modo di fuggire dall'astronave aliena e tornare a casa.
 
-![Mappa astronave](./resources/images/Map.png)
+![map.png](./resources/images/map.png)
 
 *Figura 1. Mappa che mostra la configurazione delle stanze del gioco.*
 
@@ -141,7 +141,7 @@ Della partita vengono salvate in `resources/files/savedgames` le seguenti inform
 - `playername`: nome del giocatore che viene richiesto alla creazione di una nuova partita.
 
 
-![dbSchema.jpg](resources%2Fimages%2FdbSchema.jpg)
+![dbSchema.jpg](resources%2Fdiagrams%2FdbSchema.jpg)
 
 *Figura 3. Schema della tabella games nel database.*
 
@@ -191,7 +191,7 @@ Per l'inserimento dell'input da parte dell'utente, è stato impiegato il compone
 È stata anche sfruttata la classe JDialog per creare finestre di dialogo modali (mentre il dialog è aperto non si può interagire con altro) o non modali, utilizzate per mostrare la mappa del gioco, l'oggetto `note`, il testo di aiuto (al quale si può accedere sia dal menu iniziale che durante il gioco con il comando `aiuto`) e per creare una finestra modale per il combattimento con il boss alieno.
 Queste finestre vengono utilizzate, quindi, per fornire informazioni aggiuntive all'utente o per creare delle sfide per proseguire nel gioco.
 
-![Notes.png](resources%2Fimages%2FNotes.png)
+![notes.png](resources%2Fimages%2Fnotes.png)
 
 *Figura 4. Utilizzo di JDialog per visualizzare l'oggetto "Note" durante il gioco.*
 
@@ -223,6 +223,10 @@ Sono presenti i seguenti quattro pulsanti.
 * *Esci:* Chiude il gioco quando premuto.
 
 Infine, vengono gestiti gli eventi associati ai pulsanti tramite ActionListener. Quando un pulsante viene premuto, viene eseguita un'azione specifica, come avviare una nuova partita o chiudere il gioco.
+
+![menuSwing.png](resources%2Fdiagrams%2FmenuSwing.png)
+
+*Figura 5. Interfaccia grafica del menu iniziale del gioco.*
 
 #### Alien Boss Game
 
@@ -263,7 +267,12 @@ I metodi pubblici sono utilizzati per accedere e modificare lo stato di `gameWon
 
 Il pannello di gioco disegna il background, il boss, la salute e il punteggio, il timer cambia l'area del boss ogni secondo, rendendolo "scorrevole", il mouse listener rileva i click del mouse e controlla se il boss viene colpito, il timer del gioco controlla se il boss è stato sconfitto e se il boss viene sconfitto, viene mostrato un messaggio di vittoria e il gioco termina.
 
-La classe `AlienBossGame` fornisce, pertanto, un'interfaccia grafica per un semplice gioco in cui il giocatore deve colpire il boss alieno finché la sua salute non raggiunge lo zero. Una volta sconfitto il boss, il giocatore vince il mini gioco e potrà raccogliere la chiave necessaria a proseguire l'avventura.
+La classe `AlienBossGame` fornisce, pertanto, un'interfaccia grafica per un semplice gioco in cui il giocatore deve colpire il boss alieno finché la sua salute non raggiunge lo zero.
+Una volta sconfitto il boss, il giocatore vince il mini gioco e potrà raccogliere la chiave necessaria a proseguire l'avventura.
+
+![bossFight.png](resources%2Fdiagrams%2FbossFight.png)
+
+*Figura 6. Interfaccia grafica del mini gioco per sconfiggere il boss alieno.*
 
 #### Numeric Keypad Unlocker
 
@@ -289,6 +298,9 @@ La classe fornisce l'interfaccia utente interattiva per l'inserimento della comb
 
 Entrambe le classi `AlienBossGame` e `NumericKeypadUnlocker` vengono instanziate all'interno di un JDialog nella classe `CommandExecution` rispettivamente in corrispondenza dei comandi attacca e usa visore.
 
+![keypad.png](resources%2Fdiagrams%2Fkeypad.png)
+
+*Figura 7. Interfaccia grafica del tastierino numerico per sbloccare la combinazione.*
 
 ### Espressioni Lambda
 Le espressioni lambda sono state usate in più parti del progetto per instanziare oggetti di interfacce funzionali, come `Runnable` e `ActionListener`, in modo conciso e leggibile, senza la necessità di creare classi anonime. Ecco le parti del progetto in cui sono state utilizzate:
@@ -336,9 +348,9 @@ Inoltre, la classe `Engine` interagisce con l'interfaccia utente tramite la clas
 
 Insieme, queste classi costituiscono il nucleo dell'applicazione di gioco, fornendo le funzionalità necessarie per avviare, gestire e giocare a una partita.
 
-![Engine_structure.svg](resources%2Fdiagrams%2FEngine_structure.svg)
+![engineStructure.svg](resources%2Fdiagrams%2FengineStructure.svg)
 
-*Figura 5. Diagramma delle classi in formato vettoriale che rappresenta la struttura della classe Engine.*
+*Figura 8. Diagramma delle classi in formato vettoriale che rappresenta la struttura della classe Engine.*
 
 ### Diagramma della classe GameTimer
 
@@ -349,9 +361,9 @@ Quando viene salvata la partita, il tempo trascorso viene memorizzato nella `Gam
 
 Durante l'esecuzione, il timer viene aggiornato ogni secondo in cui viene incrementato il campo `secondsElapsed`, e stampa un messaggio di sollecitazione all'utente, con l'obiettivo di mettergli ansia e stress, ogni 5 minuti.
 
-![GameTimer_structure.svg](resources%2Fdiagrams%2FGameTimer_structure.svg)
+![gameTimerStructure.svg](resources%2Fdiagrams%2FgameTimerStructure.svg)
 
-*Figura 6. Diagramma delle classi in formato vettoriale che rappresenta la struttura della classe GameTimer.*
+*Figura 9. Diagramma delle classi in formato vettoriale che rappresenta la struttura della classe GameTimer.*
 
 ## Specifica algebrica
 
@@ -366,20 +378,33 @@ L'inventario è implementato come una lista di oggetti `AdvObject`, con metodi p
 - `List`: Tipo che rappresenta una lista di oggetti.
 
 *Operations:*
-- `Create() → Inventory`: Crea un inventario vuoto.
+- `NewInventory() → Inventory`: Crea un inventario vuoto.
 - `GetList(Inventory) → List`: Restituisce la lista di oggetti contenuti nell'inventario.
 - `SetList(Inventory, List) → Inventory`: Imposta la lista di oggetti nell'inventario.
 - `Add(Inventory, AdvObject) → Inventory`: Aggiunge un oggetto all'inventario.
 - `Remove(Inventory, AdvObject) → Inventory`: Rimuove un oggetto dall'inventario.
 - `IsEmpty(Inventory) → Boolean`: Verifica se l'inventario è vuoto.
-- `FindObjectById(List, Integer) → AdvObject`: Trova un oggetto nella lista dato l'ID.
+- `Contains(Inventory, AdvObject) → Boolean`: Verifica se l'inventario contiene un oggetto specifico.
+- `Clear(Inventory) → Inventory`: Svuota l'inventario.
 
 ### Specifica semantica
 
+*Declare:* `inv`, `inv'` = Inventory; `obj` = AdvObject; `l` = List; `b` = Boolean
+
+- `SetList(inv, l) = inv'`
+- `Remove(add(inv, obj), obj) = inv'`
+- `IsEmpty(newInventory()) = true`
+- `IsEmpty(add(inv, obj)) = false`
+- `Contains(newInventory(), obj) = false`
+- `Contains(add(inv, obj), obj) = true`
+- `Clear(add(inv, obj)) = inv'`
+
 ### Specifica di restrizione
 
-1. L'inventario può contenere oggetti di tipo `AdvObject` o delle sue sottoclassi.
-2. La lista degli oggetti nell'inventario può contenere duplicati.
-3. L'inventario può essere vuoto o contenere uno o più oggetti.
-4. L'inventario può essere modificato aggiungendo o rimuovendo oggetti.
-5. L'operazione `IsEmpty` restituisce `true` se l'inventario è vuoto, altrimenti restituisce `false`.
+*Costruttori e osservazioni:*
+
+![specRestr1.png](resources%2Fdiagrams%2FspecRestr1.png)
+
+*Osservazione binaria Equals(inv1, inv2):*
+
+![specRestr2.png](resources%2Fdiagrams%2FspecRestr2.png)
