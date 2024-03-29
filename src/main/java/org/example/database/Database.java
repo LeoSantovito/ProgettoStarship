@@ -50,7 +50,10 @@ public class Database {
             Statement stmt = conn.createStatement();
             stmt.execute(CREATE_TABLE);
         } catch (SQLException ex) {
-            System.err.println(ex);
+            System.err.println("Errore nella connessione al database.");
+            System.err.print(ex.getErrorCode());
+            System.err.print(ex.getSQLState());
+            System.err.print(ex.getMessage());
         }
     }
 
@@ -58,7 +61,10 @@ public class Database {
         try {
             conn.close();
         } catch (SQLException ex) {
-            System.err.println(ex);
+            System.err.println("Errore nella chiusura del database.");
+            System.err.print(ex.getErrorCode());
+            System.err.print(ex.getSQLState());
+            System.err.print(ex.getMessage());
         }
     }
 
@@ -87,7 +93,10 @@ public class Database {
 
             pstmt.close();
         } catch (SQLException ex) {
-            System.err.println(ex);
+            System.err.println("Errore nell'inserimento della partita nel database.");
+            System.err.print(ex.getErrorCode());
+            System.err.print(ex.getSQLState());
+            System.err.print(ex.getMessage());
         }
     }
 
@@ -100,14 +109,17 @@ public class Database {
                 game.setGameId(rs.getInt(1));
             }
         } catch (SQLException ex) {
-            System.err.println(ex);
+            System.err.println("Errore nell'aggiornamento dell'ID della partita.");
+            System.err.print(ex.getErrorCode());
+            System.err.print(ex.getSQLState());
+            System.err.print(ex.getMessage());
         }
     }
 
     /* Carica una GameDescription dalla tabella games a partire da un id specifico. */
     public GameDescription loadGame(int id){
-        byte[] serializedGame = null;
-        GameDescription loadedGame = null;
+        byte[] serializedGame;
+        GameDescription loadedGame;
         try {
             PreparedStatement pstmt = conn.prepareStatement(SELECT_GAME);
             pstmt.setInt(1, id);
@@ -122,7 +134,10 @@ public class Database {
                 }
             }
         } catch (SQLException ex) {
-            System.err.println(ex);
+            System.err.println("Errore nel caricamento della partita dal database.");
+            System.err.print(ex.getErrorCode());
+            System.err.print(ex.getSQLState());
+            System.err.print(ex.getMessage());
         }
         return null;
     }
@@ -151,7 +166,10 @@ public class Database {
                 games.add(gr);
             }
         } catch (SQLException ex) {
-            System.err.println(ex);
+            System.err.println("Errore nel caricamento di tutti i salvataggi dal database.");
+            System.err.print(ex.getErrorCode());
+            System.err.print(ex.getSQLState());
+            System.err.print(ex.getMessage());
         }
         return games;
     }
@@ -180,7 +198,10 @@ public class Database {
                 return gr;
             }
         } catch (SQLException ex) {
-            System.err.println(ex);
+            System.err.println("Errore nel caricamento del salvataggio dal database.");
+            System.err.print(ex.getErrorCode());
+            System.err.print(ex.getSQLState());
+            System.err.print(ex.getMessage());
         }
         return null;
     }
@@ -221,7 +242,10 @@ public class Database {
                 return rs.getString("playername");
             }
         } catch (SQLException ex) {
-            System.err.println(ex);
+            System.err.println("Errore nel caricamento del salvataggio dal database.");
+            System.err.print(ex.getErrorCode());
+            System.err.print(ex.getSQLState());
+            System.err.print(ex.getMessage());
         }
         return null;
     }
@@ -245,7 +269,10 @@ public class Database {
                 }
             }
         } catch (SQLException ex) {
-            System.err.println(ex);
+            System.err.println("Errore nell'operazione di pulizia dei salvataggi da database.");
+            System.err.print(ex.getErrorCode());
+            System.err.print(ex.getSQLState());
+            System.err.print(ex.getMessage());
         }
     }
 
@@ -257,7 +284,10 @@ public class Database {
             pstmt.executeUpdate();
             pstmt.close();
         } catch (SQLException ex) {
-            System.err.println(ex);
+            System.err.println("Errore nell'eliminazione del salvataggio dal database.");
+            System.err.print(ex.getErrorCode());
+            System.err.print(ex.getSQLState());
+            System.err.print(ex.getMessage());
         }
     }
 
@@ -275,7 +305,10 @@ public class Database {
             pstmt.executeUpdate();
             pstmt.close();
         } catch (SQLException ex) {
-            System.err.println(ex);
+            System.err.println("Errore nell'aggiornamento della partita nel database.");
+            System.err.print(ex.getErrorCode());
+            System.err.print(ex.getSQLState());
+            System.err.print(ex.getMessage());
         }
     }
 
@@ -284,7 +317,10 @@ public class Database {
             Statement stmt = conn.createStatement();
             stmt.execute(DROP_TABLE);
         } catch (SQLException ex) {
-            System.err.println(ex);
+            System.err.println("Errore nell'eliminazione della tabella games.");
+            System.err.print(ex.getErrorCode());
+            System.err.print(ex.getSQLState());
+            System.err.print(ex.getMessage());
         }
     }
 
