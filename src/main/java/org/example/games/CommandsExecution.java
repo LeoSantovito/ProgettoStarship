@@ -265,8 +265,8 @@ public class CommandsExecution implements Serializable {
             JDialog frame = new JDialog(new JFrame(), "Mappa", true);
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             // Imposta la finestra al centro dello schermo
-            frame.setLocationRelativeTo(null);
             frame.setSize(500, 400);
+            frame.setLocationRelativeTo(null);
 
             Background img = new Background("./resources/images/map.png");
             frame.add(img);
@@ -286,9 +286,9 @@ public class CommandsExecution implements Serializable {
         try {
             JDialog frame = new JDialog(new JFrame(), "Note", true);
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            frame.setLocationRelativeTo(null);
 
             frame.setSize(500, 750);
+            frame.setLocationRelativeTo(null);
             Background img = new Background("./resources/images/notes.png");
             frame.add(img);
 
@@ -304,12 +304,15 @@ public class CommandsExecution implements Serializable {
 
     public JDialog showHelp() {
         JDialog helpDialog = new JDialog(new JFrame(), "Help", true);
+        helpDialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+
         helpDialog.setSize(800,500);
         helpDialog.setLocationRelativeTo(null);
-        helpDialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         helpDialog.setResizable(false);
+
         Background img = new Background("./resources/images/bgHelp.jpg");
         helpDialog.add(img);
+
         JTextArea textArea = new JTextArea();
         textArea.setOpaque(false);
         textArea.setFont(new Font("Arial", Font.PLAIN, 12));
