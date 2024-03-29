@@ -19,7 +19,6 @@ import com.google.gson.JsonParser;
  */
 
 public class WeatherApi implements Serializable {
-    private String city;
     // Costruttore
     public WeatherApi() {}
 
@@ -38,7 +37,6 @@ public class WeatherApi implements Serializable {
             return false;
         }
 
-        String encodedCity = URLEncoder.encode(city, StandardCharsets.UTF_8);
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
         StringBuilder response = new StringBuilder();

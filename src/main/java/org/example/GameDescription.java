@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.example;
 
 import org.example.database.Database;
 import org.example.parser.ParserOutput;
-import org.example.type.AdvObject;
 import org.example.type.Command;
 import org.example.type.Inventory;
 import org.example.type.Room;

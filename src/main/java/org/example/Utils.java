@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.example;
 
 import com.google.gson.Gson;
@@ -66,7 +61,6 @@ public class Utils {
 
     public static <T> List<T> loadObjectsFromFile(String filePath, Class<T> objectType) throws IOException {
         Gson gson = new Gson();
-        Type objectTypeList = TypeToken.getParameterized(List.class, objectType).getType();
         try (BufferedReader br = new BufferedReader(new FileReader(filePath, StandardCharsets.UTF_8))) {
             T[] objectArray = gson.fromJson(br, (Type) Array.newInstance(objectType, 0).getClass());
             return List.of(objectArray);

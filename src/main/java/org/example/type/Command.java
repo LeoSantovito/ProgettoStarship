@@ -73,10 +73,7 @@ public class Command implements Serializable {
             return false;
         }
         final Command other = (Command) obj;
-        if (this.type != other.type) {
-            return false;
-        }
-        return true;
+        return this.type == other.type;
     }
 
     public void addAlias(String trim) {
