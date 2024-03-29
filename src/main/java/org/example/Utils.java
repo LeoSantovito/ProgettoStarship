@@ -15,6 +15,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.lang.reflect.Type;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -66,14 +67,14 @@ public class Utils {
     public static <T> List<T> loadObjectsFromFile(String filePath, Class<T> objectType) throws IOException {
         Gson gson = new Gson();
         Type objectTypeList = TypeToken.getParameterized(List.class, objectType).getType();
-        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath, StandardCharsets.UTF_8))) {
             T[] objectArray = gson.fromJson(br, (Type) Array.newInstance(objectType, 0).getClass());
             return List.of(objectArray);
         }
     }
 
     public static void printFromFilePlaceholder(String filename, String placeholder) {
-        try (Scanner scanner = new Scanner(new File(filename))) {
+        try (Scanner scanner = new Scanner(new File(filename), StandardCharsets.UTF_8)) {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 // Sostituisci eventuali segnaposto con la stringa passata
@@ -86,7 +87,7 @@ public class Utils {
     }
 
     public static void printFromFile(String filename) {
-        try (Scanner scanner = new Scanner(new File(filename))) {
+        try (Scanner scanner = new Scanner(new File(filename), StandardCharsets.UTF_8)) {
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 System.out.println(line);
